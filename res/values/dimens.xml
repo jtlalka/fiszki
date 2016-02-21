@@ -1,0 +1,22 @@
+<resources>
+
+    <!-- separators -->
+    <dimen name="sep_sizeS">6dp</dimen>
+    <dimen name="sep_sizeM">16dp</dimen>
+    <dimen name="sep_sizeL">24dp</dimen>
+
+    <!-- fonts -->
+    <dimen name="font_sizeS">12sp</dimen>
+    <dimen name="font_sizeM">16sp</dimen>
+    <dimen name="font_sizeL">18sp</dimen>
+
+    <!-- topic -->
+    <dimen name="topic_margin">10dp</dimen>
+    <dimen name="topic_icon_size">60dp</dimen>
+    <dimen name="topic_icon_margin">20dp</dimen>
+
+    <!-- menu -->
+    <dimen name="menu_item_size">40dp</dimen>
+    <dimen name="menu_item_margin">6dp</dimen>
+
+</resources>

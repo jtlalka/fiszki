@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include layout="@layout/lessons_template" />
+    
+    <LinearLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="5" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:orientation="vertical" >
+
+            <Button
+                android:id="@+id/buttonWordShow"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/sep_sizeM"
+                android:background="@drawable/patch_yellow"
+                android:text="@string/view_null"
+                android:textSize="@dimen/font_sizeL" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:orientation="vertical" >
+
+            <Button
+                android:id="@+id/buttonWordCheck"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/sep_sizeM"
+                android:background="@drawable/patch_blue"
+                android:text="@string/view_null"
+                android:textSize="@dimen/font_sizeL" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:background="?android:attr/selectableItemBackground" >
+
+            <Button
+                android:id="@+id/buttonBad"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/sep_sizeM"
+                android:layout_weight="1"
+                android:background="@drawable/patch_red"
+                android:text="@string/button_bad"
+                android:textSize="@dimen/font_sizeL" />
+            
+            <Button
+                android:id="@+id/buttonGood"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/sep_sizeM"
+                android:layout_weight="1"
+                android:background="@drawable/patch_green"
+                android:text="@string/button_good"
+                android:textSize="@dimen/font_sizeL" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,10 @@
+# Generated files
+bin/
+gen/
+out/
+
+# IDE files
+/.idea/*
+/.settings/*
+.project
+.classpath
