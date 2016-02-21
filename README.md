@@ -1,1 +1,3 @@
 # fiszki
+
+Simple Android application.
