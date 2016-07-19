@@ -1,10 +1,15 @@
-# Generated files
-bin/
-gen/
-out/
+# Build files
+.gradle
+build/
 
 # IDE files
-/.idea/*
-/.settings/*
+.idea/
+.settings/
 .project
 .classpath
+*.iml
+
+# OS files
+Thumbs.db
+Desktop.ini
+.DS_Store
