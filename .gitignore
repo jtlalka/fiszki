@@ -1,15 +1,24 @@
-# Build files
-.gradle
-build/
-
-# IDE files
+# Intellij IDE
 .idea/
+
+# Ecpipse IDE
 .settings/
 .project
 .classpath
-*.iml
 
-# OS files
+# Gradle
+/**/build/
+.gradle
+
+# Maven
+/**/target/
+
+# Windows OS
 Thumbs.db
 Desktop.ini
+
+# Mac OS
 .DS_Store
+
+# Linux OS
+*~
