@@ -1,11 +1,10 @@
 package net.tlalka.android.fiszki.models.dao;
 
-import java.sql.SQLException;
-import java.util.List;
-
+import com.j256.ormlite.support.ConnectionSource;
 import net.tlalka.android.fiszki.models.entity.WordEntity;
 
-import com.j256.ormlite.support.ConnectionSource;
+import java.sql.SQLException;
+import java.util.List;
 
 public class WordDao extends AbstractDao<WordEntity, Long> {
 
@@ -14,10 +13,10 @@ public class WordDao extends AbstractDao<WordEntity, Long> {
     }
 
     public List<WordEntity> getWordsByLessnoName(String lessonName) throws SQLException {
-    	return super.queryBuilder().distinct().orderBy("progress", true).where().like("lessonName", lessonName).query();
+        return super.queryBuilder().distinct().orderBy("progress", true).where().like("lessonName", lessonName).query();
     }
 
     public List<WordEntity> getAll() throws SQLException {
-		return super.queryForAll();
-	}
+        return super.queryForAll();
+    }
 }

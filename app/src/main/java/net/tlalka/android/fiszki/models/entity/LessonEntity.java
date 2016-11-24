@@ -1,86 +1,85 @@
 package net.tlalka.android.fiszki.models.entity;
 
-import net.tlalka.android.fiszki.models.dao.LessonDao;
-
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
+import net.tlalka.android.fiszki.models.dao.LessonDao;
 
 @DatabaseTable(tableName = "lessons", daoClass = LessonDao.class)
 public class LessonEntity {
-	
-	public static final int PROGRESS_BASE = 0;
-	public static final int STATUS_APP = 0;
-	public static final int STATUS_USER = 1;
 
-	@DatabaseField(generatedId = true)
-	private long lessonId;
+    public static final int PROGRESS_BASE = 0;
+    public static final int STATUS_APP = 0;
+    public static final int STATUS_USER = 1;
 
-	@DatabaseField
-	private String name;
+    @DatabaseField(generatedId = true)
+    private long lessonId;
 
-	@DatabaseField
-	private String desc;
+    @DatabaseField
+    private String name;
 
-	@DatabaseField
-	private int progress;
+    @DatabaseField
+    private String desc;
 
-	@DatabaseField
-	private int status;
+    @DatabaseField
+    private int progress;
 
-	public LessonEntity() {
-	}
+    @DatabaseField
+    private int status;
 
-	public LessonEntity(String name) {
-		this.name = name;
-		this.desc = "";
-		this.progress = PROGRESS_BASE;
-		this.status = STATUS_APP;
-	}
+    public LessonEntity() {
+    }
 
-	public LessonEntity(String name, String desc, int progress, int status) {
-		this.name = name;
-		this.desc = desc;
-		this.progress = progress;
-		this.status = status;
-	}
+    public LessonEntity(String name) {
+        this.name = name;
+        this.desc = "";
+        this.progress = PROGRESS_BASE;
+        this.status = STATUS_APP;
+    }
 
-	public long getLessonId() {
-		return lessonId;
-	}
+    public LessonEntity(String name, String desc, int progress, int status) {
+        this.name = name;
+        this.desc = desc;
+        this.progress = progress;
+        this.status = status;
+    }
 
-	public void setLessonId(long lessonId) {
-		this.lessonId = lessonId;
-	}
+    public long getLessonId() {
+        return lessonId;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public void setLessonId(long lessonId) {
+        this.lessonId = lessonId;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public String getDesc() {
-		return desc;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setDesc(String desc) {
-		this.desc = desc;
-	}
+    public String getDesc() {
+        return desc;
+    }
 
-	public int getProgress() {
-		return progress;
-	}
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
 
-	public void setProgress(int progress) {
-		this.progress = progress;
-	}
+    public int getProgress() {
+        return progress;
+    }
 
-	public int getStatus() {
-		return status;
-	}
+    public void setProgress(int progress) {
+        this.progress = progress;
+    }
 
-	public void setStatus(int status) {
-		this.status = status;
-	}
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
 }
