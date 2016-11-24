@@ -1,4 +1,4 @@
-/*
+/**
  * Gradle main build script
  */
 buildscript {
@@ -10,7 +10,7 @@ buildscript {
     }
 }
 
-/*
+/**
  * Gradle all projects setup
  */
 allprojects {
