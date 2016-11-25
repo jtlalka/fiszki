@@ -1,13 +1,15 @@
-package net.tlalka.android.fiszki;
+package net.tlalka.android.fiszki.activities;
 
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
+import net.tlalka.android.fiszki.R;
 import net.tlalka.android.fiszki.listeners.LessonSumListener;
-import net.tlalka.android.fwork.FworkActivity;
 import net.tlalka.android.fwork.FworkInit;
 
-public class LessonSumActivity extends FworkActivity {
+import java.util.Locale;
+
+public class LessonSumActivity extends AbstractActivity {
 
     public static final String LESSON_NAME = "LessonElement.name";
     public static final String LESSON_DESC = "LessonElement.desc";
@@ -24,13 +26,11 @@ public class LessonSumActivity extends FworkActivity {
 
     private String lessonName;
     private String lessonDesc;
-    private int totalCount;
-    private int totalGood;
-    private int totalBad;
 
     @Override
     public void onCreate(Bundle bundle) {
-        super.onCreate(bundle, R.layout.lesson_sum_view);
+        super.onCreate(bundle);
+        super.setContentView(R.layout.lesson_sum_view);
 
         this.initElements();
         this.initListeners();
@@ -57,15 +57,19 @@ public class LessonSumActivity extends FworkActivity {
         if (FworkInit.Valid.isNotNull(argsBundle)) {
             this.lessonName = argsBundle.getString(LESSON_NAME);
             this.lessonDesc = argsBundle.getString(LESSON_DESC);
-            this.totalCount = argsBundle.getInt(TOTAL_COUNT, 0);
-            this.totalGood = argsBundle.getInt(TOTAL_GOOD, 0);
-            this.totalBad = argsBundle.getInt(TOTAL_BAD, 0);
+            int totalCount = argsBundle.getInt(TOTAL_COUNT, 0);
+            int totalGood = argsBundle.getInt(TOTAL_GOOD, 0);
+            int totalBad = argsBundle.getInt(TOTAL_BAD, 0);
 
-            this.textViewTopic.setText(lessonName + " - " + lessonDesc);
-            this.buttonSum.setText(this.buttonSum.getText() + ": " + this.totalCount);
-            this.buttonGood.setText(this.buttonGood.getText() + "\n" + this.totalGood);
-            this.buttonBad.setText(this.buttonBad.getText() + "\n" + this.totalBad);
+            this.textViewTopic.setText(localFormat("%s - %s", lessonName, lessonDesc));
+            this.buttonSum.setText(localFormat("%s: %d", this.buttonSum.getText(), totalCount));
+            this.buttonGood.setText(localFormat("%s\n%d", this.buttonGood.getText(), totalGood));
+            this.buttonBad.setText(localFormat("%s\n%d", this.buttonBad.getText(), totalBad));
         }
+    }
+
+    private String localFormat(String format, Object... objects) {
+        return String.format(Locale.ENGLISH, format, objects);
     }
 
     public void gotoLesson() {

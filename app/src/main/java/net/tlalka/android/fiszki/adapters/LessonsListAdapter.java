@@ -19,16 +19,16 @@ public class LessonsListAdapter extends AbstractAdapter<String> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup viewGroup) {
+        if (convertView == null) {
+            LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            convertView = layoutInflater.inflate(R.layout.lessons_list_item, viewGroup, false);
+        }
 
-        LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        convertView = layoutInflater.inflate(R.layout.lessons_list_item, viewGroup, false);
-
-        LessonElement lessonElement = LessonElement.getValue(elements.get(position));
-        LessonsListListener lessonsListListener = new LessonsListListener(context, lessonElement);
-
+        LessonElement lessonElement = LessonElement.getValue(super.getItem(position));
         ViewHolderPattern viewHolderPattern = new ViewHolderPattern();
+
         convertView.setTag(viewHolderPattern);
-        convertView.setOnClickListener(lessonsListListener);
+        convertView.setOnClickListener(new LessonsListListener(context, lessonElement));
 
         viewHolderPattern.name = (TextView) convertView.findViewById(R.id.name);
         viewHolderPattern.name.setText(lessonElement.getName());

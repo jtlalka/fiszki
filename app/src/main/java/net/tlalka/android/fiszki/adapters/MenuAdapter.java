@@ -19,16 +19,18 @@ public class MenuAdapter extends AbstractAdapter<String> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup viewGroup) {
-
-        LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        convertView = layoutInflater.inflate(R.layout.menu_item, viewGroup, false);
+        if (convertView == null) {
+            LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            convertView = layoutInflater.inflate(R.layout.menu_item, viewGroup, false);
+        }
 
         ViewHolderPattern viewHolderPattern = new ViewHolderPattern();
+        String elementName = super.getItem(position);
         convertView.setTag(viewHolderPattern);
 
         viewHolderPattern.button = (Button) convertView.findViewById(R.id.button);
-        viewHolderPattern.button.setText((String) this.getItem(position));
-        viewHolderPattern.button.setOnClickListener(new MenuListener(context, MenuElement.getValue(elements.get(position))));
+        viewHolderPattern.button.setText(elementName);
+        viewHolderPattern.button.setOnClickListener(new MenuListener(context, MenuElement.getValue(elementName)));
 
         return convertView;
     }

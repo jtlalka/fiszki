@@ -7,23 +7,36 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme"
         android:allowBackup="true"
-        android:fullBackupContent="true" >
+        android:fullBackupContent="true">
 
         <activity
-            android:name="MainActivity"
-            android:label="@string/app_name" >
+            android:name=".activities.MainActivity"
+            android:label="@string/app_name">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
 
-        <activity android:name="StartActivity" />
-        <activity android:name="LessonsListActivity" />
-        <activity android:name="LessonActivity" />
-        <activity android:name="LessonSumActivity" />
-        <activity android:name="OptionsActivity" />
-        <activity android:name="HelpActivity" />
+        <activity
+            android:name=".activities.StartActivity"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data
+                    android:scheme="http"
+                    android:host="www.tlalka.net"
+                    android:pathPrefix="/android/fiszki"/>
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".activities.LessonsListActivity"/>
+        <activity android:name=".activities.LessonActivity"/>
+        <activity android:name=".activities.LessonSumActivity"/>
+        <activity android:name=".activities.OptionsActivity"/>
+        <activity android:name=".activities.HelpActivity"/>
     </application>
 
 </manifest>

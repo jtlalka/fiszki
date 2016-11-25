@@ -1,21 +1,22 @@
-package net.tlalka.android.fiszki;
+package net.tlalka.android.fiszki.activities;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.widget.ListView;
+import net.tlalka.android.fiszki.R;
 import net.tlalka.android.fiszki.adapters.MenuAdapter;
 import net.tlalka.android.fiszki.elements.MenuElement;
-import net.tlalka.android.fwork.FworkActivity;
 
-public class MainActivity extends FworkActivity {
+public class MainActivity extends AbstractActivity {
 
     public static final String PREFS_NAME = "StartActivity.show.hello.view";
     public static final String PREFS_VALUE = "showActivity";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState, R.layout.menu_view);
+        super.onCreate(savedInstanceState);
+        super.setContentView(R.layout.menu_view);
         this.initMenuListActivity();
 
         SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
@@ -24,7 +25,7 @@ public class MainActivity extends FworkActivity {
         if (!showActivity) {
             SharedPreferences.Editor editor = settings.edit();
             editor.putBoolean(PREFS_VALUE, true);
-            editor.commit();
+            editor.apply();
 
             this.initStartActivity();
         }
@@ -37,9 +38,9 @@ public class MainActivity extends FworkActivity {
 
     private void initStartActivity() {
         Bundle bundleToSend = new Bundle();
-        bundleToSend.putString(StartActivity.VIEW_INFO, "Clik to start!");
+        bundleToSend.putString(StartActivity.VIEW_INFO, "Click to start!");
 
-        super.startActivity(StartActivity.class, bundleToSend);
+        startActivity(StartActivity.class, bundleToSend);
     }
 
     private void initMenuListActivity() {

@@ -1,9 +1,9 @@
 package net.tlalka.android.fiszki.elements;
 
-import net.tlalka.android.fiszki.HelpActivity;
-import net.tlalka.android.fiszki.LessonsListActivity;
-import net.tlalka.android.fiszki.OptionsActivity;
-import net.tlalka.android.fiszki.StartActivity;
+import net.tlalka.android.fiszki.activities.HelpActivity;
+import net.tlalka.android.fiszki.activities.LessonsListActivity;
+import net.tlalka.android.fiszki.activities.OptionsActivity;
+import net.tlalka.android.fiszki.activities.StartActivity;
 
 import java.util.HashMap;
 import java.util.LinkedList;

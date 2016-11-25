@@ -1,4 +1,4 @@
-package net.tlalka.android.fwork;
+package net.tlalka.android.fiszki.activities;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -6,12 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.widget.Toast;
 
-public abstract class FworkActivity extends Activity {
-
-    public void onCreate(Bundle bundle, int idLayout) {
-        super.onCreate(bundle);
-        super.setContentView(idLayout);
-    }
+public abstract class AbstractActivity extends Activity {
 
     public boolean onCreateOptionsMenu(Menu menu, int idMenu) {
         super.getMenuInflater().inflate(idMenu, menu);

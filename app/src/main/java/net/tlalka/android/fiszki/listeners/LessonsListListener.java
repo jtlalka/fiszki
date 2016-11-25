@@ -5,8 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import net.tlalka.android.fiszki.LessonActivity;
-import net.tlalka.android.fiszki.LessonsListActivity;
+import net.tlalka.android.fiszki.activities.LessonActivity;
+import net.tlalka.android.fiszki.activities.LessonsListActivity;
 import net.tlalka.android.fiszki.elements.LessonElement;
 
 public class LessonsListListener implements OnClickListener {

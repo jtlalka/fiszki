@@ -5,7 +5,7 @@
     <string name="app_version">v1.0</string>
     <string name="app_setting">Setting</string>
 
-    <string name="view_null"></string>
+    <string name="view_null"> </string>
     <string name="view_hello">Fiszki - nauka i rozrywaka :)</string>
     <string name="view_loading">Wczytywanie..</string>
     <string name="view_lesson_sum">Wszystkich wyrazów</string>

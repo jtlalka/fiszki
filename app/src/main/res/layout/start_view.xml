@@ -4,12 +4,12 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
-    android:weightSum="4" >
+    android:weightSum="4">
 
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" >
+        android:layout_weight="1">
 
         <TextView
             android:id="@+id/textViewStart"
@@ -18,13 +18,13 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:text="@string/view_hello"
-            android:textSize="16sp" />
+            android:textSize="16sp"/>
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="0dp"
-        android:layout_weight="2" >
+        android:layout_weight="2">
 
         <ImageView
             android:layout_width="match_parent"
@@ -33,13 +33,13 @@
             android:layout_centerVertical="true"
             android:contentDescription="@string/view_null"
             android:scaleType="fitCenter"
-            android:src="@drawable/application" />
+            android:src="@drawable/application"/>
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" >
+        android:layout_weight="1">
 
         <TextView
             android:id="@+id/textViewNull"
@@ -47,7 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:text="@string/view_null" />
+            android:text="@string/view_null"/>
     </RelativeLayout>
 
 </LinearLayout>

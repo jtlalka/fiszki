@@ -1,14 +1,14 @@
-package net.tlalka.android.fiszki;
+package net.tlalka.android.fiszki.activities;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
-import net.tlalka.android.fwork.FworkActivity;
+import net.tlalka.android.fiszki.R;
 import net.tlalka.android.fwork.FworkInit;
 
-public class StartActivity extends FworkActivity {
+public class StartActivity extends AbstractActivity {
 
     public static String VIEW_INFO = "viewInfo";
     public static Activity CLASS;
@@ -18,7 +18,8 @@ public class StartActivity extends FworkActivity {
 
     @Override
     public void onCreate(Bundle bundle) {
-        super.onCreate(bundle, R.layout.start_view);
+        super.onCreate(bundle);
+        super.setContentView(R.layout.start_view);
 
         this.view = findViewById(R.id.view);
         this.view.setOnClickListener(new Listener());

@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <Button
         android:id="@+id/button"
@@ -10,6 +10,6 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/sep_sizeS"
         android:background="@drawable/patch_green"
-        android:text="@string/view_null" />
+        android:text="@string/view_null"/>
 
 </RelativeLayout>

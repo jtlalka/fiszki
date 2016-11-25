@@ -1,22 +1,22 @@
-package net.tlalka.android.fiszki;
+package net.tlalka.android.fiszki.activities;
 
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
+import net.tlalka.android.fiszki.R;
 import net.tlalka.android.fiszki.listeners.LessonListener;
 import net.tlalka.android.fiszki.models.DatabaseManager;
 import net.tlalka.android.fiszki.models.dao.LessonDao;
 import net.tlalka.android.fiszki.models.dao.WordDao;
 import net.tlalka.android.fiszki.models.entity.LessonEntity;
 import net.tlalka.android.fiszki.models.entity.WordEntity;
-import net.tlalka.android.fwork.FworkActivity;
 import net.tlalka.android.fwork.FworkInit;
 
 import java.sql.SQLException;
 import java.util.List;
 
-public class LessonActivity extends FworkActivity {
+public class LessonActivity extends AbstractActivity {
 
     public static final String LESSON_NAME = "LessonElement.name";
     public static final String LESSON_DESC = "LessonElement.desc";
@@ -43,7 +43,8 @@ public class LessonActivity extends FworkActivity {
 
     @Override
     public void onCreate(Bundle bundle) {
-        super.onCreate(bundle, R.layout.lesson_view);
+        super.onCreate(bundle);
+        super.setContentView(R.layout.lesson_view);
 
         this.initElements();
         this.initListeners();
@@ -74,7 +75,7 @@ public class LessonActivity extends FworkActivity {
             this.lessonName = argsBundle.getString(LESSON_NAME);
             this.lessonDesc = argsBundle.getString(LESSON_DESC);
 
-            this.textViewTopic.setText(lessonName + " - " + lessonDesc);
+            this.textViewTopic.setText(String.format("%s - %s", lessonName ,lessonDesc));
         }
     }
 

@@ -1,20 +1,21 @@
-package net.tlalka.android.fiszki;
+package net.tlalka.android.fiszki.activities;
 
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import net.tlalka.android.fwork.FworkActivity;
+import net.tlalka.android.fiszki.R;
 
-public class HelpActivity extends FworkActivity {
+public class HelpActivity extends AbstractActivity {
 
     private View view;
 
     @Override
     public void onCreate(Bundle bundle) {
-        super.onCreate(bundle, R.layout.help_view);
+        super.onCreate(bundle);
+        super.setContentView(R.layout.help_view);
 
-        this.view = (View) findViewById(R.id.view);
+        this.view = findViewById(R.id.view);
         this.view.setOnClickListener(new PrivListener(this));
     }
 

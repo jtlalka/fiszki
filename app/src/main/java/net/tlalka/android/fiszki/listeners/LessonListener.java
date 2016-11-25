@@ -3,7 +3,7 @@ package net.tlalka.android.fiszki.listeners;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Toast;
-import net.tlalka.android.fiszki.LessonActivity;
+import net.tlalka.android.fiszki.activities.LessonActivity;
 
 public class LessonListener implements OnClickListener {
 
