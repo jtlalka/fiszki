@@ -18,8 +18,8 @@ import java.util.List;
 
 public class LessonActivity extends AbstractActivity {
 
-    public static final String LESSON_NAME = "LessonElement.name";
-    public static final String LESSON_DESC = "LessonElement.desc";
+    public static final String LESSON_NAME = "net.tlalka.android.fiszki.lesson.name";
+    public static final String LESSON_DESC = "net.tlalka.android.fiszki.lesson.desc";
 
     private LessonDao lessonDao;
     private WordDao wordDao;
@@ -55,11 +55,11 @@ public class LessonActivity extends AbstractActivity {
     }
 
     private void initElements() {
-        this.textViewTopic = (TextView) findViewById(R.id.textViewTopic);
-        this.buttonWordShow = (Button) findViewById(R.id.buttonWordShow);
-        this.buttonWordCheck = (Button) findViewById(R.id.buttonWordCheck);
-        this.buttonGood = (Button) findViewById(R.id.buttonGood);
-        this.buttonBad = (Button) findViewById(R.id.buttonBad);
+        this.textViewTopic = (TextView) findViewById(R.id.text_view_topic);
+        this.buttonWordShow = (Button) findViewById(R.id.button_word_show);
+        this.buttonWordCheck = (Button) findViewById(R.id.button_word_check);
+        this.buttonGood = (Button) findViewById(R.id.button_good);
+        this.buttonBad = (Button) findViewById(R.id.button_bad);
     }
 
     private void initListeners() {
@@ -75,7 +75,7 @@ public class LessonActivity extends AbstractActivity {
             this.lessonName = argsBundle.getString(LESSON_NAME);
             this.lessonDesc = argsBundle.getString(LESSON_DESC);
 
-            this.textViewTopic.setText(String.format("%s - %s", lessonName ,lessonDesc));
+            this.textViewTopic.setText(localFormat("%s - %s", lessonName ,lessonDesc));
         }
     }
 
@@ -85,14 +85,14 @@ public class LessonActivity extends AbstractActivity {
             this.wordDao = DatabaseManager.getHelper(this).getWordDao();
 
             this.lessonEntity = this.lessonDao.getLessonByLessonName(lessonName);
-            this.wordList = this.wordDao.getWordsByLessnoName(lessonName);
+            this.wordList = this.wordDao.getWordsByLessonName(lessonName);
 
             for (WordEntity wordEntity : wordList) {
-                Log.d(wordEntity.getWordPL(), "" + wordEntity.getProgress());
+                Log.d(this.getLocalClassName(), wordEntity.getWordPL() + " " + wordEntity.getProgress());
             }
 
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            Log.e(this.getLocalClassName(), "SQL data exception", ex);
         }
     }
 
@@ -118,49 +118,41 @@ public class LessonActivity extends AbstractActivity {
         this.buttonWordCheck.setText(this.wordEntity.getWordPL());
     }
 
-    public boolean nextWord() {
+    public void nextWord() {
         this.wordNumber++;
 
-        if (this.wordNumber < this.wordCount) {
+        if (this.hasNextWord()) {
             this.generateView(this.wordNumber);
-            return true;
+        } else {
+            this.showOverview();
         }
-        return false;
     }
 
-    public boolean privWord() {
-        this.wordNumber--;
-
-        if (this.wordNumber >= 0) {
-            this.generateView(this.wordNumber);
-            return true;
-        }
-        return false;
+    public boolean hasNextWord() {
+        return this.wordNumber < this.wordCount;
     }
 
     public void progressUp() {
         this.wordEntity.setProgress(this.wordEntity.getProgress() + 1);
         this.wordDao.save(this.wordEntity);
-
         this.wordGood++;
     }
 
     public void progressDown() {
         this.wordEntity.setProgress(this.wordEntity.getProgress() - 1);
         this.wordDao.save(this.wordEntity);
-
         this.wordBad++;
     }
 
-    public void showSummary() {
+    public void showOverview() {
         Bundle bundleToSend = new Bundle();
-        bundleToSend.putString(LessonSumActivity.LESSON_NAME, this.lessonName);
-        bundleToSend.putString(LessonSumActivity.LESSON_DESC, this.lessonDesc);
-        bundleToSend.putInt(LessonSumActivity.TOTAL_COUNT, this.wordNumber);
-        bundleToSend.putInt(LessonSumActivity.TOTAL_GOOD, this.wordGood);
-        bundleToSend.putInt(LessonSumActivity.TOTAL_BAD, this.wordBad);
+        bundleToSend.putString(OverviewActivity.LESSON_NAME, this.lessonName);
+        bundleToSend.putString(OverviewActivity.LESSON_DESC, this.lessonDesc);
+        bundleToSend.putInt(OverviewActivity.TOTAL_COUNT, this.wordNumber);
+        bundleToSend.putInt(OverviewActivity.TOTAL_GOOD, this.wordGood);
+        bundleToSend.putInt(OverviewActivity.TOTAL_BAD, this.wordBad);
 
-        super.startActivity(LessonSumActivity.class, bundleToSend);
+        super.startActivity(OverviewActivity.class, bundleToSend);
         super.finish();
     }
 }

@@ -9,12 +9,12 @@ import java.util.List;
 
 public abstract class AbstractAdapter<T> extends BaseAdapter {
 
-    protected List<T> elements;
     protected Context context;
+    protected List<T> elements;
 
     public AbstractAdapter(Context context, List<T> elements) {
-        this.elements = elements;
         this.context = context;
+        this.elements = elements;
     }
 
     @Override

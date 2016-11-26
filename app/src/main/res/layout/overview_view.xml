@@ -21,41 +21,41 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/buttonSum"
+                android:id="@+id/button_count"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="@dimen/sep_sizeM"
+                android:layout_margin="@dimen/sep_size_m"
                 android:background="@drawable/patch_yellow"
-                android:text="@string/view_lesson_sum"
-                android:textSize="@dimen/font_sizeL"/>
+                android:text="@string/activity_overview_topic"
+                android:textSize="@dimen/font_size_l"/>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="2"
-            android:background="?android:attr/selectableItemBackground"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:background="?android:attr/selectableItemBackground">
 
             <Button
-                android:id="@+id/buttonBad"
+                android:id="@+id/button_bad"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_margin="@dimen/sep_sizeM"
+                android:layout_margin="@dimen/sep_size_m"
                 android:layout_weight="1"
                 android:background="@drawable/patch_red"
                 android:text="@string/button_bad"
-                android:textSize="@dimen/font_sizeM"/>
+                android:textSize="@dimen/font_size_m"/>
 
             <Button
-                android:id="@+id/buttonGood"
+                android:id="@+id/button_good"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_margin="@dimen/sep_sizeM"
+                android:layout_margin="@dimen/sep_size_m"
                 android:layout_weight="1"
                 android:background="@drawable/patch_green"
                 android:text="@string/button_good"
-                android:textSize="@dimen/font_sizeM"/>
+                android:textSize="@dimen/font_size_m"/>
         </LinearLayout>
 
         <LinearLayout
@@ -65,12 +65,12 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/buttonRepeat"
+                android:id="@+id/button_repeat"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="@dimen/sep_sizeM"
+                android:layout_margin="@dimen/sep_size_m"
                 android:background="@drawable/patch_cyan"
-                android:text="@string/menu_repeat"/>
+                android:text="@string/activity_overview_repeat"/>
         </LinearLayout>
 
         <LinearLayout
@@ -80,12 +80,12 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/buttonLessons"
+                android:id="@+id/button_lessons"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="@dimen/sep_sizeM"
+                android:layout_margin="@dimen/sep_size_m"
                 android:background="@drawable/patch_cyan"
-                android:text="@string/menu_lessons"/>
+                android:text="@string/nav_lessons"/>
         </LinearLayout>
     </LinearLayout>
 

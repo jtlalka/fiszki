@@ -2,23 +2,25 @@
 <resources>
 
     <string name="app_name">Fiszki</string>
-    <string name="app_version">v1.0</string>
-    <string name="app_setting">Setting</string>
+    <string name="app_version">1.0</string>
 
-    <string name="view_null"> </string>
-    <string name="view_hello">Fiszki - nauka i rozrywaka :)</string>
-    <string name="view_loading">Wczytywanie..</string>
-    <string name="view_lesson_sum">Wszystkich wyrazów</string>
-
-    <string name="menu_lessons">Lekcje</string>
-    <string name="menu_tests">Testy</string>
-    <string name="menu_options">Opcje</string>
-    <string name="menu_help">Pomoc</string>
-    <string name="menu_repeat">Powtórka</string>
+    <string name="nav_lessons">Lekcje</string>
+    <string name="nav_tests">Testy</string>
+    <string name="nav_options">Opcje</string>
+    <string name="nav_settings">Ustawienia</string>
+    <string name="nav_help">Pomoc</string>
 
     <string name="button_yes">Tak</string>
     <string name="button_no">Nie</string>
     <string name="button_good">Dobrze</string>
     <string name="button_bad">Źle</string>
+
+    <string name="activity_start_topic">Fiszki - nauka i rozrywaka :)</string>
+    <string name="activity_start_info">Kliknij aby rozpocząć..</string>
+
+    <string name="activity_overview_topic">Wszystkich wyrazów</string>
+    <string name="activity_overview_repeat">Powtórka</string>
+
+    <string name="null_value"> </string>
 
 </resources>

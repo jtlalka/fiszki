@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.widget.Toast;
 
+import java.util.Locale;
+
 public abstract class AbstractActivity extends Activity {
 
     public boolean onCreateOptionsMenu(Menu menu, int idMenu) {
@@ -14,12 +16,13 @@ public abstract class AbstractActivity extends Activity {
     }
 
     public void startActivity(Class<?> classValue, Bundle bundleToSend) {
-        bundleToSend.putString("bundleFromClass", super.getLocalClassName());
-
         Intent intent = new Intent(super.getApplicationContext(), classValue);
         intent.putExtras(bundleToSend);
-
         super.startActivity(intent);
+    }
+
+    public String localFormat(String format, Object... objects) {
+        return String.format(Locale.ENGLISH, format, objects);
     }
 
     public void alert(String message) {

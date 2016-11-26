@@ -17,13 +17,13 @@ public enum LessonElement {
     private String name;
     private String desc;
 
-    private static final Map<String, LessonElement> menuLementMap = new HashMap<>();
-    private static final List<String> menuLementList = new LinkedList<>();
+    private static final Map<String, LessonElement> menuElementMap = new HashMap<>();
+    private static final List<String> menuElementList = new LinkedList<>();
 
     static {
         for (final LessonElement menuElement : LessonElement.values()) {
-            menuLementMap.put(menuElement.getName(), menuElement);
-            menuLementList.add(menuElement.getName());
+            menuElementMap.put(menuElement.getName(), menuElement);
+            menuElementList.add(menuElement.getName());
         }
     }
 
@@ -33,11 +33,11 @@ public enum LessonElement {
     }
 
     public static LessonElement getValue(String key) {
-        return menuLementMap.get(key);
+        return menuElementMap.get(key);
     }
 
     public static List<String> getKeys() {
-        return menuLementList;
+        return menuElementList;
     }
 
     public String getName() {

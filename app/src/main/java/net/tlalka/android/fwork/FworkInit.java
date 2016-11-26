@@ -1,7 +1,5 @@
 package net.tlalka.android.fwork;
 
-import java.io.PrintStream;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,12 +12,8 @@ public final class FworkInit {
     public static final class Manager {
         private static Map<String, Object> OBJECT = new HashMap<>();
 
-        public static void add(Object object) {
-            if (!Manager.has(object.getClass())) {
-                Manager.OBJECT.put(object.getClass().getName(), object);
-            } else {
-                Log.self("Manager can't override class: " + object.getClass().getName());
-            }
+        public static void set(Object object) {
+            Manager.OBJECT.put(object.getClass().getName(), object);
         }
 
         public static boolean del(Class<?> classVal) {
@@ -74,7 +68,7 @@ public final class FworkInit {
         }
 
         public static boolean isFalse(Boolean value) {
-            return value;
+            return !value;
         }
 
         public static boolean isEmpty(Object value) {
@@ -91,36 +85,12 @@ public final class FworkInit {
             } else if (value instanceof Map) {
                 return ((Map<?, ?>) value).size() == 0;
             } else {
-                Log.self("Valid can't check class: " + value.getClass().getName());
                 return false;
             }
         }
 
         public static boolean isNotEmpty(Object value) {
             return !isEmpty(value);
-        }
-    }
-
-    public static final class Log {
-        public static void error(Exception ex, String message) {
-            Log.show(System.err, ex, "ERROR", message, ex.toString());
-        }
-
-        public static void info(String message) {
-            Log.show(System.out, null, "INFO", message);
-        }
-
-        protected static void self(String... message) {
-            Log.show(System.err, null, FRAMEWORK_NAME, message);
-        }
-
-        private static void show(PrintStream how, Exception ex, String who, String... what) {
-            for (String msg : what) {
-                how.println("[" + new Date().toString() + "] " + who + " [" + msg + "]");
-            }
-            if (ex != null) {
-                ex.printStackTrace(how);
-            }
         }
     }
 }

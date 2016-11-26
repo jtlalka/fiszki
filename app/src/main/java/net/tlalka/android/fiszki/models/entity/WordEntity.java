@@ -10,7 +10,7 @@ public class WordEntity {
     public static final long PROGRESS_BASE = 0;
 
     @DatabaseField(generatedId = true)
-    private long wordId;
+    private long id;
 
     @DatabaseField
     private String lessonName;

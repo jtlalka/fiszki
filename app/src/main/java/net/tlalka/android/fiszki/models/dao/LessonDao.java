@@ -13,7 +13,12 @@ public class LessonDao extends AbstractDao<LessonEntity, Long> {
     }
 
     public LessonEntity getLessonByLessonName(String lessonName) throws SQLException {
-        return super.queryBuilder().distinct().where().like("name", lessonName).query().get(0);
+        return super.queryBuilder()
+                .distinct()
+                .where()
+                .like("name", lessonName)
+                .query()
+                .get(0);
     }
 
     public List<LessonEntity> getAll() throws SQLException {

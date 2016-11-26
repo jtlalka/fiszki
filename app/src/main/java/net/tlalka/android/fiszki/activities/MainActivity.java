@@ -10,41 +10,44 @@ import net.tlalka.android.fiszki.elements.MenuElement;
 
 public class MainActivity extends AbstractActivity {
 
-    public static final String PREFS_NAME = "StartActivity.show.hello.view";
-    public static final String PREFS_VALUE = "showActivity";
+    public static final String PREFS_NAME = "net.tlalka.android.fiszki.main.preferences";
+    public static final String PREFS_KEY = "show.welcome.view";
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void onCreate(Bundle bundle) {
+        super.onCreate(bundle);
         super.setContentView(R.layout.menu_view);
+
+        this.initStartActivity();
         this.initMenuListActivity();
+    }
 
-        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
-        boolean showActivity = settings.getBoolean(PREFS_VALUE, false);
+    private void initStartActivity() {
+        SharedPreferences settings = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+        boolean showStartActivity = settings.getBoolean(PREFS_KEY, true);
 
-        if (!showActivity) {
+        if (showStartActivity) {
             SharedPreferences.Editor editor = settings.edit();
-            editor.putBoolean(PREFS_VALUE, true);
+            editor.putBoolean(PREFS_KEY, false);
             editor.apply();
 
-            this.initStartActivity();
+            this.openStartActivity();
         }
+    }
+
+    private void openStartActivity() {
+        Bundle bundle = new Bundle();
+        bundle.putString(StartActivity.MESSAGE, getString(R.string.activity_start_info));
+        startActivity(StartActivity.class, bundle);
+    }
+
+    private void initMenuListActivity() {
+        ListView listView = (ListView) findViewById(R.id.list_view);
+        listView.setAdapter(new MenuAdapter(this, MenuElement.getKeys()));
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         return super.onCreateOptionsMenu(menu, R.menu.main_menu);
-    }
-
-    private void initStartActivity() {
-        Bundle bundleToSend = new Bundle();
-        bundleToSend.putString(StartActivity.VIEW_INFO, "Click to start!");
-
-        startActivity(StartActivity.class, bundleToSend);
-    }
-
-    private void initMenuListActivity() {
-        ListView listView = (ListView) findViewById(R.id.listView);
-        listView.setAdapter(new MenuAdapter(this, MenuElement.getKeys()));
     }
 }

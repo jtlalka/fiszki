@@ -8,8 +8,8 @@ import net.tlalka.android.fiszki.models.dao.LessonDao;
 public class LessonEntity {
 
     public static final int PROGRESS_BASE = 0;
-    public static final int STATUS_APP = 0;
-    public static final int STATUS_USER = 1;
+    public static final int STATUS_APP_DEFINED = 0;
+    public static final int STATUS_USER_DEFINED = 1;
 
     @DatabaseField(generatedId = true)
     private long lessonId;
@@ -33,7 +33,7 @@ public class LessonEntity {
         this.name = name;
         this.desc = "";
         this.progress = PROGRESS_BASE;
-        this.status = STATUS_APP;
+        this.status = STATUS_APP_DEFINED;
     }
 
     public LessonEntity(String name, String desc, int progress, int status) {
@@ -41,14 +41,6 @@ public class LessonEntity {
         this.desc = desc;
         this.progress = progress;
         this.status = status;
-    }
-
-    public long getLessonId() {
-        return lessonId;
-    }
-
-    public void setLessonId(long lessonId) {
-        this.lessonId = lessonId;
     }
 
     public String getName() {

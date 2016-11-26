@@ -2,26 +2,29 @@ package net.tlalka.android.fiszki.listeners;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Toast;
 import net.tlalka.android.fiszki.activities.LessonActivity;
 
 public class LessonListener implements OnClickListener {
 
+    public final static int ACTION_CHECK = 0;
     public final static int ACTION_GOOD = 1;
     public final static int ACTION_BAD = 2;
-    public final static int ACTION_CHECK = 3;
 
-    private LessonActivity context;
+    private LessonActivity activity;
     private int action;
 
-    public LessonListener(LessonActivity context, int action) {
-        this.context = context;
+    public LessonListener(LessonActivity activity, int action) {
+        this.activity = activity;
         this.action = action;
     }
 
     @Override
     public void onClick(View view) {
         switch (action) {
+            case ACTION_CHECK:
+                this.actionCheck();
+                break;
+
             case ACTION_GOOD:
                 this.actionGood();
                 break;
@@ -29,36 +32,20 @@ public class LessonListener implements OnClickListener {
             case ACTION_BAD:
                 this.actionBad();
                 break;
-
-            case ACTION_CHECK:
-                this.actionCheck();
-                break;
-
-            default:
-                Toast.makeText(this.context, "Not implement", Toast.LENGTH_SHORT).show();
-                break;
         }
     }
 
     private void actionGood() {
-        this.context.progressUp();
-        boolean isNextWord = this.context.nextWord();
-
-        if (!isNextWord) {
-            this.context.showSummary();
-        }
+        this.activity.progressUp();
+        this.activity.nextWord();
     }
 
     private void actionBad() {
-        this.context.progressDown();
-        boolean isNextWord = this.context.nextWord();
-
-        if (!isNextWord) {
-            this.context.showSummary();
-        }
+        this.activity.progressDown();
+        this.activity.nextWord();
     }
 
     private void actionCheck() {
-        this.context.showWord();
+        this.activity.showWord();
     }
 }

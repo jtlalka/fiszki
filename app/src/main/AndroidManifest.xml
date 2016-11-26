@@ -32,9 +32,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".activities.LessonsListActivity"/>
+        <activity android:name=".activities.LessonListActivity"/>
         <activity android:name=".activities.LessonActivity"/>
-        <activity android:name=".activities.LessonSumActivity"/>
+        <activity android:name=".activities.OverviewActivity"/>
         <activity android:name=".activities.OptionsActivity"/>
         <activity android:name=".activities.HelpActivity"/>
     </application>

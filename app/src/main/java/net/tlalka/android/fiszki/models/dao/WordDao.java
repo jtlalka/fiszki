@@ -12,8 +12,13 @@ public class WordDao extends AbstractDao<WordEntity, Long> {
         super(connectionSource, WordEntity.class);
     }
 
-    public List<WordEntity> getWordsByLessnoName(String lessonName) throws SQLException {
-        return super.queryBuilder().distinct().orderBy("progress", true).where().like("lessonName", lessonName).query();
+    public List<WordEntity> getWordsByLessonName(String lessonName) throws SQLException {
+        return super.queryBuilder()
+                .distinct()
+                .orderBy("progress", true)
+                .where()
+                .like("lessonName", lessonName)
+                .query();
     }
 
     public List<WordEntity> getAll() throws SQLException {

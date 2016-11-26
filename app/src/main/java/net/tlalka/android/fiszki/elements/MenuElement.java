@@ -1,7 +1,7 @@
 package net.tlalka.android.fiszki.elements;
 
 import net.tlalka.android.fiszki.activities.HelpActivity;
-import net.tlalka.android.fiszki.activities.LessonsListActivity;
+import net.tlalka.android.fiszki.activities.LessonListActivity;
 import net.tlalka.android.fiszki.activities.OptionsActivity;
 import net.tlalka.android.fiszki.activities.StartActivity;
 
@@ -12,7 +12,7 @@ import java.util.Map;
 
 public enum MenuElement {
 
-    LESSONS("Lekcje", LessonsListActivity.class),
+    LESSONS("Lekcje", LessonListActivity.class),
     TESTS("Testy", StartActivity.class),
     OPTIONS("Opcje", OptionsActivity.class),
     HELP("Pomoc", HelpActivity.class);
@@ -20,13 +20,13 @@ public enum MenuElement {
     private String name;
     private Class<?> classValue;
 
-    private static final Map<String, MenuElement> menuLementMap = new HashMap<>();
-    private static final List<String> menuLementList = new LinkedList<>();
+    private static final Map<String, MenuElement> menuMap = new HashMap<>();
+    private static final List<String> menuList = new LinkedList<>();
 
     static {
         for (final MenuElement menuElement : MenuElement.values()) {
-            menuLementMap.put(menuElement.getName(), menuElement);
-            menuLementList.add(menuElement.getName());
+            menuMap.put(menuElement.getName(), menuElement);
+            menuList.add(menuElement.getName());
         }
     }
 
@@ -36,11 +36,11 @@ public enum MenuElement {
     }
 
     public static MenuElement getValue(String key) {
-        return menuLementMap.get(key);
+        return menuMap.get(key);
     }
 
     public static List<String> getKeys() {
-        return menuLementList;
+        return menuList;
     }
 
     public String getName() {

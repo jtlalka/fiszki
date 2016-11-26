@@ -1,14 +1,14 @@
 <resources>
 
     <!-- separators -->
-    <dimen name="sep_sizeS">6dp</dimen>
-    <dimen name="sep_sizeM">16dp</dimen>
-    <dimen name="sep_sizeL">24dp</dimen>
+    <dimen name="sep_size_s">6dp</dimen>
+    <dimen name="sep_size_m">16dp</dimen>
+    <dimen name="sep_size_l">24dp</dimen>
 
     <!-- fonts -->
-    <dimen name="font_sizeS">12sp</dimen>
-    <dimen name="font_sizeM">16sp</dimen>
-    <dimen name="font_sizeL">18sp</dimen>
+    <dimen name="font_size_s">12sp</dimen>
+    <dimen name="font_size_m">16sp</dimen>
+    <dimen name="font_size_l">18sp</dimen>
 
     <!-- topic -->
     <dimen name="topic_margin">10dp</dimen>

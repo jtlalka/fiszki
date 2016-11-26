@@ -2,19 +2,18 @@ package net.tlalka.android.fiszki.listeners;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Toast;
-import net.tlalka.android.fiszki.activities.LessonSumActivity;
+import net.tlalka.android.fiszki.activities.OverviewActivity;
 
-public class LessonSumListener implements OnClickListener {
+public class OverviewListener implements OnClickListener {
 
     public final static int ACTION_GOTO_LESSON = 1;
-    public final static int ACTION_GOTO_LESSONS_LIST = 2;
+    public final static int ACTION_GOTO_LESSON_LIST = 2;
 
-    private LessonSumActivity context;
+    private OverviewActivity activity;
     private int action;
 
-    public LessonSumListener(LessonSumActivity context, int action) {
-        this.context = context;
+    public OverviewListener(OverviewActivity activity, int action) {
+        this.activity = activity;
         this.action = action;
     }
 
@@ -25,21 +24,17 @@ public class LessonSumListener implements OnClickListener {
                 this.actionGotoLesson();
                 break;
 
-            case ACTION_GOTO_LESSONS_LIST:
+            case ACTION_GOTO_LESSON_LIST:
                 this.actionGotoLessonsList();
-                break;
-
-            default:
-                Toast.makeText(this.context, "Not implement", Toast.LENGTH_SHORT).show();
                 break;
         }
     }
 
     private void actionGotoLesson() {
-        this.context.gotoLesson();
+        this.activity.gotoLesson();
     }
 
     private void actionGotoLessonsList() {
-        this.context.gotoLessonsList();
+        this.activity.gotoLessonList();
     }
 }

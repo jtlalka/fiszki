@@ -17,7 +17,7 @@ import java.sql.SQLException;
 public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 
     public static final String DATABASE_NAME = "fiszki.db";
-    public static final int DATABASE_VERSION = 11;
+    public static final int DATABASE_VERSION = 1;
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -37,6 +37,22 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
         }
     }
 
+    private void initLessonTable() throws SQLException {
+        LessonDao pLessonDao = this.getLessonDao();
+
+        for (LessonElement val : LessonElement.values()) {
+            pLessonDao.create(new LessonEntity(val.getName(), val.getDesc(), LessonEntity.PROGRESS_BASE, LessonEntity.STATUS_APP_DEFINED));
+        }
+    }
+
+    private void initWordTable() throws SQLException {
+        WordDao pWordDao = this.getWordDao();
+
+        for (WordElement val : WordElement.values()) {
+            pWordDao.create(new WordEntity(val.getLessonName(), val.getWordEN(), val.getWordPL(), WordEntity.PROGRESS_BASE));
+        }
+    }
+
     @Override
     public void onUpgrade(SQLiteDatabase db, ConnectionSource connectionSource, int oldVersion, int newVersion) {
         try {
@@ -47,22 +63,6 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 
         } catch (SQLException ex) {
             throw new RuntimeException("Can't drop databases", ex);
-        }
-    }
-
-    private void initLessonTable() throws SQLException {
-        LessonDao pLessonDao = this.getLessonDao();
-
-        for (LessonElement val : LessonElement.values()) {
-            pLessonDao.create(new LessonEntity(val.getName(), val.getDesc(), LessonEntity.PROGRESS_BASE, LessonEntity.STATUS_APP));
-        }
-    }
-
-    private void initWordTable() throws SQLException {
-        WordDao pWordDao = this.getWordDao();
-
-        for (WordElement val : WordElement.values()) {
-            pWordDao.create(new WordEntity(val.getLessonName(), val.getWordEN(), val.getWordPL(), WordEntity.PROGRESS_BASE));
         }
     }
 
