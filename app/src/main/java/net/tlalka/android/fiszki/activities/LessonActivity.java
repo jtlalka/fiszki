@@ -111,7 +111,7 @@ public class LessonActivity extends AbstractActivity {
         this.wordEntity = this.wordList.get(number);
 
         this.buttonWordShow.setText(this.wordEntity.getWordEN());
-        this.buttonWordCheck.setText("");
+        this.buttonWordCheck.setText(getText(R.string.activity_lesson_show));
     }
 
     public void showWord() {

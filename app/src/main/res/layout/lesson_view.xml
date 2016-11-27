@@ -42,7 +42,7 @@
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/sep_size_m"
                 android:background="@drawable/patch_blue"
-                android:text="@string/null_value"
+                android:text="@string/activity_lesson_show"
                 android:textSize="@dimen/font_size_l"/>
         </LinearLayout>
 

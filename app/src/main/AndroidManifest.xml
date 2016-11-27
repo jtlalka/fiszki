@@ -35,8 +35,9 @@
         <activity android:name=".activities.LessonListActivity"/>
         <activity android:name=".activities.LessonActivity"/>
         <activity android:name=".activities.OverviewActivity"/>
-        <activity android:name=".activities.OptionsActivity"/>
+        <activity android:name=".activities.WordsActivity"/>
         <activity android:name=".activities.HelpActivity"/>
+        <activity android:name=".activities.SettingsActivity"/>
     </application>
 
 </manifest>

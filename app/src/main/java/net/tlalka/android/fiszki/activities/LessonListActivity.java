@@ -1,7 +1,6 @@
 package net.tlalka.android.fiszki.activities;
 
 import android.os.Bundle;
-import android.view.Menu;
 import android.widget.ListView;
 import net.tlalka.android.fiszki.R;
 import net.tlalka.android.fiszki.adapters.LessonListAdapter;
@@ -20,10 +19,5 @@ public class LessonListActivity extends AbstractActivity {
     private void initLessonsList() {
         ListView listView = (ListView) findViewById(R.id.list_view);
         listView.setAdapter(new LessonListAdapter(this, LessonElement.getKeys()));
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        return super.onCreateOptionsMenu(menu, R.menu.main_menu);
     }
 }

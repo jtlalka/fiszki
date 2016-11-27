@@ -4,12 +4,12 @@ import android.os.Bundle;
 import android.view.View;
 import net.tlalka.android.fiszki.R;
 
-public class OptionsActivity extends AbstractActivity {
+public class SettingsActivity extends AbstractActivity {
 
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        super.setContentView(R.layout.options_view);
+        super.setContentView(R.layout.settings_view);
     }
 
     public void onViewClick(View view) {

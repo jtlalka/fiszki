@@ -14,7 +14,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginEnd="@dimen/topic_icon_margin"
         android:contentDescription="@string/null_value"
-        android:src="@drawable/options_icon" />
+        android:src="@drawable/settings_icon" />
 
     <TextView
         android:id="@+id/text_view_topic"
@@ -24,7 +24,7 @@
         android:layout_centerVertical="true"
         android:layout_toEndOf="@+id/image_view_topic"
         android:gravity="center_vertical"
-        android:text="@string/nav_options"
+        android:text="@string/nav_settings"
         android:textSize="@dimen/font_size_l" />
 
 </RelativeLayout>

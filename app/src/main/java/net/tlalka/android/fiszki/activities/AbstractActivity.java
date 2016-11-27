@@ -10,9 +10,8 @@ import java.util.Locale;
 
 public abstract class AbstractActivity extends Activity {
 
-    public boolean onCreateOptionsMenu(Menu menu, int idMenu) {
-        super.getMenuInflater().inflate(idMenu, menu);
-        return true;
+    public void startActivity(Class<?> classValue) {
+        super.startActivity(new Intent(super.getApplicationContext(), classValue));
     }
 
     public void startActivity(Class<?> classValue, Bundle bundleToSend) {
@@ -21,12 +20,17 @@ public abstract class AbstractActivity extends Activity {
         super.startActivity(intent);
     }
 
+    public boolean createMenu(int menuResource, Menu menu) {
+        super.getMenuInflater().inflate(menuResource, menu);
+        return true;
+    }
+
     public String localFormat(String format, Object... objects) {
         return String.format(Locale.ENGLISH, format, objects);
     }
 
     public void alert(String message) {
-        Toast.makeText(super.getBaseContext(), message, Toast.LENGTH_SHORT).show();
+        this.alert(message, Toast.LENGTH_SHORT);
     }
 
     public void alert(String message, int timeToast) {

@@ -2,7 +2,7 @@ package net.tlalka.android.fiszki.elements;
 
 import net.tlalka.android.fiszki.activities.HelpActivity;
 import net.tlalka.android.fiszki.activities.LessonListActivity;
-import net.tlalka.android.fiszki.activities.OptionsActivity;
+import net.tlalka.android.fiszki.activities.WordsActivity;
 import net.tlalka.android.fiszki.activities.StartActivity;
 
 import java.util.HashMap;
@@ -14,7 +14,7 @@ public enum MenuElement {
 
     LESSONS("Lekcje", LessonListActivity.class),
     TESTS("Testy", StartActivity.class),
-    OPTIONS("Opcje", OptionsActivity.class),
+    OPTIONS("Opcje", WordsActivity.class),
     HELP("Pomoc", HelpActivity.class);
 
     private String name;

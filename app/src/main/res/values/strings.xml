@@ -6,9 +6,10 @@
 
     <string name="nav_lessons">Lekcje</string>
     <string name="nav_tests">Testy</string>
-    <string name="nav_options">Opcje</string>
-    <string name="nav_settings">Ustawienia</string>
+    <string name="nav_words">Słówka</string>
     <string name="nav_help">Pomoc</string>
+    <string name="nav_settings">Ustawienia</string>
+    <string name="nav_about">Informacje</string>
 
     <string name="button_yes">Tak</string>
     <string name="button_no">Nie</string>
@@ -17,6 +18,8 @@
 
     <string name="activity_start_topic">Fiszki - nauka i rozrywaka :)</string>
     <string name="activity_start_info">Kliknij aby rozpocząć..</string>
+
+    <string name="activity_lesson_show">[odkryj]</string>
 
     <string name="activity_overview_topic">Wszystkich wyrazów</string>
     <string name="activity_overview_repeat">Powtórka</string>

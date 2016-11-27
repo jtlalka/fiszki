@@ -3,10 +3,12 @@ package net.tlalka.android.fiszki.activities;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ListView;
 import net.tlalka.android.fiszki.R;
 import net.tlalka.android.fiszki.adapters.MenuAdapter;
 import net.tlalka.android.fiszki.elements.MenuElement;
+import net.tlalka.android.fiszki.elements.OptionsElement;
 
 public class MainActivity extends AbstractActivity {
 
@@ -16,7 +18,7 @@ public class MainActivity extends AbstractActivity {
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        super.setContentView(R.layout.menu_view);
+        super.setContentView(R.layout.main_view);
 
         this.initStartActivity();
         this.initMenuListActivity();
@@ -48,6 +50,11 @@ public class MainActivity extends AbstractActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        return super.onCreateOptionsMenu(menu, R.menu.main_menu);
+        return super.createMenu(R.menu.main_menu, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return OptionsElement.triggerAction(this, item.getItemId()) || super.onOptionsItemSelected(item);
     }
 }

@@ -21,7 +21,7 @@ public class MenuAdapter extends AbstractAdapter<String> {
     public View getView(int position, View convertView, ViewGroup viewGroup) {
         if (convertView == null) {
             LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = layoutInflater.inflate(R.layout.menu_item, viewGroup, false);
+            convertView = layoutInflater.inflate(R.layout.main_item, viewGroup, false);
         }
 
         ViewHolderPattern viewHolderPattern = new ViewHolderPattern();
