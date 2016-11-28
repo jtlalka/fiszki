@@ -11,9 +11,9 @@ import net.tlalka.android.fiszki.listeners.MenuListener;
 
 import java.util.List;
 
-public class MenuAdapter extends AbstractAdapter<String> {
+public class MenuAdapter extends AbstractAdapter<MenuElement> {
 
-    public MenuAdapter(Context context, List<String> elements) {
+    public MenuAdapter(Context context, List<MenuElement> elements) {
         super(context, elements);
     }
 
@@ -25,12 +25,12 @@ public class MenuAdapter extends AbstractAdapter<String> {
         }
 
         ViewHolderPattern viewHolderPattern = new ViewHolderPattern();
-        String elementName = super.getItem(position);
+        MenuElement menuElement = super.getItem(position);
         convertView.setTag(viewHolderPattern);
 
         viewHolderPattern.button = (Button) convertView.findViewById(R.id.button);
-        viewHolderPattern.button.setText(elementName);
-        viewHolderPattern.button.setOnClickListener(new MenuListener(context, MenuElement.getValue(elementName)));
+        viewHolderPattern.button.setText(super.getResourceAsString(menuElement.getResourceId()));
+        viewHolderPattern.button.setOnClickListener(new MenuListener(context, menuElement));
 
         return convertView;
     }

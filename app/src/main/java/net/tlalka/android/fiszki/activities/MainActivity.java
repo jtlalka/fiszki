@@ -10,6 +10,8 @@ import net.tlalka.android.fiszki.adapters.MenuAdapter;
 import net.tlalka.android.fiszki.elements.MenuElement;
 import net.tlalka.android.fiszki.elements.OptionsElement;
 
+import java.util.Arrays;
+
 public class MainActivity extends AbstractActivity {
 
     public static final String PREFS_NAME = "net.tlalka.android.fiszki.main.preferences";
@@ -45,7 +47,7 @@ public class MainActivity extends AbstractActivity {
 
     private void initMenuListActivity() {
         ListView listView = (ListView) findViewById(R.id.list_view);
-        listView.setAdapter(new MenuAdapter(this, MenuElement.getKeys()));
+        listView.setAdapter(new MenuAdapter(this, Arrays.asList(MenuElement.values())));
     }
 
     @Override

@@ -19,6 +19,6 @@ public class MenuListener implements OnClickListener {
 
     @Override
     public void onClick(View view) {
-        context.startActivity(new Intent(context.getApplicationContext(), menuElement.getClassValue()));
+        context.startActivity(new Intent(context.getApplicationContext(), menuElement.getActivityClass()));
     }
 }

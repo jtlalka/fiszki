@@ -19,6 +19,13 @@ public enum OptionsElement {
             activity.alert("Not implemented yet.");
             return true;
         }
+    },
+    BACK(R.id.item_back) {
+        @Override
+        public boolean action(AbstractActivity activity) {
+            activity.finish();
+            return true;
+        }
     };
 
     private final int resourceId;

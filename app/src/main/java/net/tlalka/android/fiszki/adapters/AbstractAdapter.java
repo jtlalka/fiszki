@@ -1,6 +1,7 @@
 package net.tlalka.android.fiszki.adapters;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -15,6 +16,14 @@ public abstract class AbstractAdapter<T> extends BaseAdapter {
     public AbstractAdapter(Context context, List<T> elements) {
         this.context = context;
         this.elements = elements;
+    }
+
+    public Resources getResources() {
+        return this.context.getResources();
+    }
+
+    public String getResourceAsString(int id) {
+        return this.getResources().getString(id);
     }
 
     @Override

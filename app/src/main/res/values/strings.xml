@@ -10,6 +10,7 @@
     <string name="nav_help">Pomoc</string>
     <string name="nav_settings">Ustawienia</string>
     <string name="nav_about">Informacje</string>
+    <string name="nav_back">Powrót</string>
 
     <string name="button_yes">Tak</string>
     <string name="button_no">Nie</string>

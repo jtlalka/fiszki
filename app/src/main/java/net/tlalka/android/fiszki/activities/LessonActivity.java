@@ -2,9 +2,12 @@ package net.tlalka.android.fiszki.activities;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
 import net.tlalka.android.fiszki.R;
+import net.tlalka.android.fiszki.elements.OptionsElement;
 import net.tlalka.android.fiszki.listeners.LessonListener;
 import net.tlalka.android.fiszki.models.DatabaseManager;
 import net.tlalka.android.fiszki.models.dao.LessonDao;
@@ -154,5 +157,15 @@ public class LessonActivity extends AbstractActivity {
 
         super.startActivity(OverviewActivity.class, bundleToSend);
         super.finish();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return this.createMenu(R.menu.page_menu, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return OptionsElement.triggerAction(this, item.getItemId()) || super.onOptionsItemSelected(item);
     }
 }

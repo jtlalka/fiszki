@@ -1,9 +1,12 @@
 package net.tlalka.android.fiszki.activities;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
 import net.tlalka.android.fiszki.R;
+import net.tlalka.android.fiszki.elements.OptionsElement;
 import net.tlalka.android.fiszki.listeners.OverviewListener;
 import net.tlalka.android.fwork.FworkInit;
 
@@ -78,5 +81,15 @@ public class OverviewActivity extends AbstractActivity {
     public void gotoLessonList() {
         super.startActivity(LessonListActivity.class, new Bundle());
         super.finish();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return this.createMenu(R.menu.page_menu, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return OptionsElement.triggerAction(this, item.getItemId()) || super.onOptionsItemSelected(item);
     }
 }
