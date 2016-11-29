@@ -19,7 +19,7 @@
         </activity>
 
         <activity
-            android:name=".activities.StartActivity"
+            android:name=".activities.WelcomeActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
@@ -32,8 +32,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".activities.LessonListActivity"/>
         <activity android:name=".activities.LessonActivity"/>
+        <activity android:name=".activities.LessonsActivity"/>
         <activity android:name=".activities.OverviewActivity"/>
         <activity android:name=".activities.WordsActivity"/>
         <activity android:name=".activities.HelpActivity"/>

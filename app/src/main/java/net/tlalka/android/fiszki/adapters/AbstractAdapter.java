@@ -10,8 +10,8 @@ import java.util.List;
 
 public abstract class AbstractAdapter<T> extends BaseAdapter {
 
-    protected Context context;
-    protected List<T> elements;
+    protected final Context context;
+    protected final List<T> elements;
 
     public AbstractAdapter(Context context, List<T> elements) {
         this.context = context;

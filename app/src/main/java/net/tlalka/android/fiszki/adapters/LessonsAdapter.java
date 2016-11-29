@@ -7,13 +7,13 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import net.tlalka.android.fiszki.R;
 import net.tlalka.android.fiszki.elements.LessonElement;
-import net.tlalka.android.fiszki.listeners.LessonListListener;
+import net.tlalka.android.fiszki.listeners.LessonsListener;
 
 import java.util.List;
 
-public class LessonListAdapter extends AbstractAdapter<String> {
+public class LessonsAdapter extends AbstractAdapter<String> {
 
-    public LessonListAdapter(Context context, List<String> elements) {
+    public LessonsAdapter(Context context, List<String> elements) {
         super(context, elements);
     }
 
@@ -21,14 +21,14 @@ public class LessonListAdapter extends AbstractAdapter<String> {
     public View getView(int position, View convertView, ViewGroup viewGroup) {
         if (convertView == null) {
             LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = layoutInflater.inflate(R.layout.lesson_list_item, viewGroup, false);
+            convertView = layoutInflater.inflate(R.layout.lessons_item, viewGroup, false);
         }
 
         LessonElement lessonElement = LessonElement.getValue(super.getItem(position));
         ViewHolderPattern viewHolderPattern = new ViewHolderPattern();
 
         convertView.setTag(viewHolderPattern);
-        convertView.setOnClickListener(new LessonListListener(context, lessonElement));
+        convertView.setOnClickListener(new LessonsListener(context, lessonElement));
 
         viewHolderPattern.name = (TextView) convertView.findViewById(R.id.text_view_name);
         viewHolderPattern.name.setText(lessonElement.getName());

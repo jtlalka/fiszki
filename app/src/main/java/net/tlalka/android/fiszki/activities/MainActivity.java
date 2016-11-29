@@ -7,8 +7,8 @@ import android.view.MenuItem;
 import android.widget.ListView;
 import net.tlalka.android.fiszki.R;
 import net.tlalka.android.fiszki.adapters.MenuAdapter;
-import net.tlalka.android.fiszki.elements.MenuElement;
-import net.tlalka.android.fiszki.elements.OptionsElement;
+import net.tlalka.android.fiszki.elements.PageElement;
+import net.tlalka.android.fiszki.elements.SetupElement;
 
 import java.util.Arrays;
 
@@ -41,13 +41,13 @@ public class MainActivity extends AbstractActivity {
 
     private void openStartActivity() {
         Bundle bundle = new Bundle();
-        bundle.putString(StartActivity.MESSAGE, getString(R.string.activity_start_info));
-        startActivity(StartActivity.class, bundle);
+        bundle.putString(WelcomeActivity.MESSAGE, getString(R.string.activity_start_info));
+        startActivity(WelcomeActivity.class, bundle);
     }
 
     private void initMenuListActivity() {
         ListView listView = (ListView) findViewById(R.id.list_view);
-        listView.setAdapter(new MenuAdapter(this, Arrays.asList(MenuElement.values())));
+        listView.setAdapter(new MenuAdapter(this, Arrays.asList(PageElement.values())));
     }
 
     @Override
@@ -57,6 +57,6 @@ public class MainActivity extends AbstractActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        return OptionsElement.triggerAction(this, item.getItemId()) || super.onOptionsItemSelected(item);
+        return SetupElement.triggerAction(this, item.getItemId()) || super.onOptionsItemSelected(item);
     }
 }

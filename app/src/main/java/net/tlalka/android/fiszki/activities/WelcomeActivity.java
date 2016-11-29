@@ -6,9 +6,9 @@ import android.widget.TextView;
 import net.tlalka.android.fiszki.R;
 import net.tlalka.android.fwork.FworkInit;
 
-public class StartActivity extends AbstractActivity {
+public class WelcomeActivity extends AbstractActivity {
 
-    public static String MESSAGE = "net.tlalka.android.fiszki.start.message";
+    public static String MESSAGE = "net.tlalka.android.fiszki.welcome.message";
 
     @Override
     public void onCreate(Bundle bundle) {

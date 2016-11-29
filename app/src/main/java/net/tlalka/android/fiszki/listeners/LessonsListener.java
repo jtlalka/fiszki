@@ -8,12 +8,12 @@ import android.view.View.OnClickListener;
 import net.tlalka.android.fiszki.activities.LessonActivity;
 import net.tlalka.android.fiszki.elements.LessonElement;
 
-public class LessonListListener implements OnClickListener {
+public class LessonsListener implements OnClickListener {
 
     private Context context;
     private LessonElement lessonElement;
 
-    public LessonListListener(Context context, LessonElement lessonElement) {
+    public LessonsListener(Context context, LessonElement lessonElement) {
         this.context = context;
         this.lessonElement = lessonElement;
     }

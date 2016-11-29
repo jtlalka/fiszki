@@ -2,12 +2,9 @@ package net.tlalka.android.fiszki.activities;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
 import net.tlalka.android.fiszki.R;
-import net.tlalka.android.fiszki.elements.OptionsElement;
 import net.tlalka.android.fiszki.listeners.LessonListener;
 import net.tlalka.android.fiszki.models.DatabaseManager;
 import net.tlalka.android.fiszki.models.dao.LessonDao;
@@ -19,7 +16,7 @@ import net.tlalka.android.fwork.FworkInit;
 import java.sql.SQLException;
 import java.util.List;
 
-public class LessonActivity extends AbstractActivity {
+public class LessonActivity extends BasePageActivity {
 
     public static final String LESSON_NAME = "net.tlalka.android.fiszki.lesson.name";
     public static final String LESSON_DESC = "net.tlalka.android.fiszki.lesson.desc";
@@ -157,15 +154,5 @@ public class LessonActivity extends AbstractActivity {
 
         super.startActivity(OverviewActivity.class, bundleToSend);
         super.finish();
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        return this.createMenu(R.menu.page_menu, menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        return OptionsElement.triggerAction(this, item.getItemId()) || super.onOptionsItemSelected(item);
     }
 }

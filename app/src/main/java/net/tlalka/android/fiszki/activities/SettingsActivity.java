@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import net.tlalka.android.fiszki.R;
 
-public class SettingsActivity extends AbstractActivity {
+public class SettingsActivity extends BaseSetupActivity {
 
     @Override
     public void onCreate(Bundle bundle) {

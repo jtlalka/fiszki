@@ -6,14 +6,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import net.tlalka.android.fiszki.R;
-import net.tlalka.android.fiszki.elements.MenuElement;
+import net.tlalka.android.fiszki.elements.PageElement;
 import net.tlalka.android.fiszki.listeners.MenuListener;
 
 import java.util.List;
 
-public class MenuAdapter extends AbstractAdapter<MenuElement> {
+public class MenuAdapter extends AbstractAdapter<PageElement> {
 
-    public MenuAdapter(Context context, List<MenuElement> elements) {
+    public MenuAdapter(Context context, List<PageElement> elements) {
         super(context, elements);
     }
 
@@ -25,12 +25,12 @@ public class MenuAdapter extends AbstractAdapter<MenuElement> {
         }
 
         ViewHolderPattern viewHolderPattern = new ViewHolderPattern();
-        MenuElement menuElement = super.getItem(position);
+        PageElement pageElement = super.getItem(position);
         convertView.setTag(viewHolderPattern);
 
         viewHolderPattern.button = (Button) convertView.findViewById(R.id.button);
-        viewHolderPattern.button.setText(super.getResourceAsString(menuElement.getResourceId()));
-        viewHolderPattern.button.setOnClickListener(new MenuListener(context, menuElement));
+        viewHolderPattern.button.setText(super.getResourceAsString(pageElement.getResourceId()));
+        viewHolderPattern.button.setOnClickListener(new MenuListener(context, pageElement));
 
         return convertView;
     }
