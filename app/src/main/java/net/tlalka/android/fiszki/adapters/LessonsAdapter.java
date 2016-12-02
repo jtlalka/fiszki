@@ -21,7 +21,7 @@ public class LessonsAdapter extends AbstractAdapter<String> {
     public View getView(int position, View convertView, ViewGroup viewGroup) {
         if (convertView == null) {
             LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = layoutInflater.inflate(R.layout.lessons_item, viewGroup, false);
+            convertView = layoutInflater.inflate(R.layout.lessons_list_item, viewGroup, false);
         }
 
         LessonElement lessonElement = LessonElement.getValue(super.getItem(position));

@@ -9,7 +9,7 @@ public class HelpActivity extends BasePageActivity {
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        super.setContentView(R.layout.help_view);
+        super.setContentView(R.layout.help_activity);
     }
 
     public void onViewClick(View view) {

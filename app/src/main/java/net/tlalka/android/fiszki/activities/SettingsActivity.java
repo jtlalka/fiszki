@@ -9,7 +9,7 @@ public class SettingsActivity extends BaseSetupActivity {
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        super.setContentView(R.layout.settings_view);
+        super.setContentView(R.layout.settings_activity);
     }
 
     public void onViewClick(View view) {

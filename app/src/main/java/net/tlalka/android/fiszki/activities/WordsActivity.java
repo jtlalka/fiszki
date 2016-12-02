@@ -9,7 +9,7 @@ public class WordsActivity extends BasePageActivity {
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        super.setContentView(R.layout.words_view);
+        super.setContentView(R.layout.words_activity);
     }
 
     public void onViewClick(View view) {

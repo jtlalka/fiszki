@@ -21,14 +21,14 @@ public class MenuAdapter extends AbstractAdapter<PageElement> {
     public View getView(int position, View convertView, ViewGroup viewGroup) {
         if (convertView == null) {
             LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = layoutInflater.inflate(R.layout.main_item, viewGroup, false);
+            convertView = layoutInflater.inflate(R.layout.main_list_item, viewGroup, false);
         }
 
         ViewHolderPattern viewHolderPattern = new ViewHolderPattern();
         PageElement pageElement = super.getItem(position);
         convertView.setTag(viewHolderPattern);
 
-        viewHolderPattern.button = (Button) convertView.findViewById(R.id.button);
+        viewHolderPattern.button = (Button) convertView.findViewById(R.id.button_menu_item);
         viewHolderPattern.button.setText(super.getResourceAsString(pageElement.getResourceId()));
         viewHolderPattern.button.setOnClickListener(new MenuListener(context, pageElement));
 

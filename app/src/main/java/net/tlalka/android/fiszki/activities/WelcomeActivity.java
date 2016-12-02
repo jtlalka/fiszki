@@ -13,7 +13,7 @@ public class WelcomeActivity extends AbstractActivity {
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        super.setContentView(R.layout.start_view);
+        super.setContentView(R.layout.welcome_activity);
 
         Bundle sendData = getIntent().getExtras();
         if (FworkInit.Valid.isNotNull(sendData)) {

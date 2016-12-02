@@ -44,7 +44,7 @@ public class LessonActivity extends BasePageActivity {
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        super.setContentView(R.layout.lesson_view);
+        super.setContentView(R.layout.lesson_activity);
 
         this.initElements();
         this.initListeners();

@@ -20,7 +20,7 @@ public class MainActivity extends AbstractActivity {
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        super.setContentView(R.layout.main_view);
+        super.setContentView(R.layout.main_activity);
 
         this.initStartActivity();
         this.initMenuListActivity();
@@ -46,7 +46,7 @@ public class MainActivity extends AbstractActivity {
     }
 
     private void initMenuListActivity() {
-        ListView listView = (ListView) findViewById(R.id.list_view);
+        ListView listView = (ListView) findViewById(R.id.list_view_menu);
         listView.setAdapter(new MenuAdapter(this, Arrays.asList(PageElement.values())));
     }
 
