@@ -1,7 +1,7 @@
 package net.tlalka.android.fiszki.models.dao;
 
 import com.j256.ormlite.support.ConnectionSource;
-import net.tlalka.android.fiszki.models.entity.LessonEntity;
+import net.tlalka.android.fiszki.models.entities.LessonEntity;
 
 import java.sql.SQLException;
 import java.util.List;

@@ -6,8 +6,8 @@ import net.tlalka.android.fiszki.activities.OverviewActivity;
 
 public class OverviewListener implements OnClickListener {
 
-    public final static int ACTION_GOTO_LESSON = 1;
-    public final static int ACTION_GOTO_LESSON_LIST = 2;
+    public final static int ACTION_GOTO_LESSON = 0x000001;
+    public final static int ACTION_GOTO_LESSON_LIST = 0x000002;
 
     private OverviewActivity activity;
     private int action;

@@ -4,7 +4,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 import net.tlalka.android.fiszki.R;
-import net.tlalka.android.fwork.FworkInit;
+
+import static net.tlalka.android.fiszki.utils.ValidUtils.isNotEmpty;
+import static net.tlalka.android.fiszki.utils.ValidUtils.isNotNull;
 
 public class WelcomeActivity extends AbstractActivity {
 
@@ -16,10 +18,10 @@ public class WelcomeActivity extends AbstractActivity {
         super.setContentView(R.layout.welcome_activity);
 
         Bundle sendData = getIntent().getExtras();
-        if (FworkInit.Valid.isNotNull(sendData)) {
+        if (isNotNull(sendData)) {
             String viewInfo = sendData.getString(MESSAGE);
 
-            if (FworkInit.Valid.isNotEmpty(viewInfo)) {
+            if (isNotEmpty(viewInfo)) {
                 TextView textView = (TextView) findViewById(R.id.text_view_info);
                 textView.setText(viewInfo);
             }

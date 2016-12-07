@@ -1,0 +1,18 @@
+{
+    "name": {"EN": "colors", "PL": "kolory", "FR": "..."},
+    "level": "BEGINNER",
+    "words": [
+        {"EN": "blue", "PL": "niebieski", "FR": "..."},
+        {"EN": "red", "PL": "czerwony", "FR": "..."},
+        {"EN": "black", "PL": "czarny", "FR": "..."},
+        {"EN": "white", "PL": "bialy", "FR": "..."},
+        {"EN": "pink", "PL": "różowy", "FR": "..."},
+        {"EN": "yellow", "PL": "żółty", "FR": "..."},
+        {"EN": "purple", "PL": "fiotelowy", "FR": "..."},
+        {"EN": "brown", "PL": "brązowy", "FR": "..."},
+        {"EN": "green", "PL": "zielony", "FR": "..."},
+        {"EN": "silver", "PL": "srebrny", "FR": "..."},
+        {"EN": "gold", "PL": "złoty", "FR": "..."},
+        {"EN": "orange", "PL": "pomarańczowy", "FR": "..."}
+    ]
+}

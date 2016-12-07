@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/topic_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/topic_margin"
@@ -22,7 +21,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
-        android:layout_toEndOf="@+id/image_view_topic"
+        android:layout_toEndOf="@id/image_view_topic"
         android:gravity="center_vertical"
         android:text="@string/nav_words"
         android:textSize="@dimen/font_size_l" />

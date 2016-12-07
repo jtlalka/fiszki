@@ -5,7 +5,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import net.tlalka.android.fiszki.R;
 import net.tlalka.android.fiszki.listeners.OverviewListener;
-import net.tlalka.android.fwork.FworkInit;
+import net.tlalka.android.fiszki.utils.ValidUtils;
 
 public class OverviewActivity extends BasePageActivity {
 
@@ -52,7 +52,7 @@ public class OverviewActivity extends BasePageActivity {
     private void initBundle() {
         Bundle argsBundle = super.getIntent().getExtras();
 
-        if (FworkInit.Valid.isNotNull(argsBundle)) {
+        if (ValidUtils.isNotNull(argsBundle)) {
             this.lessonName = argsBundle.getString(LESSON_NAME);
             this.lessonDesc = argsBundle.getString(LESSON_DESC);
             int totalCount = argsBundle.getInt(TOTAL_COUNT, 0);

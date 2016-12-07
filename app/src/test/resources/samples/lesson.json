@@ -1,0 +1,8 @@
+{
+    "name": {"EN": "colors", "PL": "kolory", "FR": "couleurs"},
+    "level": "BEGINNER",
+    "words": [
+        {"EN": "blue", "PL": "niebieski", "FR": "bleu"},
+        {"EN": "red", "PL": "czerwony", "FR": "rouge"}
+    ]
+}

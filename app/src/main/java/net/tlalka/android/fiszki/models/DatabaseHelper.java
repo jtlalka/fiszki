@@ -9,8 +9,8 @@ import net.tlalka.android.fiszki.elements.LessonElement;
 import net.tlalka.android.fiszki.elements.WordElement;
 import net.tlalka.android.fiszki.models.dao.LessonDao;
 import net.tlalka.android.fiszki.models.dao.WordDao;
-import net.tlalka.android.fiszki.models.entity.LessonEntity;
-import net.tlalka.android.fiszki.models.entity.WordEntity;
+import net.tlalka.android.fiszki.models.entities.LessonEntity;
+import net.tlalka.android.fiszki.models.entities.WordEntity;
 
 import java.sql.SQLException;
 

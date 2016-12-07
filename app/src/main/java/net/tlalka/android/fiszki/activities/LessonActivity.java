@@ -9,9 +9,9 @@ import net.tlalka.android.fiszki.listeners.LessonListener;
 import net.tlalka.android.fiszki.models.DatabaseManager;
 import net.tlalka.android.fiszki.models.dao.LessonDao;
 import net.tlalka.android.fiszki.models.dao.WordDao;
-import net.tlalka.android.fiszki.models.entity.LessonEntity;
-import net.tlalka.android.fiszki.models.entity.WordEntity;
-import net.tlalka.android.fwork.FworkInit;
+import net.tlalka.android.fiszki.models.entities.LessonEntity;
+import net.tlalka.android.fiszki.models.entities.WordEntity;
+import net.tlalka.android.fiszki.utils.ValidUtils;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -71,7 +71,7 @@ public class LessonActivity extends BasePageActivity {
     private void initBundle() {
         Bundle argsBundle = super.getIntent().getExtras();
 
-        if (FworkInit.Valid.isNotNull(argsBundle)) {
+        if (ValidUtils.isNotNull(argsBundle)) {
             this.lessonName = argsBundle.getString(LESSON_NAME);
             this.lessonDesc = argsBundle.getString(LESSON_DESC);
 

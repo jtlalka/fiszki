@@ -6,9 +6,9 @@ import net.tlalka.android.fiszki.activities.LessonActivity;
 
 public class LessonListener implements OnClickListener {
 
-    public final static int ACTION_CHECK = 0;
-    public final static int ACTION_GOOD = 1;
-    public final static int ACTION_BAD = 2;
+    public final static int ACTION_CHECK = 0x000000;
+    public final static int ACTION_GOOD = 0x000001;
+    public final static int ACTION_BAD = 0x000002;
 
     private LessonActivity activity;
     private int action;
