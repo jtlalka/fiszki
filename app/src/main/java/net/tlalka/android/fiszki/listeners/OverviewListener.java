@@ -6,7 +6,7 @@ import net.tlalka.android.fiszki.activities.OverviewActivity;
 
 public class OverviewListener implements OnClickListener {
 
-    public final static int ACTION_GOTO_LESSON = 0x000001;
+    public final static int ACTION_GOTO_LESSON_ITEM = 0x000001;
     public final static int ACTION_GOTO_LESSON_LIST = 0x000002;
 
     private OverviewActivity activity;
@@ -20,7 +20,7 @@ public class OverviewListener implements OnClickListener {
     @Override
     public void onClick(View view) {
         switch (action) {
-            case ACTION_GOTO_LESSON:
+            case ACTION_GOTO_LESSON_ITEM:
                 this.actionGotoLesson();
                 break;
 

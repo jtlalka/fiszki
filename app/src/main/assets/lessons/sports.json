@@ -1,0 +1,27 @@
+{
+    "name": {"EN": "Sports", "PL": "Sport", "FR": "..."},
+    "level": "INTERMEDIATE",
+    "words": [
+        {"EN": "football", "PL": "piłka nożna", "FR": "..."},
+        {"EN": "basketball", "PL": "koszykówka", "FR": "..."},
+        {"EN": "tennis", "PL": "tenis", "FR": "..."},
+        {"EN": "skiing", "PL": "narciarstwo", "FR": "..."},
+        {"EN": "swimming", "PL": "pływanie", "FR": "..."},
+        {"EN": "skating", "PL": "łyżwiarstwo", "FR": "..."},
+        {"EN": "rugby", "PL": "rugby", "FR": "..."},
+        {"EN": "volleyball", "PL": "siatkówka", "FR": "..."},
+        {"EN": "cycling", "PL": "kolarstwo", "FR": "..."},
+        {"EN": "wrestling", "PL": "zapasy", "FR": "..."},
+        {"EN": "horse riding", "PL": "jazda konna", "FR": "..."},
+        {"EN": "windsurfing", "PL": "serfing", "FR": "..."},
+        {"EN": "ice hockey", "PL": "hokej na lodzie", "FR": "..."},
+        {"EN": "golf", "PL": "golf", "FR": "..."},
+        {"EN": "bowling", "PL": "kręgle", "FR": "..."},
+        {"EN": "boxing", "PL": "boks", "FR": "..."},
+        {"EN": "snorkeling", "PL": "nurkowanie", "FR": "..."},
+        {"EN": "running", "PL": "bieganie", "FR": "..."},
+        {"EN": "dancing", "PL": "taniec", "FR": "..."},
+        {"EN": "high jump", "PL": "skok wzwyż", "FR": "..."},
+        {"EN": "table tennis", "PL": "tenis stołowy", "FR": "..."}
+    ]
+}

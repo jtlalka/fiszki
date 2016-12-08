@@ -9,8 +9,10 @@ import net.tlalka.android.fiszki.utils.ValidUtils;
 
 public class OverviewActivity extends BasePageActivity {
 
+    public static final String LESSON_ID = "net.tlalka.android.fiszki.overview.id";
     public static final String LESSON_NAME = "net.tlalka.android.fiszki.overview.name";
     public static final String LESSON_DESC = "net.tlalka.android.fiszki.overview.desc";
+
     public static final String TOTAL_COUNT = "net.tlalka.android.fiszki.overview.count";
     public static final String TOTAL_GOOD = "net.tlalka.android.fiszki.overview.good";
     public static final String TOTAL_BAD = "net.tlalka.android.fiszki.overview.bad";
@@ -22,6 +24,7 @@ public class OverviewActivity extends BasePageActivity {
     private Button buttonRepeat;
     private Button buttonLessons;
 
+    private long lessonId;
     private String lessonName;
     private String lessonDesc;
 
@@ -45,7 +48,7 @@ public class OverviewActivity extends BasePageActivity {
     }
 
     private void initListeners() {
-        this.buttonRepeat.setOnClickListener(new OverviewListener(this, OverviewListener.ACTION_GOTO_LESSON));
+        this.buttonRepeat.setOnClickListener(new OverviewListener(this, OverviewListener.ACTION_GOTO_LESSON_ITEM));
         this.buttonLessons.setOnClickListener(new OverviewListener(this, OverviewListener.ACTION_GOTO_LESSON_LIST));
     }
 
@@ -53,6 +56,7 @@ public class OverviewActivity extends BasePageActivity {
         Bundle argsBundle = super.getIntent().getExtras();
 
         if (ValidUtils.isNotNull(argsBundle)) {
+            this.lessonId = argsBundle.getLong(LESSON_ID);
             this.lessonName = argsBundle.getString(LESSON_NAME);
             this.lessonDesc = argsBundle.getString(LESSON_DESC);
             int totalCount = argsBundle.getInt(TOTAL_COUNT, 0);
@@ -68,6 +72,7 @@ public class OverviewActivity extends BasePageActivity {
 
     public void gotoLesson() {
         Bundle bundleToSend = new Bundle();
+        bundleToSend.putLong(LessonActivity.LESSON_ID, this.lessonId);
         bundleToSend.putString(LessonActivity.LESSON_NAME, this.lessonName);
         bundleToSend.putString(LessonActivity.LESSON_DESC, this.lessonDesc);
 

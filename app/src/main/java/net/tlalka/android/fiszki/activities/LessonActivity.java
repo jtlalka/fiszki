@@ -9,8 +9,9 @@ import net.tlalka.android.fiszki.listeners.LessonListener;
 import net.tlalka.android.fiszki.models.DatabaseManager;
 import net.tlalka.android.fiszki.models.dao.LessonDao;
 import net.tlalka.android.fiszki.models.dao.WordDao;
-import net.tlalka.android.fiszki.models.entities.LessonEntity;
-import net.tlalka.android.fiszki.models.entities.WordEntity;
+import net.tlalka.android.fiszki.models.entities.Lesson;
+import net.tlalka.android.fiszki.models.entities.Word;
+import net.tlalka.android.fiszki.models.types.LanguageType;
 import net.tlalka.android.fiszki.utils.ValidUtils;
 
 import java.sql.SQLException;
@@ -18,15 +19,16 @@ import java.util.List;
 
 public class LessonActivity extends BasePageActivity {
 
+    public static final String LESSON_ID = "net.tlalka.android.fiszki.lesson.id";
     public static final String LESSON_NAME = "net.tlalka.android.fiszki.lesson.name";
     public static final String LESSON_DESC = "net.tlalka.android.fiszki.lesson.desc";
 
     private LessonDao lessonDao;
     private WordDao wordDao;
 
-    private List<WordEntity> wordList;
-    private WordEntity wordEntity;
-    private LessonEntity lessonEntity;
+    private List<Word> wordList;
+    private Word word;
+    private Lesson lesson;
 
     private TextView textViewTopic;
     private Button buttonWordShow;
@@ -34,6 +36,7 @@ public class LessonActivity extends BasePageActivity {
     private Button buttonGood;
     private Button buttonBad;
 
+    private long lessonId;
     private String lessonName;
     private String lessonDesc;
     private int wordCount;
@@ -72,10 +75,11 @@ public class LessonActivity extends BasePageActivity {
         Bundle argsBundle = super.getIntent().getExtras();
 
         if (ValidUtils.isNotNull(argsBundle)) {
+            this.lessonId = argsBundle.getLong(LESSON_ID);
             this.lessonName = argsBundle.getString(LESSON_NAME);
             this.lessonDesc = argsBundle.getString(LESSON_DESC);
 
-            this.textViewTopic.setText(localFormat("%s - %s", lessonName ,lessonDesc));
+            this.textViewTopic.setText(localFormat("%s - %s", lessonName, lessonDesc));
         }
     }
 
@@ -84,11 +88,12 @@ public class LessonActivity extends BasePageActivity {
             this.lessonDao = DatabaseManager.getHelper(this).getLessonDao();
             this.wordDao = DatabaseManager.getHelper(this).getWordDao();
 
-            this.lessonEntity = this.lessonDao.getLessonByLessonName(lessonName);
-            this.wordList = this.wordDao.getWordsByLessonName(lessonName);
+            this.lesson = this.lessonDao.getLessonBy(lessonId);
+            this.wordList = this.wordDao.getWordsBy(lessonId);
 
-            for (WordEntity wordEntity : wordList) {
-                Log.d(this.getLocalClassName(), wordEntity.getWordPL() + " " + wordEntity.getProgress());
+            Log.d(this.getLocalClassName(), lesson.getName() + " " + lesson.getProgress() + " / " + lesson.getScore());
+            for (Word word : wordList) {
+                Log.d(this.getLocalClassName(), word.getValue() + " " + word.getProgress());
             }
 
         } catch (SQLException ex) {
@@ -97,8 +102,6 @@ public class LessonActivity extends BasePageActivity {
     }
 
     private void runActivity() {
-        this.lessonEntity.setProgress(this.lessonEntity.getProgress() + 1);
-
         this.wordCount = this.wordList.size();
         this.wordNumber = 0;
         this.wordGood = 0;
@@ -108,14 +111,19 @@ public class LessonActivity extends BasePageActivity {
     }
 
     private void generateView(int number) {
-        this.wordEntity = this.wordList.get(number);
+        this.word = this.wordList.get(number);
 
-        this.buttonWordShow.setText(this.wordEntity.getWordEN());
+        this.buttonWordShow.setText(this.word.getValue());
         this.buttonWordCheck.setText(getText(R.string.activity_lesson_show));
     }
 
     public void showWord() {
-        this.buttonWordCheck.setText(this.wordEntity.getWordPL());
+        try {
+            Word translation = this.wordDao.getWordBy(this.word, LanguageType.PL);
+            this.buttonWordCheck.setText(translation.getValue());
+
+        } catch (SQLException ignore) {
+        }
     }
 
     public void nextWord() {
@@ -133,26 +141,37 @@ public class LessonActivity extends BasePageActivity {
     }
 
     public void progressUp() {
-        this.wordEntity.setProgress(this.wordEntity.getProgress() + 1);
-        this.wordDao.save(this.wordEntity);
+        this.word.setProgress(this.word.getProgress() + 1);
+        this.wordDao.save(this.word);
         this.wordGood++;
     }
 
     public void progressDown() {
-        this.wordEntity.setProgress(this.wordEntity.getProgress() - 1);
-        this.wordDao.save(this.wordEntity);
+        this.word.setProgress(this.word.getProgress() - 1);
+        this.wordDao.save(this.word);
         this.wordBad++;
     }
 
     public void showOverview() {
-        Bundle bundleToSend = new Bundle();
-        bundleToSend.putString(OverviewActivity.LESSON_NAME, this.lessonName);
-        bundleToSend.putString(OverviewActivity.LESSON_DESC, this.lessonDesc);
-        bundleToSend.putInt(OverviewActivity.TOTAL_COUNT, this.wordNumber);
-        bundleToSend.putInt(OverviewActivity.TOTAL_GOOD, this.wordGood);
-        bundleToSend.putInt(OverviewActivity.TOTAL_BAD, this.wordBad);
+        this.updateLessonProgress();
 
-        super.startActivity(OverviewActivity.class, bundleToSend);
+        super.startActivity(OverviewActivity.class, this.getOverviewBundles());
         super.finish();
+    }
+
+    private void updateLessonProgress() {
+        this.lesson.setProgress(this.lesson.getProgress() + 1);
+        this.lessonDao.save(this.lesson);
+    }
+
+    private Bundle getOverviewBundles() {
+        Bundle bundle = new Bundle();
+        bundle.putLong(OverviewActivity.LESSON_ID, this.lessonId);
+        bundle.putString(OverviewActivity.LESSON_NAME, this.lessonName);
+        bundle.putString(OverviewActivity.LESSON_DESC, this.lessonDesc);
+        bundle.putInt(OverviewActivity.TOTAL_COUNT, this.wordNumber);
+        bundle.putInt(OverviewActivity.TOTAL_GOOD, this.wordGood);
+        bundle.putInt(OverviewActivity.TOTAL_BAD, this.wordBad);
+        return bundle;
     }
 }

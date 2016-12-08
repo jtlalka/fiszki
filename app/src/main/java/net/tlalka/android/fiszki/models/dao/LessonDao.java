@@ -1,27 +1,27 @@
 package net.tlalka.android.fiszki.models.dao;
 
 import com.j256.ormlite.support.ConnectionSource;
-import net.tlalka.android.fiszki.models.entities.LessonEntity;
+import net.tlalka.android.fiszki.models.entities.Lesson;
+import net.tlalka.android.fiszki.models.types.LanguageType;
 
 import java.sql.SQLException;
 import java.util.List;
 
-public class LessonDao extends AbstractDao<LessonEntity, Long> {
+public class LessonDao extends AbstractDao<Lesson, Long> {
 
     public LessonDao(ConnectionSource connectionSource) throws SQLException {
-        super(connectionSource, LessonEntity.class);
+        super(connectionSource, Lesson.class);
     }
 
-    public LessonEntity getLessonByLessonName(String lessonName) throws SQLException {
+    public Lesson getLessonBy(long id) throws SQLException {
+        return super.queryForId(id);
+    }
+
+    public List<Lesson> getLessonsBy(LanguageType languageType) throws SQLException {
         return super.queryBuilder()
-                .distinct()
+                .orderBy("levelType", true)
                 .where()
-                .like("name", lessonName)
-                .query()
-                .get(0);
-    }
-
-    public List<LessonEntity> getAll() throws SQLException {
-        return super.queryForAll();
+                .eq("languageType", languageType)
+                .query();
     }
 }

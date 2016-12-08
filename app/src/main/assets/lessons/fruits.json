@@ -1,0 +1,26 @@
+{
+    "name": {"EN": "Fruits", "PL": "Owoce", "FR": "..."},
+    "level": "ELEMENTARY",
+    "words": [
+        {"EN": "apple", "PL": "jabłko", "FR": "..."},
+        {"EN": "banana", "PL": "banan", "FR": "..."},
+        {"EN": "kiwi", "PL": "kiwi", "FR": "..."},
+        {"EN": "orange", "PL": "pomarańcza", "FR": "..."},
+        {"EN": "grape", "PL": "winogrono", "FR": "..."},
+        {"EN": "strawberry", "PL": "truskawka", "FR": "..."},
+        {"EN": "blackberry", "PL": "jeżyna", "FR": "..."},
+        {"EN": "pineapple", "PL": "ananas", "FR": "..."},
+        {"EN": "peach", "PL": "brzoskwinia", "FR": "..."},
+        {"EN": "coconut", "PL": "kokos", "FR": "..."},
+        {"EN": "raspberry", "PL": "malina", "FR": "..."},
+        {"EN": "berry", "PL": "jagoda", "FR": "..."},
+        {"EN": "pear", "PL": "gruszka", "FR": "..."},
+        {"EN": "grapefruit", "PL": "grejpfrut", "FR": "..."},
+        {"EN": "plum", "PL": "śliwka", "FR": "..."},
+        {"EN": "mango", "PL": "mango", "FR": "..."},
+        {"EN": "gooseberry", "PL": "agrest", "FR": "..."},
+        {"EN": "cherry", "PL": "wiśnia", "FR": "..."},
+        {"EN": "bilberry", "PL": "borówka", "FR": "..."},
+        {"EN": "watermelon", "PL": "arbuz", "FR": "..."}
+    ]
+}

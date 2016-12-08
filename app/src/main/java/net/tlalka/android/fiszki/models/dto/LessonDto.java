@@ -1,15 +1,19 @@
 package net.tlalka.android.fiszki.models.dto;
 
+import com.google.gson.annotations.SerializedName;
 import net.tlalka.android.fiszki.models.types.LevelType;
 
 import java.util.List;
 
 public class LessonDto {
 
+    @SerializedName("name")
     private WordDto name;
 
+    @SerializedName("level")
     private LevelType level;
 
+    @SerializedName("words")
     private List<WordDto> words;
 
     public WordDto getName() {

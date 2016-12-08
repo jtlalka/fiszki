@@ -1,0 +1,25 @@
+{
+    "name": {"EN": "Animals", "PL": "Zwierzeta", "FR": "..."},
+    "level": "BEGINNER",
+    "words": [
+        {"EN": "dog", "PL": "pies", "FR": "..."},
+        {"EN": "cat", "PL": "kot", "FR": "..."},
+        {"EN": "cow", "PL": "krowa", "FR": "..."},
+        {"EN": "turtle", "PL": "żółw", "FR": "..."},
+        {"EN": "snake", "PL": "wąż", "FR": "..."},
+        {"EN": "hamster", "PL": "pies", "FR": "..."},
+        {"EN": "horse", "PL": "koń", "FR": "..."},
+        {"EN": "donkey", "PL": "osioł", "FR": "..."},
+        {"EN": "goat", "PL": "koza", "FR": "..."},
+        {"EN": "fish", "PL": "ryba", "FR": "..."},
+        {"EN": "tiger", "PL": "tygrys", "FR": "..."},
+        {"EN": "lion", "PL": "lew", "FR": "..."},
+        {"EN": "zebra", "PL": "zebra", "FR": "..."},
+        {"EN": "frog", "PL": "żaba", "FR": "..."},
+        {"EN": "pig", "PL": "świnia", "FR": "..."},
+        {"EN": "mouse", "PL": "mysz", "FR": "..."},
+        {"EN": "guinea pig", "PL": "świnka morska", "FR": "..."},
+        {"EN": "kangaroo", "PL": "kangur", "FR": "..."},
+        {"EN": "elephant", "PL": "słoń", "FR": "..."}
+    ]
+}
