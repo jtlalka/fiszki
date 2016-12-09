@@ -89,7 +89,7 @@ public class LessonActivity extends BasePageActivity {
             this.wordDao = DatabaseManager.getHelper(this).getWordDao();
 
             this.lesson = this.lessonDao.getLessonBy(lessonId);
-            this.wordList = this.wordDao.getWordsBy(lessonId);
+            this.wordList = this.wordDao.getWordsBy(lesson);
 
             Log.d(this.getLocalClassName(), lesson.getName() + " " + lesson.getProgress() + " / " + lesson.getScore());
             for (Word word : wordList) {
@@ -119,7 +119,7 @@ public class LessonActivity extends BasePageActivity {
 
     public void showWord() {
         try {
-            Word translation = this.wordDao.getWordBy(this.word, LanguageType.PL);
+            Word translation = this.wordDao.getWordBy(word.getCluster(), LanguageType.PL);
             this.buttonWordCheck.setText(translation.getValue());
 
         } catch (SQLException ignore) {

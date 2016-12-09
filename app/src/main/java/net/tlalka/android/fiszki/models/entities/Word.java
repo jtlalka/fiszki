@@ -15,13 +15,13 @@ public class Word {
     @DatabaseField(canBeNull = false)
     private String value;
 
-    @DatabaseField(canBeNull = false)
-    private long clusterId;
+    @DatabaseField(canBeNull = false, foreign = true)
+    private Cluster cluster;
 
-    @DatabaseField(canBeNull = false)
-    private long lessonId;
+    @DatabaseField(canBeNull = false, foreign = true)
+    private Lesson lesson;
 
-    @DatabaseField(canBeNull = false)
+    @DatabaseField(canBeNull = false, index = true)
     private LanguageType languageType;
 
     @DatabaseField(canBeNull = false)
@@ -30,16 +30,18 @@ public class Word {
     @DatabaseField
     private long progress;
 
+    /**
+     * Constructor required for ORMLite library.
+     */
     public Word() {
     }
 
-    public Word(String value, long clusterId, long lessonId, LanguageType languageType) {
+    public Word(String value, Cluster cluster, Lesson lesson, LanguageType languageType) {
         this.value = value;
-        this.clusterId = clusterId;
-        this.lessonId = lessonId;
+        this.cluster = cluster;
+        this.lesson = lesson;
         this.languageType = languageType;
         this.ownerType = OwnerType.SYSTEM;
-        this.progress = 0;
     }
 
     public long getId() {
@@ -50,40 +52,20 @@ public class Word {
         return value;
     }
 
-    public void setValue(String value) {
-        this.value = value;
+    public Cluster getCluster() {
+        return cluster;
     }
 
-    public long getClusterId() {
-        return clusterId;
-    }
-
-    public void setClusterId(long clusterId) {
-        this.clusterId = clusterId;
-    }
-
-    public long getLessonId() {
-        return lessonId;
-    }
-
-    public void setLessonId(long lessonId) {
-        this.lessonId = lessonId;
+    public Lesson getLesson() {
+        return lesson;
     }
 
     public LanguageType getLanguageType() {
         return languageType;
     }
 
-    public void setLanguageType(LanguageType languageType) {
-        this.languageType = languageType;
-    }
-
     public OwnerType getOwnerType() {
         return ownerType;
-    }
-
-    public void setOwnerType(OwnerType ownerType) {
-        this.ownerType = ownerType;
     }
 
     public long getProgress() {

@@ -1,6 +1,8 @@
 package net.tlalka.android.fiszki.models.dao;
 
 import com.j256.ormlite.support.ConnectionSource;
+import net.tlalka.android.fiszki.models.entities.Cluster;
+import net.tlalka.android.fiszki.models.entities.Lesson;
 import net.tlalka.android.fiszki.models.entities.Word;
 import net.tlalka.android.fiszki.models.types.LanguageType;
 
@@ -13,19 +15,18 @@ public class WordDao extends AbstractDao<Word, Long> {
         super(connectionSource, Word.class);
     }
 
-    public List<Word> getWordsBy(long lessonId) throws SQLException {
+    public List<Word> getWordsBy(Lesson lesson) throws SQLException {
         return super.queryBuilder()
                 .distinct()
-                .orderBy("progress", true)
                 .where()
-                .like("lessonId", lessonId)
+                .eq("lesson_id", lesson)
                 .query();
     }
 
-    public Word getWordBy(Word word, LanguageType languageType) throws SQLException {
+    public Word getWordBy(Cluster cluster, LanguageType languageType) throws SQLException {
         return super.queryBuilder()
                 .where()
-                .eq("clusterId", word.getClusterId())
+                .eq("cluster_id", cluster)
                 .and()
                 .eq("languageType", languageType)
                 .queryForFirst();

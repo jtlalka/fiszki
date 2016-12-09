@@ -1,5 +1,6 @@
 package net.tlalka.android.fiszki.models.entities;
 
+import com.j256.ormlite.field.DataType;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 import net.tlalka.android.fiszki.models.dao.LessonDao;
@@ -16,13 +17,13 @@ public class Lesson {
     @DatabaseField(canBeNull = false)
     private String name;
 
-    @DatabaseField(canBeNull = false)
+    @DatabaseField(canBeNull = false, dataType = DataType.ENUM_INTEGER)
     private LevelType levelType;
 
-    @DatabaseField(canBeNull = false)
+    @DatabaseField(canBeNull = false, index = true)
     private LanguageType languageType;
 
-    @DatabaseField(canBeNull = false)
+    @DatabaseField(canBeNull = false, dataType = DataType.ENUM_INTEGER)
     private OwnerType ownerType;
 
     @DatabaseField
@@ -31,6 +32,9 @@ public class Lesson {
     @DatabaseField
     private int score;
 
+    /**
+     * Constructor required for ORMLite library.
+     */
     public Lesson() {
     }
 
@@ -39,8 +43,6 @@ public class Lesson {
         this.levelType = levelType;
         this.languageType = languageType;
         this.ownerType = OwnerType.SYSTEM;
-        this.progress = 0;
-        this.score = 0;
     }
 
     public long getId() {
@@ -51,32 +53,16 @@ public class Lesson {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public LevelType getLevelType() {
         return levelType;
-    }
-
-    public void setLevelType(LevelType levelType) {
-        this.levelType = levelType;
     }
 
     public LanguageType getLanguageType() {
         return languageType;
     }
 
-    public void setLanguageType(LanguageType languageType) {
-        this.languageType = languageType;
-    }
-
     public OwnerType getOwnerType() {
         return ownerType;
-    }
-
-    public void setOwnerType(OwnerType ownerType) {
-        this.ownerType = ownerType;
     }
 
     public int getProgress() {

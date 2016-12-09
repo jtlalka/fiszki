@@ -12,8 +12,8 @@ import net.tlalka.android.fiszki.models.dao.LessonDao;
 import net.tlalka.android.fiszki.models.dao.WordDao;
 import net.tlalka.android.fiszki.models.dto.LessonDto;
 import net.tlalka.android.fiszki.models.dto.WordDto;
-import net.tlalka.android.fiszki.models.entities.Lesson;
 import net.tlalka.android.fiszki.models.entities.Cluster;
+import net.tlalka.android.fiszki.models.entities.Lesson;
 import net.tlalka.android.fiszki.models.entities.Word;
 import net.tlalka.android.fiszki.models.types.LanguageType;
 import net.tlalka.android.fiszki.models.types.OwnerType;
@@ -24,6 +24,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,7 +32,7 @@ import java.util.Map;
 public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 
     public static final String DATABASE_NAME = "fiszki.db";
-    public static final int DATABASE_VERSION = 7;
+    public static final int DATABASE_VERSION = 10;
 
     private final AssetManager assetManager;
 
@@ -83,30 +84,30 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
             String name = lessonNames.get(languageType);
             Lesson lesson = new Lesson(name, lessonDto.getLevel(), languageType);
 
-            this.getLessonDao().create(lesson);
             lessonMap.put(languageType, lesson);
         }
+        this.getLessonDao().create(lessonMap.values());
         insertWordsData(lessonDto.getWords(), lessonMap);
     }
 
-    private void insertWordsData(List<WordDto> words, Map<LanguageType, Lesson> lessonMap) throws SQLException {
-        for (WordDto wordDto : words) {
-            long clusterId = insertClusterData();
+    private void insertWordsData(List<WordDto> wordsDto, Map<LanguageType, Lesson> lessonMap) throws SQLException {
+        for (WordDto wordDto : wordsDto) {
+            List<Word> words = new ArrayList<>();
+            Cluster cluster = insertClusterData();
 
             for (LanguageType languageType : wordDto.getLanguages()) {
                 String value = wordDto.get(languageType);
-                long lessonId = lessonMap.get(languageType).getId();
-
-                Word word = new Word(value, clusterId, lessonId, languageType);
-                this.getWordDao().create(word);
+                Lesson lesson = lessonMap.get(languageType);
+                words.add(new Word(value, cluster, lesson, languageType));
             }
+            this.getWordDao().create(words);
         }
     }
 
-    private long insertClusterData() throws SQLException {
+    private Cluster insertClusterData() throws SQLException {
         Cluster cluster = new Cluster(OwnerType.SYSTEM);
         this.getClusterDao().create(cluster);
-        return cluster.getId();
+        return cluster;
     }
 
     @Override

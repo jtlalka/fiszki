@@ -7,24 +7,24 @@ import static org.junit.Assert.assertEquals;
 public class LevelTypeTest {
 
     @Test
-    public void testCheckLevelNames() {
-
-        // then
-        assertEquals("0", LevelType.BEGINNER.getName());
-        assertEquals("A1", LevelType.ELEMENTARY.getName());
-        assertEquals("B1", LevelType.INTERMEDIATE.getName());
-        assertEquals("C1", LevelType.ADVANCED.getName());
-        assertEquals("C2", LevelType.PROFICIENT.getName());
-    }
-
-    @Test
     public void testCheckLevelValues() {
 
         // then
-        assertEquals(0, LevelType.BEGINNER.getValue());
-        assertEquals(100, LevelType.ELEMENTARY.getValue());
-        assertEquals(300, LevelType.INTERMEDIATE.getValue());
-        assertEquals(500, LevelType.ADVANCED.getValue());
-        assertEquals(600, LevelType.PROFICIENT.getValue());
+        assertEquals("DB and DTO relations", LevelType.BEGINNER, LevelType.valueOf("BEGINNER"));
+        assertEquals("DB and DTO relations", LevelType.ELEMENTARY, LevelType.valueOf("ELEMENTARY"));
+        assertEquals("DB and DTO relations", LevelType.INTERMEDIATE, LevelType.valueOf("INTERMEDIATE"));
+        assertEquals("DB and DTO relations", LevelType.ADVANCED, LevelType.valueOf("ADVANCED"));
+        assertEquals("DB and DTO relations", LevelType.PROFICIENT, LevelType.valueOf("PROFICIENT"));
+    }
+
+    @Test
+    public void testCheckLevelIndexes() {
+
+        // then
+        assertEquals("DB index relation", 0, LevelType.BEGINNER.ordinal());
+        assertEquals("DB index relation", 1, LevelType.ELEMENTARY.ordinal());
+        assertEquals("DB index relation", 2, LevelType.INTERMEDIATE.ordinal());
+        assertEquals("DB index relation", 3, LevelType.ADVANCED.ordinal());
+        assertEquals("DB index relation", 4, LevelType.PROFICIENT.ordinal());
     }
 }

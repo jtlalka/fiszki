@@ -19,6 +19,7 @@ public class LessonDao extends AbstractDao<Lesson, Long> {
 
     public List<Lesson> getLessonsBy(LanguageType languageType) throws SQLException {
         return super.queryBuilder()
+                .orderBy("ownerType", true)
                 .orderBy("levelType", true)
                 .where()
                 .eq("languageType", languageType)

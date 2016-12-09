@@ -1,6 +1,8 @@
 package net.tlalka.android.fiszki.models.entities;
 
+import com.j256.ormlite.dao.ForeignCollection;
 import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.field.ForeignCollectionField;
 import com.j256.ormlite.table.DatabaseTable;
 import net.tlalka.android.fiszki.models.dao.ClusterDao;
 import net.tlalka.android.fiszki.models.types.OwnerType;
@@ -14,6 +16,12 @@ public class Cluster {
     @DatabaseField(canBeNull = false)
     private OwnerType ownerType;
 
+    @ForeignCollectionField(eager = true)
+    private ForeignCollection<Word> words;
+
+    /**
+     * Constructor required for ORMLite library.
+     */
     public Cluster() {
     }
 
@@ -27,5 +35,9 @@ public class Cluster {
 
     public OwnerType getOwnerType() {
         return this.ownerType;
+    }
+
+    public ForeignCollection<Word> getWords() {
+        return words;
     }
 }
