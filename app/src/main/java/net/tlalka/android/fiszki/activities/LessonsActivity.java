@@ -29,7 +29,7 @@ public class LessonsActivity extends BasePageActivity {
 
     private List<Lesson> getLessons() {
         try {
-            return dbHelper.getLessonDao().getLessonsBy(LanguageType.EN);
+            return super.getDbHelper().getLessonDao().getLessonsBy(LanguageType.EN);
         } catch (SQLException ex) {
             Log.e(this.getLocalClassName(), "SQL data exception", ex);
             return Collections.emptyList();

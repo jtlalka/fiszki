@@ -60,7 +60,7 @@ public class LessonActivity extends BasePageActivity {
         Bundle argsBundle = super.getIntent().getExtras();
 
         if (ValidUtils.isNotNull(argsBundle)) {
-            this.lessonId = argsBundle.getLong(LESSON_ID, 0);
+            this.lessonId = argsBundle.getLong(LESSON_ID);
             this.lessonName = argsBundle.getString(LESSON_NAME);
             this.lessonDesc = argsBundle.getString(LESSON_DESC);
         }
@@ -68,8 +68,8 @@ public class LessonActivity extends BasePageActivity {
 
     private void initDataBase() {
         try {
-            this.lessonDao = super.dbHelper.getLessonDao();
-            this.wordDao = super.dbHelper.getWordDao();
+            this.lessonDao = super.getDbHelper().getLessonDao();
+            this.wordDao = super.getDbHelper().getWordDao();
 
             this.lesson = this.lessonDao.getLessonBy(lessonId);
             this.words = this.wordDao.getWordsBy(lesson);

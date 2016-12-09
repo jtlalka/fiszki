@@ -1,27 +1,30 @@
 package net.tlalka.android.fiszki.activities;
 
-import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import net.tlalka.android.fiszki.R;
 import net.tlalka.android.fiszki.elements.SetupElement;
 import net.tlalka.android.fiszki.models.DbHelper;
 import net.tlalka.android.fiszki.models.DbManager;
+import net.tlalka.android.fiszki.utils.ValidUtils;
 
 public abstract class BasePageActivity extends AbstractActivity {
 
-    protected DbHelper dbHelper;
+    private DbHelper dbHelper;
 
-    @Override
-    protected void onCreate(Bundle bundle) {
-        super.onCreate(bundle);
-        this.dbHelper = DbManager.getHelper(this);
+    protected DbHelper getDbHelper() {
+        if (ValidUtils.isNull(this.dbHelper)) {
+            this.dbHelper = DbManager.getHelper(this);
+        }
+        return this.dbHelper;
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        DbManager.releaseHelper();
+        if (ValidUtils.isNotNull(dbHelper)) {
+            DbManager.releaseHelper();
+        }
     }
 
     @Override

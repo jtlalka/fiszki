@@ -26,8 +26,8 @@ public class TestActivity extends BasePageActivity {
     private WordDao wordDao;
 
     private List<Word> words;
-    private Word word;
     private Lesson lesson;
+    private Word word;
 
     private TextView textViewTopic;
     private Button buttonWordShow;
@@ -84,8 +84,8 @@ public class TestActivity extends BasePageActivity {
 
     private void initDataBase() {
         try {
-            this.lessonDao = super.dbHelper.getLessonDao();
-            this.wordDao = super.dbHelper.getWordDao();
+            this.lessonDao = super.getDbHelper().getLessonDao();
+            this.wordDao = super.getDbHelper().getWordDao();
 
             this.lesson = this.lessonDao.getLessonBy(lessonId);
             this.words = this.wordDao.getWordsBy(lesson);
