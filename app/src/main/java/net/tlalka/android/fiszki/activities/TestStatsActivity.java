@@ -1,28 +1,26 @@
 package net.tlalka.android.fiszki.activities;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import net.tlalka.android.fiszki.R;
-import net.tlalka.android.fiszki.listeners.OverviewListener;
 import net.tlalka.android.fiszki.utils.ValidUtils;
 
-public class OverviewActivity extends BasePageActivity {
+public class TestStatsActivity extends BasePageActivity {
 
-    public static final String LESSON_ID = "net.tlalka.android.fiszki.overview.id";
-    public static final String LESSON_NAME = "net.tlalka.android.fiszki.overview.name";
-    public static final String LESSON_DESC = "net.tlalka.android.fiszki.overview.desc";
+    public static final String LESSON_ID = "net.tlalka.android.fiszki.test.stats.id";
+    public static final String LESSON_NAME = "net.tlalka.android.fiszki.test.stats.name";
+    public static final String LESSON_DESC = "net.tlalka.android.fiszki.test.stats.desc";
 
-    public static final String TOTAL_COUNT = "net.tlalka.android.fiszki.overview.count";
-    public static final String TOTAL_GOOD = "net.tlalka.android.fiszki.overview.good";
-    public static final String TOTAL_BAD = "net.tlalka.android.fiszki.overview.bad";
+    public static final String TOTAL_COUNT = "net.tlalka.android.fiszki.test.stats.count";
+    public static final String TOTAL_GOOD = "net.tlalka.android.fiszki.test.stats.good";
+    public static final String TOTAL_BAD = "net.tlalka.android.fiszki.test.stats.bad";
 
     private TextView textViewTopic;
     private Button buttonCount;
     private Button buttonGood;
     private Button buttonBad;
-    private Button buttonRepeat;
-    private Button buttonLessons;
 
     private long lessonId;
     private String lessonName;
@@ -31,10 +29,9 @@ public class OverviewActivity extends BasePageActivity {
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        super.setContentView(R.layout.overview_activity);
+        super.setContentView(R.layout.test_stats_activity);
 
         this.initElements();
-        this.initListeners();
         this.initBundle();
     }
 
@@ -43,13 +40,6 @@ public class OverviewActivity extends BasePageActivity {
         this.buttonCount = (Button) findViewById(R.id.button_count);
         this.buttonGood = (Button) findViewById(R.id.button_good);
         this.buttonBad = (Button) findViewById(R.id.button_bad);
-        this.buttonRepeat = (Button) findViewById(R.id.button_repeat);
-        this.buttonLessons = (Button) findViewById(R.id.button_lessons);
-    }
-
-    private void initListeners() {
-        this.buttonRepeat.setOnClickListener(new OverviewListener(this, OverviewListener.ACTION_GOTO_LESSON_ITEM));
-        this.buttonLessons.setOnClickListener(new OverviewListener(this, OverviewListener.ACTION_GOTO_LESSON_LIST));
     }
 
     private void initBundle() {
@@ -70,18 +60,20 @@ public class OverviewActivity extends BasePageActivity {
         }
     }
 
-    public void gotoLesson() {
+    @XmlOnClick
+    public void onRepeatClick(View view) {
         Bundle bundleToSend = new Bundle();
-        bundleToSend.putLong(LessonActivity.LESSON_ID, this.lessonId);
-        bundleToSend.putString(LessonActivity.LESSON_NAME, this.lessonName);
-        bundleToSend.putString(LessonActivity.LESSON_DESC, this.lessonDesc);
+        bundleToSend.putLong(TestActivity.LESSON_ID, this.lessonId);
+        bundleToSend.putString(TestActivity.LESSON_NAME, this.lessonName);
+        bundleToSend.putString(TestActivity.LESSON_DESC, this.lessonDesc);
 
         super.startActivity(LessonActivity.class, bundleToSend);
         super.finish();
     }
 
-    public void gotoLessonList() {
-        super.startActivity(LessonsActivity.class, new Bundle());
+    @XmlOnClick
+    public void onTestsClick(View view) {
+        super.startActivity(TestActivity.class, new Bundle());
         super.finish();
     }
 }

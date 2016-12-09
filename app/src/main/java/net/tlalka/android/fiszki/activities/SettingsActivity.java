@@ -12,6 +12,7 @@ public class SettingsActivity extends BaseSetupActivity {
         super.setContentView(R.layout.settings_activity);
     }
 
+    @XmlOnClick
     public void onViewClick(View view) {
         super.finish();
     }

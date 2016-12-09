@@ -28,6 +28,7 @@ public class WelcomeActivity extends AbstractActivity {
         }
     }
 
+    @XmlOnClick
     public void onViewClick(View view) {
         super.finish();
     }

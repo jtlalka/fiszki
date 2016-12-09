@@ -2,18 +2,18 @@ package net.tlalka.android.fiszki.listeners;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import net.tlalka.android.fiszki.activities.LessonActivity;
+import net.tlalka.android.fiszki.activities.TestActivity;
 
-public class LessonListener implements OnClickListener {
+public class TestListener implements OnClickListener {
 
     public final static int ACTION_CHECK = 0x000000;
     public final static int ACTION_GOOD = 0x000001;
     public final static int ACTION_BAD = 0x000002;
 
-    private LessonActivity activity;
+    private TestActivity activity;
     private int action;
 
-    public LessonListener(LessonActivity activity, int action) {
+    public TestListener(TestActivity activity, int action) {
         this.activity = activity;
         this.action = action;
     }

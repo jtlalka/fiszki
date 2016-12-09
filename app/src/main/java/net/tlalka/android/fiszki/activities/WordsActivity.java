@@ -12,6 +12,7 @@ public class WordsActivity extends BasePageActivity {
         super.setContentView(R.layout.words_activity);
     }
 
+    @XmlOnClick
     public void onViewClick(View view) {
         super.finish();
     }

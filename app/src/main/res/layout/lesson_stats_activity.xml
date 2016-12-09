@@ -15,17 +15,15 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="2"
+            android:layout_weight="1"
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/button_word_show"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/sep_size_m"
                 android:background="@drawable/patch_yellow"
-                android:gravity="center"
-                android:text="@string/null_value"
+                android:text="@string/activity_lesson_stats_topic"
                 android:textSize="@dimen/font_size_l"/>
         </LinearLayout>
 
@@ -35,48 +33,44 @@
             android:layout_weight="2"
             android:orientation="vertical">
 
-            <Button
-                android:id="@+id/button_word_check"
+            <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="@dimen/sep_size_m"
-                android:background="@drawable/patch_blue"
-                android:gravity="center"
-                android:text="@string/activity_lesson_show"
-                android:textSize="@dimen/font_size_l"
-                android:onClick="onCheckWordClick"/>
+                android:src="@drawable/icon_lesson_stats"
+                android:contentDescription="@string/null_value"/>
+
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:orientation="horizontal"
-            android:background="?android:attr/selectableItemBackground">
+            android:orientation="vertical">
 
             <Button
-                android:id="@+id/button_bad"
-                android:layout_width="0dp"
+                android:id="@+id/button_repeat"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/sep_size_m"
-                android:layout_weight="1"
-                android:background="@drawable/patch_red"
-                android:gravity="center"
-                android:text="@string/button_bad"
-                android:textSize="@dimen/font_size_l"
-                android:onClick="onIncorrectClick"/>
+                android:background="@drawable/patch_cyan"
+                android:text="@string/activity_lesson_stats_repeat"
+                android:onClick="onRepeatClick"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
 
             <Button
-                android:id="@+id/button_good"
-                android:layout_width="0dp"
+                android:id="@+id/button_lessons"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/sep_size_m"
-                android:layout_weight="1"
-                android:background="@drawable/patch_green"
-                android:gravity="center"
-                android:text="@string/button_good"
-                android:textSize="@dimen/font_size_l"
-                android:onClick="onCorrectClick"/>
+                android:background="@drawable/patch_cyan"
+                android:text="@string/nav_lessons"
+                android:onClick="onLessonsClick"/>
         </LinearLayout>
     </LinearLayout>
 

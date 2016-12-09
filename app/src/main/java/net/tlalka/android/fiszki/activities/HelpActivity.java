@@ -12,6 +12,7 @@ public class HelpActivity extends BasePageActivity {
         super.setContentView(R.layout.help_activity);
     }
 
+    @XmlOnClick
     public void onViewClick(View view) {
         super.finish();
     }

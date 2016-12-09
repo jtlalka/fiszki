@@ -32,9 +32,13 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".activities.LessonActivity"/>
         <activity android:name=".activities.LessonsActivity"/>
-        <activity android:name=".activities.OverviewActivity"/>
+        <activity android:name=".activities.LessonActivity"/>
+        <activity android:name=".activities.LessonStatsActivity"/>
+
+        <activity android:name=".activities.TestActivity"/>
+        <activity android:name=".activities.TestStatsActivity"/>
+
         <activity android:name=".activities.WordsActivity"/>
         <activity android:name=".activities.HelpActivity"/>
         <activity android:name=".activities.SettingsActivity"/>
