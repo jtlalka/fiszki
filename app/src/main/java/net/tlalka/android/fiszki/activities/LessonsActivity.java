@@ -5,8 +5,6 @@ import android.util.Log;
 import android.widget.ListView;
 import net.tlalka.android.fiszki.R;
 import net.tlalka.android.fiszki.adapters.LessonsAdapter;
-import net.tlalka.android.fiszki.models.DatabaseManager;
-import net.tlalka.android.fiszki.models.dao.LessonDao;
 import net.tlalka.android.fiszki.models.entities.Lesson;
 import net.tlalka.android.fiszki.models.types.LanguageType;
 
@@ -31,9 +29,7 @@ public class LessonsActivity extends BasePageActivity {
 
     private List<Lesson> getLessons() {
         try {
-            LessonDao lessonDao = DatabaseManager.getHelper(this).getLessonDao();
-            return lessonDao.getLessonsBy(LanguageType.EN);
-
+            return dbHelper.getLessonDao().getLessonsBy(LanguageType.EN);
         } catch (SQLException ex) {
             Log.e(this.getLocalClassName(), "SQL data exception", ex);
             return Collections.emptyList();

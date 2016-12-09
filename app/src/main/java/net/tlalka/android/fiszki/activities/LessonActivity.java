@@ -6,7 +6,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import net.tlalka.android.fiszki.R;
 import net.tlalka.android.fiszki.listeners.LessonListener;
-import net.tlalka.android.fiszki.models.DatabaseManager;
 import net.tlalka.android.fiszki.models.dao.LessonDao;
 import net.tlalka.android.fiszki.models.dao.WordDao;
 import net.tlalka.android.fiszki.models.entities.Lesson;
@@ -85,8 +84,8 @@ public class LessonActivity extends BasePageActivity {
 
     private void initDataBase() {
         try {
-            this.lessonDao = DatabaseManager.getHelper(this).getLessonDao();
-            this.wordDao = DatabaseManager.getHelper(this).getWordDao();
+            this.lessonDao = super.dbHelper.getLessonDao();
+            this.wordDao = super.dbHelper.getWordDao();
 
             this.lesson = this.lessonDao.getLessonBy(lessonId);
             this.wordList = this.wordDao.getWordsBy(lesson);
@@ -122,7 +121,8 @@ public class LessonActivity extends BasePageActivity {
             Word translation = this.wordDao.getWordBy(word.getCluster(), LanguageType.PL);
             this.buttonWordCheck.setText(translation.getValue());
 
-        } catch (SQLException ignore) {
+        } catch (SQLException ex) {
+            Log.e(this.getLocalClassName(), "SQL data exception", ex);
         }
     }
 
@@ -142,13 +142,13 @@ public class LessonActivity extends BasePageActivity {
 
     public void progressUp() {
         this.word.setProgress(this.word.getProgress() + 1);
-        this.wordDao.save(this.word);
+        this.wordDao.update(this.word);
         this.wordGood++;
     }
 
     public void progressDown() {
         this.word.setProgress(this.word.getProgress() - 1);
-        this.wordDao.save(this.word);
+        this.wordDao.update(this.word);
         this.wordBad++;
     }
 
@@ -161,7 +161,7 @@ public class LessonActivity extends BasePageActivity {
 
     private void updateLessonProgress() {
         this.lesson.setProgress(this.lesson.getProgress() + 1);
-        this.lessonDao.save(this.lesson);
+        this.lessonDao.update(this.lesson);
     }
 
     private Bundle getOverviewBundles() {

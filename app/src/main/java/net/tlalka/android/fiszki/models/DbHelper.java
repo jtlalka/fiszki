@@ -29,14 +29,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
+public class DbHelper extends OrmLiteSqliteOpenHelper {
 
     public static final String DATABASE_NAME = "fiszki.db";
-    public static final int DATABASE_VERSION = 10;
+    public static final int DATABASE_VERSION = 1;
 
     private final AssetManager assetManager;
 
-    public DatabaseHelper(Context context) {
+    public DbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         this.assetManager = context.getAssets();
     }
@@ -113,14 +113,14 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, ConnectionSource connectionSource, int oldVersion, int newVersion) {
         try {
-            TableUtils.dropTable(connectionSource, Lesson.class, true);
-            TableUtils.dropTable(connectionSource, Cluster.class, true);
             TableUtils.dropTable(connectionSource, Word.class, true);
+            TableUtils.dropTable(connectionSource, Cluster.class, true);
+            TableUtils.dropTable(connectionSource, Lesson.class, true);
 
             this.onCreate(db, connectionSource);
 
         } catch (SQLException ex) {
-            throw new RuntimeException("Can't drop databases", ex);
+            throw new RuntimeException("Can't update databases", ex);
         }
     }
 

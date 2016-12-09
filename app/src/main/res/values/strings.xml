@@ -26,5 +26,6 @@
     <string name="activity_overview_repeat">Powtórka</string>
 
     <string name="null_value"> </string>
+    <string name="list_item">%1$d. %2$s</string>
 
 </resources>

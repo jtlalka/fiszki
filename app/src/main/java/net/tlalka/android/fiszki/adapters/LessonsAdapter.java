@@ -31,7 +31,7 @@ public class LessonsAdapter extends AbstractAdapter<Lesson> {
         convertView.setOnClickListener(new LessonsListener(context, lesson));
 
         viewHolderPattern.name = (TextView) convertView.findViewById(R.id.text_view_name);
-        viewHolderPattern.name.setText(lesson.getName());
+        viewHolderPattern.name.setText(getString(R.string.list_item, position + 1, lesson.getName()));
 
         viewHolderPattern.desc = (TextView) convertView.findViewById(R.id.text_view_desc);
         viewHolderPattern.desc.setText(lesson.getLevelType().name());

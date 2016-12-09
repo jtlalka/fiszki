@@ -29,7 +29,7 @@ public class MenuAdapter extends AbstractAdapter<PageElement> {
         convertView.setTag(viewHolderPattern);
 
         viewHolderPattern.button = (Button) convertView.findViewById(R.id.button_menu_item);
-        viewHolderPattern.button.setText(super.getResourceAsString(pageElement.getResourceId()));
+        viewHolderPattern.button.setText(super.getString(pageElement.getResourceId()));
         viewHolderPattern.button.setOnClickListener(new MenuListener(context, pageElement));
 
         return convertView;

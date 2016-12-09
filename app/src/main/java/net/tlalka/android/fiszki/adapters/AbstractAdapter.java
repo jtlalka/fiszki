@@ -22,8 +22,12 @@ public abstract class AbstractAdapter<T> extends BaseAdapter {
         return this.context.getResources();
     }
 
-    public String getResourceAsString(int id) {
-        return this.getResources().getString(id);
+    public String getString(int resId) {
+        return this.getResources().getString(resId);
+    }
+
+    public String getString(int resId, Object... formatArgs) {
+        return this.getResources().getString(resId, formatArgs);
     }
 
     @Override
