@@ -1,6 +1,6 @@
 package net.tlalka.android.fiszki.activities;
 
-import android.content.SharedPreferences;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -9,13 +9,11 @@ import net.tlalka.android.fiszki.R;
 import net.tlalka.android.fiszki.adapters.MenuAdapter;
 import net.tlalka.android.fiszki.elements.PageElement;
 import net.tlalka.android.fiszki.elements.SetupElement;
+import net.tlalka.android.fiszki.models.types.StorageType;
 
 import java.util.Arrays;
 
 public class MainActivity extends AbstractActivity {
-
-    public static final String PREFS_NAME = "net.tlalka.android.fiszki.main.preferences";
-    public static final String PREFS_KEY = "show.welcome.view";
 
     @Override
     public void onCreate(Bundle bundle) {
@@ -27,22 +25,16 @@ public class MainActivity extends AbstractActivity {
     }
 
     private void initStartActivity() {
-        SharedPreferences settings = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
-        boolean showStartActivity = settings.getBoolean(PREFS_KEY, true);
-
-        if (showStartActivity) {
-            SharedPreferences.Editor editor = settings.edit();
-            editor.putBoolean(PREFS_KEY, false);
-            editor.apply();
-
+        if (super.getStorageHelper().getBoolean(StorageType.WELCOME_VIEW, true)) {
+            super.getStorageHelper().setBoolean(StorageType.WELCOME_VIEW, false);
             this.openStartActivity();
         }
     }
 
     private void openStartActivity() {
-        Bundle bundle = new Bundle();
-        bundle.putString(WelcomeActivity.MESSAGE, getString(R.string.activity_start_info));
-        startActivity(WelcomeActivity.class, bundle);
+        Intent intent = new Intent(this, WelcomeActivity.class);
+        intent.putExtra(WelcomeActivity.MESSAGE, super.getString(R.string.activity_start_info));
+        startActivity(intent);
     }
 
     private void initMenuListActivity() {

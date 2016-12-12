@@ -1,4 +1,4 @@
-package net.tlalka.android.fiszki.models;
+package net.tlalka.android.fiszki.models.db;
 
 import android.content.Context;
 import com.j256.ormlite.android.apptools.OpenHelperManager;

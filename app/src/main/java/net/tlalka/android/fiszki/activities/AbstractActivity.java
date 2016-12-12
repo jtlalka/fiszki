@@ -5,10 +5,40 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.widget.Toast;
+import net.tlalka.android.fiszki.models.db.DbHelper;
+import net.tlalka.android.fiszki.models.db.DbManager;
+import net.tlalka.android.fiszki.services.AssetsHelper;
+import net.tlalka.android.fiszki.services.StorageHelper;
+import net.tlalka.android.fiszki.utils.ValidUtils;
 
 import java.util.Locale;
 
 public abstract class AbstractActivity extends Activity {
+
+    private DbHelper dbHelper;
+    private AssetsHelper assetsHelper;
+    private StorageHelper storageHelper;
+
+    protected DbHelper getDbHelper() {
+        if (ValidUtils.isNull(this.dbHelper)) {
+            this.dbHelper = DbManager.getHelper(this);
+        }
+        return this.dbHelper;
+    }
+
+    protected AssetsHelper getAssetsHelper() {
+        if (ValidUtils.isNull(this.assetsHelper)) {
+            this.assetsHelper = new AssetsHelper(this);
+        }
+        return this.assetsHelper;
+    }
+
+    protected StorageHelper getStorageHelper() {
+        if (ValidUtils.isNull(this.storageHelper)) {
+            this.storageHelper = new StorageHelper(this);
+        }
+        return this.storageHelper;
+    }
 
     public void startActivity(Class<?> classValue) {
         super.startActivity(new Intent(super.getApplicationContext(), classValue));
@@ -35,5 +65,19 @@ public abstract class AbstractActivity extends Activity {
 
     public void alert(String message, int timeToast) {
         Toast.makeText(super.getBaseContext(), message, timeToast).show();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (ValidUtils.isNotNull(dbHelper)) {
+            DbManager.releaseHelper();
+        }
+        if (ValidUtils.isNotNull(this.assetsHelper)) {
+            this.assetsHelper = null;
+        }
+        if (ValidUtils.isNotNull(this.storageHelper)) {
+            this.storageHelper = null;
+        }
     }
 }
