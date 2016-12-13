@@ -1,7 +1,6 @@
 package net.tlalka.android.fiszki.adapters;
 
 import android.content.Context;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -20,20 +19,15 @@ public class LessonsAdapter extends AbstractAdapter<Lesson> {
     @Override
     public View getView(int position, View convertView, ViewGroup viewGroup) {
         if (convertView == null) {
-            LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = layoutInflater.inflate(R.layout.lessons_list_item, viewGroup, false);
+            convertView = super.getLayoutInflater().inflate(R.layout.lessons_list_item, viewGroup, false);
+            convertView.setTag(new ViewHolderPattern(convertView));
         }
 
         Lesson lesson = super.getItem(position);
-        ViewHolderPattern viewHolderPattern = new ViewHolderPattern();
+        convertView.setOnClickListener(new LessonsListener(super.getContext(), lesson));
 
-        convertView.setTag(viewHolderPattern);
-        convertView.setOnClickListener(new LessonsListener(context, lesson));
-
-        viewHolderPattern.name = (TextView) convertView.findViewById(R.id.text_view_name);
+        ViewHolderPattern viewHolderPattern = (ViewHolderPattern) convertView.getTag();
         viewHolderPattern.name.setText(getString(R.string.list_item, position + 1, lesson.getName()));
-
-        viewHolderPattern.desc = (TextView) convertView.findViewById(R.id.text_view_desc);
         viewHolderPattern.desc.setText(lesson.getLevelType().name());
 
         return convertView;
@@ -42,5 +36,10 @@ public class LessonsAdapter extends AbstractAdapter<Lesson> {
     private static class ViewHolderPattern {
         public TextView name;
         public TextView desc;
+
+        public ViewHolderPattern(View view) {
+            this.name = (TextView) view.findViewById(R.id.text_view_name);
+            this.desc = (TextView) view.findViewById(R.id.text_view_desc);
+        }
     }
 }

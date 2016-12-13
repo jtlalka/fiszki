@@ -1,7 +1,6 @@
 package net.tlalka.android.fiszki.adapters;
 
 import android.content.Context;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -20,8 +19,7 @@ public class MenuAdapter extends AbstractAdapter<PageElement> {
     @Override
     public View getView(int position, View convertView, ViewGroup viewGroup) {
         if (convertView == null) {
-            LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = layoutInflater.inflate(R.layout.main_list_item, viewGroup, false);
+            convertView = super.getLayoutInflater().inflate(R.layout.main_list_item, viewGroup, false);
         }
 
         ViewHolderPattern viewHolderPattern = new ViewHolderPattern();
@@ -30,7 +28,7 @@ public class MenuAdapter extends AbstractAdapter<PageElement> {
 
         viewHolderPattern.button = (Button) convertView.findViewById(R.id.button_menu_item);
         viewHolderPattern.button.setText(super.getString(pageElement.getResourceId()));
-        viewHolderPattern.button.setOnClickListener(new MenuListener(context, pageElement));
+        viewHolderPattern.button.setOnClickListener(new MenuListener(super.getContext(), pageElement));
 
         return convertView;
     }
