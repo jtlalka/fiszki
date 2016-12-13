@@ -73,7 +73,7 @@ public class TestStatsActivity extends BasePageActivity {
 
     @XmlOnClick
     public void onTestsClick(View view) {
-        super.startActivity(TestActivity.class, new Bundle());
+        super.startActivity(TestActivity.class);
         super.finish();
     }
 }

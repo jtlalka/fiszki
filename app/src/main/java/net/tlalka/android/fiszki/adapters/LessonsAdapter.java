@@ -5,7 +5,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import net.tlalka.android.fiszki.R;
-import net.tlalka.android.fiszki.listeners.LessonsListener;
 import net.tlalka.android.fiszki.models.entities.Lesson;
 
 import java.util.List;
@@ -24,7 +23,6 @@ public class LessonsAdapter extends AbstractAdapter<Lesson> {
         }
 
         Lesson lesson = super.getItem(position);
-        convertView.setOnClickListener(new LessonsListener(super.getContext(), lesson));
 
         ViewHolderPattern viewHolderPattern = (ViewHolderPattern) convertView.getTag();
         viewHolderPattern.name.setText(getString(R.string.list_item, position + 1, lesson.getName()));

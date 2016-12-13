@@ -1,31 +1,30 @@
 package net.tlalka.android.fiszki.listeners;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.AdapterView;
 import net.tlalka.android.fiszki.activities.LessonActivity;
 import net.tlalka.android.fiszki.models.entities.Lesson;
 
-public class LessonsListener implements OnClickListener {
+public class LessonsListener implements AdapterView.OnItemClickListener {
 
-    private Context context;
-    private Lesson lesson;
+    private Activity activity;
 
-    public LessonsListener(Context context, Lesson lesson) {
-        this.context = context;
-        this.lesson = lesson;
+    public LessonsListener(Activity activity) {
+        this.activity = activity;
     }
 
     @Override
-    public void onClick(View view) {
-        Intent intent = new Intent(context.getApplicationContext(), LessonActivity.class);
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Lesson lesson = (Lesson) parent.getItemAtPosition(position);
+
+        Intent intent = new Intent(activity, LessonActivity.class);
         intent.putExtra(LessonActivity.LESSON_ID, lesson.getId());
         intent.putExtra(LessonActivity.LESSON_NAME, lesson.getName());
         intent.putExtra(LessonActivity.LESSON_DESC, lesson.getLevelType().name());
 
-        context.startActivity(intent);
-        ((Activity) (context)).finish();
+        activity.startActivity(intent);
+        activity.finish();
     }
 }

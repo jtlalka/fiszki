@@ -11,6 +11,7 @@ import net.tlalka.android.fiszki.models.dao.WordDao;
 import net.tlalka.android.fiszki.models.entities.Lesson;
 import net.tlalka.android.fiszki.models.entities.Word;
 import net.tlalka.android.fiszki.models.types.LanguageType;
+import net.tlalka.android.fiszki.models.types.StorageType;
 import net.tlalka.android.fiszki.utils.ValidUtils;
 
 import java.sql.SQLException;
@@ -29,6 +30,7 @@ public class LessonActivity extends BasePageActivity {
     private List<Word> words;
     private Lesson lesson;
     private Word word;
+    private LanguageType languageType;
 
     private TextView textViewTopic;
     private Button buttonWordShow;
@@ -44,6 +46,7 @@ public class LessonActivity extends BasePageActivity {
         super.setContentView(R.layout.lesson_activity);
 
         this.initElements();
+        this.initSettings();
         this.initBundle();
         this.initDataBase();
 
@@ -54,6 +57,10 @@ public class LessonActivity extends BasePageActivity {
         this.textViewTopic = (TextView) findViewById(R.id.text_view_topic);
         this.buttonWordShow = (Button) findViewById(R.id.button_word_show);
         this.buttonWordCheck = (Button) findViewById(R.id.button_word_check);
+    }
+
+    private void initSettings() {
+        this.languageType = super.getStorageHelper().getEnum(StorageType.TRANSLATION, LanguageType.PL);
     }
 
     private void initBundle() {
@@ -122,7 +129,7 @@ public class LessonActivity extends BasePageActivity {
     @XmlOnClick
     public void onCheckWordClick(View view) {
         try {
-            Word translation = this.wordDao.getWordBy(word.getCluster(), LanguageType.PL);
+            Word translation = this.wordDao.getWordBy(word.getCluster(), this.languageType);
             this.buttonWordCheck.setText(translation.getValue());
 
         } catch (SQLException ex) {
