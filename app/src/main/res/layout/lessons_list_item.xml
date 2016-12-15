@@ -35,7 +35,6 @@
         android:layout_toEndOf="@id/image_view_icon"
         android:layout_toStartOf="@id/text_view_name"
         android:ellipsize="marquee"
-        android:singleLine="true"
         android:text="@string/null_value"
         android:textSize="@dimen/font_size_s"/>
 

@@ -21,6 +21,7 @@
     <string name="activity_start_info">Kliknij aby rozpocząć..</string>
 
     <string name="activity_lesson_show">[odkryj]</string>
+    <string name="activity_lesson_dialog_title">Wybierz jezyk</string>
 
     <string name="activity_lesson_stats_topic">Lekcja ukończona!</string>
     <string name="activity_lesson_stats_repeat">Wykonaj ponownie</string>

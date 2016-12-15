@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import net.tlalka.android.fiszki.R;
+import net.tlalka.android.fiszki.fragments.LanguageDialogFragment;
 import net.tlalka.android.fiszki.models.dao.LessonDao;
 import net.tlalka.android.fiszki.models.dao.WordDao;
 import net.tlalka.android.fiszki.models.entities.Lesson;
@@ -15,10 +16,12 @@ import net.tlalka.android.fiszki.models.types.StorageType;
 import net.tlalka.android.fiszki.utils.ValidUtils;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
-public class LessonActivity extends BasePageActivity {
+public class LessonActivity extends BasePageActivity implements LanguageDialogFragment.DialogListener {
 
     public static final String LESSON_ID = "net.tlalka.android.fiszki.lesson.id";
     public static final String LESSON_NAME = "net.tlalka.android.fiszki.lesson.name";
@@ -30,7 +33,7 @@ public class LessonActivity extends BasePageActivity {
     private List<Word> words;
     private Lesson lesson;
     private Word word;
-    private LanguageType languageType;
+    private LanguageType translation;
 
     private TextView textViewTopic;
     private Button buttonWordShow;
@@ -46,7 +49,7 @@ public class LessonActivity extends BasePageActivity {
         super.setContentView(R.layout.lesson_activity);
 
         this.initElements();
-        this.initSettings();
+        this.initStorage();
         this.initBundle();
         this.initDataBase();
 
@@ -59,8 +62,8 @@ public class LessonActivity extends BasePageActivity {
         this.buttonWordCheck = (Button) findViewById(R.id.button_word_check);
     }
 
-    private void initSettings() {
-        this.languageType = super.getStorageHelper().getEnum(StorageType.TRANSLATION, LanguageType.PL);
+    private void initStorage() {
+        this.translation = super.getStorageHelper().getEnum(StorageType.TRANSLATION, LanguageType.PL);
     }
 
     private void initBundle() {
@@ -94,11 +97,11 @@ public class LessonActivity extends BasePageActivity {
     private void generateView() {
         if (words.isEmpty()) {
             this.showLessonSummary();
-            return;
+        } else {
+            this.word = this.generateWord();
+            this.buttonWordShow.setText(this.word.getValue());
+            this.buttonWordCheck.setText(getText(R.string.activity_lesson_show));
         }
-        this.word = this.generateWord();
-        this.buttonWordShow.setText(this.word.getValue());
-        this.buttonWordCheck.setText(getText(R.string.activity_lesson_show));
     }
 
     private Word generateWord() {
@@ -129,12 +132,41 @@ public class LessonActivity extends BasePageActivity {
     @XmlOnClick
     public void onCheckWordClick(View view) {
         try {
-            Word translation = this.wordDao.getWordBy(word.getCluster(), this.languageType);
-            this.buttonWordCheck.setText(translation.getValue());
-
+            this.setTextForCheckButton(this.wordDao.getWordBy(word.getCluster(), this.translation));
         } catch (SQLException ex) {
             Log.e(this.getLocalClassName(), "SQL data exception", ex);
         }
+    }
+
+    private void setTextForCheckButton(Word word) {
+        if (ValidUtils.isNotNull(word)) {
+            this.buttonWordCheck.setText(word.getValue());
+        } else {
+            LanguageDialogFragment dialog = LanguageDialogFragment.getInstance(getLanguages());
+            dialog.show(getFragmentManager(), LanguageDialogFragment.class.getName());
+        }
+    }
+
+    private List<LanguageType> getLanguages() {
+        try {
+            List<Word> translationWords = this.wordDao.getWordsBy(this.word.getCluster());
+            List<LanguageType> languageList = new ArrayList<>(translationWords.size());
+
+            for (Word word: translationWords) {
+                if (this.translation != word.getLanguageType()) {
+                    languageList.add(word.getLanguageType());
+                }
+            }
+            return languageList;
+        } catch (SQLException ex) {
+            Log.e(this.getLocalClassName(), "SQL data exception", ex);
+            return Collections.emptyList();
+        }
+    }
+
+    @Override
+    public void onLanguageSelected(LanguageType languageType) {
+        this.translation = languageType;
     }
 
     @XmlOnClick
