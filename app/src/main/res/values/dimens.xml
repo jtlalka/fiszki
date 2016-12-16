@@ -16,7 +16,7 @@
     <dimen name="topic_icon_margin">20dp</dimen>
 
     <!-- menu -->
-    <dimen name="menu_item_size">40dp</dimen>
-    <dimen name="menu_item_margin">6dp</dimen>
+    <dimen name="menu_item_icon">40dp</dimen>
+    <dimen name="menu_item_margin">10dp</dimen>
 
 </resources>

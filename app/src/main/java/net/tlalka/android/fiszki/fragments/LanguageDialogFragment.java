@@ -1,9 +1,9 @@
 package net.tlalka.android.fiszki.fragments;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import net.tlalka.android.fiszki.R;
@@ -41,9 +41,10 @@ public class LanguageDialogFragment extends DialogFragment {
     }
 
     @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        this.listener = (DialogListener) context;
+    @SuppressWarnings("deprecation")
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        this.listener = (DialogListener) activity;
     }
 
     @Override
