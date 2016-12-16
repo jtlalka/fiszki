@@ -58,8 +58,8 @@ public class TestActivity extends BasePageActivity {
 
     private void initElements() {
         this.textViewTopic = (TextView) findViewById(R.id.text_view_topic);
-        this.buttonWordShow = (Button) findViewById(R.id.button_word_show);
-        this.buttonWordCheck = (Button) findViewById(R.id.button_word_check);
+        this.buttonWordShow = (Button) findViewById(R.id.show_word_button);
+        this.buttonWordCheck = (Button) findViewById(R.id.check_word_button);
         this.buttonGood = (Button) findViewById(R.id.button_good);
         this.buttonBad = (Button) findViewById(R.id.button_bad);
     }
@@ -108,7 +108,7 @@ public class TestActivity extends BasePageActivity {
         this.word = this.words.get(number);
 
         this.buttonWordShow.setText(this.word.getValue());
-        this.buttonWordCheck.setText(getText(R.string.activity_lesson_show));
+        this.buttonWordCheck.setText(getText(R.string.lesson_activity_check_word));
     }
 
     public void showWord() {

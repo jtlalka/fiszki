@@ -24,7 +24,7 @@
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/sep_size_m"
                 android:background="@drawable/patch_yellow"
-                android:text="@string/activity_test_stats_topic"
+                android:text="@string/test_stats_activity_topic"
                 android:textSize="@dimen/font_size_l"/>
         </LinearLayout>
 
@@ -67,7 +67,7 @@
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/sep_size_m"
                 android:background="@drawable/patch_cyan"
-                android:text="@string/activity_test_stats_repeat"
+                android:text="@string/test_stats_activity_repeat"
                 android:onClick="onRepeatClick"/>
         </LinearLayout>
 
@@ -82,7 +82,7 @@
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/sep_size_m"
                 android:background="@drawable/patch_cyan"
-                android:text="@string/nav_lessons"
+                android:text="@string/test_stats_activity_tests"
                 android:onClick="onTestsClick"/>
         </LinearLayout>
     </LinearLayout>

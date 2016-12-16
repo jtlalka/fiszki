@@ -4,13 +4,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 import net.tlalka.android.fiszki.R;
+import net.tlalka.android.fiszki.models.dto.WelcomeDto;
+import org.parceler.Parcels;
 
-import static net.tlalka.android.fiszki.utils.ValidUtils.isNotEmpty;
 import static net.tlalka.android.fiszki.utils.ValidUtils.isNotNull;
 
 public class WelcomeActivity extends AbstractActivity {
-
-    public static String MESSAGE = "net.tlalka.android.fiszki.welcome.message";
 
     @Override
     public void onCreate(Bundle bundle) {
@@ -19,12 +18,10 @@ public class WelcomeActivity extends AbstractActivity {
 
         Bundle sendData = getIntent().getExtras();
         if (isNotNull(sendData)) {
-            String viewInfo = sendData.getString(MESSAGE);
+            WelcomeDto welcomeDto = Parcels.unwrap(sendData.getParcelable(WelcomeDto.class.getName()));
 
-            if (isNotEmpty(viewInfo)) {
-                TextView textView = (TextView) findViewById(R.id.text_view_info);
-                textView.setText(viewInfo);
-            }
+            TextView textView = (TextView) findViewById(R.id.text_view_info);
+            textView.setText(welcomeDto.getMessage());
         }
     }
 

@@ -10,6 +10,7 @@
     <string name="nav_help">Pomoc</string>
     <string name="nav_settings">Ustawienia</string>
     <string name="nav_about">Informacje</string>
+    <string name="nav_menu">Menu</string>
     <string name="nav_back">Powrót</string>
 
     <string name="button_yes">Tak</string>
@@ -17,22 +18,28 @@
     <string name="button_good">Dobrze</string>
     <string name="button_bad">Źle</string>
 
-    <string name="activity_start_topic">Fiszki - nauka i rozrywaka :)</string>
-    <string name="activity_start_info">Kliknij aby rozpocząć..</string>
-
-    <string name="activity_lesson_show">[odkryj]</string>
-    <string name="activity_lesson_dialog_title">Wybierz jezyk</string>
-
-    <string name="activity_lesson_stats_topic">Lekcja ukończona!</string>
-    <string name="activity_lesson_stats_repeat">Wykonaj ponownie</string>
-
-    <string name="activity_test_stats_topic">Wszystkich wyrazów</string>
-    <string name="activity_test_stats_repeat">Powtórka</string>
-
-    <string name="activity_settings_language">Wybierz jezyk nauki:</string>
-    <string name="activity_settings_translate">Wybierz jezyk tłumaczeń:</string>
-
-    <string name="null_value"> </string>
+    <string name="null_value">\u0020</string>
     <string name="list_item">%1$d. %2$s</string>
+
+    <string name="welcome_activity_topic">Fiszki - nauka i rozrywaka :)</string>
+    <string name="welcome_activity_message">Kliknij aby rozpocząć..</string>
+
+    <string name="lesson_activity_show_word">[słowo]</string>
+    <string name="lesson_activity_check_word">[odkryj]</string>
+
+    <string name="lesson_stats_activity_topic">Lekcja ukończona!</string>
+    <string name="lesson_stats_activity_repeat">Wykonaj ponownie</string>
+    <string name="lesson_stats_activity_lessons">Wyswietl lekcje</string>
+
+    <string name="test_activity_show_word">[słowo]</string>
+
+    <string name="test_stats_activity_topic">Wszystkich wyrazów</string>
+    <string name="test_stats_activity_repeat">Powtórka</string>
+    <string name="test_stats_activity_tests">Wyswietl testy</string>
+
+    <string name="settings_activity_language">Wybierz jezyk nauki:</string>
+    <string name="settings_activity_translate">Wybierz jezyk tłumaczeń:</string>
+
+    <string name="language_dialog_title">Wybierz język:</string>
 
 </resources>

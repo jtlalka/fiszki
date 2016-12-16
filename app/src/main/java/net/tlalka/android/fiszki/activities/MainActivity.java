@@ -2,6 +2,7 @@ package net.tlalka.android.fiszki.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
@@ -9,7 +10,9 @@ import net.tlalka.android.fiszki.R;
 import net.tlalka.android.fiszki.adapters.MenuAdapter;
 import net.tlalka.android.fiszki.elements.PageElement;
 import net.tlalka.android.fiszki.elements.SetupElement;
+import net.tlalka.android.fiszki.models.dto.WelcomeDto;
 import net.tlalka.android.fiszki.models.types.StorageType;
+import org.parceler.Parcels;
 
 import java.util.Arrays;
 
@@ -32,8 +35,11 @@ public class MainActivity extends AbstractActivity {
     }
 
     private void openStartActivity() {
+        String message = super.getString(R.string.welcome_activity_message);
+        Parcelable parcelable = Parcels.wrap(new WelcomeDto(message));
+
         Intent intent = new Intent(this, WelcomeActivity.class);
-        intent.putExtra(WelcomeActivity.MESSAGE, super.getString(R.string.activity_start_info));
+        intent.putExtra(WelcomeDto.class.getName(), parcelable);
         startActivity(intent);
     }
 

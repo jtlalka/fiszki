@@ -1,4 +1,4 @@
-package net.tlalka.android.fiszki.models.dto;
+package net.tlalka.android.fiszki.models.dto.json;
 
 import com.google.gson.annotations.SerializedName;
 import net.tlalka.android.fiszki.models.types.LevelType;

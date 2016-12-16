@@ -5,6 +5,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import com.annimon.stream.Collectors;
+import com.annimon.stream.Stream;
 import net.tlalka.android.fiszki.R;
 import net.tlalka.android.fiszki.fragments.LanguageDialogFragment;
 import net.tlalka.android.fiszki.models.dao.LessonDao;
@@ -16,7 +18,6 @@ import net.tlalka.android.fiszki.models.types.StorageType;
 import net.tlalka.android.fiszki.utils.ValidUtils;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
@@ -58,8 +59,8 @@ public class LessonActivity extends BasePageActivity implements LanguageDialogFr
 
     private void initElements() {
         this.textViewTopic = (TextView) findViewById(R.id.text_view_topic);
-        this.buttonWordShow = (Button) findViewById(R.id.button_word_show);
-        this.buttonWordCheck = (Button) findViewById(R.id.button_word_check);
+        this.buttonWordShow = (Button) findViewById(R.id.show_word_button);
+        this.buttonWordCheck = (Button) findViewById(R.id.check_word_button);
     }
 
     private void initStorage() {
@@ -100,7 +101,7 @@ public class LessonActivity extends BasePageActivity implements LanguageDialogFr
         } else {
             this.word = this.generateWord();
             this.buttonWordShow.setText(this.word.getValue());
-            this.buttonWordCheck.setText(getText(R.string.activity_lesson_show));
+            this.buttonWordCheck.setText(getText(R.string.lesson_activity_check_word));
         }
     }
 
@@ -149,15 +150,11 @@ public class LessonActivity extends BasePageActivity implements LanguageDialogFr
 
     private List<LanguageType> getLanguages() {
         try {
-            List<Word> translationWords = this.wordDao.getWordsBy(this.word.getCluster());
-            List<LanguageType> languageList = new ArrayList<>(translationWords.size());
+            return Stream.of(this.wordDao.getWordsBy(this.word.getCluster()))
+                    .filter(word -> this.translation != word.getLanguageType())
+                    .map(Word::getLanguageType)
+                    .collect(Collectors.toList());
 
-            for (Word word: translationWords) {
-                if (this.translation != word.getLanguageType()) {
-                    languageList.add(word.getLanguageType());
-                }
-            }
-            return languageList;
         } catch (SQLException ex) {
             Log.e(this.getLocalClassName(), "SQL data exception", ex);
             return Collections.emptyList();

@@ -15,7 +15,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/activity_settings_language"
+            android:text="@string/settings_activity_language"
             android:textSize="@dimen/font_size_m"/>
 
         <Spinner
@@ -35,7 +35,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/activity_settings_translate"
+            android:text="@string/settings_activity_translate"
             android:textSize="@dimen/font_size_m"/>
 
         <Spinner

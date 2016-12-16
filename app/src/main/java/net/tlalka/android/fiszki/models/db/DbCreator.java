@@ -2,8 +2,8 @@ package net.tlalka.android.fiszki.models.db;
 
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
-import net.tlalka.android.fiszki.models.dto.LessonDto;
-import net.tlalka.android.fiszki.models.dto.WordDto;
+import net.tlalka.android.fiszki.models.dto.json.LessonDto;
+import net.tlalka.android.fiszki.models.dto.json.WordDto;
 import net.tlalka.android.fiszki.models.entities.Cluster;
 import net.tlalka.android.fiszki.models.entities.Lesson;
 import net.tlalka.android.fiszki.models.entities.Word;

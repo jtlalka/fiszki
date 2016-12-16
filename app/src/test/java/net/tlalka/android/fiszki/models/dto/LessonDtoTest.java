@@ -1,6 +1,8 @@
 package net.tlalka.android.fiszki.models.dto;
 
 import com.google.gson.Gson;
+import net.tlalka.android.fiszki.models.dto.json.LessonDto;
+import net.tlalka.android.fiszki.models.dto.json.WordDto;
 import net.tlalka.android.fiszki.models.types.LevelType;
 import org.junit.Before;
 import org.junit.Test;

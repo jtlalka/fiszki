@@ -1,4 +1,4 @@
-package net.tlalka.android.fiszki.models.dto;
+package net.tlalka.android.fiszki.models.dto.json;
 
 import net.tlalka.android.fiszki.models.types.LanguageType;
 

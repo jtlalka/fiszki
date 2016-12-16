@@ -19,13 +19,13 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/button_word_show"
+                android:id="@+id/show_word_button"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/sep_size_m"
                 android:background="@drawable/patch_yellow"
                 android:gravity="center"
-                android:text="@string/null_value"
+                android:text="@string/test_activity_show_word"
                 android:textSize="@dimen/font_size_l"/>
         </LinearLayout>
 
@@ -36,13 +36,13 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/button_word_check"
+                android:id="@+id/check_word_button"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/sep_size_m"
                 android:background="@drawable/patch_blue"
                 android:gravity="center"
-                android:text="@string/activity_lesson_show"
+                android:text="@string/null_value"
                 android:textSize="@dimen/font_size_l"/>
         </LinearLayout>
 
