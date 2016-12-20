@@ -43,8 +43,7 @@
                 android:background="@drawable/patch_blue"
                 android:gravity="center"
                 android:text="@string/lesson_activity_check_word"
-                android:textSize="@dimen/font_size_l"
-                android:onClick="onCheckWordClick"/>
+                android:textSize="@dimen/font_size_l"/>
         </LinearLayout>
 
         <LinearLayout
@@ -63,8 +62,7 @@
                 android:background="@drawable/patch_red"
                 android:gravity="center"
                 android:text="@string/button_bad"
-                android:textSize="@dimen/font_size_l"
-                android:onClick="onIncorrectClick"/>
+                android:textSize="@dimen/font_size_l"/>
 
             <Button
                 android:id="@+id/button_good"
@@ -75,8 +73,7 @@
                 android:background="@drawable/patch_green"
                 android:gravity="center"
                 android:text="@string/button_good"
-                android:textSize="@dimen/font_size_l"
-                android:onClick="onCorrectClick"/>
+                android:textSize="@dimen/font_size_l"/>
         </LinearLayout>
     </LinearLayout>
 

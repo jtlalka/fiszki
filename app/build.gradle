@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'me.tatarka.retrolambda'
 
 android {
     compileSdkVersion 25
@@ -7,7 +8,6 @@ android {
     defaultConfig {
         minSdkVersion 17
         targetSdkVersion 25
-        jackOptions.enabled true
 
         applicationId "net.tlalka.android.fiszki"
         versionCode 1
@@ -32,7 +32,11 @@ dependencies {
     compile 'com.annimon:stream:1.1.4'
 
     compile 'com.google.dagger:dagger:2.8'
+    provided 'javax.annotation:jsr250-api:1.0'
     annotationProcessor 'com.google.dagger:dagger-compiler:2.8'
+
+    compile 'com.jakewharton:butterknife:8.4.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
 
     compile 'org.parceler:parceler-api:1.1.6'
     annotationProcessor 'org.parceler:parceler:1.1.6'

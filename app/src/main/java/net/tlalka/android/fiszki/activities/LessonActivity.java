@@ -5,6 +5,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import com.annimon.stream.Collectors;
 import com.annimon.stream.Stream;
 import net.tlalka.android.fiszki.R;
@@ -28,6 +31,15 @@ public class LessonActivity extends BasePageActivity implements LanguageDialogFr
     public static final String LESSON_NAME = "net.tlalka.android.fiszki.lesson.name";
     public static final String LESSON_DESC = "net.tlalka.android.fiszki.lesson.desc";
 
+    @BindView(R.id.text_view_topic)
+    protected TextView textViewTopic;
+
+    @BindView(R.id.show_word_button)
+    protected Button buttonWordShow;
+
+    @BindView(R.id.check_word_button)
+    protected Button buttonWordCheck;
+
     private LessonDao lessonDao;
     private WordDao wordDao;
 
@@ -35,10 +47,6 @@ public class LessonActivity extends BasePageActivity implements LanguageDialogFr
     private Lesson lesson;
     private Word word;
     private LanguageType translation;
-
-    private TextView textViewTopic;
-    private Button buttonWordShow;
-    private Button buttonWordCheck;
 
     private long lessonId;
     private String lessonName;
@@ -48,19 +56,13 @@ public class LessonActivity extends BasePageActivity implements LanguageDialogFr
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         super.setContentView(R.layout.lesson_activity);
+        ButterKnife.bind(this);
 
-        this.initElements();
         this.initStorage();
         this.initBundle();
         this.initDataBase();
 
         this.runActivity();
-    }
-
-    private void initElements() {
-        this.textViewTopic = (TextView) findViewById(R.id.text_view_topic);
-        this.buttonWordShow = (Button) findViewById(R.id.show_word_button);
-        this.buttonWordCheck = (Button) findViewById(R.id.check_word_button);
     }
 
     private void initStorage() {
@@ -130,7 +132,7 @@ public class LessonActivity extends BasePageActivity implements LanguageDialogFr
         super.finish();
     }
 
-    @XmlOnClick
+    @OnClick(R.id.check_word_button)
     public void onCheckWordClick(View view) {
         try {
             this.setTextForCheckButton(this.wordDao.getWordBy(word.getCluster(), this.translation));
@@ -166,7 +168,7 @@ public class LessonActivity extends BasePageActivity implements LanguageDialogFr
         this.translation = languageType;
     }
 
-    @XmlOnClick
+    @OnClick(R.id.button_good)
     public void onCorrectClick(View view) {
         this.word.setProgress(this.word.getProgress() + 1);
         this.wordDao.update(this.word);
@@ -174,7 +176,7 @@ public class LessonActivity extends BasePageActivity implements LanguageDialogFr
         this.generateView();
     }
 
-    @XmlOnClick
+    @OnClick(R.id.button_bad)
     public void onIncorrectClick(View view) {
         this.word.setProgress(this.word.getProgress() - 1);
         this.wordDao.update(this.word);
