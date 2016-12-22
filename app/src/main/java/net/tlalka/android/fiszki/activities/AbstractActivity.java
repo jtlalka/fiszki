@@ -5,8 +5,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.widget.Toast;
+import net.tlalka.android.fiszki.injections.components.ActivityComponent;
+import net.tlalka.android.fiszki.injections.components.ApplicationComponent;
+import net.tlalka.android.fiszki.injections.components.SessionComponent;
+import net.tlalka.android.fiszki.injections.modules.ActivityModule;
 import net.tlalka.android.fiszki.models.db.DbHelper;
 import net.tlalka.android.fiszki.models.db.DbManager;
+import net.tlalka.android.fiszki.services.AppHelper;
 import net.tlalka.android.fiszki.services.AssetsHelper;
 import net.tlalka.android.fiszki.services.StorageHelper;
 import net.tlalka.android.fiszki.utils.ValidUtils;
@@ -19,18 +24,23 @@ public abstract class AbstractActivity extends Activity {
     private AssetsHelper assetsHelper;
     private StorageHelper storageHelper;
 
+    protected ApplicationComponent getApplicationComponent() {
+        return ((AppHelper) getApplication()).getApplicationComponent();
+    }
+
+    protected SessionComponent getSessionComponent() {
+        return ((AppHelper) getApplication()).getSessionComponent();
+    }
+
+    protected ActivityComponent getActivityComponent() {
+        return this.getSessionComponent().add(new ActivityModule(this));
+    }
+
     protected DbHelper getDbHelper() {
         if (ValidUtils.isNull(this.dbHelper)) {
             this.dbHelper = DbManager.getHelper(this);
         }
         return this.dbHelper;
-    }
-
-    protected AssetsHelper getAssetsHelper() {
-        if (ValidUtils.isNull(this.assetsHelper)) {
-            this.assetsHelper = new AssetsHelper(this);
-        }
-        return this.assetsHelper;
     }
 
     protected StorageHelper getStorageHelper() {

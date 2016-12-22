@@ -53,8 +53,7 @@
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/sep_size_m"
                 android:background="@drawable/patch_cyan"
-                android:text="@string/lesson_stats_activity_repeat"
-                android:onClick="onRepeatClick"/>
+                android:text="@string/lesson_stats_activity_repeat"/>
         </LinearLayout>
 
         <LinearLayout
@@ -69,8 +68,7 @@
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/sep_size_m"
                 android:background="@drawable/patch_cyan"
-                android:text="@string/lesson_stats_activity_lessons"
-                android:onClick="onLessonsClick"/>
+                android:text="@string/lesson_stats_activity_lessons"/>
         </LinearLayout>
     </LinearLayout>
 

@@ -7,10 +7,6 @@ public class StorageHelper {
 
     private final SharedPreferences sharedPreferences;
 
-    public StorageHelper() {
-        this.sharedPreferences = this.getSharedPreferences(AppHelper.getContext());
-    }
-
     public StorageHelper(Context context) {
         this.sharedPreferences = this.getSharedPreferences(context);
     }

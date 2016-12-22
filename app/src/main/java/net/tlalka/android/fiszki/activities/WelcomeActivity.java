@@ -3,26 +3,27 @@ package net.tlalka.android.fiszki.activities;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import butterknife.BindView;
 import net.tlalka.android.fiszki.R;
 import net.tlalka.android.fiszki.models.dto.WelcomeDto;
-import org.parceler.Parcels;
 
-import static net.tlalka.android.fiszki.utils.ValidUtils.isNotNull;
+import javax.inject.Inject;
 
 public class WelcomeActivity extends AbstractActivity {
+
+    @BindView(R.id.text_view_info)
+    protected TextView textView;
+
+    @Inject
+    protected WelcomeDto welcomeDto;
 
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         super.setContentView(R.layout.welcome_activity);
+        super.getActivityComponent().inject(this);
 
-        Bundle sendData = getIntent().getExtras();
-        if (isNotNull(sendData)) {
-            WelcomeDto welcomeDto = Parcels.unwrap(sendData.getParcelable(WelcomeDto.class.getName()));
-
-            TextView textView = (TextView) findViewById(R.id.text_view_info);
-            textView.setText(welcomeDto.getMessage());
-        }
+        this.textView.setText(welcomeDto.getMessage());
     }
 
     @XmlOnClick

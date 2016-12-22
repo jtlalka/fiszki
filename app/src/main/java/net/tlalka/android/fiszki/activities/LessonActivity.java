@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.annimon.stream.Collectors;
 import com.annimon.stream.Stream;
@@ -14,22 +13,21 @@ import net.tlalka.android.fiszki.R;
 import net.tlalka.android.fiszki.fragments.LanguageDialogFragment;
 import net.tlalka.android.fiszki.models.dao.LessonDao;
 import net.tlalka.android.fiszki.models.dao.WordDao;
+import net.tlalka.android.fiszki.models.dto.LessonDto;
 import net.tlalka.android.fiszki.models.entities.Lesson;
 import net.tlalka.android.fiszki.models.entities.Word;
 import net.tlalka.android.fiszki.models.types.LanguageType;
 import net.tlalka.android.fiszki.models.types.StorageType;
+import net.tlalka.android.fiszki.navigations.Navigator;
 import net.tlalka.android.fiszki.utils.ValidUtils;
 
+import javax.inject.Inject;
 import java.sql.SQLException;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
 public class LessonActivity extends BasePageActivity implements LanguageDialogFragment.DialogListener {
-
-    public static final String LESSON_ID = "net.tlalka.android.fiszki.lesson.id";
-    public static final String LESSON_NAME = "net.tlalka.android.fiszki.lesson.name";
-    public static final String LESSON_DESC = "net.tlalka.android.fiszki.lesson.desc";
 
     @BindView(R.id.text_view_topic)
     protected TextView textViewTopic;
@@ -39,6 +37,12 @@ public class LessonActivity extends BasePageActivity implements LanguageDialogFr
 
     @BindView(R.id.check_word_button)
     protected Button buttonWordCheck;
+
+    @Inject
+    protected Navigator navigator;
+
+    @Inject
+    protected LessonDto lessonDto;
 
     private LessonDao lessonDao;
     private WordDao wordDao;
@@ -56,7 +60,7 @@ public class LessonActivity extends BasePageActivity implements LanguageDialogFr
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         super.setContentView(R.layout.lesson_activity);
-        ButterKnife.bind(this);
+        super.getActivityComponent().inject(this);
 
         this.initStorage();
         this.initBundle();
@@ -70,13 +74,9 @@ public class LessonActivity extends BasePageActivity implements LanguageDialogFr
     }
 
     private void initBundle() {
-        Bundle argsBundle = super.getIntent().getExtras();
-
-        if (ValidUtils.isNotNull(argsBundle)) {
-            this.lessonId = argsBundle.getLong(LESSON_ID);
-            this.lessonName = argsBundle.getString(LESSON_NAME);
-            this.lessonDesc = argsBundle.getString(LESSON_DESC);
-        }
+        this.lessonId = lessonDto.getLessonId();
+        this.lessonName = lessonDto.getLessonName();
+        this.lessonDesc = lessonDto.getLessonLevel().name();
     }
 
     private void initDataBase() {
@@ -123,12 +123,7 @@ public class LessonActivity extends BasePageActivity implements LanguageDialogFr
     }
 
     private void startLessonEndActivity() {
-        Bundle bundle = new Bundle();
-        bundle.putLong(LessonStatsActivity.LESSON_ID, this.lessonId);
-        bundle.putString(LessonStatsActivity.LESSON_NAME, this.lessonName);
-        bundle.putString(LessonStatsActivity.LESSON_DESC, this.lessonDesc);
-
-        super.startActivity(LessonStatsActivity.class, bundle);
+        navigator.openLessonStatActivity(this, lessonDto);
         super.finish();
     }
 
