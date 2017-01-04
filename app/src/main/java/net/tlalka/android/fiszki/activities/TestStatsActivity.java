@@ -60,7 +60,6 @@ public class TestStatsActivity extends BasePageActivity {
         }
     }
 
-    @XmlOnClick
     public void onRepeatClick(View view) {
         Bundle bundleToSend = new Bundle();
         bundleToSend.putLong(TestActivity.LESSON_ID, this.lessonId);
@@ -71,7 +70,6 @@ public class TestStatsActivity extends BasePageActivity {
         super.finish();
     }
 
-    @XmlOnClick
     public void onTestsClick(View view) {
         super.startActivity(TestActivity.class);
         super.finish();

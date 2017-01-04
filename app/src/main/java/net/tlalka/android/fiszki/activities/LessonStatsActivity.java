@@ -28,11 +28,14 @@ public class LessonStatsActivity extends BasePageActivity {
         super.setContentView(R.layout.lesson_stats_activity);
         super.getActivityComponent().inject(this);
 
-        this.initView();
+        this.initActivity();
     }
 
-    private void initView() {
-        this.textViewTopic.setText(localFormat("%s - %s", lessonDto.getLessonName(), lessonDto.getLessonLevel()));
+    private void initActivity() {
+        String lessonName = this.lessonDto.getLessonName();
+        String lessonDesc = this.lessonDto.getLessonLevel().name().toLowerCase();
+
+        this.textViewTopic.setText(localFormat("%s - %s", lessonName, lessonDesc));
     }
 
     @OnClick(R.id.button_repeat)

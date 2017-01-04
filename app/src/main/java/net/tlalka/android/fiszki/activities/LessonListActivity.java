@@ -10,9 +10,9 @@ import net.tlalka.android.fiszki.services.LessonListService;
 
 import javax.inject.Inject;
 
-public class LessonsActivity extends BasePageActivity {
+public class LessonListActivity extends BasePageActivity {
 
-    @BindView(R.id.list_view_lessons)
+    @BindView(R.id.lesson_list_view)
     protected ListView listView;
 
     @Inject
@@ -21,7 +21,7 @@ public class LessonsActivity extends BasePageActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        super.setContentView(R.layout.lessons_activity);
+        super.setContentView(R.layout.lesson_list_activity);
         super.getActivityComponent().inject(this);
 
         this.initLessonsList();

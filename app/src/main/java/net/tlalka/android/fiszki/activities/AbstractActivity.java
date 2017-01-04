@@ -12,17 +12,11 @@ import net.tlalka.android.fiszki.injections.modules.ActivityModule;
 import net.tlalka.android.fiszki.models.db.DbHelper;
 import net.tlalka.android.fiszki.models.db.DbManager;
 import net.tlalka.android.fiszki.services.AppHelper;
-import net.tlalka.android.fiszki.services.AssetsHelper;
 import net.tlalka.android.fiszki.services.StorageHelper;
-import net.tlalka.android.fiszki.utils.ValidUtils;
 
 import java.util.Locale;
 
 public abstract class AbstractActivity extends Activity {
-
-    private DbHelper dbHelper;
-    private AssetsHelper assetsHelper;
-    private StorageHelper storageHelper;
 
     protected ApplicationComponent getApplicationComponent() {
         return ((AppHelper) getApplication()).getApplicationComponent();
@@ -36,18 +30,14 @@ public abstract class AbstractActivity extends Activity {
         return this.getSessionComponent().add(new ActivityModule(this));
     }
 
+    //TODO: use injections
     protected DbHelper getDbHelper() {
-        if (ValidUtils.isNull(this.dbHelper)) {
-            this.dbHelper = DbManager.getHelper(this);
-        }
-        return this.dbHelper;
+        return DbManager.getHelper(this);
     }
 
+    //TODO: use injections
     protected StorageHelper getStorageHelper() {
-        if (ValidUtils.isNull(this.storageHelper)) {
-            this.storageHelper = new StorageHelper(this);
-        }
-        return this.storageHelper;
+        return new StorageHelper(this);
     }
 
     public void startActivity(Class<?> classValue) {
@@ -75,19 +65,5 @@ public abstract class AbstractActivity extends Activity {
 
     public void alert(String message, int timeToast) {
         Toast.makeText(super.getBaseContext(), message, timeToast).show();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        if (ValidUtils.isNotNull(dbHelper)) {
-            DbManager.releaseHelper();
-        }
-        if (ValidUtils.isNotNull(this.assetsHelper)) {
-            this.assetsHelper = null;
-        }
-        if (ValidUtils.isNotNull(this.storageHelper)) {
-            this.storageHelper = null;
-        }
     }
 }

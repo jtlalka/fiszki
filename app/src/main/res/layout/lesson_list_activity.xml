@@ -4,10 +4,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <include layout="@layout/lessons_template"/>
+    <include layout="@layout/lesson_template"/>
 
     <ListView
-        android:id="@+id/list_view_lessons"
+        android:id="@+id/lesson_list_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
     </ListView>

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Parcelable;
 import net.tlalka.android.fiszki.activities.LessonActivity;
+import net.tlalka.android.fiszki.activities.LessonListActivity;
 import net.tlalka.android.fiszki.activities.LessonStatsActivity;
 import net.tlalka.android.fiszki.activities.WelcomeActivity;
 import net.tlalka.android.fiszki.models.dto.LessonDto;
@@ -39,7 +40,7 @@ public class Navigator {
     }
 
     public void openLessonListActivity(Context context) {
-        context.startActivity(new Intent(context, LessonActivity.class));
+        context.startActivity(new Intent(context, LessonListActivity.class));
     }
 
     public void openLessonStatActivity(Context context, LessonDto lessonDto) {

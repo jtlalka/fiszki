@@ -2,6 +2,7 @@ package net.tlalka.android.fiszki.activities;
 
 import android.os.Bundle;
 import android.view.View;
+import butterknife.OnClick;
 import net.tlalka.android.fiszki.R;
 
 public class HelpActivity extends BasePageActivity {
@@ -10,9 +11,10 @@ public class HelpActivity extends BasePageActivity {
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         super.setContentView(R.layout.help_activity);
+        super.getActivityComponent().inject(this);
     }
 
-    @XmlOnClick
+    @OnClick(R.id.help_layout)
     public void onViewClick(View view) {
         super.finish();
     }

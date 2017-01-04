@@ -19,7 +19,7 @@ public class LessonsAdapter extends AbstractAdapter<Lesson> {
     @Override
     public View getView(int position, View convertView, ViewGroup viewGroup) {
         if (convertView == null) {
-            convertView = super.getLayoutInflater().inflate(R.layout.lessons_list_item, viewGroup, false);
+            convertView = super.getLayoutInflater().inflate(R.layout.lesson_list_item, viewGroup, false);
             convertView.setTag(new ViewHolderPattern(convertView));
         }
 

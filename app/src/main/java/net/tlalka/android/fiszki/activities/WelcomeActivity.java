@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 import butterknife.BindView;
+import butterknife.OnClick;
 import net.tlalka.android.fiszki.R;
 import net.tlalka.android.fiszki.models.dto.WelcomeDto;
 
@@ -11,7 +12,7 @@ import javax.inject.Inject;
 
 public class WelcomeActivity extends AbstractActivity {
 
-    @BindView(R.id.text_view_info)
+    @BindView(R.id.welcome_message)
     protected TextView textView;
 
     @Inject
@@ -26,8 +27,8 @@ public class WelcomeActivity extends AbstractActivity {
         this.textView.setText(welcomeDto.getMessage());
     }
 
-    @XmlOnClick
-    public void onViewClick(View view) {
+    @OnClick(R.id.welcome_layout)
+    public void onLayoutClick(View view) {
         super.finish();
     }
 }

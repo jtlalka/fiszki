@@ -1,6 +1,5 @@
 # Intellij IDE
 .idea/
-*.iml
 
 # Ecpipse IDE
 .settings/
