@@ -6,12 +6,12 @@
         android:icon="@drawable/launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme"
-        android:name=".services.AppHelper"
+        android:name=".core.AppFiszki"
         android:allowBackup="true"
         android:fullBackupContent="true">
 
         <activity
-            android:name=".activities.MainActivity"
+            android:name=".view.activities.MainActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -20,7 +20,7 @@
         </activity>
 
         <activity
-            android:name=".activities.WelcomeActivity"
+            android:name=".view.activities.WelcomeActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
@@ -33,16 +33,16 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".activities.LessonActivity"/>
-        <activity android:name=".activities.LessonListActivity"/>
-        <activity android:name=".activities.LessonStatsActivity"/>
+        <activity android:name=".view.activities.LessonActivity"/>
+        <activity android:name=".view.activities.LessonListActivity"/>
+        <activity android:name=".view.activities.LessonStatsActivity"/>
 
-        <activity android:name=".activities.TestActivity"/>
-        <activity android:name=".activities.TestStatsActivity"/>
+        <activity android:name=".view.activities.TestActivity"/>
+        <activity android:name=".view.activities.TestStatsActivity"/>
 
-        <activity android:name=".activities.WordsActivity"/>
-        <activity android:name=".activities.HelpActivity"/>
-        <activity android:name=".activities.SettingsActivity"/>
+        <activity android:name=".view.activities.WordsActivity"/>
+        <activity android:name=".view.activities.HelpActivity"/>
+        <activity android:name=".view.activities.SettingsActivity"/>
     </application>
 
 </manifest>

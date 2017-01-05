@@ -1,5 +1,6 @@
 package net.tlalka.android.fiszki.utils;
 
+import net.tlalka.android.fiszki.domain.utils.ValidUtils;
 import org.junit.Test;
 
 import java.util.Collections;
