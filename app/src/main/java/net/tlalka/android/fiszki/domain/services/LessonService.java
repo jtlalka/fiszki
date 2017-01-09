@@ -72,6 +72,10 @@ public class LessonService {
         return this.activeWord.getValue();
     }
 
+    public String getLessonStatus() {
+        return String.valueOf(this.words.size());
+    }
+
     private Word generateWord() {
         Word newWord = words.get(new Random().nextInt(words.size()));
         return (words.size() > 1 && newWord == activeWord) ? generateWord() : newWord;

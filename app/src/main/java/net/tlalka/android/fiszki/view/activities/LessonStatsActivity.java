@@ -10,12 +10,11 @@ import net.tlalka.android.fiszki.model.dto.LessonDto;
 import net.tlalka.android.fiszki.view.navigations.Navigator;
 
 import javax.inject.Inject;
-import java.util.Locale;
 
 public class LessonStatsActivity extends BasePageActivity {
 
-    @BindView(R.id.text_view_topic)
-    protected TextView textViewTopic;
+    @BindView(R.id.lesson_topic)
+    protected TextView lessonTopic;
 
     @Inject
     protected Navigator navigator;
@@ -33,19 +32,19 @@ public class LessonStatsActivity extends BasePageActivity {
     }
 
     private void initActivity() {
+        int lessonIndex = this.lessonDto.getLessonIndex();
         String lessonName = this.lessonDto.getLessonName();
-        String lessonDesc = this.lessonDto.getLessonLevel().name().toLowerCase(Locale.getDefault());
 
-        this.textViewTopic.setText(localFormat("%s - %s", lessonName, lessonDesc));
+        this.lessonTopic.setText(getString(R.string.lesson_activity_topic, lessonIndex, lessonName));
     }
 
-    @OnClick(R.id.button_repeat)
+    @OnClick(R.id.lessons_stats_repeat)
     public void onRepeatClick(View view) {
         this.navigator.openLessonActivity(this, this.lessonDto);
         this.navigator.finish(this);
     }
 
-    @OnClick(R.id.button_lessons)
+    @OnClick(R.id.lessons_stats_lessons)
     public void onLessonsClick(View view) {
         this.navigator.openLessonListActivity(this);
         this.navigator.finish(this);

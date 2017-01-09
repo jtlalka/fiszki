@@ -2,7 +2,6 @@ package net.tlalka.android.fiszki.view.activities;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.Menu;
 import android.widget.Toast;
 import net.tlalka.android.fiszki.core.AppFiszki;
@@ -29,12 +28,6 @@ public abstract class AbstractActivity extends Activity {
 
     public void startActivity(Class<?> classValue) {
         super.startActivity(new Intent(super.getApplicationContext(), classValue));
-    }
-
-    public void startActivity(Class<?> classValue, Bundle bundleToSend) {
-        Intent intent = new Intent(super.getApplicationContext(), classValue);
-        intent.putExtras(bundleToSend);
-        super.startActivity(intent);
     }
 
     public boolean createMenu(int menuResource, Menu menu) {

@@ -10,14 +10,16 @@ public class LessonDto {
     long lessonId;
     String lessonName;
     LevelType lessonLevel;
+    int lessonIndex;
 
     public LessonDto() {
     }
 
-    public LessonDto(Lesson lesson) {
+    public LessonDto(Lesson lesson, int position) {
         this.lessonId = lesson.getId();
         this.lessonName = lesson.getName();
         this.lessonLevel = lesson.getLevelType();
+        this.lessonIndex = position;
     }
 
     public long getLessonId() {
@@ -30,5 +32,9 @@ public class LessonDto {
 
     public LevelType getLessonLevel() {
         return lessonLevel;
+    }
+
+    public int getLessonIndex() {
+        return lessonIndex;
     }
 }

@@ -15,8 +15,8 @@ import java.util.Locale;
 
 public class TestStatsActivity extends BasePageActivity {
 
-    @BindView(R.id.text_view_topic)
-    protected TextView textViewTopic;
+    @BindView(R.id.test_topic)
+    protected TextView testTopic;
 
     @BindView(R.id.button_count)
     protected Button buttonCount;
@@ -46,7 +46,7 @@ public class TestStatsActivity extends BasePageActivity {
         String lessonName = lessonDto.getLessonName();
         String lessonDesc = lessonDto.getLessonLevel().name().toLowerCase(Locale.getDefault());
 
-        this.textViewTopic.setText(localFormat("%s - %s", lessonName, lessonDesc));
+        this.testTopic.setText(localFormat("%s - %s", lessonName, lessonDesc));
         this.buttonCount.setText(localFormat("%s: %d", this.buttonCount.getText(), lessonDto.getLessonId()));
         this.buttonGood.setText(localFormat("%s\n%d", this.buttonGood.getText(), lessonDto.getLessonId()));
         this.buttonBad.setText(localFormat("%s\n%d", this.buttonBad.getText(), lessonDto.getLessonId()));

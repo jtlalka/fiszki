@@ -19,7 +19,7 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/show_word_button"
+                android:id="@+id/lesson_show_word"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/sep_size_m"
@@ -36,7 +36,7 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/check_word_button"
+                android:id="@+id/lesson_check_word"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/sep_size_m"

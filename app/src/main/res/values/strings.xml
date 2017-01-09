@@ -24,6 +24,8 @@
     <string name="welcome_activity_topic">Fiszki - nauka i rozrywaka :)</string>
     <string name="welcome_activity_message">Kliknij aby rozpocząć..</string>
 
+    <string name="lesson_activity_topic">Lekcja %1$d: %2$s</string>
+    <string name="lesson_activity_progress">\u0020</string>
     <string name="lesson_activity_show_word">[słowo]</string>
     <string name="lesson_activity_check_word">[odkryj]</string>
 

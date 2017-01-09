@@ -48,7 +48,7 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/button_repeat"
+                android:id="@+id/lessons_stats_repeat"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/sep_size_m"
@@ -63,7 +63,7 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/button_lessons"
+                android:id="@+id/lessons_stats_lessons"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/sep_size_m"

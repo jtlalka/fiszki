@@ -18,18 +18,20 @@ import net.tlalka.android.fiszki.view.navigations.Navigator;
 
 import javax.inject.Inject;
 import java.util.List;
-import java.util.Locale;
 
 public class LessonActivity extends BasePageActivity implements LanguageDialogFragment.DialogListener {
 
-    @BindView(R.id.text_view_topic)
-    protected TextView textViewTopic;
+    @BindView(R.id.lesson_topic)
+    protected TextView lessonTopic;
 
-    @BindView(R.id.show_word_button)
-    protected Button buttonWordShow;
+    @BindView(R.id.lesson_progress)
+    protected TextView lessonProgress;
 
-    @BindView(R.id.check_word_button)
-    protected Button buttonWordCheck;
+    @BindView(R.id.lesson_show_word)
+    protected Button lessonShowWord;
+
+    @BindView(R.id.lesson_check_word)
+    protected Button lessonCheckWord;
 
     @Inject
     protected LessonService lessonService;
@@ -62,17 +64,18 @@ public class LessonActivity extends BasePageActivity implements LanguageDialogFr
     }
 
     private void runActivity() {
+        int lessonIndex = this.lessonDto.getLessonIndex();
         String lessonName = this.lessonDto.getLessonName();
-        String lessonDesc = this.lessonDto.getLessonLevel().name().toLowerCase(Locale.getDefault());
 
-        this.textViewTopic.setText(localFormat("%s - %s", lessonName, lessonDesc));
+        this.lessonTopic.setText(getString(R.string.lesson_activity_topic, lessonIndex, lessonName));
         this.generateView();
     }
 
     private void generateView() {
         if (this.lessonService.hasNextWord()) {
-            this.buttonWordShow.setText(this.lessonService.getNextWord());
-            this.buttonWordCheck.setText(getText(R.string.lesson_activity_check_word));
+            this.lessonProgress.setText(this.lessonService.getLessonStatus());
+            this.lessonShowWord.setText(this.lessonService.getNextWord());
+            this.lessonCheckWord.setText(getText(R.string.lesson_activity_check_word));
         } else {
             this.showLessonSummary();
         }
@@ -84,12 +87,12 @@ public class LessonActivity extends BasePageActivity implements LanguageDialogFr
         this.navigator.finish(this);
     }
 
-    @OnClick(R.id.check_word_button)
+    @OnClick(R.id.lesson_check_word)
     public void onCheckWordClick(View view) {
         Word word = this.lessonService.getTranslation(this.translation);
 
         if (ValidUtils.isNotNull(word)) {
-            this.buttonWordCheck.setText(word.getValue());
+            this.lessonCheckWord.setText(word.getValue());
         } else {
             List<LanguageType> languages = this.lessonService.getLanguages();
             languages.remove(this.language);
@@ -103,7 +106,7 @@ public class LessonActivity extends BasePageActivity implements LanguageDialogFr
     @Override
     public void onLanguageSelected(LanguageType languageType) {
         this.translation = languageType;
-        this.onCheckWordClick(this.buttonWordCheck);
+        this.onCheckWordClick(this.lessonCheckWord);
     }
 
     @OnClick(R.id.button_good)

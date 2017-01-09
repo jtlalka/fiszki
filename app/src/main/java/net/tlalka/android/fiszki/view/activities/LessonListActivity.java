@@ -43,7 +43,7 @@ public class LessonListActivity extends BasePageActivity implements AdapterView.
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Lesson lesson = (Lesson) parent.getItemAtPosition(position);
 
-        this.navigator.openLessonActivity(this, new LessonDto(lesson));
+        this.navigator.openLessonActivity(this, new LessonDto(lesson, position + 1));
         this.navigator.finish(this);
     }
 }

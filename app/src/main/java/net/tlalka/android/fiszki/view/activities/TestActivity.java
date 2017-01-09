@@ -22,13 +22,13 @@ import java.util.Locale;
 
 public class TestActivity extends BasePageActivity implements LanguageDialogFragment.DialogListener {
 
-    @BindView(R.id.text_view_topic)
-    protected TextView textViewTopic;
+    @BindView(R.id.test_topic)
+    protected TextView testTopic;
 
-    @BindView(R.id.show_word_button)
+    @BindView(R.id.lesson_show_word)
     protected Button buttonWordShow;
 
-    @BindView(R.id.check_word_button)
+    @BindView(R.id.lesson_check_word)
     protected Button buttonWordCheck;
 
     @Inject
@@ -65,7 +65,7 @@ public class TestActivity extends BasePageActivity implements LanguageDialogFrag
         String lessonName = this.lessonDto.getLessonName();
         String lessonDesc = this.lessonDto.getLessonLevel().name().toLowerCase(Locale.getDefault());
 
-        this.textViewTopic.setText(localFormat("%s - %s", lessonName, lessonDesc));
+        this.testTopic.setText(localFormat("%s - %s", lessonName, lessonDesc));
         this.generateView();
     }
 
@@ -84,7 +84,7 @@ public class TestActivity extends BasePageActivity implements LanguageDialogFrag
         this.navigator.finish(this);
     }
 
-    @OnClick(R.id.check_word_button)
+    @OnClick(R.id.lesson_check_word)
     public void onCheckWordClick(View view) {
         Word word = this.lessonService.getTranslation(this.translation);
 

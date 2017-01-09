@@ -43,7 +43,7 @@ public class TestListActivity extends BasePageActivity implements AdapterView.On
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Lesson lesson = (Lesson) parent.getItemAtPosition(position);
 
-        this.navigator.openTestActivity(this, new LessonDto(lesson));
+        this.navigator.openTestActivity(this, new LessonDto(lesson, position + 1));
         this.navigator.finish(this);
     }
 }

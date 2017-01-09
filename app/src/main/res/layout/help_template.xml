@@ -16,7 +16,6 @@
         android:src="@drawable/help_icon"/>
 
     <TextView
-        android:id="@+id/text_view_topic"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
