@@ -6,7 +6,7 @@ import android.widget.AdapterView;
 import android.widget.Spinner;
 import butterknife.BindView;
 import net.tlalka.android.fiszki.R;
-import net.tlalka.android.fiszki.model.helpers.StorageHelper;
+import net.tlalka.android.fiszki.domain.services.StorageService;
 import net.tlalka.android.fiszki.model.types.LanguageType;
 import net.tlalka.android.fiszki.model.types.StorageType;
 import net.tlalka.android.fiszki.view.adapters.LanguageAdapter;
@@ -24,7 +24,7 @@ public class SettingsActivity extends BaseSetupActivity implements AdapterView.O
     protected Spinner translationSpinner;
 
     @Inject
-    protected StorageHelper storageHelper;
+    protected StorageService storageService;
 
     private LanguageType language;
     private LanguageType translation;
@@ -40,8 +40,8 @@ public class SettingsActivity extends BaseSetupActivity implements AdapterView.O
     }
 
     private void initStorage() {
-        this.language = this.storageHelper.getEnum(StorageType.LANGUAGE, LanguageType.EN);
-        this.translation = this.storageHelper.getEnum(StorageType.TRANSLATION, LanguageType.PL);
+        this.language = this.storageService.getLanguage();
+        this.translation = this.storageService.getTranslation();
     }
 
     private void runActivity() {
@@ -63,7 +63,7 @@ public class SettingsActivity extends BaseSetupActivity implements AdapterView.O
         LanguageType languageType = (LanguageType) parent.getItemAtPosition(position);
         StorageType storageType = (StorageType) parent.getTag();
 
-        this.storageHelper.setEnum(storageType, languageType);
+        this.storageService.set(storageType, languageType);
     }
 
     @Override

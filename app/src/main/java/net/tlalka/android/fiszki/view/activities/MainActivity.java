@@ -5,9 +5,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
 import net.tlalka.android.fiszki.R;
+import net.tlalka.android.fiszki.domain.services.StorageService;
 import net.tlalka.android.fiszki.model.dto.WelcomeDto;
-import net.tlalka.android.fiszki.model.helpers.StorageHelper;
-import net.tlalka.android.fiszki.model.types.StorageType;
 import net.tlalka.android.fiszki.view.adapters.MenuAdapter;
 import net.tlalka.android.fiszki.view.elements.PageElement;
 import net.tlalka.android.fiszki.view.elements.SetupElement;
@@ -19,7 +18,7 @@ import java.util.Arrays;
 public class MainActivity extends AbstractActivity {
 
     @Inject
-    protected StorageHelper storageHelper;
+    protected StorageService storageService;
 
     @Inject
     protected Navigator navigator;
@@ -35,8 +34,8 @@ public class MainActivity extends AbstractActivity {
     }
 
     private void initStartActivity() {
-        if (this.storageHelper.getBoolean(StorageType.WELCOME_VIEW, true)) {
-            this.storageHelper.setBoolean(StorageType.WELCOME_VIEW, false);
+        if (this.storageService.isWelcomeView()) {
+            this.storageService.setWelcomeView(false);
             this.openStartActivity();
         }
     }

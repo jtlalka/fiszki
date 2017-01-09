@@ -8,12 +8,11 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import net.tlalka.android.fiszki.R;
 import net.tlalka.android.fiszki.domain.services.LessonService;
+import net.tlalka.android.fiszki.domain.services.StorageService;
 import net.tlalka.android.fiszki.domain.utils.ValidUtils;
 import net.tlalka.android.fiszki.model.dto.LessonDto;
 import net.tlalka.android.fiszki.model.entities.Word;
-import net.tlalka.android.fiszki.model.helpers.StorageHelper;
 import net.tlalka.android.fiszki.model.types.LanguageType;
-import net.tlalka.android.fiszki.model.types.StorageType;
 import net.tlalka.android.fiszki.view.fragments.LanguageDialogFragment;
 import net.tlalka.android.fiszki.view.navigations.Navigator;
 
@@ -36,7 +35,7 @@ public class LessonActivity extends BasePageActivity implements LanguageDialogFr
     protected LessonService lessonService;
 
     @Inject
-    protected StorageHelper storageHelper;
+    protected StorageService storageService;
 
     @Inject
     protected Navigator navigator;
@@ -58,8 +57,8 @@ public class LessonActivity extends BasePageActivity implements LanguageDialogFr
     }
 
     private void initStorage() {
-        this.language = this.storageHelper.getEnum(StorageType.LANGUAGE, LanguageType.EN);
-        this.translation = this.storageHelper.getEnum(StorageType.TRANSLATION, LanguageType.PL);
+        this.language = this.storageService.getLanguage();
+        this.translation = this.storageService.getTranslation();
     }
 
     private void runActivity() {
