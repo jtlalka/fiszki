@@ -4,74 +4,63 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import butterknife.BindView;
+import butterknife.OnClick;
 import net.tlalka.android.fiszki.R;
-import net.tlalka.android.fiszki.domain.utils.ValidUtils;
+import net.tlalka.android.fiszki.model.dto.LessonDto;
+import net.tlalka.android.fiszki.view.navigations.Navigator;
+
+import javax.inject.Inject;
+import java.util.Locale;
 
 public class TestStatsActivity extends BasePageActivity {
 
-    public static final String LESSON_ID = "net.tlalka.android.fiszki.test.stats.id";
-    public static final String LESSON_NAME = "net.tlalka.android.fiszki.test.stats.name";
-    public static final String LESSON_DESC = "net.tlalka.android.fiszki.test.stats.desc";
+    @BindView(R.id.text_view_topic)
+    protected TextView textViewTopic;
 
-    public static final String TOTAL_COUNT = "net.tlalka.android.fiszki.test.stats.count";
-    public static final String TOTAL_GOOD = "net.tlalka.android.fiszki.test.stats.good";
-    public static final String TOTAL_BAD = "net.tlalka.android.fiszki.test.stats.bad";
+    @BindView(R.id.button_count)
+    protected Button buttonCount;
 
-    private TextView textViewTopic;
-    private Button buttonCount;
-    private Button buttonGood;
-    private Button buttonBad;
+    @BindView(R.id.button_good)
+    protected Button buttonGood;
 
-    private long lessonId;
-    private String lessonName;
-    private String lessonDesc;
+    @BindView(R.id.button_bad)
+    protected Button buttonBad;
+
+    @Inject
+    protected Navigator navigator;
+
+    @Inject
+    protected LessonDto lessonDto;
 
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         super.setContentView(R.layout.test_stats_activity);
+        super.getActivityComponent().inject(this);
 
-        this.initElements();
-        this.initBundle();
+        this.runActivity();
     }
 
-    private void initElements() {
-        this.textViewTopic = (TextView) findViewById(R.id.text_view_topic);
-        this.buttonCount = (Button) findViewById(R.id.button_count);
-        this.buttonGood = (Button) findViewById(R.id.button_good);
-        this.buttonBad = (Button) findViewById(R.id.button_bad);
+    private void runActivity() {
+        String lessonName = lessonDto.getLessonName();
+        String lessonDesc = lessonDto.getLessonLevel().name().toLowerCase(Locale.getDefault());
+
+        this.textViewTopic.setText(localFormat("%s - %s", lessonName, lessonDesc));
+        this.buttonCount.setText(localFormat("%s: %d", this.buttonCount.getText(), lessonDto.getLessonId()));
+        this.buttonGood.setText(localFormat("%s\n%d", this.buttonGood.getText(), lessonDto.getLessonId()));
+        this.buttonBad.setText(localFormat("%s\n%d", this.buttonBad.getText(), lessonDto.getLessonId()));
     }
 
-    private void initBundle() {
-        Bundle argsBundle = super.getIntent().getExtras();
-
-        if (ValidUtils.isNotNull(argsBundle)) {
-            this.lessonId = argsBundle.getLong(LESSON_ID);
-            this.lessonName = argsBundle.getString(LESSON_NAME);
-            this.lessonDesc = argsBundle.getString(LESSON_DESC);
-            int totalCount = argsBundle.getInt(TOTAL_COUNT, 0);
-            int totalGood = argsBundle.getInt(TOTAL_GOOD, 0);
-            int totalBad = argsBundle.getInt(TOTAL_BAD, 0);
-
-            this.textViewTopic.setText(localFormat("%s - %s", lessonName, lessonDesc));
-            this.buttonCount.setText(localFormat("%s: %d", this.buttonCount.getText(), totalCount));
-            this.buttonGood.setText(localFormat("%s\n%d", this.buttonGood.getText(), totalGood));
-            this.buttonBad.setText(localFormat("%s\n%d", this.buttonBad.getText(), totalBad));
-        }
-    }
-
+    @OnClick(R.id.test_stats_repeat)
     public void onRepeatClick(View view) {
-        Bundle bundleToSend = new Bundle();
-        bundleToSend.putLong(TestActivity.LESSON_ID, this.lessonId);
-        bundleToSend.putString(TestActivity.LESSON_NAME, this.lessonName);
-        bundleToSend.putString(TestActivity.LESSON_DESC, this.lessonDesc);
-
-        super.startActivity(LessonActivity.class, bundleToSend);
-        super.finish();
+        this.navigator.openTestActivity(this, this.lessonDto);
+        this.navigator.finish(this);
     }
 
+    @OnClick(R.id.test_stats_tests)
     public void onTestsClick(View view) {
-        super.startActivity(TestActivity.class);
-        super.finish();
+        this.navigator.openTestListActivity(this);
+        this.navigator.finish(this);
     }
 }

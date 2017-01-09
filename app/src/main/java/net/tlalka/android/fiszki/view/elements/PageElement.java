@@ -4,12 +4,13 @@ import net.tlalka.android.fiszki.R;
 import net.tlalka.android.fiszki.view.activities.BasePageActivity;
 import net.tlalka.android.fiszki.view.activities.HelpActivity;
 import net.tlalka.android.fiszki.view.activities.LessonListActivity;
+import net.tlalka.android.fiszki.view.activities.TestListActivity;
 import net.tlalka.android.fiszki.view.activities.WordsActivity;
 
 public enum PageElement {
 
     LESSONS(R.string.nav_lessons, LessonListActivity.class),
-    TESTS(R.string.nav_tests, WordsActivity.class),
+    TESTS(R.string.nav_tests, TestListActivity.class),
     OPTIONS(R.string.nav_words, WordsActivity.class),
     HELP(R.string.nav_help, HelpActivity.class);
 

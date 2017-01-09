@@ -13,7 +13,7 @@ import javax.inject.Inject;
 public class WelcomeActivity extends AbstractActivity {
 
     @BindView(R.id.welcome_message)
-    protected TextView textView;
+    protected TextView message;
 
     @Inject
     protected WelcomeDto welcomeDto;
@@ -24,7 +24,7 @@ public class WelcomeActivity extends AbstractActivity {
         super.setContentView(R.layout.welcome_activity);
         super.getActivityComponent().inject(this);
 
-        this.textView.setText(welcomeDto.getMessage());
+        this.message.setText(welcomeDto.getMessage());
     }
 
     @OnClick(R.id.welcome_layout)

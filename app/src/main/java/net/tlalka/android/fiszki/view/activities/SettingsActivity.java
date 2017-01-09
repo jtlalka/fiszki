@@ -4,18 +4,27 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Spinner;
+import butterknife.BindView;
 import net.tlalka.android.fiszki.R;
+import net.tlalka.android.fiszki.model.helpers.StorageHelper;
 import net.tlalka.android.fiszki.model.types.LanguageType;
 import net.tlalka.android.fiszki.model.types.StorageType;
 import net.tlalka.android.fiszki.view.adapters.LanguageAdapter;
 
+import javax.inject.Inject;
 import java.util.Arrays;
 import java.util.List;
 
 public class SettingsActivity extends BaseSetupActivity implements AdapterView.OnItemSelectedListener {
 
-    private Spinner languageSpinner;
-    private Spinner translationSpinner;
+    @BindView(R.id.language_spinner)
+    protected Spinner languageSpinner;
+
+    @BindView(R.id.translation_spinner)
+    protected Spinner translationSpinner;
+
+    @Inject
+    protected StorageHelper storageHelper;
 
     private LanguageType language;
     private LanguageType translation;
@@ -24,20 +33,15 @@ public class SettingsActivity extends BaseSetupActivity implements AdapterView.O
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         super.setContentView(R.layout.settings_activity);
+        super.getActivityComponent().inject(this);
 
-        this.initElements();
-        this.initSettings();
+        this.initStorage();
         this.runActivity();
     }
 
-    private void initElements() {
-        this.languageSpinner = (Spinner) findViewById(R.id.language_spinner);
-        this.translationSpinner = (Spinner) findViewById(R.id.translation_spinner);
-    }
-
-    private void initSettings() {
-        this.language = super.getStorageHelper().getEnum(StorageType.LANGUAGE, LanguageType.EN);
-        this.translation = super.getStorageHelper().getEnum(StorageType.TRANSLATION, LanguageType.PL);
+    private void initStorage() {
+        this.language = this.storageHelper.getEnum(StorageType.LANGUAGE, LanguageType.EN);
+        this.translation = this.storageHelper.getEnum(StorageType.TRANSLATION, LanguageType.PL);
     }
 
     private void runActivity() {
@@ -59,7 +63,7 @@ public class SettingsActivity extends BaseSetupActivity implements AdapterView.O
         LanguageType languageType = (LanguageType) parent.getItemAtPosition(position);
         StorageType storageType = (StorageType) parent.getTag();
 
-        super.getStorageHelper().setEnum(storageType, languageType);
+        this.storageHelper.setEnum(storageType, languageType);
     }
 
     @Override

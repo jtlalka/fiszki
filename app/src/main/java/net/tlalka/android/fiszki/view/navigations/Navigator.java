@@ -9,6 +9,9 @@ import net.tlalka.android.fiszki.model.dto.WelcomeDto;
 import net.tlalka.android.fiszki.view.activities.LessonActivity;
 import net.tlalka.android.fiszki.view.activities.LessonListActivity;
 import net.tlalka.android.fiszki.view.activities.LessonStatsActivity;
+import net.tlalka.android.fiszki.view.activities.TestActivity;
+import net.tlalka.android.fiszki.view.activities.TestListActivity;
+import net.tlalka.android.fiszki.view.activities.TestStatsActivity;
 import net.tlalka.android.fiszki.view.activities.WelcomeActivity;
 import org.parceler.Parcels;
 
@@ -47,6 +50,26 @@ public class Navigator {
         Parcelable parcelable = Parcels.wrap(lessonDto);
 
         Intent intent = new Intent(context, LessonStatsActivity.class);
+        intent.putExtra(LessonDto.class.getName(), parcelable);
+        context.startActivity(intent);
+    }
+
+    public void openTestActivity(Context context, LessonDto lessonDto) {
+        Parcelable parcelable = Parcels.wrap(lessonDto);
+
+        Intent intent = new Intent(context, TestActivity.class);
+        intent.putExtra(LessonDto.class.getName(), parcelable);
+        context.startActivity(intent);
+    }
+
+    public void openTestListActivity(Context context) {
+        context.startActivity(new Intent(context, TestListActivity.class));
+    }
+
+    public void openTestStatActivity(Context context, LessonDto lessonDto) {
+        Parcelable parcelable = Parcels.wrap(lessonDto);
+
+        Intent intent = new Intent(context, TestStatsActivity.class);
         intent.putExtra(LessonDto.class.getName(), parcelable);
         context.startActivity(intent);
     }

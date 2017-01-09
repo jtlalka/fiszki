@@ -9,14 +9,14 @@ import net.tlalka.android.fiszki.R;
 import net.tlalka.android.fiszki.domain.services.LessonListService;
 import net.tlalka.android.fiszki.model.dto.LessonDto;
 import net.tlalka.android.fiszki.model.entities.Lesson;
-import net.tlalka.android.fiszki.view.adapters.LessonsAdapter;
+import net.tlalka.android.fiszki.view.adapters.TestsAdapter;
 import net.tlalka.android.fiszki.view.navigations.Navigator;
 
 import javax.inject.Inject;
 
-public class LessonListActivity extends BasePageActivity implements AdapterView.OnItemClickListener {
+public class TestListActivity extends BasePageActivity implements AdapterView.OnItemClickListener {
 
-    @BindView(R.id.lesson_list_view)
+    @BindView(R.id.test_list_view)
     protected ListView listView;
 
     @Inject
@@ -28,22 +28,22 @@ public class LessonListActivity extends BasePageActivity implements AdapterView.
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        super.setContentView(R.layout.lesson_list_activity);
+        super.setContentView(R.layout.test_list_activity);
         super.getActivityComponent().inject(this);
 
         this.initLessonsList();
     }
 
     private void initLessonsList() {
-        this.listView.setAdapter(new LessonsAdapter(this, lessonListService.getLessons()));
-        this.listView.setOnItemClickListener(this);
+        listView.setAdapter(new TestsAdapter(this, lessonListService.getLessons()));
+        listView.setOnItemClickListener(this);
     }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Lesson lesson = (Lesson) parent.getItemAtPosition(position);
 
-        this.navigator.openLessonActivity(this, new LessonDto(lesson));
+        this.navigator.openTestActivity(this, new LessonDto(lesson));
         this.navigator.finish(this);
     }
 }

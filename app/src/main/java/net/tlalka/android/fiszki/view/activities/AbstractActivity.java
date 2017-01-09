@@ -10,9 +10,6 @@ import net.tlalka.android.fiszki.core.components.ActivityComponent;
 import net.tlalka.android.fiszki.core.components.ApplicationComponent;
 import net.tlalka.android.fiszki.core.components.SessionComponent;
 import net.tlalka.android.fiszki.core.modules.ActivityModule;
-import net.tlalka.android.fiszki.model.db.DbHelper;
-import net.tlalka.android.fiszki.model.db.DbManager;
-import net.tlalka.android.fiszki.model.helpers.StorageHelper;
 
 import java.util.Locale;
 
@@ -28,16 +25,6 @@ public abstract class AbstractActivity extends Activity {
 
     protected ActivityComponent getActivityComponent() {
         return this.getSessionComponent().add(new ActivityModule(this));
-    }
-
-    //TODO: use injections
-    protected DbHelper getDbHelper() {
-        return DbManager.getHelper(this);
-    }
-
-    //TODO: use injections
-    protected StorageHelper getStorageHelper() {
-        return new StorageHelper(this);
     }
 
     public void startActivity(Class<?> classValue) {
@@ -56,7 +43,7 @@ public abstract class AbstractActivity extends Activity {
     }
 
     public String localFormat(String format, Object... objects) {
-        return String.format(Locale.ENGLISH, format, objects);
+        return String.format(Locale.getDefault(), format, objects);
     }
 
     public void alert(String message) {

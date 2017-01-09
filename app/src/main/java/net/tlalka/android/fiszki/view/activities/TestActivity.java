@@ -1,172 +1,118 @@
 package net.tlalka.android.fiszki.view.activities;
 
 import android.os.Bundle;
-import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import butterknife.BindView;
+import butterknife.OnClick;
 import net.tlalka.android.fiszki.R;
+import net.tlalka.android.fiszki.domain.services.LessonService;
 import net.tlalka.android.fiszki.domain.utils.ValidUtils;
-import net.tlalka.android.fiszki.model.dao.LessonDao;
-import net.tlalka.android.fiszki.model.dao.WordDao;
-import net.tlalka.android.fiszki.model.entities.Lesson;
+import net.tlalka.android.fiszki.model.dto.LessonDto;
 import net.tlalka.android.fiszki.model.entities.Word;
+import net.tlalka.android.fiszki.model.helpers.StorageHelper;
 import net.tlalka.android.fiszki.model.types.LanguageType;
-import net.tlalka.android.fiszki.view.listeners.TestListener;
+import net.tlalka.android.fiszki.model.types.StorageType;
+import net.tlalka.android.fiszki.view.fragments.LanguageDialogFragment;
+import net.tlalka.android.fiszki.view.navigations.Navigator;
 
-import java.sql.SQLException;
+import javax.inject.Inject;
 import java.util.List;
+import java.util.Locale;
 
-public class TestActivity extends BasePageActivity {
+public class TestActivity extends BasePageActivity implements LanguageDialogFragment.DialogListener {
 
-    public static final String LESSON_ID = "net.tlalka.android.fiszki.test.id";
-    public static final String LESSON_NAME = "net.tlalka.android.fiszki.test.name";
-    public static final String LESSON_DESC = "net.tlalka.android.fiszki.test.desc";
+    @BindView(R.id.text_view_topic)
+    protected TextView textViewTopic;
 
-    private LessonDao lessonDao;
-    private WordDao wordDao;
+    @BindView(R.id.show_word_button)
+    protected Button buttonWordShow;
 
-    private List<Word> words;
-    private Lesson lesson;
-    private Word word;
+    @BindView(R.id.check_word_button)
+    protected Button buttonWordCheck;
 
-    private TextView textViewTopic;
-    private Button buttonWordShow;
-    private Button buttonWordCheck;
-    private Button buttonGood;
-    private Button buttonBad;
+    @Inject
+    protected LessonService lessonService;
 
-    private long lessonId;
-    private String lessonName;
-    private String lessonDesc;
-    private int wordCount;
-    private int wordNumber;
-    private int wordGood;
-    private int wordBad;
+    @Inject
+    protected StorageHelper storageHelper;
+
+    @Inject
+    protected Navigator navigator;
+
+    @Inject
+    protected LessonDto lessonDto;
+
+    private LanguageType translation;
 
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         super.setContentView(R.layout.test_activity);
+        super.getActivityComponent().inject(this);
 
-        this.initElements();
-        this.initListeners();
-        this.initBundle();
-        this.initDataBase();
-
+        this.initStorage();
         this.runActivity();
     }
 
-    private void initElements() {
-        this.textViewTopic = (TextView) findViewById(R.id.text_view_topic);
-        this.buttonWordShow = (Button) findViewById(R.id.show_word_button);
-        this.buttonWordCheck = (Button) findViewById(R.id.check_word_button);
-        this.buttonGood = (Button) findViewById(R.id.button_good);
-        this.buttonBad = (Button) findViewById(R.id.button_bad);
-    }
-
-    private void initListeners() {
-        this.buttonWordCheck.setOnClickListener(new TestListener(this, TestListener.ACTION_CHECK));
-        this.buttonGood.setOnClickListener(new TestListener(this, TestListener.ACTION_GOOD));
-        this.buttonBad.setOnClickListener(new TestListener(this, TestListener.ACTION_BAD));
-    }
-
-    private void initBundle() {
-        Bundle argsBundle = super.getIntent().getExtras();
-
-        if (ValidUtils.isNotNull(argsBundle)) {
-            this.lessonId = argsBundle.getLong(LESSON_ID);
-            this.lessonName = argsBundle.getString(LESSON_NAME);
-            this.lessonDesc = argsBundle.getString(LESSON_DESC);
-
-            this.textViewTopic.setText(localFormat("%s - %s", lessonName, lessonDesc));
-        }
-    }
-
-    private void initDataBase() {
-        try {
-            this.lessonDao = super.getDbHelper().getLessonDao();
-            this.wordDao = super.getDbHelper().getWordDao();
-
-            this.lesson = this.lessonDao.getLessonBy(lessonId);
-            this.words = this.wordDao.getWordsBy(lesson);
-
-        } catch (SQLException ex) {
-            Log.e(this.getLocalClassName(), "SQL data exception", ex);
-        }
+    private void initStorage() {
+        this.translation = this.storageHelper.getEnum(StorageType.TRANSLATION, LanguageType.PL);
     }
 
     private void runActivity() {
-        this.wordCount = this.words.size();
-        this.wordNumber = 0;
-        this.wordGood = 0;
-        this.wordBad = 0;
+        String lessonName = this.lessonDto.getLessonName();
+        String lessonDesc = this.lessonDto.getLessonLevel().name().toLowerCase(Locale.getDefault());
 
-        this.generateView(this.wordNumber);
+        this.textViewTopic.setText(localFormat("%s - %s", lessonName, lessonDesc));
+        this.generateView();
     }
 
-    private void generateView(int number) {
-        this.word = this.words.get(number);
-
-        this.buttonWordShow.setText(this.word.getValue());
-        this.buttonWordCheck.setText(getText(R.string.lesson_activity_check_word));
-    }
-
-    public void showWord() {
-        try {
-            Word translation = this.wordDao.getWordBy(word.getCluster(), LanguageType.PL);
-            this.buttonWordCheck.setText(translation.getValue());
-
-        } catch (SQLException ex) {
-            Log.e(this.getLocalClassName(), "SQL data exception", ex);
-        }
-    }
-
-    public void nextWord() {
-        this.wordNumber++;
-
-        if (this.hasNextWord()) {
-            this.generateView(this.wordNumber);
+    private void generateView() {
+        if (this.lessonService.hasNextWord()) {
+            this.buttonWordShow.setText(this.lessonService.getNextWord());
+            this.buttonWordCheck.setText(getText(R.string.lesson_activity_check_word));
         } else {
-            this.showOverview();
+            this.showTestSummary();
         }
     }
 
-    public boolean hasNextWord() {
-        return this.wordNumber < this.wordCount;
+    private void showTestSummary() {
+        this.lessonService.updateLessonProgress();
+        this.navigator.openTestStatActivity(this, this.lessonDto);
+        this.navigator.finish(this);
     }
 
-    public void progressUp() {
-        this.word.setProgress(this.word.getProgress() + 1);
-        this.wordDao.update(this.word);
-        this.wordGood++;
+    @OnClick(R.id.check_word_button)
+    public void onCheckWordClick(View view) {
+        Word word = this.lessonService.getTranslation(this.translation);
+
+        if (ValidUtils.isNotNull(word)) {
+            this.buttonWordCheck.setText(word.getValue());
+        } else {
+            List<LanguageType> languages = this.lessonService.getLanguages();
+            languages.remove(this.translation);
+
+            LanguageDialogFragment dialog = LanguageDialogFragment.getInstance(languages);
+            dialog.show(getFragmentManager(), LanguageDialogFragment.class.getName());
+        }
     }
 
-    public void progressDown() {
-        this.word.setProgress(this.word.getProgress() - 1);
-        this.wordDao.update(this.word);
-        this.wordBad++;
+    @Override
+    public void onLanguageSelected(LanguageType languageType) {
+        this.translation = languageType;
+        this.onCheckWordClick(this.buttonWordCheck);
     }
 
-    public void showOverview() {
-        this.updateLessonProgress();
-
-        super.startActivity(TestStatsActivity.class, this.getOverviewBundles());
-        super.finish();
+    @OnClick(R.id.button_good)
+    public void onCorrectClick(View view) {
+        this.lessonService.correctAnswer();
+        this.generateView();
     }
 
-    private void updateLessonProgress() {
-        this.lesson.setProgress(this.lesson.getProgress() + 1);
-        this.lessonDao.update(this.lesson);
-    }
-
-    private Bundle getOverviewBundles() {
-        Bundle bundle = new Bundle();
-        bundle.putLong(TestStatsActivity.LESSON_ID, this.lessonId);
-        bundle.putString(TestStatsActivity.LESSON_NAME, this.lessonName);
-        bundle.putString(TestStatsActivity.LESSON_DESC, this.lessonDesc);
-        bundle.putInt(TestStatsActivity.TOTAL_COUNT, this.wordNumber);
-        bundle.putInt(TestStatsActivity.TOTAL_GOOD, this.wordGood);
-        bundle.putInt(TestStatsActivity.TOTAL_BAD, this.wordBad);
-        return bundle;
+    @OnClick(R.id.button_bad)
+    public void onIncorrectClick(View view) {
+        this.lessonService.incorrectAnswer();
+        this.generateView();
     }
 }

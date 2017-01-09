@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/menu_item_margin">
+
+    <ImageView
+        android:id="@+id/image_view_icon"
+        android:layout_width="@dimen/menu_item_icon"
+        android:layout_height="@dimen/menu_item_icon"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="@dimen/menu_item_margin"
+        android:contentDescription="@string/null_value"
+        android:src="@drawable/tests_item"/>
+
+    <TextView
+        android:id="@+id/text_view_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@id/image_view_icon"
+        android:gravity="center_vertical"
+        android:text="@string/null_value"
+        android:textSize="@dimen/font_size_m"/>
+
+    <TextView
+        android:id="@+id/text_view_desc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@id/image_view_icon"
+        android:layout_toStartOf="@id/text_view_name"
+        android:ellipsize="marquee"
+        android:text="@string/null_value"
+        android:textSize="@dimen/font_size_s"/>
+
+</RelativeLayout>

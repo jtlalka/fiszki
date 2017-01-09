@@ -12,8 +12,8 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginEnd="@dimen/topic_icon_margin"
-        android:contentDescription="@string/null_value"
-        android:src="@drawable/lessons_icon"/>
+        android:contentDescription="@string/nav_tests"
+        android:src="@drawable/tests_icon"/>
 
     <TextView
         android:id="@+id/text_view_topic"
@@ -23,7 +23,7 @@
         android:layout_centerVertical="true"
         android:layout_toEndOf="@id/image_view_topic"
         android:gravity="center_vertical"
-        android:text="@string/nav_lessons"
+        android:text="@string/nav_tests"
         android:textSize="@dimen/font_size_l"/>
 
 </RelativeLayout>

@@ -19,6 +19,7 @@ import net.tlalka.android.fiszki.view.navigations.Navigator;
 
 import javax.inject.Inject;
 import java.util.List;
+import java.util.Locale;
 
 public class LessonActivity extends BasePageActivity implements LanguageDialogFragment.DialogListener {
 
@@ -43,6 +44,7 @@ public class LessonActivity extends BasePageActivity implements LanguageDialogFr
     @Inject
     protected LessonDto lessonDto;
 
+    private LanguageType language;
     private LanguageType translation;
 
     @Override
@@ -56,12 +58,13 @@ public class LessonActivity extends BasePageActivity implements LanguageDialogFr
     }
 
     private void initStorage() {
+        this.language = this.storageHelper.getEnum(StorageType.LANGUAGE, LanguageType.EN);
         this.translation = this.storageHelper.getEnum(StorageType.TRANSLATION, LanguageType.PL);
     }
 
     private void runActivity() {
         String lessonName = this.lessonDto.getLessonName();
-        String lessonDesc = this.lessonDto.getLessonLevel().name().toLowerCase();
+        String lessonDesc = this.lessonDto.getLessonLevel().name().toLowerCase(Locale.getDefault());
 
         this.textViewTopic.setText(localFormat("%s - %s", lessonName, lessonDesc));
         this.generateView();
@@ -90,6 +93,7 @@ public class LessonActivity extends BasePageActivity implements LanguageDialogFr
             this.buttonWordCheck.setText(word.getValue());
         } else {
             List<LanguageType> languages = this.lessonService.getLanguages();
+            languages.remove(this.language);
             languages.remove(this.translation);
 
             LanguageDialogFragment dialog = LanguageDialogFragment.getInstance(languages);

@@ -10,6 +10,7 @@ import net.tlalka.android.fiszki.model.dto.LessonDto;
 import net.tlalka.android.fiszki.view.navigations.Navigator;
 
 import javax.inject.Inject;
+import java.util.Locale;
 
 public class LessonStatsActivity extends BasePageActivity {
 
@@ -33,7 +34,7 @@ public class LessonStatsActivity extends BasePageActivity {
 
     private void initActivity() {
         String lessonName = this.lessonDto.getLessonName();
-        String lessonDesc = this.lessonDto.getLessonLevel().name().toLowerCase();
+        String lessonDesc = this.lessonDto.getLessonLevel().name().toLowerCase(Locale.getDefault());
 
         this.textViewTopic.setText(localFormat("%s - %s", lessonName, lessonDesc));
     }

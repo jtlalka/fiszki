@@ -10,16 +10,16 @@ import net.tlalka.android.fiszki.model.entities.Lesson;
 
 import java.util.List;
 
-public class LessonsAdapter extends AbstractAdapter<Lesson> {
+public class TestsAdapter extends AbstractAdapter<Lesson> {
 
-    public LessonsAdapter(Context context, List<Lesson> elements) {
+    public TestsAdapter(Context context, List<Lesson> elements) {
         super(context, elements);
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup viewGroup) {
         if (convertView == null) {
-            convertView = super.getLayoutInflater().inflate(R.layout.lesson_list_item, viewGroup, false);
+            convertView = super.getLayoutInflater().inflate(R.layout.test_list_item, viewGroup, false);
             convertView.setTag(new ViewHolderPattern(convertView));
         }
 
@@ -28,13 +28,8 @@ public class LessonsAdapter extends AbstractAdapter<Lesson> {
         ViewHolderPattern viewHolderPattern = (ViewHolderPattern) convertView.getTag();
         viewHolderPattern.name.setText(getString(R.string.list_item, position + 1, lesson.getName()));
         viewHolderPattern.desc.setText(lesson.getLevelType().name());
-        viewHolderPattern.icon.setImageResource(getIconId(lesson.getProgress()));
 
         return convertView;
-    }
-
-    private int getIconId(int progress) {
-        return progress > 0 ? R.drawable.lessons_item_checked : R.drawable.lessons_item_empty;
     }
 
     private static class ViewHolderPattern {
