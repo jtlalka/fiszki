@@ -54,25 +54,25 @@
             android:background="?android:attr/selectableItemBackground">
 
             <Button
-                android:id="@+id/button_bad"
+                android:id="@+id/button_incorrect"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/sep_size_m"
                 android:layout_weight="1"
                 android:background="@drawable/patch_red"
                 android:gravity="center"
-                android:text="@string/button_bad"
+                android:text="@string/button_incorrect"
                 android:textSize="@dimen/font_size_l"/>
 
             <Button
-                android:id="@+id/button_good"
+                android:id="@+id/button_correct"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/sep_size_m"
                 android:layout_weight="1"
                 android:background="@drawable/patch_green"
                 android:gravity="center"
-                android:text="@string/button_good"
+                android:text="@string/button_correct"
                 android:textSize="@dimen/font_size_l"/>
         </LinearLayout>
     </LinearLayout>

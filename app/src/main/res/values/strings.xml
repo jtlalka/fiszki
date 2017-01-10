@@ -15,8 +15,8 @@
 
     <string name="button_yes">Tak</string>
     <string name="button_no">Nie</string>
-    <string name="button_good">Dobrze</string>
-    <string name="button_bad">Źle</string>
+    <string name="button_correct">Dobrze</string>
+    <string name="button_incorrect">Źle</string>
 
     <string name="null_value">\u0020</string>
     <string name="list_item">%1$d. %2$s</string>
@@ -35,8 +35,8 @@
 
     <string name="test_activity_show_word">[słowo]</string>
 
-    <string name="test_stats_activity_topic">Wszystkich wyrazów</string>
-    <string name="test_stats_activity_repeat">Powtórka</string>
+    <string name="test_stats_activity_total">Wszystkich wyrazów</string>
+    <string name="test_stats_activity_repeat">Wykonaj ponownie</string>
     <string name="test_stats_activity_tests">Wyswietl testy</string>
 
     <string name="settings_activity_language">Wybierz jezyk nauki:</string>

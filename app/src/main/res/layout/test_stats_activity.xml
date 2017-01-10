@@ -19,12 +19,12 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/button_count"
+                android:id="@+id/test_total"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/sep_size_m"
                 android:background="@drawable/patch_yellow"
-                android:text="@string/test_stats_activity_topic"
+                android:text="@string/test_stats_activity_total"
                 android:textSize="@dimen/font_size_l"/>
         </LinearLayout>
 
@@ -36,23 +36,23 @@
             android:background="?android:attr/selectableItemBackground">
 
             <Button
-                android:id="@+id/button_bad"
+                android:id="@+id/button_incorrect"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/sep_size_m"
                 android:layout_weight="1"
                 android:background="@drawable/patch_red"
-                android:text="@string/button_bad"
+                android:text="@string/button_incorrect"
                 android:textSize="@dimen/font_size_m"/>
 
             <Button
-                android:id="@+id/button_good"
+                android:id="@+id/button_correct"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/sep_size_m"
                 android:layout_weight="1"
                 android:background="@drawable/patch_green"
-                android:text="@string/button_good"
+                android:text="@string/button_correct"
                 android:textSize="@dimen/font_size_m"/>
         </LinearLayout>
 

@@ -25,11 +25,11 @@ public class TestActivity extends BasePageActivity implements LanguageDialogFrag
     @BindView(R.id.test_topic)
     protected TextView testTopic;
 
-    @BindView(R.id.lesson_show_word)
-    protected Button buttonWordShow;
+    @BindView(R.id.test_show_word)
+    protected Button testWordShow;
 
-    @BindView(R.id.lesson_check_word)
-    protected Button buttonWordCheck;
+    @BindView(R.id.test_check_word)
+    protected Button testWordCheck;
 
     @Inject
     protected LessonService lessonService;
@@ -71,8 +71,8 @@ public class TestActivity extends BasePageActivity implements LanguageDialogFrag
 
     private void generateView() {
         if (this.lessonService.hasNextWord()) {
-            this.buttonWordShow.setText(this.lessonService.getNextWord());
-            this.buttonWordCheck.setText(getText(R.string.lesson_activity_check_word));
+            this.testWordShow.setText(this.lessonService.getNextWord());
+            this.testWordCheck.setText(getText(R.string.lesson_activity_check_word));
         } else {
             this.showTestSummary();
         }
@@ -84,12 +84,12 @@ public class TestActivity extends BasePageActivity implements LanguageDialogFrag
         this.navigator.finish(this);
     }
 
-    @OnClick(R.id.lesson_check_word)
+    @OnClick(R.id.test_check_word)
     public void onCheckWordClick(View view) {
         Word word = this.lessonService.getTranslation(this.translation);
 
         if (ValidUtils.isNotNull(word)) {
-            this.buttonWordCheck.setText(word.getValue());
+            this.testWordCheck.setText(word.getValue());
         } else {
             List<LanguageType> languages = this.lessonService.getLanguages();
             languages.remove(this.language);
@@ -103,16 +103,16 @@ public class TestActivity extends BasePageActivity implements LanguageDialogFrag
     @Override
     public void onLanguageSelected(LanguageType languageType) {
         this.translation = languageType;
-        this.onCheckWordClick(this.buttonWordCheck);
+        this.onCheckWordClick(this.testWordCheck);
     }
 
-    @OnClick(R.id.button_good)
+    @OnClick(R.id.button_correct)
     public void onCorrectClick(View view) {
         this.lessonService.correctAnswer();
         this.generateView();
     }
 
-    @OnClick(R.id.button_bad)
+    @OnClick(R.id.button_incorrect)
     public void onIncorrectClick(View view) {
         this.lessonService.incorrectAnswer();
         this.generateView();

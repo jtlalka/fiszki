@@ -109,13 +109,13 @@ public class LessonActivity extends BasePageActivity implements LanguageDialogFr
         this.onCheckWordClick(this.lessonCheckWord);
     }
 
-    @OnClick(R.id.button_good)
+    @OnClick(R.id.button_correct)
     public void onCorrectClick(View view) {
         this.lessonService.correctAnswer();
         this.generateView();
     }
 
-    @OnClick(R.id.button_bad)
+    @OnClick(R.id.button_incorrect)
     public void onIncorrectClick(View view) {
         this.lessonService.incorrectAnswer();
         this.generateView();

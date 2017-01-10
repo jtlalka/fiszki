@@ -18,14 +18,14 @@ public class TestStatsActivity extends BasePageActivity {
     @BindView(R.id.test_topic)
     protected TextView testTopic;
 
-    @BindView(R.id.button_count)
-    protected Button buttonCount;
+    @BindView(R.id.test_total)
+    protected Button testTotal;
 
-    @BindView(R.id.button_good)
-    protected Button buttonGood;
+    @BindView(R.id.button_correct)
+    protected Button testCorrect;
 
-    @BindView(R.id.button_bad)
-    protected Button buttonBad;
+    @BindView(R.id.button_incorrect)
+    protected Button testIncorrect;
 
     @Inject
     protected Navigator navigator;
@@ -47,9 +47,9 @@ public class TestStatsActivity extends BasePageActivity {
         String lessonDesc = lessonDto.getLessonLevel().name().toLowerCase(Locale.getDefault());
 
         this.testTopic.setText(localFormat("%s - %s", lessonName, lessonDesc));
-        this.buttonCount.setText(localFormat("%s: %d", this.buttonCount.getText(), lessonDto.getLessonId()));
-        this.buttonGood.setText(localFormat("%s\n%d", this.buttonGood.getText(), lessonDto.getLessonId()));
-        this.buttonBad.setText(localFormat("%s\n%d", this.buttonBad.getText(), lessonDto.getLessonId()));
+        this.testTotal.setText(localFormat("%s: %d", this.testTotal.getText(), lessonDto.getLessonId()));
+        this.testCorrect.setText(localFormat("%s\n%d", this.testCorrect.getText(), lessonDto.getLessonId()));
+        this.testIncorrect.setText(localFormat("%s\n%d", this.testIncorrect.getText(), lessonDto.getLessonId()));
     }
 
     @OnClick(R.id.test_stats_repeat)
