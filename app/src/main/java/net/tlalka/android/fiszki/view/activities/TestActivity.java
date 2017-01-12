@@ -7,7 +7,7 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.OnClick;
 import net.tlalka.android.fiszki.R;
-import net.tlalka.android.fiszki.domain.services.LessonService;
+import net.tlalka.android.fiszki.domain.controllers.TestController;
 import net.tlalka.android.fiszki.domain.services.StorageService;
 import net.tlalka.android.fiszki.domain.utils.ValidUtils;
 import net.tlalka.android.fiszki.model.dto.LessonDto;
@@ -18,7 +18,6 @@ import net.tlalka.android.fiszki.view.navigations.Navigator;
 
 import javax.inject.Inject;
 import java.util.List;
-import java.util.Locale;
 
 public class TestActivity extends BasePageActivity implements LanguageDialogFragment.DialogListener {
 
@@ -28,11 +27,20 @@ public class TestActivity extends BasePageActivity implements LanguageDialogFrag
     @BindView(R.id.test_show_word)
     protected Button testWordShow;
 
-    @BindView(R.id.test_check_word)
-    protected Button testWordCheck;
+    @BindView(R.id.test_answer_1)
+    protected Button testAnswer1;
+
+    @BindView(R.id.test_answer_2)
+    protected Button testAnswer2;
+
+    @BindView(R.id.test_answer_3)
+    protected Button testAnswer3;
+
+    @BindView(R.id.test_answer_4)
+    protected Button testAnswer4;
 
     @Inject
-    protected LessonService lessonService;
+    protected TestController testController;
 
     @Inject
     protected StorageService storageService;
@@ -62,36 +70,32 @@ public class TestActivity extends BasePageActivity implements LanguageDialogFrag
     }
 
     private void runActivity() {
+        int lessonIndex = this.lessonDto.getLessonIndex();
         String lessonName = this.lessonDto.getLessonName();
-        String lessonDesc = this.lessonDto.getLessonLevel().name().toLowerCase(Locale.getDefault());
 
-        this.testTopic.setText(localFormat("%s - %s", lessonName, lessonDesc));
+        this.testTopic.setText(getString(R.string.test_activity_topic, lessonIndex, lessonName));
         this.generateView();
     }
 
     private void generateView() {
-        if (this.lessonService.hasNextWord()) {
-            this.testWordShow.setText(this.lessonService.getNextWord());
-            this.testWordCheck.setText(getText(R.string.lesson_activity_check_word));
+        if (this.testController.hasNextWord()) {
+            this.testWordShow.setText(this.testController.getNextWord());
+            this.generateAnswers();
         } else {
             this.showTestSummary();
         }
     }
 
-    private void showTestSummary() {
-        this.lessonService.updateLessonProgress();
-        this.navigator.openTestStatActivity(this, this.lessonDto);
-        this.navigator.finish(this);
-    }
+    public void generateAnswers() {
+        List<Word> answers = this.testController.getAnswers(this.translation);
 
-    @OnClick(R.id.test_check_word)
-    public void onCheckWordClick(View view) {
-        Word word = this.lessonService.getTranslation(this.translation);
-
-        if (ValidUtils.isNotNull(word)) {
-            this.testWordCheck.setText(word.getValue());
+        if (ValidUtils.isNotEmpty(answers)) {
+            this.testAnswer1.setText(answers.get(0).getValue());
+            this.testAnswer2.setText(answers.get(1).getValue());
+            this.testAnswer3.setText(answers.get(2).getValue());
+            this.testAnswer4.setText(answers.get(3).getValue());
         } else {
-            List<LanguageType> languages = this.lessonService.getLanguages();
+            List<LanguageType> languages = this.testController.getLanguages();
             languages.remove(this.language);
             languages.remove(this.translation);
 
@@ -100,21 +104,45 @@ public class TestActivity extends BasePageActivity implements LanguageDialogFrag
         }
     }
 
+    private void showTestSummary() {
+        this.testController.updateTestScore();
+        this.navigator.openTestStatActivity(this, this.lessonDto);
+        this.navigator.finish(this);
+    }
+
     @Override
     public void onLanguageSelected(LanguageType languageType) {
         this.translation = languageType;
-        this.onCheckWordClick(this.testWordCheck);
+        this.generateAnswers();
     }
 
-    @OnClick(R.id.button_correct)
-    public void onCorrectClick(View view) {
-        this.lessonService.correctAnswer();
-        this.generateView();
+    @OnClick(R.id.test_answer_1)
+    public void onAnswer1Click(View view) {
+        this.validAnswer(0);
     }
 
-    @OnClick(R.id.button_incorrect)
-    public void onIncorrectClick(View view) {
-        this.lessonService.incorrectAnswer();
-        this.generateView();
+    @OnClick(R.id.test_answer_2)
+    public void onAnswer2Click(View view) {
+        this.validAnswer(1);
+    }
+
+    @OnClick(R.id.test_answer_3)
+    public void onAnswer3Click(View view) {
+        this.validAnswer(2);
+    }
+
+    @OnClick(R.id.test_answer_4)
+    public void onAnswer4Click(View view) {
+        this.validAnswer(3);
+    }
+
+    private void validAnswer(int id) {
+        super.alert("Nat implemented yet.");
+
+        if (this.testController.validAnswer(id)) {
+            this.testController.correctAnswer();
+        } else {
+            this.testController.incorrectAnswer();
+        }
     }
 }

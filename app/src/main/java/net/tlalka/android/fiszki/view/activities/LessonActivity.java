@@ -7,7 +7,7 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.OnClick;
 import net.tlalka.android.fiszki.R;
-import net.tlalka.android.fiszki.domain.services.LessonService;
+import net.tlalka.android.fiszki.domain.controllers.LessonController;
 import net.tlalka.android.fiszki.domain.services.StorageService;
 import net.tlalka.android.fiszki.domain.utils.ValidUtils;
 import net.tlalka.android.fiszki.model.dto.LessonDto;
@@ -34,7 +34,7 @@ public class LessonActivity extends BasePageActivity implements LanguageDialogFr
     protected Button lessonCheckWord;
 
     @Inject
-    protected LessonService lessonService;
+    protected LessonController lessonController;
 
     @Inject
     protected StorageService storageService;
@@ -72,9 +72,9 @@ public class LessonActivity extends BasePageActivity implements LanguageDialogFr
     }
 
     private void generateView() {
-        if (this.lessonService.hasNextWord()) {
-            this.lessonProgress.setText(this.lessonService.getLessonStatus());
-            this.lessonShowWord.setText(this.lessonService.getNextWord());
+        if (this.lessonController.hasNextWord()) {
+            this.lessonProgress.setText(lessonController.getLessonStatus());
+            this.lessonShowWord.setText(lessonController.getNextWord());
             this.lessonCheckWord.setText(getText(R.string.lesson_activity_check_word));
         } else {
             this.showLessonSummary();
@@ -82,19 +82,19 @@ public class LessonActivity extends BasePageActivity implements LanguageDialogFr
     }
 
     private void showLessonSummary() {
-        this.lessonService.updateLessonProgress();
+        this.lessonController.updateLessonProgress();
         this.navigator.openLessonStatActivity(this, this.lessonDto);
         this.navigator.finish(this);
     }
 
     @OnClick(R.id.lesson_check_word)
     public void onCheckWordClick(View view) {
-        Word word = this.lessonService.getTranslation(this.translation);
+        Word word = this.lessonController.getTranslation(translation);
 
         if (ValidUtils.isNotNull(word)) {
             this.lessonCheckWord.setText(word.getValue());
         } else {
-            List<LanguageType> languages = this.lessonService.getLanguages();
+            List<LanguageType> languages = this.lessonController.getLanguages();
             languages.remove(this.language);
             languages.remove(this.translation);
 
@@ -111,13 +111,13 @@ public class LessonActivity extends BasePageActivity implements LanguageDialogFr
 
     @OnClick(R.id.button_correct)
     public void onCorrectClick(View view) {
-        this.lessonService.correctAnswer();
+        this.lessonController.correctAnswer();
         this.generateView();
     }
 
     @OnClick(R.id.button_incorrect)
     public void onIncorrectClick(View view) {
-        this.lessonService.incorrectAnswer();
+        this.lessonController.incorrectAnswer();
         this.generateView();
     }
 }

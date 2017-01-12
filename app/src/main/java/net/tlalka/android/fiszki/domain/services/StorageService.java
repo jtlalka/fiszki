@@ -14,18 +14,18 @@ public class StorageService {
     private static final LanguageType DEFAULT_TRANSLATION = LanguageType.PL;
 
     @Inject
-    public StorageService() {
-    }
+    protected StorageHelper storageHelper;
 
     @Inject
-    protected StorageHelper storageHelper;
+    public StorageService() {
+    }
 
     public boolean isWelcomeView() {
         return this.storageHelper.getBoolean(StorageType.WELCOME_VIEW, true);
     }
 
-    public void setWelcomeView(boolean value) {
-        this.storageHelper.setBoolean(StorageType.WELCOME_VIEW, value);
+    public void setWelcomeView(boolean visible) {
+        this.storageHelper.setBoolean(StorageType.WELCOME_VIEW, visible);
     }
 
     public LanguageType getLanguage() {

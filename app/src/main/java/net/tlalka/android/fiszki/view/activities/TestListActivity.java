@@ -6,7 +6,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import butterknife.BindView;
 import net.tlalka.android.fiszki.R;
-import net.tlalka.android.fiszki.domain.services.LessonListService;
+import net.tlalka.android.fiszki.domain.controllers.ListController;
 import net.tlalka.android.fiszki.model.dto.LessonDto;
 import net.tlalka.android.fiszki.model.entities.Lesson;
 import net.tlalka.android.fiszki.view.adapters.TestsAdapter;
@@ -20,7 +20,7 @@ public class TestListActivity extends BasePageActivity implements AdapterView.On
     protected ListView listView;
 
     @Inject
-    protected LessonListService lessonListService;
+    protected ListController listController;
 
     @Inject
     protected Navigator navigator;
@@ -35,8 +35,8 @@ public class TestListActivity extends BasePageActivity implements AdapterView.On
     }
 
     private void initLessonsList() {
-        listView.setAdapter(new TestsAdapter(this, lessonListService.getLessons()));
-        listView.setOnItemClickListener(this);
+        this.listView.setAdapter(new TestsAdapter(this, listController.getLessonList()));
+        this.listView.setOnItemClickListener(this);
     }
 
     @Override
