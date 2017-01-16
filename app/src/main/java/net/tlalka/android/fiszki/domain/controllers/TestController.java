@@ -3,6 +3,7 @@ package net.tlalka.android.fiszki.domain.controllers;
 import net.tlalka.android.fiszki.core.annotations.ActivityScope;
 import net.tlalka.android.fiszki.domain.services.LessonService;
 import net.tlalka.android.fiszki.domain.services.WordService;
+import net.tlalka.android.fiszki.domain.utils.ValidUtils;
 import net.tlalka.android.fiszki.model.dto.LessonDto;
 import net.tlalka.android.fiszki.model.entities.Lesson;
 import net.tlalka.android.fiszki.model.entities.Word;
@@ -22,8 +23,9 @@ public class TestController {
 
     private Lesson lesson;
     private List<Word> words;
-    private List<Word> answers;
-    private Word correctAnswer;
+    private List<String> answers;
+    private String correctAnswer;
+    private Word activeWord;
 
     private int wordIndex;
     private int correctScore;
@@ -37,39 +39,43 @@ public class TestController {
         this.lesson = lessonService.getLesson(lessonDto.getLessonId());
         this.words = wordService.getWords(lesson);
 
-        Collections.shuffle(words);
+        this.randomiseCollection(words);
     }
 
-    public List<Word> getAnswers(LanguageType languageType) {
-        this.correctAnswer = this.getTranslation(this.getActiveWord(), languageType);
+    private void randomiseCollection(List<?> list) {
+        Collections.shuffle(list);
+    }
 
-        if (correctAnswer != null) {
+    public List<String> getAnswers(LanguageType languageType) {
+        Word translation = this.getTranslation(this.activeWord, languageType);
+
+        if (ValidUtils.isNotNull(translation)) {
+            this.correctAnswer = translation.getValue();
             this.answers = new ArrayList<>();
             this.answers.add(correctAnswer);
 
-            this.answers = this.generateAnswerList(answers, languageType, 3);
+            this.generateAnswers(answers, languageType, 3);
+            this.randomiseCollection(answers);
             return answers;
         } else {
             return Collections.emptyList();
         }
     }
 
-    private List<Word> generateAnswerList(List<Word> answers, LanguageType languageType, int size) {
+    private void generateAnswers(List<String> answers, LanguageType languageType, int size) {
         if (size > 0 && this.generateAnswer(answers, languageType)) {
-            return this.generateAnswerList(answers, languageType, --size);
-        } else {
-            return answers;
+            this.generateAnswers(answers, languageType, --size);
         }
     }
 
-    private boolean generateAnswer(List<Word> answers, LanguageType languageType) {
+    private boolean generateAnswer(List<String> answers, LanguageType languageType) {
         Word word = words.get(new Random().nextInt(words.size()));
         Word translation = this.getTranslation(word, languageType);
 
-        if (answers.contains(translation)) {
+        if (answers.contains(translation.getValue())) {
             return generateAnswer(answers, languageType);
         } else {
-            return answers.add(translation);
+            return answers.add(translation.getValue());
         }
     }
 
@@ -78,15 +84,7 @@ public class TestController {
     }
 
     public List<LanguageType> getLanguages() {
-        return this.wordService.getLanguages(this.getActiveWord());
-    }
-
-    public boolean validAnswer(int index) {
-        return this.answers.indexOf(this.correctAnswer) == index;
-    }
-
-    private Word getActiveWord() {
-        return this.words.get(wordIndex);
+        return this.wordService.getLanguages(this.activeWord);
     }
 
     public boolean hasNextWord() {
@@ -94,15 +92,26 @@ public class TestController {
     }
 
     public String getNextWord() {
-        return this.words.get(wordIndex++).getValue();
+        this.activeWord = this.words.get(wordIndex++);
+        return this.activeWord.getValue();
     }
 
-    public void correctAnswer() {
-        this.correctScore++;
+    public int getWordIndex() {
+        return this.wordIndex;
     }
 
-    public void incorrectAnswer() {
-        this.incorrectScore++;
+    public int getWordSize() {
+        return this.words.size();
+    }
+
+    public boolean validAnswer(int index) {
+        if (this.answers.indexOf(this.correctAnswer) == index) {
+            this.correctScore++;
+            return true;
+        } else {
+            this.incorrectScore++;
+            return false;
+        }
     }
 
     public void updateTestScore() {

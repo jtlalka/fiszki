@@ -1,6 +1,7 @@
 package net.tlalka.android.fiszki.view.activities;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -11,7 +12,6 @@ import net.tlalka.android.fiszki.domain.controllers.TestController;
 import net.tlalka.android.fiszki.domain.services.StorageService;
 import net.tlalka.android.fiszki.domain.utils.ValidUtils;
 import net.tlalka.android.fiszki.model.dto.LessonDto;
-import net.tlalka.android.fiszki.model.entities.Word;
 import net.tlalka.android.fiszki.model.types.LanguageType;
 import net.tlalka.android.fiszki.view.fragments.LanguageDialogFragment;
 import net.tlalka.android.fiszki.view.navigations.Navigator;
@@ -23,6 +23,9 @@ public class TestActivity extends BasePageActivity implements LanguageDialogFrag
 
     @BindView(R.id.test_topic)
     protected TextView testTopic;
+
+    @BindView(R.id.test_progress)
+    protected TextView testProgress;
 
     @BindView(R.id.test_show_word)
     protected Button testWordShow;
@@ -79,6 +82,10 @@ public class TestActivity extends BasePageActivity implements LanguageDialogFrag
 
     private void generateView() {
         if (this.testController.hasNextWord()) {
+            int index = this.testController.getWordIndex();
+            int total = this.testController.getWordSize();
+
+            this.testProgress.setText(getString(R.string.test_activity_score, index, total));
             this.testWordShow.setText(this.testController.getNextWord());
             this.generateAnswers();
         } else {
@@ -86,14 +93,14 @@ public class TestActivity extends BasePageActivity implements LanguageDialogFrag
         }
     }
 
-    public void generateAnswers() {
-        List<Word> answers = this.testController.getAnswers(this.translation);
+    private void generateAnswers() {
+        List<String> answers = this.testController.getAnswers(this.translation);
 
         if (ValidUtils.isNotEmpty(answers)) {
-            this.testAnswer1.setText(answers.get(0).getValue());
-            this.testAnswer2.setText(answers.get(1).getValue());
-            this.testAnswer3.setText(answers.get(2).getValue());
-            this.testAnswer4.setText(answers.get(3).getValue());
+            this.testAnswer1.setText(answers.get(0));
+            this.testAnswer2.setText(answers.get(1));
+            this.testAnswer3.setText(answers.get(2));
+            this.testAnswer4.setText(answers.get(3));
         } else {
             List<LanguageType> languages = this.testController.getLanguages();
             languages.remove(this.language);
@@ -118,31 +125,40 @@ public class TestActivity extends BasePageActivity implements LanguageDialogFrag
 
     @OnClick(R.id.test_answer_1)
     public void onAnswer1Click(View view) {
-        this.validAnswer(0);
+        validAnswer(testAnswer1, 0);
     }
 
     @OnClick(R.id.test_answer_2)
     public void onAnswer2Click(View view) {
-        this.validAnswer(1);
+        validAnswer(testAnswer2, 1);
     }
 
     @OnClick(R.id.test_answer_3)
     public void onAnswer3Click(View view) {
-        this.validAnswer(2);
+        validAnswer(testAnswer3, 2);
     }
 
     @OnClick(R.id.test_answer_4)
     public void onAnswer4Click(View view) {
-        this.validAnswer(3);
+        validAnswer(testAnswer4, 3);
     }
 
-    private void validAnswer(int id) {
-        super.alert("Nat implemented yet.");
-
-        if (this.testController.validAnswer(id)) {
-            this.testController.correctAnswer();
+    private void validAnswer(Button button, int index) {
+        if (testController.validAnswer(index)) {
+            button.setBackgroundResource(R.drawable.patch_green);
+            delayedNextView();
         } else {
-            this.testController.incorrectAnswer();
+            button.setBackgroundResource(R.drawable.patch_red);
         }
+    }
+
+    private void delayedNextView() {
+        new Handler().postDelayed(() -> {
+            this.testAnswer1.setBackgroundResource(R.drawable.patch_cyan);
+            this.testAnswer2.setBackgroundResource(R.drawable.patch_cyan);
+            this.testAnswer3.setBackgroundResource(R.drawable.patch_cyan);
+            this.testAnswer4.setBackgroundResource(R.drawable.patch_cyan);
+            this.generateView();
+        }, 500);
     }
 }

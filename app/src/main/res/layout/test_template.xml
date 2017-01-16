@@ -19,11 +19,22 @@
         android:id="@+id/test_topic"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
         android:layout_toEndOf="@id/image_view_topic"
+        android:layout_toStartOf="@+id/test_progress"
         android:gravity="center_vertical"
         android:text="@string/nav_tests"
+        android:textSize="@dimen/font_size_l"/>
+
+    <TextView
+        android:id="@+id/test_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="@dimen/topic_icon_margin"
+        android:gravity="center_vertical"
+        android:text="@string/test_activity_progress"
         android:textSize="@dimen/font_size_l"/>
 
 </RelativeLayout>
