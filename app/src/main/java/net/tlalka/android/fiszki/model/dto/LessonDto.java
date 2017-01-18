@@ -15,11 +15,11 @@ public class LessonDto {
     public LessonDto() {
     }
 
-    public LessonDto(Lesson lesson, int position) {
+    public LessonDto(Lesson lesson, int index) {
         this.lessonId = lesson.getId();
         this.lessonName = lesson.getName();
         this.lessonLevel = lesson.getLevelType();
-        this.lessonIndex = position;
+        this.lessonIndex = index;
     }
 
     public long getLessonId() {

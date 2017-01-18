@@ -33,11 +33,15 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".view.activities.LessonActivity"/>
+        <activity android:name=".view.activities.LessonActivity"
+                  android:configChanges="orientation|screenSize|keyboardHidden"/>
+
         <activity android:name=".view.activities.LessonListActivity"/>
         <activity android:name=".view.activities.LessonStatsActivity"/>
 
-        <activity android:name=".view.activities.TestActivity"/>
+        <activity android:name=".view.activities.TestActivity"
+                  android:configChanges="orientation|screenSize|keyboardHidden"/>
+
         <activity android:name=".view.activities.TestListActivity"/>
         <activity android:name=".view.activities.TestStatsActivity"/>
 

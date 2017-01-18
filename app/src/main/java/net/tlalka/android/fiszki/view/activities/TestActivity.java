@@ -9,7 +9,6 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import net.tlalka.android.fiszki.R;
 import net.tlalka.android.fiszki.domain.controllers.TestController;
-import net.tlalka.android.fiszki.domain.services.StorageService;
 import net.tlalka.android.fiszki.domain.utils.ValidUtils;
 import net.tlalka.android.fiszki.model.dto.LessonDto;
 import net.tlalka.android.fiszki.model.types.LanguageType;
@@ -46,16 +45,10 @@ public class TestActivity extends BasePageActivity implements LanguageDialogFrag
     protected TestController testController;
 
     @Inject
-    protected StorageService storageService;
-
-    @Inject
     protected Navigator navigator;
 
     @Inject
     protected LessonDto lessonDto;
-
-    private LanguageType language;
-    private LanguageType translation;
 
     @Override
     public void onCreate(Bundle bundle) {
@@ -63,13 +56,7 @@ public class TestActivity extends BasePageActivity implements LanguageDialogFrag
         super.setContentView(R.layout.test_activity);
         super.getActivityComponent().inject(this);
 
-        this.initStorage();
         this.runActivity();
-    }
-
-    private void initStorage() {
-        this.language = this.storageService.getLanguage();
-        this.translation = this.storageService.getTranslation();
     }
 
     private void runActivity() {
@@ -83,7 +70,7 @@ public class TestActivity extends BasePageActivity implements LanguageDialogFrag
     private void generateView() {
         if (this.testController.hasNextWord()) {
             int index = this.testController.getWordIndex();
-            int total = this.testController.getWordSize();
+            int total = this.testController.getTestSize();
 
             this.testProgress.setText(getString(R.string.test_activity_score, index, total));
             this.testWordShow.setText(this.testController.getNextWord());
@@ -94,7 +81,7 @@ public class TestActivity extends BasePageActivity implements LanguageDialogFrag
     }
 
     private void generateAnswers() {
-        List<String> answers = this.testController.getAnswers(this.translation);
+        List<String> answers = testController.getAnswers();
 
         if (ValidUtils.isNotEmpty(answers)) {
             this.testAnswer1.setText(answers.get(0));
@@ -102,10 +89,7 @@ public class TestActivity extends BasePageActivity implements LanguageDialogFrag
             this.testAnswer3.setText(answers.get(2));
             this.testAnswer4.setText(answers.get(3));
         } else {
-            List<LanguageType> languages = this.testController.getLanguages();
-            languages.remove(this.language);
-            languages.remove(this.translation);
-
+            List<LanguageType> languages = testController.getLanguages();
             LanguageDialogFragment dialog = LanguageDialogFragment.getInstance(languages);
             dialog.show(getFragmentManager(), LanguageDialogFragment.class.getName());
         }
@@ -119,7 +103,7 @@ public class TestActivity extends BasePageActivity implements LanguageDialogFrag
 
     @Override
     public void onLanguageSelected(LanguageType languageType) {
-        this.translation = languageType;
+        this.testController.setTranslation(languageType);
         this.generateAnswers();
     }
 

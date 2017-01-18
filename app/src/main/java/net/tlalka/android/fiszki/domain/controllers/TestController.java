@@ -1,7 +1,9 @@
 package net.tlalka.android.fiszki.domain.controllers;
 
 import net.tlalka.android.fiszki.core.annotations.ActivityScope;
+import net.tlalka.android.fiszki.domain.services.CacheService;
 import net.tlalka.android.fiszki.domain.services.LessonService;
+import net.tlalka.android.fiszki.domain.services.StorageService;
 import net.tlalka.android.fiszki.domain.services.WordService;
 import net.tlalka.android.fiszki.domain.utils.ValidUtils;
 import net.tlalka.android.fiszki.model.dto.LessonDto;
@@ -18,8 +20,11 @@ import java.util.Random;
 @ActivityScope
 public class TestController {
 
-    private LessonService lessonService;
-    private WordService wordService;
+    @Inject
+    protected LessonService lessonService;
+
+    @Inject
+    protected WordService wordService;
 
     private Lesson lesson;
     private List<Word> words;
@@ -27,34 +32,31 @@ public class TestController {
     private String correctAnswer;
     private Word activeWord;
 
+    private LanguageType language;
+    private LanguageType translation;
+
     private int wordIndex;
     private int correctScore;
     private int incorrectScore;
 
     @Inject
-    public TestController(LessonService lessonService, WordService wordService, LessonDto lessonDto) {
-        this.lessonService = lessonService;
-        this.wordService = wordService;
-
-        this.lesson = lessonService.getLesson(lessonDto.getLessonId());
-        this.words = wordService.getWords(lesson);
-
+    public TestController(CacheService cacheService, StorageService storageService, LessonDto lessonDto) {
+        this.lesson = cacheService.getLesson(lessonDto.getLessonId());
+        this.words = cacheService.getWords(lesson);
+        this.language = storageService.getLanguage();
+        this.translation = storageService.getTranslation();
         this.randomiseCollection(words);
     }
 
-    private void randomiseCollection(List<?> list) {
-        Collections.shuffle(list);
-    }
+    public List<String> getAnswers() {
+        Word answer = this.getTranslateWord(this.activeWord);
 
-    public List<String> getAnswers(LanguageType languageType) {
-        Word translation = this.getTranslation(this.activeWord, languageType);
-
-        if (ValidUtils.isNotNull(translation)) {
-            this.correctAnswer = translation.getValue();
+        if (ValidUtils.isNotNull(answer)) {
+            this.correctAnswer = answer.getValue();
             this.answers = new ArrayList<>();
             this.answers.add(correctAnswer);
 
-            this.generateAnswers(answers, languageType, 3);
+            this.generateAnswers(answers, 3);
             this.randomiseCollection(answers);
             return answers;
         } else {
@@ -62,33 +64,39 @@ public class TestController {
         }
     }
 
-    private void generateAnswers(List<String> answers, LanguageType languageType, int size) {
-        if (size > 0 && this.generateAnswer(answers, languageType)) {
-            this.generateAnswers(answers, languageType, --size);
+    private void generateAnswers(List<String> answers, int size) {
+        if (size > 0 && this.generateAnswer(answers)) {
+            this.generateAnswers(answers, --size);
         }
     }
 
-    private boolean generateAnswer(List<String> answers, LanguageType languageType) {
+    private boolean generateAnswer(List<String> answers) {
         Word word = words.get(new Random().nextInt(words.size()));
-        Word translation = this.getTranslation(word, languageType);
-
-        if (answers.contains(translation.getValue())) {
-            return generateAnswer(answers, languageType);
-        } else {
-            return answers.add(translation.getValue());
-        }
+        String value = this.getTranslateWord(word).getValue();
+        return answers.contains(value) ? generateAnswer(answers) : answers.add(value);
     }
 
-    private Word getTranslation(Word word, LanguageType languageType) {
-        return this.wordService.getTranslation(word, languageType);
+    private Word getTranslateWord(Word word) {
+        return this.wordService.getTranslation(word, this.translation);
+    }
+
+    private void randomiseCollection(List<?> list) {
+        Collections.shuffle(list);
     }
 
     public List<LanguageType> getLanguages() {
-        return this.wordService.getLanguages(this.activeWord);
+        List<LanguageType> languages = this.wordService.getLanguages(this.activeWord);
+        languages.remove(this.language);
+        languages.remove(this.translation);
+        return languages;
+    }
+
+    public void setTranslation(LanguageType translation) {
+        this.translation = translation;
     }
 
     public boolean hasNextWord() {
-        return this.wordIndex < this.words.size();
+        return this.words.size() > 0;
     }
 
     public String getNextWord() {
@@ -100,7 +108,7 @@ public class TestController {
         return this.wordIndex;
     }
 
-    public int getWordSize() {
+    public int getTestSize() {
         return this.words.size();
     }
 
