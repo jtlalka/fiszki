@@ -1,7 +1,9 @@
 package net.tlalka.android.fiszki.domain.controllers;
 
 import net.tlalka.android.fiszki.core.annotations.ActivityScope;
+import net.tlalka.android.fiszki.domain.services.CacheService;
 import net.tlalka.android.fiszki.domain.services.LessonService;
+import net.tlalka.android.fiszki.domain.services.StorageService;
 import net.tlalka.android.fiszki.domain.services.WordService;
 import net.tlalka.android.fiszki.model.dto.LessonDto;
 import net.tlalka.android.fiszki.model.entities.Lesson;
@@ -15,28 +17,41 @@ import java.util.Random;
 @ActivityScope
 public class LessonController {
 
-    private LessonService lessonService;
-    private WordService wordService;
+    @Inject
+    protected LessonService lessonService;
+
+    @Inject
+    protected WordService wordService;
 
     private Lesson lesson;
     private List<Word> words;
     private Word activeWord;
 
-    @Inject
-    public LessonController(LessonService lessonService, WordService wordService, LessonDto lessonDto) {
-        this.lessonService = lessonService;
-        this.wordService = wordService;
+    private LanguageType language;
+    private LanguageType translation;
 
-        this.lesson = lessonService.getLesson(lessonDto.getLessonId());
-        this.words = wordService.getWords(lesson);
+    @Inject
+    public LessonController(CacheService cacheService, StorageService storageService, LessonDto lessonDto) {
+        this.lesson = cacheService.getLesson(lessonDto.getLessonId());
+        this.words = cacheService.getWords(lesson);
+
+        this.language = storageService.getLanguage();
+        this.translation = storageService.getTranslation();
     }
 
-    public Word getTranslation(LanguageType languageType) {
-        return wordService.getTranslation(activeWord, languageType);
+    public Word getTranslateWord() {
+        return wordService.getTranslation(activeWord, translation);
     }
 
     public List<LanguageType> getLanguages() {
-        return wordService.getLanguages(activeWord);
+        List<LanguageType> languages = wordService.getLanguages(activeWord);
+        languages.remove(this.language);
+        languages.remove(this.translation);
+        return languages;
+    }
+
+    public void setTranslation(LanguageType translation) {
+        this.translation = translation;
     }
 
     public boolean hasNextWord() {

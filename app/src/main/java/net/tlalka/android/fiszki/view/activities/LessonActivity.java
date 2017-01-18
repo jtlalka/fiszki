@@ -8,7 +8,6 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import net.tlalka.android.fiszki.R;
 import net.tlalka.android.fiszki.domain.controllers.LessonController;
-import net.tlalka.android.fiszki.domain.services.StorageService;
 import net.tlalka.android.fiszki.domain.utils.ValidUtils;
 import net.tlalka.android.fiszki.model.dto.LessonDto;
 import net.tlalka.android.fiszki.model.entities.Word;
@@ -37,16 +36,10 @@ public class LessonActivity extends BasePageActivity implements LanguageDialogFr
     protected LessonController lessonController;
 
     @Inject
-    protected StorageService storageService;
-
-    @Inject
     protected Navigator navigator;
 
     @Inject
     protected LessonDto lessonDto;
-
-    private LanguageType language;
-    private LanguageType translation;
 
     @Override
     public void onCreate(Bundle bundle) {
@@ -54,13 +47,7 @@ public class LessonActivity extends BasePageActivity implements LanguageDialogFr
         super.setContentView(R.layout.lesson_activity);
         super.getActivityComponent().inject(this);
 
-        this.initStorage();
         this.runActivity();
-    }
-
-    private void initStorage() {
-        this.language = this.storageService.getLanguage();
-        this.translation = this.storageService.getTranslation();
     }
 
     private void runActivity() {
@@ -89,15 +76,12 @@ public class LessonActivity extends BasePageActivity implements LanguageDialogFr
 
     @OnClick(R.id.lesson_check_word)
     public void onCheckWordClick(View view) {
-        Word word = this.lessonController.getTranslation(translation);
+        Word word = this.lessonController.getTranslateWord();
 
         if (ValidUtils.isNotNull(word)) {
             this.lessonCheckWord.setText(word.getValue());
         } else {
-            List<LanguageType> languages = this.lessonController.getLanguages();
-            languages.remove(this.language);
-            languages.remove(this.translation);
-
+            List<LanguageType> languages = lessonController.getLanguages();
             LanguageDialogFragment dialog = LanguageDialogFragment.getInstance(languages);
             dialog.show(getFragmentManager(), LanguageDialogFragment.class.getName());
         }
@@ -105,8 +89,8 @@ public class LessonActivity extends BasePageActivity implements LanguageDialogFr
 
     @Override
     public void onLanguageSelected(LanguageType languageType) {
-        this.translation = languageType;
-        this.onCheckWordClick(this.lessonCheckWord);
+        this.lessonController.setTranslation(languageType);
+        this.onCheckWordClick(lessonCheckWord);
     }
 
     @OnClick(R.id.button_correct)
