@@ -72,7 +72,7 @@ public class TestActivity extends BasePageActivity implements LanguageDialogFrag
             int index = this.testController.getWordIndex();
             int total = this.testController.getTestSize();
 
-            this.testProgress.setText(getString(R.string.test_activity_score, index, total));
+            this.testProgress.setText(getString(R.string.test_activity_score, index + 1, total));
             this.testWordShow.setText(this.testController.getNextWord());
             this.generateAnswers();
         } else {
@@ -96,8 +96,9 @@ public class TestActivity extends BasePageActivity implements LanguageDialogFrag
     }
 
     private void showTestSummary() {
-        this.testController.updateTestScore();
-        this.navigator.openTestStatActivity(this, this.lessonDto);
+        this.testController.updateBestScore();
+        this.testController.updateLessonDto(lessonDto);
+        this.navigator.openTestStatActivity(this, lessonDto);
         this.navigator.finish(this);
     }
 

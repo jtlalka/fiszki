@@ -11,7 +11,6 @@ import net.tlalka.android.fiszki.model.dto.LessonDto;
 import net.tlalka.android.fiszki.view.navigations.Navigator;
 
 import javax.inject.Inject;
-import java.util.Locale;
 
 public class TestStatsActivity extends BasePageActivity {
 
@@ -21,11 +20,11 @@ public class TestStatsActivity extends BasePageActivity {
     @BindView(R.id.test_total)
     protected Button testTotal;
 
-    @BindView(R.id.button_correct)
-    protected Button testCorrect;
+    @BindView(R.id.test_score)
+    protected TextView testScore;
 
-    @BindView(R.id.button_incorrect)
-    protected Button testIncorrect;
+    @BindView(R.id.test_incorrect)
+    protected TextView testIncorrect;
 
     @Inject
     protected Navigator navigator;
@@ -43,13 +42,13 @@ public class TestStatsActivity extends BasePageActivity {
     }
 
     private void runActivity() {
-        String lessonName = lessonDto.getLessonName();
-        String lessonDesc = lessonDto.getLessonLevel().name().toLowerCase(Locale.getDefault());
+        int lessonIndex = this.lessonDto.getLessonIndex();
+        String lessonName = this.lessonDto.getLessonName();
 
-        this.testTopic.setText(localFormat("%s - %s", lessonName, lessonDesc));
-        this.testTotal.setText(localFormat("%s: %d", this.testTotal.getText(), lessonDto.getLessonId()));
-        this.testCorrect.setText(localFormat("%s\n%d", this.testCorrect.getText(), lessonDto.getLessonId()));
-        this.testIncorrect.setText(localFormat("%s\n%d", this.testIncorrect.getText(), lessonDto.getLessonId()));
+        this.testTopic.setText(getString(R.string.test_activity_topic, lessonIndex, lessonName));
+        this.testTotal.setText(getString(R.string.test_stats_activity_total, lessonDto.getCorrectScore()));
+        this.testScore.setText(getString(R.string.test_stats_activity_score_vale, lessonDto.getGeneralScore()));
+        this.testIncorrect.setText(getString(R.string.test_stats_activity_incorrect, lessonDto.getIncorrectScore()));
     }
 
     @OnClick(R.id.test_stats_repeat)

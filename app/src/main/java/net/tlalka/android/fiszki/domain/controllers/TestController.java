@@ -96,7 +96,7 @@ public class TestController {
     }
 
     public boolean hasNextWord() {
-        return this.words.size() > 0;
+        return this.wordIndex < this.words.size();
     }
 
     public String getNextWord() {
@@ -122,7 +122,11 @@ public class TestController {
         }
     }
 
-    public void updateTestScore() {
+    public void updateLessonDto(LessonDto lessonDto) {
+        lessonDto.setStatus(calculateScore(), correctScore, incorrectScore);
+    }
+
+    public void updateBestScore() {
         int newScore = this.calculateScore();
         if (newScore > this.lesson.getScore()) {
             this.lessonService.updateScore(lesson, newScore);
@@ -130,6 +134,6 @@ public class TestController {
     }
 
     private int calculateScore() {
-        return (this.correctScore + this.incorrectScore) / this.correctScore * 100;
+        return Math.round(Math.max(correctScore - incorrectScore, 0.0F) * 100 / correctScore);
     }
 }

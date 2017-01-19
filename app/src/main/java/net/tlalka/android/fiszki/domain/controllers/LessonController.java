@@ -63,10 +63,6 @@ public class LessonController {
         return this.activeWord.getValue();
     }
 
-    public String getLessonStatus() {
-        return String.valueOf(this.words.size());
-    }
-
     private Word generateWord() {
         Word newWord = words.get(new Random().nextInt(words.size()));
         return (words.size() > 1 && newWord == activeWord) ? generateWord() : newWord;
@@ -79,6 +75,10 @@ public class LessonController {
 
     public void incorrectAnswer() {
         this.wordService.decreaseProgress(activeWord);
+    }
+
+    public String getLessonStatus() {
+        return String.valueOf(this.words.size());
     }
 
     public void updateLessonProgress() {

@@ -11,6 +11,9 @@ public class LessonDto {
     String lessonName;
     LevelType lessonLevel;
     int lessonIndex;
+    protected int generalScore;
+    protected int correctScore;
+    protected int incorrectScore;
 
     public LessonDto() {
     }
@@ -20,6 +23,12 @@ public class LessonDto {
         this.lessonName = lesson.getName();
         this.lessonLevel = lesson.getLevelType();
         this.lessonIndex = index;
+    }
+
+    public void setStatus(int generalScore, int correctScore, int incorrectScore) {
+        this.generalScore = generalScore;
+        this.correctScore = correctScore;
+        this.incorrectScore = incorrectScore;
     }
 
     public long getLessonId() {
@@ -36,5 +45,17 @@ public class LessonDto {
 
     public int getLessonIndex() {
         return lessonIndex;
+    }
+
+    public int getGeneralScore() {
+        return generalScore;
+    }
+
+    public int getCorrectScore() {
+        return correctScore;
+    }
+
+    public int getIncorrectScore() {
+        return incorrectScore;
     }
 }
