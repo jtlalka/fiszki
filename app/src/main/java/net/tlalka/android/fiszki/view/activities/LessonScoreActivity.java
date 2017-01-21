@@ -16,6 +16,12 @@ public class LessonScoreActivity extends BasePageActivity {
     @BindView(R.id.lesson_topic)
     protected TextView lessonTopic;
 
+    @BindView(R.id.lesson_score_total)
+    protected TextView lessonTotal;
+
+    @BindView(R.id.lesson_score_incorrect)
+    protected TextView lessonIncorrect;
+
     @Inject
     protected Navigator navigator;
 
@@ -36,11 +42,13 @@ public class LessonScoreActivity extends BasePageActivity {
         String lessonName = this.lessonDto.getLessonName();
 
         this.lessonTopic.setText(getString(R.string.lesson_topic, lessonIndex, lessonName));
+        this.lessonTotal.setText(getString(R.string.test_score_total, lessonDto.getGeneralScore()));
+        this.lessonIncorrect.setText(getString(R.string.test_score_incorrect, lessonDto.getIncorrectScore()));
     }
 
     @OnClick(R.id.lessons_score_repeat)
     public void onRepeatClick(View view) {
-        this.navigator.openLessonActivity(this, this.lessonDto);
+        this.navigator.openLessonActivity(this, lessonDto);
         this.navigator.finish(this);
     }
 

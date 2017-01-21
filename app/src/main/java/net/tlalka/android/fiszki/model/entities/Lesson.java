@@ -32,10 +32,8 @@ public class Lesson {
     @DatabaseField
     private int score;
 
-    /**
-     * Constructor required for ORMLite library.
-     */
     public Lesson() {
+        // Constructor required for ORMLite library.
     }
 
     public Lesson(String name, LevelType levelType, LanguageType languageType) {

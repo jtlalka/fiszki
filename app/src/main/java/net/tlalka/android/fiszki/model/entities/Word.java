@@ -30,10 +30,8 @@ public class Word {
     @DatabaseField
     private long progress;
 
-    /**
-     * Constructor required for ORMLite library.
-     */
     public Word() {
+        // Constructor required for ORMLite library.
     }
 
     public Word(String value, Cluster cluster, Lesson lesson, LanguageType languageType) {

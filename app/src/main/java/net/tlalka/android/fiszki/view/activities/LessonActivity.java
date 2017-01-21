@@ -69,8 +69,9 @@ public class LessonActivity extends BasePageActivity implements LanguageDialogFr
     }
 
     private void showLessonSummary() {
+        this.lessonController.updateLessonDto(lessonDto);
         this.lessonController.updateLessonProgress();
-        this.navigator.openLessonScoreActivity(this, this.lessonDto);
+        this.navigator.openLessonScoreActivity(this, lessonDto);
         this.navigator.finish(this);
     }
 

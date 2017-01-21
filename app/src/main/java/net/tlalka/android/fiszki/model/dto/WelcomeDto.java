@@ -5,7 +5,7 @@ import org.parceler.Parcel;
 @Parcel
 public class WelcomeDto {
 
-    String message;
+    protected String message;
 
     public WelcomeDto() {
     }

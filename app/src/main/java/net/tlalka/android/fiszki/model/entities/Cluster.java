@@ -19,10 +19,8 @@ public class Cluster {
     @ForeignCollectionField(eager = true)
     private ForeignCollection<Word> words;
 
-    /**
-     * Constructor required for ORMLite library.
-     */
     public Cluster() {
+        // Constructor required for ORMLite library.
     }
 
     public Cluster(OwnerType ownerType) {

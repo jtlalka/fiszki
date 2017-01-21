@@ -8,7 +8,7 @@ import java.util.List;
 @Parcel
 public class LanguagesDto {
 
-    List<LanguageType> languages;
+    protected List<LanguageType> languages;
 
     public LanguagesDto() {
     }

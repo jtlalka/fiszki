@@ -52,7 +52,7 @@ public class LanguageDialogFragment extends DialogFragment {
         languagesDto = Parcels.unwrap(getArguments().getParcelable(LanguagesDto.class.getName()));
 
         return new AlertDialog.Builder(getActivity())
-                .setIcon(R.drawable.icon_lesson_stats)
+                .setIcon(R.drawable.language_icon)
                 .setTitle(R.string.language_dialog_title)
                 .setAdapter(new LanguageAdapter(getActivity(), languagesDto.getLanguages()), new LanguageListener())
                 .create();

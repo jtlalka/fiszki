@@ -7,10 +7,10 @@ import org.parceler.Parcel;
 @Parcel
 public class LessonDto {
 
-    long lessonId;
-    String lessonName;
-    LevelType lessonLevel;
-    int lessonIndex;
+    protected long lessonId;
+    protected String lessonName;
+    protected LevelType lessonLevel;
+    protected int lessonIndex;
     protected int generalScore;
     protected int correctScore;
     protected int incorrectScore;
@@ -25,7 +25,7 @@ public class LessonDto {
         this.lessonIndex = index;
     }
 
-    public void setStatus(int generalScore, int correctScore, int incorrectScore) {
+    public void setScoreValues(int generalScore, int correctScore, int incorrectScore) {
         this.generalScore = generalScore;
         this.correctScore = correctScore;
         this.incorrectScore = incorrectScore;

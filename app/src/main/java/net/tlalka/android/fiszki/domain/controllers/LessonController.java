@@ -29,6 +29,8 @@ public class LessonController {
 
     private LanguageType language;
     private LanguageType translation;
+    private int correctScore;
+    private int incorrectScore;
 
     @Inject
     public LessonController(CacheService cacheService, StorageService storageService, LessonDto lessonDto) {
@@ -69,16 +71,22 @@ public class LessonController {
     }
 
     public void correctAnswer() {
+        this.correctScore++;
         this.wordService.increaseProgress(activeWord);
         this.words.remove(activeWord);
     }
 
     public void incorrectAnswer() {
+        this.incorrectScore++;
         this.wordService.decreaseProgress(activeWord);
     }
 
     public String getLessonStatus() {
         return String.valueOf(this.words.size());
+    }
+
+    public void updateLessonDto(LessonDto lessonDto) {
+        lessonDto.setScoreValues(correctScore, correctScore, incorrectScore);
     }
 
     public void updateLessonProgress() {

@@ -27,19 +27,30 @@
                 android:textSize="@dimen/font_size_l"/>
         </LinearLayout>
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="2"
             android:orientation="vertical">
 
-            <ImageView
+            <TextView
+                android:id="@+id/lesson_score_total"
+                android:layout_above="@+id/lesson_score_incorrect"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/icon_lesson_stats"
-                android:contentDescription="@string/null_value"/>
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/lesson_score_total"
+                android:textSize="@dimen/font_size_l"/>
 
-        </LinearLayout>
+            <TextView
+                android:id="@+id/lesson_score_incorrect"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:gravity="center"
+                android:text="@string/lesson_score_incorrect"
+                android:textSize="@dimen/font_size_l"/>
+        </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"

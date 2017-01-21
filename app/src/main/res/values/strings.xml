@@ -30,6 +30,8 @@
     <string name="lesson_check_word">[odkryj]</string>
 
     <string name="lesson_score_topic">Lekcja ukończona!</string>
+    <string name="lesson_score_total">Liczba wyrazów: %1$d</string>
+    <string name="lesson_score_incorrect">Liczba pomyłek: %1$d</string>
     <string name="lesson_score_repeat">Wykonaj ponownie</string>
     <string name="lesson_score_lessons">Wyswietl lekcje</string>
 

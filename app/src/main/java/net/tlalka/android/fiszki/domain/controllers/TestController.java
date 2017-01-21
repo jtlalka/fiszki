@@ -123,7 +123,7 @@ public class TestController {
     }
 
     public void updateLessonDto(LessonDto lessonDto) {
-        lessonDto.setStatus(calculateScore(), correctScore, incorrectScore);
+        lessonDto.setScoreValues(calculateScore(), correctScore, incorrectScore);
     }
 
     public void updateBestScore() {
