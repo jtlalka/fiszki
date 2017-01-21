@@ -19,12 +19,12 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/test_total"
+                android:id="@+id/test_score_total"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/sep_size_m"
                 android:background="@drawable/patch_yellow"
-                android:text="@string/test_stats_activity_total"
+                android:text="@string/test_score_total"
                 android:textSize="@dimen/font_size_l"/>
         </LinearLayout>
 
@@ -35,29 +35,29 @@
             android:orientation="vertical">
 
             <TextView
+                android:layout_above="@+id/test_score_value"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_above="@+id/test_score"
                 android:gravity="center"
-                android:text="@string/test_stats_activity_score_text"
+                android:text="@string/test_score_description"
                 android:textSize="@dimen/font_size_m"/>
 
             <TextView
-                android:id="@+id/test_score"
+                android:id="@+id/test_score_value"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:gravity="center"
-                android:text="@string/test_stats_activity_score_vale"
+                android:text="@string/test_score_vale"
                 android:textSize="@dimen/font_size_x"/>
 
             <TextView
-                android:id="@+id/test_incorrect"
+                android:id="@+id/test_score_incorrect"
+                android:layout_below="@+id/test_score_value"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/test_score"
                 android:gravity="center"
-                android:text="@string/test_stats_activity_incorrect"
+                android:text="@string/test_score_incorrect"
                 android:textSize="@dimen/font_size_m"/>
         </RelativeLayout>
 
@@ -68,12 +68,12 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/test_stats_repeat"
+                android:id="@+id/test_score_repeat"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/sep_size_m"
                 android:background="@drawable/patch_cyan"
-                android:text="@string/test_stats_activity_repeat"/>
+                android:text="@string/test_score_repeat"/>
         </LinearLayout>
 
         <LinearLayout
@@ -83,12 +83,12 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/test_stats_tests"
+                android:id="@+id/test_score_tests"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/sep_size_m"
                 android:background="@drawable/patch_cyan"
-                android:text="@string/test_stats_activity_tests"/>
+                android:text="@string/test_score_tests"/>
         </LinearLayout>
     </LinearLayout>
 

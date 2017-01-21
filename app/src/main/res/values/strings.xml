@@ -21,33 +21,32 @@
     <string name="null_value">\u0020</string>
     <string name="list_item">%1$d. %2$s</string>
 
-    <string name="welcome_activity_topic">Fiszki - nauka i rozrywaka :)</string>
-    <string name="welcome_activity_message">Kliknij aby rozpocząć..</string>
+    <string name="welcome_topic">Fiszki - nauka i rozrywaka :)</string>
+    <string name="welcome_message">Kliknij aby rozpocząć..</string>
 
-    <string name="lesson_activity_topic">Lekcja %1$d: %2$s</string>
-    <string name="lesson_activity_progress">\u0020</string>
-    <string name="lesson_activity_show_word">[słowo]</string>
-    <string name="lesson_activity_check_word">[odkryj]</string>
+    <string name="lesson_topic">Lekcja %1$d: %2$s</string>
+    <string name="lesson_progress">\u0020</string>
+    <string name="lesson_show_word">[słowo]</string>
+    <string name="lesson_check_word">[odkryj]</string>
 
-    <string name="lesson_stats_activity_topic">Lekcja ukończona!</string>
-    <string name="lesson_stats_activity_repeat">Wykonaj ponownie</string>
-    <string name="lesson_stats_activity_lessons">Wyswietl lekcje</string>
+    <string name="lesson_score_topic">Lekcja ukończona!</string>
+    <string name="lesson_score_repeat">Wykonaj ponownie</string>
+    <string name="lesson_score_lessons">Wyswietl lekcje</string>
 
-    <string name="test_activity_topic">Test %1$d: %2$s</string>
-    <string name="test_activity_progress">\u0020</string>
-    <string name="test_activity_score">%1$d / %2$d</string>
-    <string name="test_activity_show_word">[słowo]</string>
-    <string name="test_activity_answer">[odpowiedz]</string>
+    <string name="test_topic">Test %1$d: %2$s</string>
+    <string name="test_progress">%1$d / %2$d</string>
+    <string name="test_show_word">[słowo]</string>
+    <string name="test_answer">[odpowiedz]</string>
 
-    <string name="test_stats_activity_total">Wszystkich wyrazów: %1$d</string>
-    <string name="test_stats_activity_score_text">Wyniki w procentach:</string>
-    <string name="test_stats_activity_score_vale">%1$d %%</string>
-    <string name="test_stats_activity_incorrect">Liczba pomyłek: %1$d</string>
-    <string name="test_stats_activity_repeat">Wykonaj ponownie</string>
-    <string name="test_stats_activity_tests">Wyswietl testy</string>
+    <string name="test_score_total">Wszystkich wyrazów: %1$d</string>
+    <string name="test_score_description">Wyniki w procentach:</string>
+    <string name="test_score_vale">%1$d %%</string>
+    <string name="test_score_incorrect">Liczba pomyłek: %1$d</string>
+    <string name="test_score_repeat">Wykonaj ponownie</string>
+    <string name="test_score_tests">Wyświetl testy</string>
 
-    <string name="settings_activity_language">Wybierz jezyk nauki:</string>
-    <string name="settings_activity_translate">Wybierz jezyk tłumaczeń:</string>
+    <string name="settings_language">Wybierz jezyk nauki:</string>
+    <string name="settings_translate">Wybierz jezyk tłumaczeń:</string>
 
     <string name="language_dialog_title">Wybierz język:</string>
 

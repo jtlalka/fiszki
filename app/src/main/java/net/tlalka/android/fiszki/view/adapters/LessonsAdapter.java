@@ -26,9 +26,9 @@ public class LessonsAdapter extends AbstractAdapter<Lesson> {
         Lesson lesson = super.getItem(position);
 
         ViewHolderPattern viewHolderPattern = (ViewHolderPattern) convertView.getTag();
+        viewHolderPattern.icon.setImageResource(getIconId(lesson.getProgress()));
         viewHolderPattern.name.setText(getString(R.string.list_item, position + 1, lesson.getName()));
         viewHolderPattern.desc.setText(lesson.getLevelType().name());
-        viewHolderPattern.icon.setImageResource(getIconId(lesson.getProgress()));
 
         return convertView;
     }
@@ -43,9 +43,9 @@ public class LessonsAdapter extends AbstractAdapter<Lesson> {
         public TextView desc;
 
         public ViewHolderPattern(View view) {
-            this.icon = (ImageView) view.findViewById(R.id.image_view_icon);
-            this.name = (TextView) view.findViewById(R.id.text_view_name);
-            this.desc = (TextView) view.findViewById(R.id.text_view_desc);
+            this.icon = (ImageView) view.findViewById(R.id.lesson_list_icon);
+            this.name = (TextView) view.findViewById(R.id.lesson_list_name);
+            this.desc = (TextView) view.findViewById(R.id.lesson_list_desc);
         }
     }
 }

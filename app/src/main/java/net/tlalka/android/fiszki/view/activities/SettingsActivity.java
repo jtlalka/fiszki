@@ -17,10 +17,10 @@ import java.util.List;
 
 public class SettingsActivity extends BaseSetupActivity implements AdapterView.OnItemSelectedListener {
 
-    @BindView(R.id.language_spinner)
+    @BindView(R.id.settings_language_spinner)
     protected Spinner languageSpinner;
 
-    @BindView(R.id.translation_spinner)
+    @BindView(R.id.settings_translation_spinner)
     protected Spinner translationSpinner;
 
     @Inject

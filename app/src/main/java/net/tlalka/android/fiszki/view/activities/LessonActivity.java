@@ -54,7 +54,7 @@ public class LessonActivity extends BasePageActivity implements LanguageDialogFr
         int lessonIndex = this.lessonDto.getLessonIndex();
         String lessonName = this.lessonDto.getLessonName();
 
-        this.lessonTopic.setText(getString(R.string.lesson_activity_topic, lessonIndex, lessonName));
+        this.lessonTopic.setText(getString(R.string.lesson_topic, lessonIndex, lessonName));
         this.generateView();
     }
 
@@ -62,7 +62,7 @@ public class LessonActivity extends BasePageActivity implements LanguageDialogFr
         if (this.lessonController.hasNextWord()) {
             this.lessonProgress.setText(lessonController.getLessonStatus());
             this.lessonShowWord.setText(lessonController.getNextWord());
-            this.lessonCheckWord.setText(getText(R.string.lesson_activity_check_word));
+            this.lessonCheckWord.setText(getText(R.string.lesson_check_word));
         } else {
             this.showLessonSummary();
         }
@@ -70,7 +70,7 @@ public class LessonActivity extends BasePageActivity implements LanguageDialogFr
 
     private void showLessonSummary() {
         this.lessonController.updateLessonProgress();
-        this.navigator.openLessonStatActivity(this, this.lessonDto);
+        this.navigator.openLessonScoreActivity(this, this.lessonDto);
         this.navigator.finish(this);
     }
 

@@ -41,12 +41,12 @@ public class MainActivity extends AbstractActivity {
     }
 
     private void openStartActivity() {
-        WelcomeDto welcomeDto = new WelcomeDto(super.getString(R.string.welcome_activity_message));
+        WelcomeDto welcomeDto = new WelcomeDto(super.getString(R.string.welcome_message));
         navigator.openWelcomeActivity(this, welcomeDto);
     }
 
     private void initMenuListActivity() {
-        ListView listView = (ListView) findViewById(R.id.list_view_menu);
+        ListView listView = (ListView) findViewById(R.id.main_list_view);
         listView.setAdapter(new MenuAdapter(this, Arrays.asList(PageElement.values())));
     }
 

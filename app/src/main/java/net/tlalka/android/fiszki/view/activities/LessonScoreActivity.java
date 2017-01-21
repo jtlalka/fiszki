@@ -11,7 +11,7 @@ import net.tlalka.android.fiszki.view.navigations.Navigator;
 
 import javax.inject.Inject;
 
-public class LessonStatsActivity extends BasePageActivity {
+public class LessonScoreActivity extends BasePageActivity {
 
     @BindView(R.id.lesson_topic)
     protected TextView lessonTopic;
@@ -25,7 +25,7 @@ public class LessonStatsActivity extends BasePageActivity {
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        super.setContentView(R.layout.lesson_stats_activity);
+        super.setContentView(R.layout.lesson_score_activity);
         super.getActivityComponent().inject(this);
 
         this.initActivity();
@@ -35,16 +35,16 @@ public class LessonStatsActivity extends BasePageActivity {
         int lessonIndex = this.lessonDto.getLessonIndex();
         String lessonName = this.lessonDto.getLessonName();
 
-        this.lessonTopic.setText(getString(R.string.lesson_activity_topic, lessonIndex, lessonName));
+        this.lessonTopic.setText(getString(R.string.lesson_topic, lessonIndex, lessonName));
     }
 
-    @OnClick(R.id.lessons_stats_repeat)
+    @OnClick(R.id.lessons_score_repeat)
     public void onRepeatClick(View view) {
         this.navigator.openLessonActivity(this, this.lessonDto);
         this.navigator.finish(this);
     }
 
-    @OnClick(R.id.lessons_stats_lessons)
+    @OnClick(R.id.lessons_score_lessons)
     public void onLessonsClick(View view) {
         this.navigator.openLessonListActivity(this);
         this.navigator.finish(this);

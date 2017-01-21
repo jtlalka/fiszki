@@ -12,18 +12,18 @@ import net.tlalka.android.fiszki.view.navigations.Navigator;
 
 import javax.inject.Inject;
 
-public class TestStatsActivity extends BasePageActivity {
+public class TestScoreActivity extends BasePageActivity {
 
     @BindView(R.id.test_topic)
     protected TextView testTopic;
 
-    @BindView(R.id.test_total)
+    @BindView(R.id.test_score_total)
     protected Button testTotal;
 
-    @BindView(R.id.test_score)
+    @BindView(R.id.test_score_value)
     protected TextView testScore;
 
-    @BindView(R.id.test_incorrect)
+    @BindView(R.id.test_score_incorrect)
     protected TextView testIncorrect;
 
     @Inject
@@ -35,7 +35,7 @@ public class TestStatsActivity extends BasePageActivity {
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        super.setContentView(R.layout.test_stats_activity);
+        super.setContentView(R.layout.test_score_activity);
         super.getActivityComponent().inject(this);
 
         this.runActivity();
@@ -45,19 +45,19 @@ public class TestStatsActivity extends BasePageActivity {
         int lessonIndex = this.lessonDto.getLessonIndex();
         String lessonName = this.lessonDto.getLessonName();
 
-        this.testTopic.setText(getString(R.string.test_activity_topic, lessonIndex, lessonName));
-        this.testTotal.setText(getString(R.string.test_stats_activity_total, lessonDto.getCorrectScore()));
-        this.testScore.setText(getString(R.string.test_stats_activity_score_vale, lessonDto.getGeneralScore()));
-        this.testIncorrect.setText(getString(R.string.test_stats_activity_incorrect, lessonDto.getIncorrectScore()));
+        this.testTopic.setText(getString(R.string.test_topic, lessonIndex, lessonName));
+        this.testTotal.setText(getString(R.string.test_score_total, lessonDto.getCorrectScore()));
+        this.testScore.setText(getString(R.string.test_score_vale, lessonDto.getGeneralScore()));
+        this.testIncorrect.setText(getString(R.string.test_score_incorrect, lessonDto.getIncorrectScore()));
     }
 
-    @OnClick(R.id.test_stats_repeat)
+    @OnClick(R.id.test_score_repeat)
     public void onRepeatClick(View view) {
         this.navigator.openTestActivity(this, this.lessonDto);
         this.navigator.finish(this);
     }
 
-    @OnClick(R.id.test_stats_tests)
+    @OnClick(R.id.test_score_tests)
     public void onTestsClick(View view) {
         this.navigator.openTestListActivity(this);
         this.navigator.finish(this);

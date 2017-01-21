@@ -31,7 +31,7 @@ public class LanguageAdapter extends AbstractAdapter<LanguageType> {
         public final TextView item;
 
         public ViewHolderPattern(View view) {
-            this.item = (TextView) view.findViewById(R.id.spinner_item);
+            this.item = (TextView) view.findViewById(R.id.settings_spinner_item);
         }
     }
 }

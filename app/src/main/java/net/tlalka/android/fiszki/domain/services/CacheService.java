@@ -31,7 +31,7 @@ public class CacheService {
     }
 
     public List<Word> getWords(Lesson lesson) {
-        if (this.words == null) {
+        if (this.words == null || this.words.isEmpty()) {
             this.words = wordService.getWords(lesson);
         }
         return this.words;

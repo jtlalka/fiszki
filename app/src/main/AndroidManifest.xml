@@ -37,13 +37,13 @@
                   android:configChanges="orientation|screenSize|keyboardHidden"/>
 
         <activity android:name=".view.activities.LessonListActivity"/>
-        <activity android:name=".view.activities.LessonStatsActivity"/>
+        <activity android:name=".view.activities.LessonScoreActivity"/>
 
         <activity android:name=".view.activities.TestActivity"
                   android:configChanges="orientation|screenSize|keyboardHidden"/>
 
         <activity android:name=".view.activities.TestListActivity"/>
-        <activity android:name=".view.activities.TestStatsActivity"/>
+        <activity android:name=".view.activities.TestScoreActivity"/>
 
         <activity android:name=".view.activities.WordsActivity"/>
         <activity android:name=".view.activities.HelpActivity"/>

@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:text="@string/welcome_activity_topic"
+            android:text="@string/welcome_topic"
             android:textSize="@dimen/font_size_m"/>
     </RelativeLayout>
 
@@ -46,7 +46,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:text="@string/welcome_activity_message"/>
+            android:text="@string/welcome_message"/>
     </RelativeLayout>
 
 </LinearLayout>

@@ -38,9 +38,9 @@ public class TestsAdapter extends AbstractAdapter<Lesson> {
         public TextView desc;
 
         public ViewHolderPattern(View view) {
-            this.icon = (ImageView) view.findViewById(R.id.image_view_icon);
-            this.name = (TextView) view.findViewById(R.id.text_view_name);
-            this.desc = (TextView) view.findViewById(R.id.text_view_desc);
+            this.icon = (ImageView) view.findViewById(R.id.test_list_icon);
+            this.name = (TextView) view.findViewById(R.id.test_list_name);
+            this.desc = (TextView) view.findViewById(R.id.test_list_desc);
         }
     }
 }

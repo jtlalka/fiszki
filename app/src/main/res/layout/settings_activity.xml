@@ -15,11 +15,11 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/settings_activity_language"
+            android:text="@string/settings_language"
             android:textSize="@dimen/font_size_m"/>
 
         <Spinner
-            android:id="@+id/language_spinner"
+            android:id="@+id/settings_language_spinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/sep_size_l"/>
@@ -35,11 +35,11 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/settings_activity_translate"
+            android:text="@string/settings_translate"
             android:textSize="@dimen/font_size_m"/>
 
         <Spinner
-            android:id="@+id/translation_spinner"
+            android:id="@+id/settings_translation_spinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/sep_size_l"/>

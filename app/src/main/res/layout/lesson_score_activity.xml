@@ -23,7 +23,7 @@
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/sep_size_m"
                 android:background="@drawable/patch_yellow"
-                android:text="@string/lesson_stats_activity_topic"
+                android:text="@string/lesson_score_topic"
                 android:textSize="@dimen/font_size_l"/>
         </LinearLayout>
 
@@ -48,12 +48,12 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/lessons_stats_repeat"
+                android:id="@+id/lessons_score_repeat"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/sep_size_m"
                 android:background="@drawable/patch_cyan"
-                android:text="@string/lesson_stats_activity_repeat"/>
+                android:text="@string/lesson_score_repeat"/>
         </LinearLayout>
 
         <LinearLayout
@@ -63,12 +63,12 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/lessons_stats_lessons"
+                android:id="@+id/lessons_score_lessons"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/sep_size_m"
                 android:background="@drawable/patch_cyan"
-                android:text="@string/lesson_stats_activity_lessons"/>
+                android:text="@string/lesson_score_lessons"/>
         </LinearLayout>
     </LinearLayout>
 

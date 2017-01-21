@@ -6,7 +6,7 @@
     android:padding="@dimen/menu_item_margin">
 
     <ImageView
-        android:id="@+id/image_view_icon"
+        android:id="@+id/test_list_icon"
         android:layout_width="@dimen/menu_item_icon"
         android:layout_height="@dimen/menu_item_icon"
         android:layout_alignParentBottom="true"
@@ -16,24 +16,24 @@
         android:src="@drawable/tests_item"/>
 
     <TextView
-        android:id="@+id/text_view_name"
+        android:id="@+id/test_list_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
-        android:layout_toEndOf="@id/image_view_icon"
+        android:layout_toEndOf="@id/test_list_icon"
         android:gravity="center_vertical"
         android:text="@string/null_value"
         android:textSize="@dimen/font_size_m"/>
 
     <TextView
-        android:id="@+id/text_view_desc"
+        android:id="@+id/test_list_desc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_toEndOf="@id/image_view_icon"
-        android:layout_toStartOf="@id/text_view_name"
+        android:layout_toEndOf="@id/test_list_icon"
+        android:layout_toStartOf="@id/test_list_name"
         android:ellipsize="marquee"
         android:text="@string/null_value"
         android:textSize="@dimen/font_size_s"/>

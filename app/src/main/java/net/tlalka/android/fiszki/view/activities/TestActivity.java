@@ -63,7 +63,7 @@ public class TestActivity extends BasePageActivity implements LanguageDialogFrag
         int lessonIndex = this.lessonDto.getLessonIndex();
         String lessonName = this.lessonDto.getLessonName();
 
-        this.testTopic.setText(getString(R.string.test_activity_topic, lessonIndex, lessonName));
+        this.testTopic.setText(getString(R.string.test_topic, lessonIndex, lessonName));
         this.generateView();
     }
 
@@ -72,7 +72,7 @@ public class TestActivity extends BasePageActivity implements LanguageDialogFrag
             int index = this.testController.getWordIndex();
             int total = this.testController.getTestSize();
 
-            this.testProgress.setText(getString(R.string.test_activity_score, index + 1, total));
+            this.testProgress.setText(getString(R.string.test_progress, index + 1, total));
             this.testWordShow.setText(this.testController.getNextWord());
             this.generateAnswers();
         } else {
@@ -98,7 +98,7 @@ public class TestActivity extends BasePageActivity implements LanguageDialogFrag
     private void showTestSummary() {
         this.testController.updateBestScore();
         this.testController.updateLessonDto(lessonDto);
-        this.navigator.openTestStatActivity(this, lessonDto);
+        this.navigator.openTestScoreActivity(this, lessonDto);
         this.navigator.finish(this);
     }
 
