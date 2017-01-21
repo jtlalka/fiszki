@@ -16,12 +16,23 @@
         android:src="@drawable/tests_item"/>
 
     <TextView
+        android:id="@+id/test_list_score"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:gravity="center_vertical"
+        android:text="@string/test_score_vale"
+        android:textSize="@dimen/font_size_m"/>
+
+    <TextView
         android:id="@+id/test_list_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
         android:layout_toEndOf="@id/test_list_icon"
+        android:layout_toStartOf="@id/test_list_score"
         android:gravity="center_vertical"
         android:text="@string/null_value"
         android:textSize="@dimen/font_size_m"/>
@@ -30,10 +41,9 @@
         android:id="@+id/test_list_desc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_toEndOf="@id/test_list_icon"
-        android:layout_toStartOf="@id/test_list_name"
+        android:layout_toStartOf="@id/test_list_score"
         android:ellipsize="marquee"
         android:text="@string/null_value"
         android:textSize="@dimen/font_size_s"/>
