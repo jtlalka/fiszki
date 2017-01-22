@@ -11,6 +11,7 @@ import net.tlalka.android.fiszki.model.entities.Word;
 import net.tlalka.android.fiszki.model.types.LanguageType;
 
 import javax.inject.Inject;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -35,7 +36,7 @@ public class LessonController {
     @Inject
     public LessonController(CacheService cacheService, StorageService storageService, LessonDto lessonDto) {
         this.lesson = cacheService.getLesson(lessonDto.getLessonId());
-        this.words = cacheService.getWords(lesson);
+        this.words = new ArrayList<>(cacheService.getWords(lesson));
 
         this.language = storageService.getLanguage();
         this.translation = storageService.getTranslation();
