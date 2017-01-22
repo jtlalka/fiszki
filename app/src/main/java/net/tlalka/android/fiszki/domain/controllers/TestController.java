@@ -65,15 +65,20 @@ public class TestController {
     }
 
     private void generateAnswers(List<String> answers, int size) {
-        if (size > 0 && this.generateAnswer(answers)) {
+        if (size > 0 && this.generateAnswer(answers, 100)) {
             this.generateAnswers(answers, --size);
         }
     }
 
-    private boolean generateAnswer(List<String> answers) {
+    private boolean generateAnswer(List<String> answers, int repetitions) {
         Word word = words.get(new Random().nextInt(words.size()));
         String value = this.getTranslateWord(word).getValue();
-        return answers.contains(value) ? generateAnswer(answers) : answers.add(value);
+
+        if (repetitions-- > 0) {
+            return answers.contains(value) ? generateAnswer(answers, repetitions) : answers.add(value);
+        } else {
+            return answers.add("...");
+        }
     }
 
     private Word getTranslateWord(Word word) {
