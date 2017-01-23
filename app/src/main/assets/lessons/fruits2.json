@@ -1,0 +1,19 @@
+{
+    "name": {"EN": "Fruits 2", "PL": "Owoce 2", "FR": "Le fruit 2"},
+    "level": "ADVANCED",
+    "words": [
+        {"EN": "sweet", "PL": "słodki", "FR": "sucré"},
+        {"EN": "sour", "PL": "kwaśny", "FR": "aigre"},
+        {"EN": "fresh", "PL": "świeży", "FR": "frais"},
+        {"EN": "juicy", "PL": "soczysty", "FR": "juteux"},
+        {"EN": "rotten", "PL": "zgniły", "FR": "pourri"},
+        {"EN": "pipless", "PL": "bezpestkowy", "FR": "sans pépins"},
+        {"EN": "green", "PL": "zielony", "FR": "vert"},
+        {"EN": "ripe", "PL": "dojrzały", "FR": "mûr"},
+        {"EN": "hard", "PL": "twardy", "FR": "dur"},
+        {"EN": "soft", "PL": "miękki", "FR": "mou"},
+        {"EN": "salted", "PL": "solony", "FR": "salé"},
+        {"EN": "roasted", "PL": "prażony", "FR": "grillé"},
+        {"EN": "pulp", "PL": "miąższ", "FR": "la pulpe"}
+    ]
+}

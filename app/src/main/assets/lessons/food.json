@@ -1,0 +1,26 @@
+{
+    "name": {"EN": "Food", "PL": "Jedzenie", "FR": "La nourriture"},
+    "level": "ELEMENTARY",
+    "words": [
+        {"EN": "bread", "PL": "chleb", "FR": "le pain"},
+        {"EN": "butter", "PL": "masło", "FR": "le beurre"},
+        {"EN": "ham", "PL": "szynka", "FR": "le jambon"},
+        {"EN": "sandwich", "PL": "kanapka", "FR": "le sandwich"},
+        {"EN": "soup", "PL": "zupa", "FR": "la soupe"},
+        {"EN": "meat", "PL": "mięso", "FR": "la carne"},
+        {"EN": "chicken", "PL": "kurczak", "FR": "le poulet"},
+        {"EN": "cheese", "PL": "ser", "FR": "le fromage"},
+        {"EN": "potatoes", "PL": "ziemniaki", "FR": "les pommes de terre"},
+        {"EN": "egg", "PL": "jajko", "FR": "l'œuf"},
+        {"EN": "cake", "PL": "ciasto", "FR": "le gâteau"},
+        {"EN": "rice", "PL": "ryż", "FR": "le riz"},
+        {"EN": "pasta", "PL": "makaron", "FR": "les pâtes"},
+        {"EN": "meal", "PL": "posiłek", "FR": "le repas"},
+        {"EN": "beef", "PL": "wołowina", "FR": "le bœuf"},
+        {"EN": "pork", "PL": "wieprzowina", "FR": "le porc"},
+        {"EN": "fish", "PL": "ryba", "FR": "le poisson"},
+        {"EN": "salad", "PL": "sałatka", "FR": "la salade"},
+        {"EN": "icecream", "PL": "lody", "FR": "la glace"},
+        {"EN": "pancakes", "PL": "naleśniki", "FR": "la crêpe"}
+    ]
+}

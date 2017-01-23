@@ -1,0 +1,22 @@
+{
+    "name": {"EN": "Food 2", "PL": "Jedzenie 2", "FR": "La nourriture 2"},
+    "level": "INTERMEDIATE",
+    "words": [
+        {"EN": "pot", "PL": "garnek", "FR": "le pot"},
+        {"EN": "spoon", "PL": "łyżka", "FR": "la cuillère"},
+        {"EN": "fork", "PL": "widelec", "FR": "la fourchette"},
+        {"EN": "knife", "PL": "nóż", "FR": "le couteau"},
+        {"EN": "cutlery", "PL": "sztućce", "FR": "les couverts"},
+        {"EN": "breakfast", "PL": "śniadanie", "FR": "le petit déjeuner"},
+        {"EN": "dinner", "PL": "obiad", "FR": "le dîner"},
+        {"EN": "supper", "PL": "kolacja", "FR": "le souper"},
+        {"EN": "cook", "PL": "gotować", "FR": "cuisiner"},
+        {"EN": "peel", "PL": "obierać", "FR": "éplucher"},
+        {"EN": "chop", "PL": "siekać", "FR": "couper"},
+        {"EN": "bake", "PL": "piec", "FR": "cuire"},
+        {"EN": "oven", "PL": "piekarnik", "FR": "le four"},
+        {"EN": "appetizer", "PL": "przystawka", "FR": "l'entrée"},
+        {"EN": "main course", "PL": "danie główne", "FR": "le plat principal"},
+        {"EN": "fry", "PL": "smażyć", "FR": "frire"}
+    ]
+}
