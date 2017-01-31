@@ -11,7 +11,7 @@ public enum PageElement {
 
     LESSONS(R.string.nav_lessons, LessonListActivity.class),
     TESTS(R.string.nav_tests, TestListActivity.class),
-    OPTIONS(R.string.nav_words, WordsActivity.class),
+    WORDS(R.string.nav_words, WordsActivity.class),
     HELP(R.string.nav_help, HelpActivity.class);
 
     private final int resourceId;

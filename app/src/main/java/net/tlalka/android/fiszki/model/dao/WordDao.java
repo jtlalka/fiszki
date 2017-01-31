@@ -39,4 +39,12 @@ public class WordDao extends AbstractDao<Word, Long> {
                 .eq("cluster_id", cluster)
                 .query();
     }
+
+    public List<Word> getWordsBy(LanguageType languageType) throws SQLException {
+        return super.queryBuilder()
+                .orderBy("value", true)
+                .where()
+                .eq("languageType", languageType)
+                .query();
+    }
 }

@@ -13,6 +13,7 @@ import net.tlalka.android.fiszki.view.activities.TestActivity;
 import net.tlalka.android.fiszki.view.activities.TestListActivity;
 import net.tlalka.android.fiszki.view.activities.TestScoreActivity;
 import net.tlalka.android.fiszki.view.activities.WelcomeActivity;
+import net.tlalka.android.fiszki.view.activities.WordsActivity;
 import org.parceler.Parcels;
 
 import javax.inject.Inject;
@@ -70,6 +71,14 @@ public class Navigator {
         Parcelable parcelable = Parcels.wrap(lessonDto);
 
         Intent intent = new Intent(context, TestScoreActivity.class);
+        intent.putExtra(LessonDto.class.getName(), parcelable);
+        context.startActivity(intent);
+    }
+
+    public void openWordsActivity(Context context, LessonDto lessonDto) {
+        Parcelable parcelable = Parcels.wrap(lessonDto);
+
+        Intent intent = new Intent(context, WordsActivity.class);
         intent.putExtra(LessonDto.class.getName(), parcelable);
         context.startActivity(intent);
     }

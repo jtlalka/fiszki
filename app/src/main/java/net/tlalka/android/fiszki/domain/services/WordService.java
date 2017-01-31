@@ -33,7 +33,16 @@ public class WordService {
         try {
             return this.wordDao.getWordsBy(lesson);
         } catch (SQLException ex) {
-            Log.e(this.getClass().getName(), "Cannot obtain word list", ex);
+            Log.e(this.getClass().getName(), "Cannot obtain word list by lesson", ex);
+            return Collections.emptyList();
+        }
+    }
+
+    public List<Word> getWords(LanguageType languageType) {
+        try {
+            return this.wordDao.getWordsBy(languageType);
+        } catch (SQLException ex) {
+            Log.e(this.getClass().getName(), "Cannot obtain word list by language", ex);
             return Collections.emptyList();
         }
     }
