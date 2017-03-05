@@ -12,6 +12,8 @@ android {
         applicationId "net.tlalka.android.fiszki"
         versionCode 1
         versionName "1.0"
+
+        testInstrumentationRunner "net.tlalka.android.fiszki.test.AndroidRunner"
     }
 
     compileOptions {
@@ -25,21 +27,32 @@ android {
 }
 
 dependencies {
-    compile 'com.j256.ormlite:ormlite-core:5.0'
-    compile 'com.j256.ormlite:ormlite-android:5.0'
 
-    compile 'com.google.code.gson:gson:2.8.0'
-    compile 'com.annimon:stream:1.1.4'
-
+    // dagger
     compile 'com.google.dagger:dagger:2.8'
     provided 'javax.annotation:jsr250-api:1.0'
     annotationProcessor 'com.google.dagger:dagger-compiler:2.8'
 
+    // butter-knife
     compile 'com.jakewharton:butterknife:8.4.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
 
+    // domain
+    compile 'com.annimon:stream:1.1.4'
     compile 'org.parceler:parceler-api:1.1.6'
     annotationProcessor 'org.parceler:parceler:1.1.6'
 
+    // model
+    compile 'com.j256.ormlite:ormlite-core:5.0'
+    compile 'com.j256.ormlite:ormlite-android:5.0'
+    compile 'com.google.code.gson:gson:2.8.0'
+
+    // unit test
     testCompile 'junit:junit:4.12'
+
+    // box test
+    androidTestCompile 'org.mockito:mockito-android:2.6.2'
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
 }

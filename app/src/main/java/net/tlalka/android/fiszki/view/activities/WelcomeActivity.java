@@ -7,6 +7,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import net.tlalka.android.fiszki.R;
 import net.tlalka.android.fiszki.model.dto.WelcomeDto;
+import net.tlalka.android.fiszki.view.navigations.Navigator;
 
 import javax.inject.Inject;
 
@@ -14,6 +15,9 @@ public class WelcomeActivity extends AbstractActivity {
 
     @BindView(R.id.welcome_message)
     protected TextView message;
+
+    @Inject
+    protected Navigator navigator;
 
     @Inject
     protected WelcomeDto welcomeDto;
@@ -29,6 +33,6 @@ public class WelcomeActivity extends AbstractActivity {
 
     @OnClick(R.id.welcome_layout)
     public void onLayoutClick(View view) {
-        super.finish();
+        this.navigator.finish(this);
     }
 }

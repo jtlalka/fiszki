@@ -22,20 +22,20 @@ public class ActivityModule {
 
     @Provides
     @ActivityScope
-    Activity activity() {
+    public Activity getActivity() {
         return this.activity;
     }
 
     @Provides
     @ActivityScope
-    WelcomeDto welcomeDto() {
+    public WelcomeDto getWelcomeDto() {
         Bundle argsBundle = activity.getIntent().getExtras();
         return Parcels.unwrap(argsBundle.getParcelable(WelcomeDto.class.getName()));
     }
 
     @Provides
     @ActivityScope
-    LessonDto lessonDto() {
+    public LessonDto getLessonDto() {
         Bundle argsBundle = activity.getIntent().getExtras();
         return Parcels.unwrap(argsBundle.getParcelable(LessonDto.class.getName()));
     }

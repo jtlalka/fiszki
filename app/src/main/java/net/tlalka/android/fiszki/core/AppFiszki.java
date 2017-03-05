@@ -1,9 +1,12 @@
 package net.tlalka.android.fiszki.core;
 
+import android.app.Activity;
 import android.app.Application;
+import net.tlalka.android.fiszki.core.components.ActivityComponent;
 import net.tlalka.android.fiszki.core.components.ApplicationComponent;
 import net.tlalka.android.fiszki.core.components.DaggerApplicationComponent;
 import net.tlalka.android.fiszki.core.components.SessionComponent;
+import net.tlalka.android.fiszki.core.modules.ActivityModule;
 import net.tlalka.android.fiszki.core.modules.ApplicationModule;
 import net.tlalka.android.fiszki.core.modules.SessionModule;
 
@@ -16,23 +19,22 @@ public class AppFiszki extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        this.initializeInjector();
+
+        this.applicationComponent = initApplicationComponent();
+        this.sessionComponent = initSessionComponent();
     }
 
-    private void initializeInjector() {
-        this.applicationComponent = DaggerApplicationComponent.builder()
+    private ApplicationComponent initApplicationComponent() {
+        return DaggerApplicationComponent.builder()
                 .applicationModule(new ApplicationModule(this))
                 .build();
-
-        this.sessionComponent = this.applicationComponent
-                .add(new SessionModule(getBaseContext()));
     }
 
-    public ApplicationComponent getApplicationComponent() {
-        return this.applicationComponent;
+    private SessionComponent initSessionComponent() {
+        return this.applicationComponent.add(new SessionModule(getBaseContext()));
     }
 
-    public SessionComponent getSessionComponent() {
-        return this.sessionComponent;
+    public ActivityComponent getActivityComponent(Activity activity) {
+        return this.sessionComponent.add(new ActivityModule(activity));
     }
 }

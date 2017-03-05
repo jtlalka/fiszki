@@ -20,25 +20,25 @@ public class SessionModule {
 
     @Provides
     @SessionScope
-    Context context() {
+    public Context getContext() {
         return this.context;
     }
 
     @Provides
     @SessionScope
-    DbHelper dbHelper() {
+    public DbHelper getDbHelper() {
         return DbManager.getHelper(this.context);
     }
 
     @Provides
     @SessionScope
-    StorageHelper storageHelper() {
+    public StorageHelper getStorageHelper() {
         return new StorageHelper(this.context);
     }
 
     @Provides
     @SessionScope
-    AssetsHelper assetsHelper() {
+    public AssetsHelper getAssetsHelper() {
         return new AssetsHelper(this.context);
     }
 }

@@ -18,13 +18,13 @@ public class ApplicationModule {
 
     @Provides
     @Singleton
-    Application getApplication() {
+    public Application getApplication() {
         return this.application;
     }
 
     @Provides
     @Singleton
-    Navigator getNavigator() {
+    public Navigator getNavigator() {
         return new Navigator();
     }
 }
