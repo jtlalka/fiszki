@@ -1,9 +1,9 @@
 package net.tlalka.android.fiszki.view.activities;
 
+import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
-import net.tlalka.android.fiszki.R;
-import net.tlalka.android.fiszki.test.ActivityLazyRule;
 import net.tlalka.android.fiszki.test.AndroidBaseTest;
+import net.tlalka.android.fiszki.view.pages.MainPage;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,15 +12,12 @@ import org.junit.runner.RunWith;
 public class MainActivityAndroidTest extends AndroidBaseTest {
 
     @Rule
-    public ActivityLazyRule<MainActivity> activityRule = new ActivityLazyRule<>(MainActivity.class);
+    public ActivityTestRule<MainActivity> activityRule = new ActivityTestRule<>(MainActivity.class);
 
     @Test
     public void testShouldOpenMainActivity() {
 
-        // when
-        activityRule.launchActivity();
-
         // then
-        isVisible(R.id.main_list_view);
+        MainPage.valid();
     }
 }

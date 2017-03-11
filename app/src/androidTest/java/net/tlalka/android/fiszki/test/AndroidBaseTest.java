@@ -13,14 +13,6 @@ import net.tlalka.android.fiszki.test.components.DaggerTestApplicationComponent;
 import net.tlalka.android.fiszki.test.components.TestEspressoComponent;
 import org.junit.BeforeClass;
 
-import static android.support.test.espresso.Espresso.onData;
-import static android.support.test.espresso.Espresso.onView;
-import static android.support.test.espresso.action.ViewActions.click;
-import static android.support.test.espresso.assertion.ViewAssertions.matches;
-import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
-import static android.support.test.espresso.matcher.ViewMatchers.withId;
-import static org.hamcrest.CoreMatchers.anything;
-
 public abstract class AndroidBaseTest {
 
     @BeforeClass
@@ -29,18 +21,6 @@ public abstract class AndroidBaseTest {
         storageHelper.setBoolean(StorageType.WELCOME_VIEW, false);
         storageHelper.setEnum(StorageType.LANGUAGE, LanguageType.EN);
         storageHelper.setEnum(StorageType.TRANSLATION, LanguageType.PL);
-    }
-
-    protected static void clickItem(int resId) {
-        onView(withId(resId)).perform(click());
-    }
-
-    protected static void clickListItem(int resId, int itemNumber) {
-        onData(anything()).inAdapterView(withId(resId)).atPosition(itemNumber).perform(click());
-    }
-
-    protected static void isVisible(int resId) {
-        onView(withId(resId)).check(matches(isDisplayed()));
     }
 
     protected static Context getContext() {

@@ -2,12 +2,15 @@ package net.tlalka.android.fiszki.view.activities;
 
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
-import net.tlalka.android.fiszki.R;
 import net.tlalka.android.fiszki.domain.controllers.ListController;
 import net.tlalka.android.fiszki.domain.services.CacheService;
 import net.tlalka.android.fiszki.model.entities.Lesson;
 import net.tlalka.android.fiszki.model.entities.Word;
 import net.tlalka.android.fiszki.test.AndroidBaseTest;
+import net.tlalka.android.fiszki.view.pages.LessonListPage;
+import net.tlalka.android.fiszki.view.pages.LessonPage;
+import net.tlalka.android.fiszki.view.pages.LessonScorePage;
+import net.tlalka.android.fiszki.view.pages.MainPage;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -30,10 +33,12 @@ public class LessonActivityAndroidTest extends AndroidBaseTest {
 
     @Before
     public void setup() {
-        clickListItem(R.id.main_list_view, 0);
-        clickListItem(R.id.lesson_list_view, 0);
+        MainPage.valid();
+        MainPage.openLessons();
 
-        // DI
+        LessonListPage.valid();
+        LessonListPage.openLesson(0);
+
         getEspressoComponent(activityRule.getActivity()).inject(this);
     }
 
@@ -46,10 +51,10 @@ public class LessonActivityAndroidTest extends AndroidBaseTest {
 
         // when
         for (int i = 0; i < words.size(); i++) {
-            clickItem(R.id.button_correct);
+            LessonPage.clickCorrect();
         }
 
         // then
-        isVisible(R.id.lesson_score_total);
+        LessonScorePage.valid();
     }
 }
