@@ -5,8 +5,6 @@ import net.tlalka.android.fiszki.model.helpers.StorageHelper;
 import net.tlalka.android.fiszki.model.types.StorageType;
 import net.tlalka.android.fiszki.test.ActivityLazyRule;
 import net.tlalka.android.fiszki.test.AndroidBaseTest;
-import net.tlalka.android.fiszki.view.pages.MainPage;
-import net.tlalka.android.fiszki.view.pages.WelcomePage;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -30,25 +28,25 @@ public class WelcomeActivityAndroidTest extends AndroidBaseTest {
     public void clickOnWelcomeMessage() {
 
         // given
-        WelcomePage.valid();
+        welcomePage.valid();
 
         // when
-        WelcomePage.clickMessage();
+        welcomePage.clickMessage();
 
         // then
-        MainPage.valid();
+        mainPage.valid();
     }
 
     @Test
     public void clickOnActivityLayout() {
 
         // given
-        WelcomePage.valid();
+        welcomePage.valid();
 
         // when
-        WelcomePage.clickLayout();
+        welcomePage.clickLayout();
 
         // then
-        MainPage.valid();
+        mainPage.valid();
     }
 }

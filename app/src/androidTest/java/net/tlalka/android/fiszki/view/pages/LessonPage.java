@@ -4,7 +4,8 @@ import net.tlalka.android.fiszki.R;
 
 public class LessonPage extends AbstractPage {
 
-    public static void valid() {
+    @Override
+    public void valid() {
         isVisible(R.id.lesson_icon);
         isVisible(R.id.lesson_topic);
         isVisible(R.id.lesson_progress);
@@ -14,11 +15,11 @@ public class LessonPage extends AbstractPage {
         isVisible(R.id.button_correct);
     }
 
-    public static void clickCorrect() {
+    public void clickCorrect() {
         clickItem(R.id.button_correct, R.string.button_correct);
     }
 
-    public static void clickIncorrect() {
+    public void clickIncorrect() {
         clickItem(R.id.button_incorrect, R.string.button_incorrect);
     }
 }

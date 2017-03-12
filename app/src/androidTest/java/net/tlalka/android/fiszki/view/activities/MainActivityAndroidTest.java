@@ -3,7 +3,6 @@ package net.tlalka.android.fiszki.view.activities;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import net.tlalka.android.fiszki.test.AndroidBaseTest;
-import net.tlalka.android.fiszki.view.pages.MainPage;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,9 +14,9 @@ public class MainActivityAndroidTest extends AndroidBaseTest {
     public ActivityTestRule<MainActivity> activityRule = new ActivityTestRule<>(MainActivity.class);
 
     @Test
-    public void testShouldOpenMainActivity() {
+    public void openMainActivityView() {
 
         // then
-        MainPage.valid();
+        mainPage.valid();
     }
 }

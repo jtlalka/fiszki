@@ -4,7 +4,8 @@ import net.tlalka.android.fiszki.R;
 
 public class LessonScorePage extends AbstractPage {
 
-    public static void valid() {
+    @Override
+    public void valid() {
         isVisible(R.id.lesson_icon);
         isVisible(R.id.lesson_topic);
         isVisible(R.id.lesson_score_total);
@@ -13,11 +14,11 @@ public class LessonScorePage extends AbstractPage {
         isVisible(R.id.lessons_score_lessons, R.string.lesson_score_lessons);
     }
 
-    public static void clickLessonList() {
+    public void clickLessons() {
         clickListItem(R.id.lessons_score_lessons, R.string.lesson_score_lessons);
     }
 
-    public static void clickRepeat() {
+    public void clickRepeat() {
         clickListItem(R.id.lessons_score_repeat, R.string.lesson_score_repeat);
     }
 }

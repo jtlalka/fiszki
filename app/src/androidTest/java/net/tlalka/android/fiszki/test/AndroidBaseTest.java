@@ -11,9 +11,20 @@ import net.tlalka.android.fiszki.model.types.LanguageType;
 import net.tlalka.android.fiszki.model.types.StorageType;
 import net.tlalka.android.fiszki.test.components.DaggerTestApplicationComponent;
 import net.tlalka.android.fiszki.test.components.TestEspressoComponent;
+import net.tlalka.android.fiszki.view.pages.LessonListPage;
+import net.tlalka.android.fiszki.view.pages.LessonPage;
+import net.tlalka.android.fiszki.view.pages.LessonScorePage;
+import net.tlalka.android.fiszki.view.pages.MainPage;
+import net.tlalka.android.fiszki.view.pages.WelcomePage;
 import org.junit.BeforeClass;
 
 public abstract class AndroidBaseTest {
+
+    protected static final MainPage mainPage = new MainPage();
+    protected static final WelcomePage welcomePage = new WelcomePage();
+    protected static final LessonPage lessonPage = new LessonPage();
+    protected static final LessonListPage lessonListPage = new LessonListPage();
+    protected static final LessonScorePage lessonScorePage = new LessonScorePage();
 
     @BeforeClass
     public static void setupApplication() {

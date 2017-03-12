@@ -3,9 +3,6 @@ package net.tlalka.android.fiszki.view.activities;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import net.tlalka.android.fiszki.test.AndroidBaseTest;
-import net.tlalka.android.fiszki.view.pages.LessonListPage;
-import net.tlalka.android.fiszki.view.pages.LessonPage;
-import net.tlalka.android.fiszki.view.pages.MainPage;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,17 +14,17 @@ public class LessonListActivityAndroidTest extends AndroidBaseTest {
     public ActivityTestRule<MainActivity> activityRule = new ActivityTestRule<>(MainActivity.class);
 
     @Test
-    public void testSelectLesson() {
+    public void selectFirstLesson() {
 
         // given
-        MainPage.valid();
-        MainPage.openLessons();
+        mainPage.valid();
+        mainPage.openLessons();
 
         // when
-        LessonListPage.valid();
-        LessonListPage.openLesson(0);
+        lessonListPage.valid();
+        lessonListPage.openLesson(0);
 
         // then
-        LessonPage.valid();
+        lessonPage.valid();
     }
 }

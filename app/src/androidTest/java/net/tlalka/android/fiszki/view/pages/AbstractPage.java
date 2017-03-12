@@ -12,23 +12,25 @@ import static org.hamcrest.CoreMatchers.anything;
 
 public abstract class AbstractPage {
 
-    protected static void clickItem(int resId) {
+    public abstract void valid();
+
+    protected void clickItem(int resId) {
         onView(withId(resId)).perform(click());
     }
 
-    protected static void clickItem(int resId, int stringId) {
+    protected void clickItem(int resId, int stringId) {
         onView(allOf(withId(resId), withText(stringId))).perform(click());
     }
 
-    protected static void clickListItem(int resId, int itemNumber) {
+    protected void clickListItem(int resId, int itemNumber) {
         onData(anything()).inAdapterView(withId(resId)).atPosition(itemNumber).perform(click());
     }
 
-    protected static void isVisible(int resId) {
+    protected void isVisible(int resId) {
         onView(withId(resId)).check(matches(isDisplayed()));
     }
 
-    protected static void isVisible(int resId, int stringId) {
+    protected void isVisible(int resId, int stringId) {
         onView(allOf(withId(resId), withText(stringId))).check(matches(isDisplayed()));
     }
 }

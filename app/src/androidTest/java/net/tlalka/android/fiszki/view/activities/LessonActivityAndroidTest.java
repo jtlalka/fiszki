@@ -7,10 +7,6 @@ import net.tlalka.android.fiszki.domain.services.CacheService;
 import net.tlalka.android.fiszki.model.entities.Lesson;
 import net.tlalka.android.fiszki.model.entities.Word;
 import net.tlalka.android.fiszki.test.AndroidBaseTest;
-import net.tlalka.android.fiszki.view.pages.LessonListPage;
-import net.tlalka.android.fiszki.view.pages.LessonPage;
-import net.tlalka.android.fiszki.view.pages.LessonScorePage;
-import net.tlalka.android.fiszki.view.pages.MainPage;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -33,17 +29,14 @@ public class LessonActivityAndroidTest extends AndroidBaseTest {
 
     @Before
     public void setup() {
-        MainPage.valid();
-        MainPage.openLessons();
-
-        LessonListPage.valid();
-        LessonListPage.openLesson(0);
+        mainPage.openLessons();
+        lessonListPage.openLesson(0);
 
         getEspressoComponent(activityRule.getActivity()).inject(this);
     }
 
     @Test
-    public void testSimulateLessonActivity() {
+    public void simulateLessonProgress() {
 
         // given
         Lesson lesson = listController.getLessonList().get(0);
@@ -51,10 +44,10 @@ public class LessonActivityAndroidTest extends AndroidBaseTest {
 
         // when
         for (int i = 0; i < words.size(); i++) {
-            LessonPage.clickCorrect();
+            lessonPage.clickCorrect();
         }
 
         // then
-        LessonScorePage.valid();
+        lessonScorePage.valid();
     }
 }
