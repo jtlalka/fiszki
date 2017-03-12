@@ -1,4 +1,4 @@
-package net.tlalka.android.fiszki.test;
+package net.tlalka.android.fiszki.view.activities;
 
 import android.app.Activity;
 import android.content.Context;
@@ -18,7 +18,7 @@ import net.tlalka.android.fiszki.view.pages.MainPage;
 import net.tlalka.android.fiszki.view.pages.WelcomePage;
 import org.junit.BeforeClass;
 
-public abstract class AndroidBaseTest {
+public abstract class AbstractAndroidTest {
 
     protected static final MainPage mainPage = new MainPage();
     protected static final WelcomePage welcomePage = new WelcomePage();

@@ -46,13 +46,13 @@ public class LessonScoreActivity extends BasePageActivity {
         this.lessonIncorrect.setText(getString(R.string.test_score_incorrect, lessonDto.getIncorrectScore()));
     }
 
-    @OnClick(R.id.lessons_score_repeat)
+    @OnClick(R.id.lesson_score_repeat)
     public void onRepeatClick(View view) {
         this.navigator.openLessonActivity(this, lessonDto);
         this.navigator.finish(this);
     }
 
-    @OnClick(R.id.lessons_score_lessons)
+    @OnClick(R.id.lesson_score_lessons)
     public void onLessonsClick(View view) {
         this.navigator.openLessonListActivity(this);
         this.navigator.finish(this);

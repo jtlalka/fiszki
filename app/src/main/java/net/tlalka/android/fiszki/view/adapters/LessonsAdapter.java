@@ -34,7 +34,7 @@ public class LessonsAdapter extends AbstractAdapter<Lesson> {
     }
 
     private int getIconId(int progress) {
-        return progress > 0 ? R.drawable.lessons_item_checked : R.drawable.lessons_item_empty;
+        return progress > 0 ? R.drawable.lesson_item_checked : R.drawable.lesson_item_empty;
     }
 
     private static class ViewHolderPattern {

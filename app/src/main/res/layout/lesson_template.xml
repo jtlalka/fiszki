@@ -13,7 +13,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginEnd="@dimen/topic_icon_margin"
         android:contentDescription="@string/nav_lessons"
-        android:src="@drawable/lessons_icon"/>
+        android:src="@drawable/lesson_icon"/>
 
     <TextView
         android:id="@+id/lesson_topic"

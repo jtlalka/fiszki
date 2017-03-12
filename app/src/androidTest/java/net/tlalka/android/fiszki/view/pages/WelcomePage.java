@@ -8,6 +8,7 @@ public class WelcomePage extends AbstractPage {
     public void valid() {
         isVisible(R.id.welcome_layout);
         isVisible(R.id.welcome_message);
+        isImageDescription(R.string.null_value);
     }
 
     public void clickLayout() {

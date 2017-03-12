@@ -5,18 +5,15 @@ import android.support.test.runner.AndroidJUnit4;
 import net.tlalka.android.fiszki.domain.controllers.ListController;
 import net.tlalka.android.fiszki.domain.services.CacheService;
 import net.tlalka.android.fiszki.model.entities.Lesson;
-import net.tlalka.android.fiszki.model.entities.Word;
-import net.tlalka.android.fiszki.test.AndroidBaseTest;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import javax.inject.Inject;
-import java.util.List;
 
 @RunWith(AndroidJUnit4.class)
-public class LessonActivityAndroidTest extends AndroidBaseTest {
+public class LessonActivityAndroidTest extends AbstractAndroidTest {
 
     @Rule
     public ActivityTestRule<MainActivity> activityRule = new ActivityTestRule<>(MainActivity.class);
@@ -29,25 +26,43 @@ public class LessonActivityAndroidTest extends AndroidBaseTest {
 
     @Before
     public void setup() {
-        mainPage.openLessons();
-        lessonListPage.openLesson(0);
-
         getEspressoComponent(activityRule.getActivity()).inject(this);
     }
 
     @Test
-    public void simulateLessonProgress() {
+    public void simulateFullLesson() {
 
         // given
-        Lesson lesson = listController.getLessonList().get(0);
-        List<Word> words = cacheService.getWords(lesson);
+        mainPage.openLessons();
+        lessonListPage.openLesson(0);
 
         // when
-        for (int i = 0; i < words.size(); i++) {
+        for (int i = 0; i < getWordSize(); i++) {
+            lessonPage.clickTranslation();
             lessonPage.clickCorrect();
         }
 
         // then
         lessonScorePage.valid();
+    }
+
+    @Test
+    public void simulateInvalidAnswer() {
+
+        // given
+        mainPage.openLessons();
+        lessonListPage.openLesson(0);
+
+        // when
+        lessonPage.clickIncorrect();
+        lessonPage.clickIncorrect();
+
+        // then
+        lessonPage.checkProgress(String.valueOf(getWordSize()));
+    }
+
+    private int getWordSize() {
+        Lesson lesson = listController.getLessonList().get(0);
+        return cacheService.getWords(lesson).size();
     }
 }

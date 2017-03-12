@@ -13,7 +13,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginEnd="@dimen/menu_item_margin"
         android:contentDescription="@string/null_value"
-        android:src="@drawable/lessons_item_checked"/>
+        android:src="@drawable/lesson_item_checked"/>
 
     <TextView
         android:id="@+id/lesson_list_name"

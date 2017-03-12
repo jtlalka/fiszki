@@ -7,6 +7,7 @@ public class MainPage extends AbstractPage {
     @Override
     public void valid() {
         isVisible(R.id.main_list_view);
+        isImageDescription(R.string.app_name);
     }
 
     public void openLessons() {

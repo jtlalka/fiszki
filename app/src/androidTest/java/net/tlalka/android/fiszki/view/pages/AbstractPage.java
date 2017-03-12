@@ -5,8 +5,10 @@ import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static android.support.test.espresso.matcher.ViewMatchers.withContentDescription;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
+import static net.tlalka.android.fiszki.test.ActivityMatchers.isDrawable;
 import static org.hamcrest.CoreMatchers.allOf;
 import static org.hamcrest.CoreMatchers.anything;
 
@@ -26,11 +28,19 @@ public abstract class AbstractPage {
         onData(anything()).inAdapterView(withId(resId)).atPosition(itemNumber).perform(click());
     }
 
+    protected void isText(int resId, String text) {
+        onView(withId(resId)).check(matches(withText(text)));
+    }
+
     protected void isVisible(int resId) {
         onView(withId(resId)).check(matches(isDisplayed()));
     }
 
     protected void isVisible(int resId, int stringId) {
         onView(allOf(withId(resId), withText(stringId))).check(matches(isDisplayed()));
+    }
+
+    protected void isImageDescription(int descriptionId) {
+        onView(allOf(withContentDescription(descriptionId), isDrawable())).check(matches(isDisplayed()));
     }
 }

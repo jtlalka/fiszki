@@ -22,4 +22,16 @@ public class LessonPage extends AbstractPage {
     public void clickIncorrect() {
         clickItem(R.id.button_incorrect, R.string.button_incorrect);
     }
+
+    public void clickTranslation() {
+        clickItem(R.id.lesson_check_word);
+    }
+
+    public void checkProgress(String progress) {
+        isText(R.id.lesson_progress, progress);
+    }
+
+    public void closeActivity() {
+        clickItem(R.id.item_back);
+    }
 }

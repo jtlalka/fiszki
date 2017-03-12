@@ -59,7 +59,7 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/lessons_score_repeat"
+                android:id="@+id/lesson_score_repeat"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/sep_size_m"
@@ -74,7 +74,7 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/lessons_score_lessons"
+                android:id="@+id/lesson_score_lessons"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/sep_size_m"
