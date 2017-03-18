@@ -2,6 +2,7 @@ package net.tlalka.android.fiszki.view.activities;
 
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
+import com.annimon.stream.IntStream;
 import net.tlalka.android.fiszki.domain.controllers.ListController;
 import net.tlalka.android.fiszki.domain.services.CacheService;
 import net.tlalka.android.fiszki.model.entities.Lesson;
@@ -13,7 +14,7 @@ import org.junit.runner.RunWith;
 import javax.inject.Inject;
 
 @RunWith(AndroidJUnit4.class)
-public class LessonActivityAndroidTest extends AbstractAndroidTest {
+public class LessonAndroidTest extends AbstractAndroidTest {
 
     @Rule
     public ActivityTestRule<MainActivity> activityRule = new ActivityTestRule<>(MainActivity.class);
@@ -34,16 +35,22 @@ public class LessonActivityAndroidTest extends AbstractAndroidTest {
 
         // given
         mainPage.openLessons();
+
+        lessonListPage.valid();
         lessonListPage.openLesson(0);
 
         // when
-        for (int i = 0; i < getWordSize(); i++) {
+        IntStream.range(0, getWordSize()).forEach(i -> {
             lessonPage.clickTranslation();
             lessonPage.clickCorrect();
-        }
+        });
 
-        // then
+        // then (score)
         lessonScorePage.valid();
+        lessonScorePage.clickLessons();
+
+        // then (lesson)
+        lessonListPage.valid();
     }
 
     @Test
@@ -51,6 +58,8 @@ public class LessonActivityAndroidTest extends AbstractAndroidTest {
 
         // given
         mainPage.openLessons();
+
+        lessonListPage.valid();
         lessonListPage.openLesson(0);
 
         // when

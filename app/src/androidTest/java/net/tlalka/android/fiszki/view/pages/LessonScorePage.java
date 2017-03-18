@@ -15,10 +15,10 @@ public class LessonScorePage extends AbstractPage {
     }
 
     public void clickLessons() {
-        clickListItem(R.id.lesson_score_lessons, R.string.lesson_score_lessons);
+        clickItem(R.id.lesson_score_lessons, R.string.lesson_score_lessons);
     }
 
     public void clickRepeat() {
-        clickListItem(R.id.lesson_score_repeat, R.string.lesson_score_repeat);
+        clickItem(R.id.lesson_score_repeat, R.string.lesson_score_repeat);
     }
 }

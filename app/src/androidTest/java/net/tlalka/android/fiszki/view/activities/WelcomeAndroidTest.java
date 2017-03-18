@@ -10,7 +10,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @RunWith(AndroidJUnit4.class)
-public class WelcomeActivityAndroidTest extends AbstractAndroidTest {
+public class WelcomeAndroidTest extends AbstractAndroidTest {
 
     @Rule
     public ActivityLazyRule<MainActivity> activityRule = new ActivityLazyRule<>(MainActivity.class);
