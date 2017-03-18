@@ -15,16 +15,16 @@ public class LessonPage extends AbstractPage {
         isVisible(R.id.button_correct);
     }
 
+    public void clickTranslation() {
+        clickItem(R.id.lesson_check_word);
+    }
+
     public void clickCorrect() {
         clickItem(R.id.button_correct, R.string.button_correct);
     }
 
     public void clickIncorrect() {
         clickItem(R.id.button_incorrect, R.string.button_incorrect);
-    }
-
-    public void clickTranslation() {
-        clickItem(R.id.lesson_check_word);
     }
 
     public void checkProgress(String progress) {

@@ -15,6 +15,8 @@ import net.tlalka.android.fiszki.view.pages.LessonListPage;
 import net.tlalka.android.fiszki.view.pages.LessonPage;
 import net.tlalka.android.fiszki.view.pages.LessonScorePage;
 import net.tlalka.android.fiszki.view.pages.MainPage;
+import net.tlalka.android.fiszki.view.pages.TestListPage;
+import net.tlalka.android.fiszki.view.pages.TestPage;
 import net.tlalka.android.fiszki.view.pages.WelcomePage;
 import org.junit.BeforeClass;
 
@@ -25,6 +27,8 @@ public abstract class AbstractAndroidTest {
     protected static final LessonPage lessonPage = new LessonPage();
     protected static final LessonListPage lessonListPage = new LessonListPage();
     protected static final LessonScorePage lessonScorePage = new LessonScorePage();
+    protected static final TestPage testPage = new TestPage();
+    protected static final TestListPage testListPage = new TestListPage();
 
     @BeforeClass
     public static void setupApplication() {

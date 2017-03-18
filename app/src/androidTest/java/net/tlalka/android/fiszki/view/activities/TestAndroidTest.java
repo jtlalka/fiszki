@@ -14,7 +14,7 @@ import org.junit.runner.RunWith;
 import javax.inject.Inject;
 
 @RunWith(AndroidJUnit4.class)
-public class LessonAndroidTest extends AbstractAndroidTest {
+public class TestAndroidTest extends AbstractAndroidTest {
 
     @Rule
     public ActivityTestRule<MainActivity> activityRule = new ActivityTestRule<>(MainActivity.class);
@@ -31,54 +31,33 @@ public class LessonAndroidTest extends AbstractAndroidTest {
     }
 
     @Test
-    public void simulateFullLesson() {
+    public void simulateFullTest() {
 
         // given
-        mainPage.openLessons();
-        lessonListPage.openItem(0);
+        mainPage.openTests();
+        testListPage.openItem(0);
 
         // when
         IntStream.range(0, getWordSize()).forEach(i -> {
-            lessonPage.clickTranslation();
-            lessonPage.clickCorrect();
+            testPage.valid();
         });
 
-        // then (score)
-        lessonScorePage.valid();
-        lessonScorePage.clickLessons();
-
-        // then (lesson)
-        lessonListPage.valid();
-    }
-
-    @Test
-    public void simulateInvalidAnswer() {
-
-        // given
-        mainPage.openLessons();
-        lessonListPage.openItem(0);
-
-        // when
-        lessonPage.clickIncorrect();
-        lessonPage.clickIncorrect();
-
         // then
-        lessonPage.checkProgress(String.valueOf(getWordSize()));
     }
 
     @Test
-    public void closeLessonActivity() {
+    public void closeTestActivity() {
 
         // given
         mainPage.valid();
-        mainPage.openLessons();
+        mainPage.openTests();
 
-        lessonListPage.valid();
-        lessonListPage.openItem(0);
+        testListPage.valid();
+        testListPage.openItem(0);
 
         // when
-        lessonPage.valid();
-        lessonPage.closeActivity();
+        testPage.valid();
+        testPage.closeActivity();
 
         // then
         mainPage.valid();

@@ -13,9 +13,28 @@ public class MainAndroidTest extends AbstractAndroidTest {
     public ActivityTestRule<MainActivity> activityRule = new ActivityTestRule<>(MainActivity.class);
 
     @Test
-    public void openMainActivityView() {
+    public void openLessonsActivity() {
+
+        // given
+        mainPage.valid();
+
+        // when
+        mainPage.openLessons();
 
         // then
+        lessonListPage.valid();
+    }
+
+    @Test
+    public void openTestsActivity() {
+
+        // given
         mainPage.valid();
+
+        // when
+        mainPage.openTests();
+
+        // then
+        testListPage.valid();
     }
 }

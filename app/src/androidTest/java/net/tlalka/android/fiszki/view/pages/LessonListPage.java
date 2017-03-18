@@ -12,7 +12,7 @@ public class LessonListPage extends AbstractPage {
         isVisible(R.id.lesson_list_view);
     }
 
-    public void openLesson(int index) {
+    public void openItem(int index) {
         clickListItem(R.id.lesson_list_view, index);
     }
 }
