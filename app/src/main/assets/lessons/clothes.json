@@ -1,0 +1,23 @@
+{
+    "name": {"EN": "Clothes", "PL": "Ubrania", "FR": "Les vetements"},
+    "level": "INTERMEDIATE",
+    "words": [
+        {"EN": "skirt", "PL": "spódnica", "FR": "la jupe"},
+        {"EN": "shirt", "PL": "koszula", "FR": "la chemise"},
+        {"EN": "socks", "PL": "skarpety", "FR": "les chaussettes"},
+        {"EN": "shoes", "PL": "buty", "FR": "les chaussures"},
+        {"EN": "trousers", "PL": "spodnie", "FR": "le pantalon"},
+        {"EN": "belt", "PL": "pasek", "FR": "la ceinture"},
+        {"EN": "dress", "PL": "sukienka", "FR": "la robe"},
+        {"EN": "scarf", "PL": "szal", "FR": "l'écharpe"},
+        {"EN": "cap", "PL": "czapka", "FR": "le chapeau"},
+        {"EN": "gloves", "PL": "rękawiczki", "FR": "les gants"},
+        {"EN": "wallet", "PL": "portfel", "FR": "le portefeuille"},
+        {"EN": "tie", "PL": "krawat", "FR": "la cravate"},
+        {"EN": "coat", "PL": "płaszcz", "FR": "le manteau"},
+        {"EN": "jacket", "PL": "kurtka", "FR": "la veste"},
+        {"EN": "cardigan", "PL": "sweter rozpinany", "FR": "le cardigan"},
+        {"EN": "umbrella", "PL": "parasol", "FR": "le parapluie"},
+        {"EN": "jeans", "PL": "jeansy", "FR": "le jean"}
+    ]
+}

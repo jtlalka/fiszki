@@ -1,18 +1,19 @@
 {
-    "name": {"EN": "Colors", "PL": "Kolory", "FR": "..."},
+    "name": {"EN": "Colors", "PL": "Kolory", "FR": "Les couleurs"},
     "level": "BEGINNER",
     "words": [
-        {"EN": "blue", "PL": "niebieski", "FR": "..."},
-        {"EN": "red", "PL": "czerwony", "FR": "..."},
-        {"EN": "black", "PL": "czarny", "FR": "..."},
-        {"EN": "white", "PL": "bialy", "FR": "..."},
-        {"EN": "pink", "PL": "różowy", "FR": "..."},
-        {"EN": "yellow", "PL": "żółty", "FR": "..."},
-        {"EN": "purple", "PL": "fiotelowy", "FR": "..."},
-        {"EN": "brown", "PL": "brązowy", "FR": "..."},
-        {"EN": "green", "PL": "zielony", "FR": "..."},
-        {"EN": "silver", "PL": "srebrny", "FR": "..."},
-        {"EN": "gold", "PL": "złoty", "FR": "..."},
-        {"EN": "orange", "PL": "pomarańczowy", "FR": "..."}
+        {"EN": "blue", "PL": "niebieski", "FR": "bleu"},
+        {"EN": "red", "PL": "czerwony", "FR": "rouge"},
+        {"EN": "black", "PL": "czarny", "FR": "noir"},
+        {"EN": "white", "PL": "bialy", "FR": "blanc"},
+        {"EN": "pink", "PL": "różowy", "FR": "rose"},
+        {"EN": "yellow", "PL": "żółty", "FR": "jaune"},
+        {"EN": "purple", "PL": "fiotelowy", "FR": "violet"},
+        {"EN": "brown", "PL": "brązowy", "FR": "marron"},
+        {"EN": "green", "PL": "zielony", "FR": "vert"},
+        {"EN": "silver", "PL": "srebrny", "FR": "argent"},
+        {"EN": "gold", "PL": "złoty", "FR": "or"},
+        {"EN": "grey", "PL": "szary", "FR": "gris"},
+        {"EN": "orange", "PL": "pomarańczowy", "FR": "orange"}
     ]
 }
