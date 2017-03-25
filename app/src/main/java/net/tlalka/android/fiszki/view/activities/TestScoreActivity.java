@@ -47,7 +47,7 @@ public class TestScoreActivity extends BasePageActivity {
 
         this.testTopic.setText(getString(R.string.test_topic, lessonIndex, lessonName));
         this.testTotal.setText(getString(R.string.test_score_total, lessonDto.getCorrectScore()));
-        this.testScore.setText(getString(R.string.test_score_vale, lessonDto.getGeneralScore()));
+        this.testScore.setText(getString(R.string.test_score_value, lessonDto.getGeneralScore()));
         this.testIncorrect.setText(getString(R.string.test_score_incorrect, lessonDto.getIncorrectScore()));
     }
 

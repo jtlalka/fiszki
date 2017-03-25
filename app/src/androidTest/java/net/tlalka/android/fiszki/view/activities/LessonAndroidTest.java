@@ -4,7 +4,7 @@ import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import com.annimon.stream.IntStream;
 import net.tlalka.android.fiszki.domain.controllers.ListController;
-import net.tlalka.android.fiszki.domain.services.CacheService;
+import net.tlalka.android.fiszki.domain.services.WordService;
 import net.tlalka.android.fiszki.model.entities.Lesson;
 import org.junit.Before;
 import org.junit.Rule;
@@ -23,7 +23,7 @@ public class LessonAndroidTest extends AbstractAndroidTest {
     public ListController listController;
 
     @Inject
-    public CacheService cacheService;
+    public WordService wordService;
 
     @Before
     public void setup() {
@@ -86,6 +86,6 @@ public class LessonAndroidTest extends AbstractAndroidTest {
 
     private int getWordSize() {
         Lesson lesson = listController.getLessonList().get(0);
-        return cacheService.getWords(lesson).size();
+        return wordService.getWords(lesson).size();
     }
 }

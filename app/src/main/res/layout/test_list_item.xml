@@ -23,7 +23,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:gravity="center_vertical"
-        android:text="@string/test_score_vale"
+        android:text="@string/test_score_value"
         android:textSize="@dimen/font_size_m"/>
 
     <TextView

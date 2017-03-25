@@ -17,6 +17,7 @@ import net.tlalka.android.fiszki.view.pages.LessonScorePage;
 import net.tlalka.android.fiszki.view.pages.MainPage;
 import net.tlalka.android.fiszki.view.pages.TestListPage;
 import net.tlalka.android.fiszki.view.pages.TestPage;
+import net.tlalka.android.fiszki.view.pages.TestScorePage;
 import net.tlalka.android.fiszki.view.pages.WelcomePage;
 import org.junit.BeforeClass;
 
@@ -29,13 +30,17 @@ public abstract class AbstractAndroidTest {
     protected static final LessonScorePage lessonScorePage = new LessonScorePage();
     protected static final TestPage testPage = new TestPage();
     protected static final TestListPage testListPage = new TestListPage();
+    protected static final TestScorePage testScorePage = new TestScorePage();
+
+    protected static final LanguageType testLanguage = LanguageType.EN;
+    protected static final LanguageType testTranslation = LanguageType.PL;
 
     @BeforeClass
     public static void setupApplication() {
         StorageHelper storageHelper = new StorageHelper(getContext());
         storageHelper.setBoolean(StorageType.WELCOME_VIEW, false);
-        storageHelper.setEnum(StorageType.LANGUAGE, LanguageType.EN);
-        storageHelper.setEnum(StorageType.TRANSLATION, LanguageType.PL);
+        storageHelper.setEnum(StorageType.LANGUAGE, testLanguage);
+        storageHelper.setEnum(StorageType.TRANSLATION, testTranslation);
     }
 
     protected static Context getContext() {

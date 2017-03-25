@@ -1,5 +1,8 @@
 package net.tlalka.android.fiszki.view.pages;
 
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicReference;
+
 import static android.support.test.espresso.Espresso.onData;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
@@ -8,6 +11,8 @@ import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withContentDescription;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
+import static net.tlalka.android.fiszki.test.ActivityActions.readTest;
+import static net.tlalka.android.fiszki.test.ActivityActions.waitForUpdate;
 import static net.tlalka.android.fiszki.test.ActivityMatchers.isDrawable;
 import static org.hamcrest.CoreMatchers.allOf;
 import static org.hamcrest.CoreMatchers.anything;
@@ -42,5 +47,15 @@ public abstract class AbstractPage {
 
     protected void isImageDescription(int descriptionId) {
         onView(allOf(withContentDescription(descriptionId), isDrawable())).check(matches(isDisplayed()));
+    }
+
+    protected void isUpdated(int resId) {
+        onView(withId(resId)).perform(waitForUpdate(TimeUnit.SECONDS.toMillis(1)));
+    }
+
+    public String getText(int resId) {
+        AtomicReference<String> reference = new AtomicReference<>();
+        onView(withId(resId)).perform(readTest(reference));
+        return reference.get();
     }
 }

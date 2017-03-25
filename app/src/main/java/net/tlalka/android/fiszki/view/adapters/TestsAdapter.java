@@ -26,7 +26,7 @@ public class TestsAdapter extends AbstractAdapter<Lesson> {
         Lesson lesson = super.getItem(position);
 
         ViewHolderPattern viewHolderPattern = (ViewHolderPattern) convertView.getTag();
-        viewHolderPattern.score.setText(getString(R.string.test_score_vale, lesson.getScore()));
+        viewHolderPattern.score.setText(getString(R.string.test_score_value, lesson.getScore()));
         viewHolderPattern.name.setText(getString(R.string.list_item, position + 1, lesson.getName()));
         viewHolderPattern.desc.setText(lesson.getLevelType().name());
 
