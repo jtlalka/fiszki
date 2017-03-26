@@ -62,25 +62,12 @@ public class LessonAndroidTest extends AbstractAndroidTest {
         lessonPage.clickIncorrect();
         lessonPage.clickIncorrect();
 
-        // then
-        lessonPage.checkProgress(String.valueOf(getWordSize()));
-    }
-
-    @Test
-    public void closeLessonActivity() {
-
-        // given
-        mainPage.valid();
-        mainPage.openLessons();
-
-        lessonListPage.valid();
-        lessonListPage.openItem(0);
-
-        // when
+        // then (lesson)
         lessonPage.valid();
+        lessonPage.matchProgress(getWordSize());
         lessonPage.closeActivity();
 
-        // then
+        // then (main)
         mainPage.valid();
     }
 

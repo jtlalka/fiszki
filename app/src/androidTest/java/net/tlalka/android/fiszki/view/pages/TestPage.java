@@ -57,8 +57,8 @@ public class TestPage extends AbstractPage {
         isUpdated(R.id.test_answer_4);
     }
 
-    public void checkProgress(String progress) {
-        isText(R.id.test_progress, progress);
+    public void matchProgress(int progress) {
+        matchText(R.id.test_progress, progress + "\\ .*");
     }
 
     public void closeActivity() {

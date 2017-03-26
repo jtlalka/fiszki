@@ -27,8 +27,8 @@ public class LessonPage extends AbstractPage {
         clickItem(R.id.button_incorrect, R.string.button_incorrect);
     }
 
-    public void checkProgress(String progress) {
-        isText(R.id.lesson_progress, progress);
+    public void matchProgress(int progress) {
+        matchText(R.id.lesson_progress, ".*" + progress);
     }
 
     public void closeActivity() {

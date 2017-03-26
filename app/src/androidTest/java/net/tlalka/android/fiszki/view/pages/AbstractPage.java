@@ -14,6 +14,7 @@ import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static net.tlalka.android.fiszki.test.ActivityActions.readTest;
 import static net.tlalka.android.fiszki.test.ActivityActions.waitForUpdate;
 import static net.tlalka.android.fiszki.test.ActivityMatchers.isDrawable;
+import static net.tlalka.android.fiszki.test.ActivityMatchers.textMatches;
 import static org.hamcrest.CoreMatchers.allOf;
 import static org.hamcrest.CoreMatchers.anything;
 
@@ -31,6 +32,10 @@ public abstract class AbstractPage {
 
     protected void clickListItem(int resId, int itemNumber) {
         onData(anything()).inAdapterView(withId(resId)).atPosition(itemNumber).perform(click());
+    }
+
+    protected void matchText(int resId, String pattern) {
+        onView(withId(resId)).check(matches(textMatches(pattern)));
     }
 
     protected void isText(int resId, String text) {

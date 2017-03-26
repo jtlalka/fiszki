@@ -43,7 +43,7 @@ public class TestAndroidTest extends AbstractAndroidTest {
 
         // when
         IntStream.range(0, words.size()).forEach(i -> {
-            testPage.valid();
+            testPage.matchProgress(i + 1);
 
             String wordValue = testPage.getWord();
             String transValue = getTranslation(words, wordValue);
@@ -68,20 +68,33 @@ public class TestAndroidTest extends AbstractAndroidTest {
     }
 
     @Test
-    public void closeTestActivity() {
+    public void simulateInvalidAnswer() {
 
         // given
-        mainPage.valid();
         mainPage.openTests();
-
-        testListPage.valid();
         testListPage.openItem(0);
+        testPage.matchProgress(1);
 
         // when
+        String wordValue = testPage.getWord();
+        String transValue = getTranslation(getWords(0), wordValue);
+
+        if (!testPage.getAnswer1().equals(transValue)) {
+            testPage.clickAnswer1();
+        } else if (!testPage.getAnswer2().equals(transValue)) {
+            testPage.clickAnswer2();
+        } else if (!testPage.getAnswer3().equals(transValue)) {
+            testPage.clickAnswer3();
+        } else if (!testPage.getAnswer4().equals(transValue)) {
+            testPage.clickAnswer4();
+        }
+
+        // then (test)
         testPage.valid();
+        testPage.matchProgress(1);
         testPage.closeActivity();
 
-        // then
+        // then (main)
         mainPage.valid();
     }
 
