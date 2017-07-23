@@ -1,6 +1,8 @@
 apply plugin: 'com.android.application'
 apply plugin: 'me.tatarka.retrolambda'
-apply plugin: 'checkstyle'
+
+apply from: '../config/lint.gradle'
+apply from: '../config/checkstyle.gradle'
 
 android {
     compileSdkVersion 25
@@ -20,10 +22,6 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
-    }
-
-    lintOptions {
-        abortOnError true
     }
 }
 
@@ -56,13 +54,4 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-}
-
-checkstyle {
-    toolVersion '8.0'
-}
-
-project.afterEvaluate {
-    check.dependsOn('checkstyle')
-    preBuild.dependsOn('checkstyle')
 }

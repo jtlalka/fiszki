@@ -1,0 +1,7 @@
+
+android {
+    lintOptions {
+        lintConfig file('../config/lint.xml')
+        abortOnError true
+    }
+}

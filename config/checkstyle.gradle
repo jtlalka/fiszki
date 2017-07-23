@@ -1,0 +1,27 @@
+apply plugin: 'checkstyle'
+
+checkstyle {
+    toolVersion '8.0'
+}
+
+task checkstyle(type: Checkstyle) {
+    group = 'Verification'
+    description 'Runs Checkstyle inspection against Android sourcesets.'
+
+    configFile file('../config/checkstyle.xml')
+    source 'src'
+    include '**/*.java'
+
+    ignoreFailures false
+    showViolations true
+
+    maxErrors 0
+    maxWarnings 0
+
+    classpath = files()
+}
+
+project.afterEvaluate {
+    check.dependsOn('checkstyle')
+    preBuild.dependsOn('checkstyle')
+}

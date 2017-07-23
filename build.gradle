@@ -26,21 +26,4 @@ allprojects {
     repositories {
         jcenter()
     }
-
-    task checkstyle(type: Checkstyle) {
-        group = 'Verification'
-        description 'Runs Checkstyle inspection against Android sourcesets.'
-
-        configFile file('./checkstyle.xml')
-        source 'src'
-        include '**/*.java'
-
-        ignoreFailures false
-        showViolations true
-
-        maxErrors 0
-        maxWarnings 0
-
-        classpath = files()
-    }
 }
