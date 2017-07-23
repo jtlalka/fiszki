@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'me.tatarka.retrolambda'
+apply plugin: 'checkstyle'
 
 android {
     compileSdkVersion 25
@@ -55,4 +56,13 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+}
+
+checkstyle {
+    toolVersion '8.0'
+}
+
+project.afterEvaluate {
+    check.dependsOn('checkstyle')
+    preBuild.dependsOn('checkstyle')
 }
