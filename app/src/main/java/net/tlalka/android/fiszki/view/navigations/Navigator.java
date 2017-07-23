@@ -1,9 +1,13 @@
 package net.tlalka.android.fiszki.view.navigations;
 
+import javax.inject.Inject;
+import javax.inject.Singleton;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Parcelable;
+
 import net.tlalka.android.fiszki.model.dto.LessonDto;
 import net.tlalka.android.fiszki.model.dto.WelcomeDto;
 import net.tlalka.android.fiszki.view.activities.LessonActivity;
@@ -15,9 +19,6 @@ import net.tlalka.android.fiszki.view.activities.TestScoreActivity;
 import net.tlalka.android.fiszki.view.activities.WelcomeActivity;
 import net.tlalka.android.fiszki.view.activities.WordsActivity;
 import org.parceler.Parcels;
-
-import javax.inject.Inject;
-import javax.inject.Singleton;
 
 
 @Singleton

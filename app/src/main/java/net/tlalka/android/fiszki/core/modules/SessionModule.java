@@ -1,6 +1,7 @@
 package net.tlalka.android.fiszki.core.modules;
 
 import android.content.Context;
+
 import dagger.Module;
 import dagger.Provides;
 import net.tlalka.android.fiszki.core.annotations.SessionScope;

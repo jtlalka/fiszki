@@ -1,11 +1,12 @@
 package net.tlalka.android.fiszki.core.modules;
 
+import javax.inject.Singleton;
+
 import android.app.Application;
+
 import dagger.Module;
 import dagger.Provides;
 import net.tlalka.android.fiszki.view.navigations.Navigator;
-
-import javax.inject.Singleton;
 
 @Module
 public class ApplicationModule {

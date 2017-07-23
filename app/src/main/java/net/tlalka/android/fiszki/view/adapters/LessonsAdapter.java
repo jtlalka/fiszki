@@ -1,14 +1,15 @@
 package net.tlalka.android.fiszki.view.adapters;
 
+import java.util.List;
+
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import net.tlalka.android.fiszki.R;
 import net.tlalka.android.fiszki.model.entities.Lesson;
-
-import java.util.List;
 
 public class LessonsAdapter extends AbstractAdapter<Lesson> {
 

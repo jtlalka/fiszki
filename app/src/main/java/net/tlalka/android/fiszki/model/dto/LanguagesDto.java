@@ -1,9 +1,9 @@
 package net.tlalka.android.fiszki.model.dto;
 
+import java.util.List;
+
 import net.tlalka.android.fiszki.model.types.LanguageType;
 import org.parceler.Parcel;
-
-import java.util.List;
 
 @Parcel
 public class LanguagesDto {

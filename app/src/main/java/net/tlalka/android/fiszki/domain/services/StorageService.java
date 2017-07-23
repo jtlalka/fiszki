@@ -1,11 +1,11 @@
 package net.tlalka.android.fiszki.domain.services;
 
+import javax.inject.Inject;
+
 import net.tlalka.android.fiszki.core.annotations.SessionScope;
 import net.tlalka.android.fiszki.model.helpers.StorageHelper;
 import net.tlalka.android.fiszki.model.types.LanguageType;
 import net.tlalka.android.fiszki.model.types.StorageType;
-
-import javax.inject.Inject;
 
 @SessionScope
 public class StorageService {

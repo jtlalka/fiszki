@@ -1,9 +1,9 @@
 package net.tlalka.android.fiszki.model.dto.json;
 
+import java.util.List;
+
 import com.google.gson.annotations.SerializedName;
 import net.tlalka.android.fiszki.model.types.LevelType;
-
-import java.util.List;
 
 public class LessonDto {
 

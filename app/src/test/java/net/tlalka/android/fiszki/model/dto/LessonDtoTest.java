@@ -1,17 +1,17 @@
 package net.tlalka.android.fiszki.model.dto;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.util.Arrays;
+
 import com.google.gson.Gson;
 import net.tlalka.android.fiszki.model.dto.json.LessonDto;
 import net.tlalka.android.fiszki.model.dto.json.WordDto;
 import net.tlalka.android.fiszki.model.types.LevelType;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.util.Arrays;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;

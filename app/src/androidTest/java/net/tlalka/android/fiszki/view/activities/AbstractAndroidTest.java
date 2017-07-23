@@ -3,6 +3,7 @@ package net.tlalka.android.fiszki.view.activities;
 import android.app.Activity;
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
+
 import net.tlalka.android.fiszki.core.modules.ActivityModule;
 import net.tlalka.android.fiszki.core.modules.ApplicationModule;
 import net.tlalka.android.fiszki.core.modules.SessionModule;

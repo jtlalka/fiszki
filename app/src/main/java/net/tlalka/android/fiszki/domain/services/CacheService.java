@@ -1,15 +1,16 @@
 package net.tlalka.android.fiszki.domain.services;
 
-import android.util.Log;
-import net.tlalka.android.fiszki.core.annotations.SessionScope;
-import net.tlalka.android.fiszki.model.entities.Lesson;
-import net.tlalka.android.fiszki.model.entities.Word;
-
-import javax.inject.Inject;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.inject.Inject;
+
+import android.util.Log;
+
+import net.tlalka.android.fiszki.core.annotations.SessionScope;
+import net.tlalka.android.fiszki.model.entities.Lesson;
+import net.tlalka.android.fiszki.model.entities.Word;
 
 @SessionScope
 public class CacheService {

@@ -1,9 +1,13 @@
 package net.tlalka.android.fiszki.view.activities;
 
+import java.util.List;
+import javax.inject.Inject;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 import net.tlalka.android.fiszki.R;
@@ -14,9 +18,6 @@ import net.tlalka.android.fiszki.model.entities.Word;
 import net.tlalka.android.fiszki.model.types.LanguageType;
 import net.tlalka.android.fiszki.view.fragments.LanguageDialogFragment;
 import net.tlalka.android.fiszki.view.navigations.Navigator;
-
-import javax.inject.Inject;
-import java.util.List;
 
 public class LessonActivity extends BasePageActivity implements LanguageDialogFragment.DialogListener {
 

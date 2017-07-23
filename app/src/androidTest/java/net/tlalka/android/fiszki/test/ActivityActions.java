@@ -1,13 +1,14 @@
 package net.tlalka.android.fiszki.test;
 
+import java.util.concurrent.atomic.AtomicReference;
+
 import android.support.test.espresso.UiController;
 import android.support.test.espresso.ViewAction;
 import android.support.test.espresso.util.TreeIterables;
 import android.view.View;
 import android.widget.TextView;
-import org.hamcrest.Matcher;
 
-import java.util.concurrent.atomic.AtomicReference;
+import org.hamcrest.Matcher;
 
 import static android.support.test.espresso.matcher.ViewMatchers.isAssignableFrom;
 import static android.support.test.espresso.matcher.ViewMatchers.isRoot;

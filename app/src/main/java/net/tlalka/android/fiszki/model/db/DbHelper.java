@@ -1,7 +1,10 @@
 package net.tlalka.android.fiszki.model.db;
 
+import java.sql.SQLException;
+
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
+
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.support.ConnectionSource;
 import net.tlalka.android.fiszki.model.dao.ClusterDao;
@@ -11,8 +14,6 @@ import net.tlalka.android.fiszki.model.entities.Cluster;
 import net.tlalka.android.fiszki.model.entities.Lesson;
 import net.tlalka.android.fiszki.model.entities.Word;
 import net.tlalka.android.fiszki.model.helpers.AssetsHelper;
-
-import java.sql.SQLException;
 
 public class DbHelper extends OrmLiteSqliteOpenHelper {
 

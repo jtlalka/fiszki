@@ -1,6 +1,7 @@
 package net.tlalka.android.fiszki.view.activities;
 
 import android.support.test.runner.AndroidJUnit4;
+
 import net.tlalka.android.fiszki.model.helpers.StorageHelper;
 import net.tlalka.android.fiszki.model.types.StorageType;
 import net.tlalka.android.fiszki.test.ActivityLazyRule;

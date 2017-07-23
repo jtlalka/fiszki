@@ -2,6 +2,7 @@ package net.tlalka.android.fiszki.view.activities;
 
 import android.view.Menu;
 import android.view.MenuItem;
+
 import net.tlalka.android.fiszki.R;
 import net.tlalka.android.fiszki.view.elements.SetupElement;
 

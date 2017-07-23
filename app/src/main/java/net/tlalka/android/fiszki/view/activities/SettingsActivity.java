@@ -1,19 +1,20 @@
 package net.tlalka.android.fiszki.view.activities;
 
+import java.util.Arrays;
+import java.util.List;
+import javax.inject.Inject;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Spinner;
+
 import butterknife.BindView;
 import net.tlalka.android.fiszki.R;
 import net.tlalka.android.fiszki.domain.services.StorageService;
 import net.tlalka.android.fiszki.model.types.LanguageType;
 import net.tlalka.android.fiszki.model.types.StorageType;
 import net.tlalka.android.fiszki.view.adapters.LanguageAdapter;
-
-import javax.inject.Inject;
-import java.util.Arrays;
-import java.util.List;
 
 public class SettingsActivity extends BaseSetupActivity implements AdapterView.OnItemSelectedListener {
 

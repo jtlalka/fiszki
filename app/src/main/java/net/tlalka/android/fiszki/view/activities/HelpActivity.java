@@ -2,6 +2,7 @@ package net.tlalka.android.fiszki.view.activities;
 
 import android.os.Bundle;
 import android.view.View;
+
 import butterknife.OnClick;
 import net.tlalka.android.fiszki.R;
 

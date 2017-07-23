@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/topic_margin"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <ImageView
         android:id="@+id/words_icon"
@@ -13,7 +13,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginEnd="@dimen/topic_icon_margin"
         android:contentDescription="@string/nav_words"
-        android:src="@drawable/settings_icon" />
+        android:src="@drawable/settings_icon"/>
 
     <TextView
         android:id="@+id/words_topic"
@@ -24,6 +24,6 @@
         android:layout_toEndOf="@id/words_icon"
         android:gravity="center_vertical"
         android:text="@string/nav_words"
-        android:textSize="@dimen/font_size_l" />
+        android:textSize="@dimen/font_size_l"/>
 
 </RelativeLayout>

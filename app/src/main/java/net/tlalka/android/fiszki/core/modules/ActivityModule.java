@@ -2,6 +2,7 @@ package net.tlalka.android.fiszki.core.modules;
 
 import android.app.Activity;
 import android.os.Bundle;
+
 import butterknife.ButterKnife;
 import dagger.Module;
 import dagger.Provides;

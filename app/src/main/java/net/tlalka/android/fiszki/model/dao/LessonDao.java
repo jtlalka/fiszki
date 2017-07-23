@@ -1,11 +1,11 @@
 package net.tlalka.android.fiszki.model.dao;
 
+import java.sql.SQLException;
+import java.util.List;
+
 import com.j256.ormlite.support.ConnectionSource;
 import net.tlalka.android.fiszki.model.entities.Lesson;
 import net.tlalka.android.fiszki.model.types.LanguageType;
-
-import java.sql.SQLException;
-import java.util.List;
 
 public class LessonDao extends AbstractDao<Lesson, Long> {
 

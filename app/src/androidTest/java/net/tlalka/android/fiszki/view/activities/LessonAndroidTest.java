@@ -1,7 +1,10 @@
 package net.tlalka.android.fiszki.view.activities;
 
+import javax.inject.Inject;
+
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
+
 import com.annimon.stream.IntStream;
 import net.tlalka.android.fiszki.domain.controllers.ListController;
 import net.tlalka.android.fiszki.domain.services.WordService;
@@ -10,8 +13,6 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
-import javax.inject.Inject;
 
 @RunWith(AndroidJUnit4.class)
 public class LessonAndroidTest extends AbstractAndroidTest {

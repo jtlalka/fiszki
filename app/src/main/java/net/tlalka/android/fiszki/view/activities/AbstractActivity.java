@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
 import android.widget.Toast;
+
 import net.tlalka.android.fiszki.core.AppFiszki;
 import net.tlalka.android.fiszki.core.components.ActivityComponent;
 

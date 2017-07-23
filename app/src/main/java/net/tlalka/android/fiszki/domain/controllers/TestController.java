@@ -1,5 +1,11 @@
 package net.tlalka.android.fiszki.domain.controllers;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Random;
+import javax.inject.Inject;
+
 import net.tlalka.android.fiszki.core.annotations.ActivityScope;
 import net.tlalka.android.fiszki.domain.services.CacheService;
 import net.tlalka.android.fiszki.domain.services.LessonService;
@@ -10,12 +16,6 @@ import net.tlalka.android.fiszki.model.dto.LessonDto;
 import net.tlalka.android.fiszki.model.entities.Lesson;
 import net.tlalka.android.fiszki.model.entities.Word;
 import net.tlalka.android.fiszki.model.types.LanguageType;
-
-import javax.inject.Inject;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Random;
 
 @ActivityScope
 public class TestController {

@@ -1,12 +1,12 @@
 package net.tlalka.android.fiszki.view.adapters;
 
+import java.util.List;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-
-import java.util.List;
 
 public abstract class AbstractAdapter<T> extends BaseAdapter {
 

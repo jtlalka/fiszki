@@ -1,5 +1,12 @@
 package net.tlalka.android.fiszki.model.db;
 
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 import net.tlalka.android.fiszki.model.dto.json.LessonDto;
@@ -10,13 +17,6 @@ import net.tlalka.android.fiszki.model.entities.Word;
 import net.tlalka.android.fiszki.model.helpers.AssetsHelper;
 import net.tlalka.android.fiszki.model.types.LanguageType;
 import net.tlalka.android.fiszki.model.types.OwnerType;
-
-import java.io.IOException;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class DbCreator {
 

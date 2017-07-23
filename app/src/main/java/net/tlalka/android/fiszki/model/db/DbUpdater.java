@@ -1,13 +1,13 @@
 package net.tlalka.android.fiszki.model.db;
 
+import java.sql.SQLException;
+
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 import net.tlalka.android.fiszki.model.entities.Cluster;
 import net.tlalka.android.fiszki.model.entities.Lesson;
 import net.tlalka.android.fiszki.model.entities.Word;
 import net.tlalka.android.fiszki.model.helpers.AssetsHelper;
-
-import java.sql.SQLException;
 
 public class DbUpdater {
 

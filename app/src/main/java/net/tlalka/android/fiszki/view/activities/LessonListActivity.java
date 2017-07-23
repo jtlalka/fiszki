@@ -1,9 +1,12 @@
 package net.tlalka.android.fiszki.view.activities;
 
+import javax.inject.Inject;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+
 import butterknife.BindView;
 import net.tlalka.android.fiszki.R;
 import net.tlalka.android.fiszki.domain.controllers.ListController;
@@ -11,8 +14,6 @@ import net.tlalka.android.fiszki.model.dto.LessonDto;
 import net.tlalka.android.fiszki.model.entities.Lesson;
 import net.tlalka.android.fiszki.view.adapters.LessonsAdapter;
 import net.tlalka.android.fiszki.view.navigations.Navigator;
-
-import javax.inject.Inject;
 
 public class LessonListActivity extends BasePageActivity implements AdapterView.OnItemClickListener {
 

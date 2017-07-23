@@ -2,6 +2,7 @@ package net.tlalka.android.fiszki.core;
 
 import android.app.Activity;
 import android.app.Application;
+
 import net.tlalka.android.fiszki.core.components.ActivityComponent;
 import net.tlalka.android.fiszki.core.components.ApplicationComponent;
 import net.tlalka.android.fiszki.core.components.DaggerApplicationComponent;

@@ -1,6 +1,12 @@
 package net.tlalka.android.fiszki.domain.services;
 
+import java.sql.SQLException;
+import java.util.Collections;
+import java.util.List;
+import javax.inject.Inject;
+
 import android.util.Log;
+
 import com.annimon.stream.Collectors;
 import com.annimon.stream.Stream;
 import net.tlalka.android.fiszki.core.annotations.SessionScope;
@@ -9,11 +15,6 @@ import net.tlalka.android.fiszki.model.db.DbHelper;
 import net.tlalka.android.fiszki.model.entities.Lesson;
 import net.tlalka.android.fiszki.model.entities.Word;
 import net.tlalka.android.fiszki.model.types.LanguageType;
-
-import javax.inject.Inject;
-import java.sql.SQLException;
-import java.util.Collections;
-import java.util.List;
 
 @SessionScope
 public class WordService {

@@ -1,7 +1,11 @@
 package net.tlalka.android.fiszki.view.activities;
 
+import java.util.List;
+import javax.inject.Inject;
+
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
+
 import com.annimon.stream.IntStream;
 import com.annimon.stream.Stream;
 import net.tlalka.android.fiszki.domain.controllers.ListController;
@@ -11,9 +15,6 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
-import javax.inject.Inject;
-import java.util.List;
 
 @RunWith(AndroidJUnit4.class)
 public class TestAndroidTest extends AbstractAndroidTest {

@@ -1,15 +1,16 @@
 package net.tlalka.android.fiszki.view.activities;
 
+import javax.inject.Inject;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 import net.tlalka.android.fiszki.R;
 import net.tlalka.android.fiszki.model.dto.LessonDto;
 import net.tlalka.android.fiszki.view.navigations.Navigator;
-
-import javax.inject.Inject;
 
 public class LessonScoreActivity extends BasePageActivity {
 

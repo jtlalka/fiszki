@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/topic_margin"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <ImageView
         android:id="@+id/settings_icon"
@@ -13,7 +13,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginEnd="@dimen/topic_icon_margin"
         android:contentDescription="@string/nav_settings"
-        android:src="@drawable/settings_icon" />
+        android:src="@drawable/settings_icon"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -23,6 +23,6 @@
         android:layout_toEndOf="@id/settings_icon"
         android:gravity="center_vertical"
         android:text="@string/nav_settings"
-        android:textSize="@dimen/font_size_l" />
+        android:textSize="@dimen/font_size_l"/>
 
 </RelativeLayout>

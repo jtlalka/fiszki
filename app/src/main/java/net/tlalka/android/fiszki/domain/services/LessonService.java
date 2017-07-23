@@ -1,16 +1,17 @@
 package net.tlalka.android.fiszki.domain.services;
 
+import java.sql.SQLException;
+import java.util.Collections;
+import java.util.List;
+import javax.inject.Inject;
+
 import android.util.Log;
+
 import net.tlalka.android.fiszki.core.annotations.SessionScope;
 import net.tlalka.android.fiszki.model.dao.LessonDao;
 import net.tlalka.android.fiszki.model.db.DbHelper;
 import net.tlalka.android.fiszki.model.entities.Lesson;
 import net.tlalka.android.fiszki.model.types.LanguageType;
-
-import javax.inject.Inject;
-import java.sql.SQLException;
-import java.util.Collections;
-import java.util.List;
 
 @SessionScope
 public class LessonService {

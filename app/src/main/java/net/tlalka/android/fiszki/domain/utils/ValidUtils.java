@@ -5,7 +5,8 @@ import java.util.Map;
 
 public class ValidUtils {
 
-    private ValidUtils() {}
+    private ValidUtils() {
+    }
 
     public static boolean isNull(Object value) {
         return value == null;

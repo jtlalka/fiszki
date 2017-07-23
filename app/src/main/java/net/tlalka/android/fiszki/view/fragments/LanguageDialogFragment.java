@@ -1,18 +1,19 @@
 package net.tlalka.android.fiszki.view.fragments;
 
+import java.util.List;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
+
 import net.tlalka.android.fiszki.R;
 import net.tlalka.android.fiszki.model.dto.LanguagesDto;
 import net.tlalka.android.fiszki.model.types.LanguageType;
 import net.tlalka.android.fiszki.view.adapters.LanguageAdapter;
 import org.parceler.Parcels;
-
-import java.util.List;
 
 public class LanguageDialogFragment extends DialogFragment {
 

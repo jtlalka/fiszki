@@ -1,13 +1,14 @@
 package net.tlalka.android.fiszki.view.activities;
 
+import javax.inject.Inject;
+
 import android.os.Bundle;
 import android.widget.ExpandableListView;
+
 import butterknife.BindView;
 import net.tlalka.android.fiszki.R;
 import net.tlalka.android.fiszki.domain.controllers.ListController;
 import net.tlalka.android.fiszki.view.adapters.WordsAdapter;
-
-import javax.inject.Inject;
 
 public class WordsActivity extends BasePageActivity {
 

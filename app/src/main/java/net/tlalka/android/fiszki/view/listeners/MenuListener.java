@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
+
 import net.tlalka.android.fiszki.view.elements.PageElement;
 
 public class MenuListener implements OnClickListener {

@@ -4,7 +4,7 @@
         <!-- Application theme. -->
     </style>
 
-    <style name="DialogTheme" parent="android:Theme.Holo.Dialog" >
+    <style name="DialogTheme" parent="android:Theme.Holo.Dialog">
         <!-- Dialog theme. -->
     </style>
 

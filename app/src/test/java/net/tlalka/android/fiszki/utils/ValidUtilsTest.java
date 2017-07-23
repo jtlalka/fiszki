@@ -1,11 +1,11 @@
 package net.tlalka.android.fiszki.utils;
 
-import net.tlalka.android.fiszki.domain.utils.ValidUtils;
-import org.junit.Test;
-
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+
+import net.tlalka.android.fiszki.domain.utils.ValidUtils;
+import org.junit.Test;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;

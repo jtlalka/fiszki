@@ -1,11 +1,12 @@
 package net.tlalka.android.fiszki.model.dao;
 
-import android.util.Log;
-import com.j256.ormlite.dao.BaseDaoImpl;
-import com.j256.ormlite.support.ConnectionSource;
-
 import java.sql.SQLException;
 import java.util.Collection;
+
+import android.util.Log;
+
+import com.j256.ormlite.dao.BaseDaoImpl;
+import com.j256.ormlite.support.ConnectionSource;
 
 public abstract class AbstractDao<T, ID> extends BaseDaoImpl<T, ID> {
 

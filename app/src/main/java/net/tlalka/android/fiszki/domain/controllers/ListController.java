@@ -1,5 +1,9 @@
 package net.tlalka.android.fiszki.domain.controllers;
 
+import java.util.List;
+import java.util.Map;
+import javax.inject.Inject;
+
 import com.annimon.stream.Collectors;
 import com.annimon.stream.Stream;
 import net.tlalka.android.fiszki.core.annotations.ActivityScope;
@@ -8,10 +12,6 @@ import net.tlalka.android.fiszki.domain.services.StorageService;
 import net.tlalka.android.fiszki.domain.services.WordService;
 import net.tlalka.android.fiszki.model.entities.Lesson;
 import net.tlalka.android.fiszki.model.entities.Word;
-
-import javax.inject.Inject;
-import java.util.List;
-import java.util.Map;
 
 @ActivityScope
 public class ListController {
