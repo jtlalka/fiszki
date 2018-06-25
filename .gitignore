@@ -1,10 +1,14 @@
 # Intellij IDE
 .idea/
+*.iml
 
 # Ecpipse IDE
 .settings/
 .project
 .classpath
+
+# Android
+local.properties
 
 # Gradle
 /**/build/
