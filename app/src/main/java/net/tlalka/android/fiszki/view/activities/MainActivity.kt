@@ -1,14 +1,10 @@
 package net.tlalka.android.fiszki.view.activities
 
-import java.util.Arrays
-import javax.inject.Inject
-
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.ListView
 import butterknife.BindView
-
 import net.tlalka.android.fiszki.R
 import net.tlalka.android.fiszki.domain.services.StorageService
 import net.tlalka.android.fiszki.model.dto.WelcomeDto
@@ -16,6 +12,7 @@ import net.tlalka.android.fiszki.view.adapters.MenuAdapter
 import net.tlalka.android.fiszki.view.elements.PageElement
 import net.tlalka.android.fiszki.view.elements.SetupElement
 import net.tlalka.android.fiszki.view.navigations.Navigator
+import javax.inject.Inject
 
 class MainActivity : AbstractActivity() {
 
@@ -49,7 +46,7 @@ class MainActivity : AbstractActivity() {
     }
 
     private fun initMenuListActivity() {
-        mainListView.adapter = MenuAdapter(this, Arrays.asList(*PageElement.values()))
+        mainListView.adapter = MenuAdapter(this, PageElement.values().toList())
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
