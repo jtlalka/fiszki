@@ -52,12 +52,12 @@ dependencies {
     implementation 'com.j256.ormlite:ormlite-android:5.0'
     implementation 'com.google.code.gson:gson:2.8.2'
 
-    // unit test
+    // unit tests
     testImplementation 'junit:junit:4.12'
 
-    // box test
-    kaptAndroidTest 'com.google.dagger:dagger-compiler:' + daggerVersion
+    // box tests
     androidTestImplementation 'com.android.support.test:rules:1.0.2'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    kaptAndroidTest 'com.google.dagger:dagger-compiler:' + daggerVersion
 }
