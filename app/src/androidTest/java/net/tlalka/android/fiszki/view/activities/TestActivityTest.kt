@@ -14,7 +14,7 @@ import org.junit.runner.RunWith
 import javax.inject.Inject
 
 @RunWith(AndroidJUnit4::class)
-class TestAndroidTest : AbstractAndroidTest() {
+class TestActivityTest : AbstractActivityTest() {
 
     @get:Rule
     val activityRule = ActivityTestRule(MainActivity::class.java)
@@ -95,7 +95,7 @@ class TestAndroidTest : AbstractAndroidTest() {
     }
 
     private fun getTranslation(words: List<Word>, wordValue: String): String {
-        return wordService.getTranslation(getWord(words, wordValue), AbstractAndroidTest.testTranslation)!!.value
+        return wordService.getTranslation(getWord(words, wordValue), AbstractActivityTest.testTranslation)!!.value
     }
 
     private fun getWord(words: List<Word>, wordValue: String): Word {

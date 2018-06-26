@@ -4,7 +4,10 @@ import android.support.test.espresso.Espresso.onData
 import android.support.test.espresso.Espresso.onView
 import android.support.test.espresso.action.ViewActions.click
 import android.support.test.espresso.assertion.ViewAssertions.matches
-import android.support.test.espresso.matcher.ViewMatchers.*
+import android.support.test.espresso.matcher.ViewMatchers.isDisplayed
+import android.support.test.espresso.matcher.ViewMatchers.withContentDescription
+import android.support.test.espresso.matcher.ViewMatchers.withId
+import android.support.test.espresso.matcher.ViewMatchers.withText
 import net.tlalka.android.fiszki.test.ActivityActions.readTest
 import net.tlalka.android.fiszki.test.ActivityActions.waitForUpdate
 import net.tlalka.android.fiszki.test.ActivityMatchers.isDrawable
@@ -13,6 +16,8 @@ import org.hamcrest.CoreMatchers.allOf
 import org.hamcrest.CoreMatchers.anything
 import java.util.concurrent.TimeUnit
 import java.util.concurrent.atomic.AtomicReference
+
+
 
 abstract class AbstractPage {
 
@@ -25,6 +30,11 @@ abstract class AbstractPage {
 
     protected fun clickItem(resId: Int, stringId: Int) {
         onView(allOf(withId(resId), withText(stringId)))
+                .perform(click())
+    }
+
+    protected fun clickItem(resId: Int, text: String) {
+        onView(allOf(withId(resId), withText(text)))
                 .perform(click())
     }
 

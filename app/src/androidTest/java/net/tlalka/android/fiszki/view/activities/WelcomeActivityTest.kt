@@ -11,14 +11,14 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
-class WelcomeAndroidTest : AbstractAndroidTest() {
+class WelcomeActivityTest : AbstractActivityTest() {
 
     @get:Rule
     val activityRule = ActivityLazyRule(MainActivity::class.java)
 
     @Before
     fun setup() {
-        StorageHelper(AbstractAndroidTest.getContext()).setBoolean(StorageType.WELCOME_VIEW, true)
+        StorageHelper(AbstractActivityTest.getContext()).setBoolean(StorageType.WELCOME_VIEW, true)
 
         activityRule.launchActivity()
     }

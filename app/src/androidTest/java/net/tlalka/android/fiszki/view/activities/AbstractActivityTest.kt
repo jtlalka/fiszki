@@ -19,9 +19,10 @@ import net.tlalka.android.fiszki.view.pages.TestListPage
 import net.tlalka.android.fiszki.view.pages.TestPage
 import net.tlalka.android.fiszki.view.pages.TestScorePage
 import net.tlalka.android.fiszki.view.pages.WelcomePage
+import net.tlalka.android.fiszki.view.pages.WordsPage
 import org.junit.BeforeClass
 
-abstract class AbstractAndroidTest {
+abstract class AbstractActivityTest {
 
     protected val mainPage = MainPage()
     protected val welcomePage = WelcomePage()
@@ -31,6 +32,7 @@ abstract class AbstractAndroidTest {
     protected val testPage = TestPage()
     protected val testListPage = TestListPage()
     protected val testScorePage = TestScorePage()
+    protected val wordsPage = WordsPage()
 
     protected fun getEspressoComponent(activity: Activity): TestEspressoComponent {
         return DaggerTestApplicationComponent.builder()

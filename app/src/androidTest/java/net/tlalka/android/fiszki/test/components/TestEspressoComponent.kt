@@ -4,14 +4,17 @@ import dagger.Subcomponent
 import net.tlalka.android.fiszki.core.annotations.ActivityScope
 import net.tlalka.android.fiszki.core.components.ActivityComponent
 import net.tlalka.android.fiszki.core.modules.ActivityModule
-import net.tlalka.android.fiszki.view.activities.LessonAndroidTest
-import net.tlalka.android.fiszki.view.activities.TestAndroidTest
+import net.tlalka.android.fiszki.view.activities.LessonActivityTest
+import net.tlalka.android.fiszki.view.activities.TestActivityTest
+import net.tlalka.android.fiszki.view.activities.WordsActivityTest
 
 @ActivityScope
 @Subcomponent(modules = [ActivityModule::class])
 interface TestEspressoComponent : ActivityComponent {
 
-    fun inject(lessonAndroidTest: LessonAndroidTest)
+    fun inject(lessonActivityTest: LessonActivityTest)
 
-    fun inject(testAndroidTest: TestAndroidTest)
+    fun inject(testActivityTest: TestActivityTest)
+
+    fun inject(wordsActivityTest: WordsActivityTest)
 }

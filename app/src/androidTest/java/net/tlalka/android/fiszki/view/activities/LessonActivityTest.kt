@@ -12,7 +12,7 @@ import org.junit.runner.RunWith
 import javax.inject.Inject
 
 @RunWith(AndroidJUnit4::class)
-class LessonAndroidTest : AbstractAndroidTest() {
+class LessonActivityTest : AbstractActivityTest() {
 
     @get:Rule
     val activityRule = ActivityTestRule(MainActivity::class.java)
@@ -36,7 +36,7 @@ class LessonAndroidTest : AbstractAndroidTest() {
         lessonListPage.openItem(0)
 
         // when
-        IntStream.range(0, getWordSize()).forEach { i ->
+        IntStream.range(0, getWordSize()).forEach { _ ->
             lessonPage.clickTranslation()
             lessonPage.clickCorrect()
         }
