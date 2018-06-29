@@ -14,9 +14,9 @@ import net.tlalka.android.fiszki.model.entities.Word
 
 class WordsAdapter(private val context: Context, listController: ListController) : BaseExpandableListAdapter() {
 
-    private val lessons: List<Lesson> = listController.lessonList
-    private val words: Map<Long, List<Word>> = listController.wordsMap
-    private val translations: Map<Long, Word> = listController.translationMap
+    private val lessons: List<Lesson> = listController.getLessonList()
+    private val words: Map<Long, List<Word>> = listController.getWordsMap()
+    private val translations: Map<Long, Word> = listController.getTranslationMap()
 
     private val layoutInflater: LayoutInflater by lazy {
         LayoutInflater.from(this.context)

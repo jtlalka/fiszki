@@ -28,6 +28,11 @@ class ValidUtilsTest {
     }
 
     @Test
+    fun testCheckIfNullArgumentIsFalse() {
+        assertFalse(ValidUtils.isTrue(null))
+    }
+
+    @Test
     fun testCheckIfStringIsEmpty() {
         assertTrue(ValidUtils.isEmpty(""))
     }

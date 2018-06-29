@@ -16,7 +16,7 @@ class ClusterTest {
 
         // then
         assertNotNull(cluster)
-        assertNull(cluster.ownerType)
+        assertEquals(OwnerType.SYSTEM, cluster.ownerType)
         assertNull(cluster.words)
     }
 

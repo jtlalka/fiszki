@@ -25,7 +25,7 @@ class LessonDtoTest {
         // then
         assertNotNull(dto)
         assertEquals(LevelType.BEGINNER, dto.level)
-        assertEquals(3, dto.name.languages.size.toLong())
+        assertEquals(3, dto.name.getLanguages().size.toLong())
         assertEquals(2, dto.words.size.toLong())
     }
 

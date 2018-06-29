@@ -70,6 +70,6 @@ class LessonActivityTest : AbstractActivityTest() {
     }
 
     private fun getWordSize(): Int {
-        return wordService.getWords(listController.lessonList[0]).size
+        return wordService.getWords(listController.getLessonList()[0]).size
     }
 }

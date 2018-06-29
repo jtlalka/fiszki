@@ -1,13 +1,10 @@
 package net.tlalka.android.fiszki.view.activities
 
-import javax.inject.Inject
-
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
-
 import butterknife.BindView
 import butterknife.OnClick
 import net.tlalka.android.fiszki.R
@@ -17,6 +14,7 @@ import net.tlalka.android.fiszki.model.dto.LessonDto
 import net.tlalka.android.fiszki.model.types.LanguageType
 import net.tlalka.android.fiszki.view.fragments.LanguageDialogFragment
 import net.tlalka.android.fiszki.view.navigations.Navigator
+import javax.inject.Inject
 
 class TestActivity : BasePageActivity(), LanguageDialogFragment.DialogListener {
 
@@ -66,10 +64,10 @@ class TestActivity : BasePageActivity(), LanguageDialogFragment.DialogListener {
     private fun generateView() {
         if (testController.hasNextWord()) {
             val index = testController.wordIndex
-            val total = testController.testSize
+            val total = testController.getTestSize()
 
             testProgress.text = getString(R.string.test_progress, index + 1, total)
-            testWordShow.text = testController.nextWord
+            testWordShow.text = testController.getNextWord()
             generateAnswers()
         } else {
             showTestSummary()
@@ -77,7 +75,7 @@ class TestActivity : BasePageActivity(), LanguageDialogFragment.DialogListener {
     }
 
     private fun generateAnswers() {
-        val answers = testController.answers
+        val answers = testController.getThisAnswers()
 
         if (ValidUtils.isNotEmpty(answers)) {
             testAnswer1.text = answers[0]
@@ -86,7 +84,7 @@ class TestActivity : BasePageActivity(), LanguageDialogFragment.DialogListener {
             testAnswer4.text = answers[3]
         } else {
             LanguageDialogFragment
-                    .getInstance(testController.languages)
+                    .getInstance(testController.getLanguages())
                     .show(fragmentManager, LanguageDialogFragment::class.java.name)
         }
     }

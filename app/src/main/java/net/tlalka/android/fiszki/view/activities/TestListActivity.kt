@@ -1,12 +1,9 @@
 package net.tlalka.android.fiszki.view.activities
 
-import javax.inject.Inject
-
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ListView
-
 import butterknife.BindView
 import net.tlalka.android.fiszki.R
 import net.tlalka.android.fiszki.domain.controllers.ListController
@@ -14,6 +11,7 @@ import net.tlalka.android.fiszki.model.dto.LessonDto
 import net.tlalka.android.fiszki.model.entities.Lesson
 import net.tlalka.android.fiszki.view.adapters.TestsAdapter
 import net.tlalka.android.fiszki.view.navigations.Navigator
+import javax.inject.Inject
 
 class TestListActivity : BasePageActivity(), AdapterView.OnItemClickListener {
 
@@ -35,7 +33,7 @@ class TestListActivity : BasePageActivity(), AdapterView.OnItemClickListener {
     }
 
     private fun initLessonsList() {
-        listView.adapter = TestsAdapter(this, listController.lessonList)
+        listView.adapter = TestsAdapter(this, listController.getLessonList())
         listView.onItemClickListener = this
     }
 

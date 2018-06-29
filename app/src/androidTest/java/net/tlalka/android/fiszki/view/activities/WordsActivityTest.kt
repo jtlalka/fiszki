@@ -29,7 +29,7 @@ class WordsActivityTest : AbstractActivityTest() {
         mainPage.openWords()
 
         // when
-        listController.lessonList.forEach { lesson ->
+        listController.getLessonList().forEach { lesson ->
             run {
                 wordsPage.openItem(lesson.name)
                 wordsPage.openItem(lesson.name)

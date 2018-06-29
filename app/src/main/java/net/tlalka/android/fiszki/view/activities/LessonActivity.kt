@@ -1,12 +1,9 @@
 package net.tlalka.android.fiszki.view.activities
 
-import javax.inject.Inject
-
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
-
 import butterknife.BindView
 import butterknife.OnClick
 import net.tlalka.android.fiszki.R
@@ -16,6 +13,7 @@ import net.tlalka.android.fiszki.model.dto.LessonDto
 import net.tlalka.android.fiszki.model.types.LanguageType
 import net.tlalka.android.fiszki.view.fragments.LanguageDialogFragment
 import net.tlalka.android.fiszki.view.navigations.Navigator
+import javax.inject.Inject
 
 class LessonActivity : BasePageActivity(), LanguageDialogFragment.DialogListener {
 
@@ -55,8 +53,8 @@ class LessonActivity : BasePageActivity(), LanguageDialogFragment.DialogListener
 
     private fun generateView() {
         if (lessonController.hasNextWord()) {
-            lessonProgress.text = lessonController.lessonStatus
-            lessonShowWord.text = lessonController.nextWord
+            lessonProgress.text = lessonController.getLessonStatus()
+            lessonShowWord.text = lessonController.getNextWord()
             lessonCheckWord.text = getText(R.string.lesson_check_word)
         } else {
             showLessonSummary()
@@ -71,14 +69,14 @@ class LessonActivity : BasePageActivity(), LanguageDialogFragment.DialogListener
     }
 
     @OnClick(R.id.lesson_check_word)
-    fun onCheckWordClick(view: View?) {
-        val word = this.lessonController.translateWord
+    fun onCheckWordClick(@Suppress("UNUSED_PARAMETER") view: View?) {
+        val word = this.lessonController.getTranslateWord()
 
         if (ValidUtils.isNotNull(word)) {
             lessonCheckWord.text = word.value
         } else {
             LanguageDialogFragment
-                    .getInstance(lessonController.languages)
+                    .getInstance(lessonController.getLanguages())
                     .show(fragmentManager, LanguageDialogFragment::class.java.name)
         }
     }

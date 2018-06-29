@@ -91,7 +91,7 @@ class TestActivityTest : AbstractActivityTest() {
     }
 
     private fun getWords(index: Int): List<Word> {
-        return wordService.getWords(listController.lessonList[index])
+        return wordService.getWords(listController.getLessonList()[index])
     }
 
     private fun getTranslation(words: List<Word>, wordValue: String): String {
