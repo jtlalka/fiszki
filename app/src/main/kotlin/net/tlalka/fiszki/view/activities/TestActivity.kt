@@ -10,11 +10,10 @@ import butterknife.OnClick
 import net.tlalka.fiszki.R
 import net.tlalka.fiszki.domain.controllers.TestController
 import net.tlalka.fiszki.domain.utils.ValidUtils
-import net.tlalka.fiszki.model.dto.LessonDto
+import net.tlalka.fiszki.model.dto.parcel.LessonDto
 import net.tlalka.fiszki.model.types.LanguageType
 import net.tlalka.fiszki.view.fragments.LanguageDialogFragment
 import net.tlalka.fiszki.view.navigations.Navigator
-import net.tlalka.fiszki.view.activities.BasePageActivity
 import javax.inject.Inject
 
 class TestActivity : BasePageActivity(), LanguageDialogFragment.DialogListener {
@@ -103,22 +102,22 @@ class TestActivity : BasePageActivity(), LanguageDialogFragment.DialogListener {
     }
 
     @OnClick(R.id.test_answer_1)
-    fun onAnswer1Click(view: View) {
+    fun onAnswer1Click(@Suppress("UNUSED_PARAMETER") view: View) {
         validAnswer(testAnswer1, 0)
     }
 
     @OnClick(R.id.test_answer_2)
-    fun onAnswer2Click(view: View) {
+    fun onAnswer2Click(@Suppress("UNUSED_PARAMETER") view: View) {
         validAnswer(testAnswer2, 1)
     }
 
     @OnClick(R.id.test_answer_3)
-    fun onAnswer3Click(view: View) {
+    fun onAnswer3Click(@Suppress("UNUSED_PARAMETER") view: View) {
         validAnswer(testAnswer3, 2)
     }
 
     @OnClick(R.id.test_answer_4)
-    fun onAnswer4Click(view: View) {
+    fun onAnswer4Click(@Suppress("UNUSED_PARAMETER") view: View) {
         validAnswer(testAnswer4, 3)
     }
 

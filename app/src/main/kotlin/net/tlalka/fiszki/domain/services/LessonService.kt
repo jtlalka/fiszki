@@ -3,50 +3,38 @@ package net.tlalka.fiszki.domain.services
 import android.util.Log
 import net.tlalka.fiszki.core.annotations.SessionScope
 import net.tlalka.fiszki.model.dao.LessonDao
-import net.tlalka.fiszki.model.db.DbHelper
 import net.tlalka.fiszki.model.entities.Lesson
 import net.tlalka.fiszki.model.types.LanguageType
 import java.sql.SQLException
 import javax.inject.Inject
 
 @SessionScope
-class LessonService @Inject constructor(dbHelper: DbHelper) {
-
-    private var lessonDao: LessonDao? = null
-
-    init {
-        try {
-            this.lessonDao = dbHelper.getLessonDao()
-        } catch (ex: SQLException) {
-            throw RuntimeException("Cannot obtain lesson DAO", ex)
-        }
-    }
+class LessonService @Inject constructor(private val lessonDao: LessonDao) {
 
     fun getLesson(id: Long): Lesson {
-        return try {
-            this.lessonDao!!.getLessonBy(id)
-        } catch (ex: SQLException) {
-            Log.e(this.javaClass.name, "Cannot obtain lesson by ID", ex)
-            Lesson()
-        }
+        return optional({ lessonDao.getLessonBy(id) }, Lesson())
     }
 
     fun getLessons(languageType: LanguageType): List<Lesson> {
-        return try {
-            this.lessonDao!!.getLessonsBy(languageType)
-        } catch (ex: SQLException) {
-            Log.e(this.javaClass.name, "Cannot obtain lesson list", ex)
-            emptyList()
-        }
+        return optional({ lessonDao.getLessonsBy(languageType) }, emptyList())
     }
 
     fun increaseProgress(lesson: Lesson) {
         lesson.progress = lesson.progress + 1
-        lessonDao!!.update(lesson)
+        lessonDao.update(lesson)
     }
 
     fun updateScore(lesson: Lesson, score: Int) {
         lesson.score = score
-        lessonDao!!.update(lesson)
+        lessonDao.update(lesson)
+    }
+
+    private fun <E> optional(func: () -> E, default: E): E {
+        return try {
+            func()
+        } catch (ex: SQLException) {
+            Log.e(this.javaClass.name, "Cannot obtain data from repository.", ex)
+            default
+        }
     }
 }

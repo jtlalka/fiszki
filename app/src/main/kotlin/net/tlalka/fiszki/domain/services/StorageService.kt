@@ -13,17 +13,17 @@ class StorageService @Inject constructor() {
     lateinit var storageHelper: StorageHelper
 
     var isWelcomeView: Boolean
-        get() = this.storageHelper.getBoolean(StorageType.WELCOME_VIEW, true)
-        set(visible) = this.storageHelper.setBoolean(StorageType.WELCOME_VIEW, visible)
+        get() = storageHelper.getBoolean(StorageType.WELCOME_VIEW, true)
+        set(visible) = storageHelper.setBoolean(StorageType.WELCOME_VIEW, visible)
 
     val language: LanguageType
-        get() = this.storageHelper.getEnum(StorageType.LANGUAGE, DEFAULT_LANGUAGE)
+        get() = storageHelper.getEnum(StorageType.LANGUAGE, DEFAULT_LANGUAGE)
 
     val translation: LanguageType
-        get() = this.storageHelper.getEnum(StorageType.TRANSLATION, DEFAULT_TRANSLATION)
+        get() = storageHelper.getEnum(StorageType.TRANSLATION, DEFAULT_TRANSLATION)
 
-    operator fun set(storageType: StorageType, languageType: LanguageType) {
-        this.storageHelper.setEnum(storageType, languageType)
+    fun set(storageType: StorageType, languageType: LanguageType) {
+        storageHelper.setEnum(storageType, languageType)
     }
 
     companion object {

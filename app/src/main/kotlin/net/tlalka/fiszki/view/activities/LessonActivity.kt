@@ -9,11 +9,10 @@ import butterknife.OnClick
 import net.tlalka.fiszki.R
 import net.tlalka.fiszki.domain.controllers.LessonController
 import net.tlalka.fiszki.domain.utils.ValidUtils
-import net.tlalka.fiszki.model.dto.LessonDto
+import net.tlalka.fiszki.model.dto.parcel.LessonDto
 import net.tlalka.fiszki.model.types.LanguageType
 import net.tlalka.fiszki.view.fragments.LanguageDialogFragment
 import net.tlalka.fiszki.view.navigations.Navigator
-import net.tlalka.fiszki.view.activities.BasePageActivity
 import javax.inject.Inject
 
 class LessonActivity : BasePageActivity(), LanguageDialogFragment.DialogListener {
@@ -88,13 +87,13 @@ class LessonActivity : BasePageActivity(), LanguageDialogFragment.DialogListener
     }
 
     @OnClick(R.id.button_correct)
-    fun onCorrectClick(view: View) {
+    fun onCorrectClick(@Suppress("UNUSED_PARAMETER") view: View) {
         lessonController.correctAnswer()
         generateView()
     }
 
     @OnClick(R.id.button_incorrect)
-    fun onIncorrectClick(view: View) {
+    fun onIncorrectClick(@Suppress("UNUSED_PARAMETER") view: View) {
         lessonController.incorrectAnswer()
         generateView()
     }

@@ -14,7 +14,6 @@ import net.tlalka.fiszki.domain.services.StorageService
 import net.tlalka.fiszki.model.types.LanguageType
 import net.tlalka.fiszki.model.types.StorageType
 import net.tlalka.fiszki.view.adapters.LanguageAdapter
-import net.tlalka.fiszki.view.activities.BaseSetupActivity
 
 class SettingsActivity : BaseSetupActivity(), AdapterView.OnItemSelectedListener {
 

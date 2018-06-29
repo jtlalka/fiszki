@@ -9,7 +9,6 @@ import butterknife.BindView
 import net.tlalka.fiszki.R
 import net.tlalka.fiszki.domain.controllers.ListController
 import net.tlalka.fiszki.view.adapters.WordsAdapter
-import net.tlalka.fiszki.view.activities.BasePageActivity
 
 class WordsActivity : BasePageActivity() {
 

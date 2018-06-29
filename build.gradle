@@ -5,7 +5,8 @@ buildscript {
     ext {
         kotlinVersion = '1.2.50'
         androidSupportVersion = '27.1.1'
-        daggerVersion = '2.14.1'
+        daggerVersion = '2.16'
+        butterKnifeVersion = '8.8.1'
     }
     repositories {
         google()

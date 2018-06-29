@@ -11,7 +11,6 @@ import net.tlalka.fiszki.model.entities.Cluster
 import net.tlalka.fiszki.model.entities.Lesson
 import net.tlalka.fiszki.model.entities.Word
 import net.tlalka.fiszki.model.helpers.AssetsHelper
-import java.sql.SQLException
 
 class DbHelper(context: Context) : OrmLiteSqliteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
@@ -25,13 +24,10 @@ class DbHelper(context: Context) : OrmLiteSqliteOpenHelper(context, DATABASE_NAM
         DbUpdater(this, assetsHelper).execute(connectionSource)
     }
 
-    @Throws(SQLException::class)
     fun getLessonDao(): LessonDao = super.getDao(Lesson::class.java)
 
-    @Throws(SQLException::class)
     fun getClusterDao(): ClusterDao = super.getDao(Cluster::class.java)
 
-    @Throws(SQLException::class)
     fun getWordDao(): WordDao = super.getDao(Word::class.java)
 
     companion object {

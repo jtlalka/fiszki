@@ -8,7 +8,6 @@ import android.widget.TextView
 
 import net.tlalka.fiszki.R
 import net.tlalka.fiszki.model.entities.Lesson
-import net.tlalka.fiszki.view.adapters.AbstractAdapter
 
 class TestsAdapter(context: Context, elements: List<Lesson>) : AbstractAdapter<Lesson>(context, elements) {
 

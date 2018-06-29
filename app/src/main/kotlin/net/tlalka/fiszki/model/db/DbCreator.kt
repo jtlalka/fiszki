@@ -31,12 +31,10 @@ class DbCreator(private val dbHelper: DbHelper, private val assetsHelper: Assets
         }
     }
 
-    @Throws(SQLException::class)
     private fun insertApplicationData() {
         // not implemented yet.
     }
 
-    @Throws(SQLException::class)
     private fun insertConfigurationData() {
         try {
             for (fileName in assetsHelper.getJsonList(FILE_PATH)) {
@@ -47,7 +45,6 @@ class DbCreator(private val dbHelper: DbHelper, private val assetsHelper: Assets
         }
     }
 
-    @Throws(SQLException::class)
     private fun insertLessonsData(lessonDto: LessonDto) {
         val lessonMap = HashMap<LanguageType, Lesson>()
         val lessonNames = lessonDto.name
@@ -62,7 +59,6 @@ class DbCreator(private val dbHelper: DbHelper, private val assetsHelper: Assets
         insertWordsData(lessonDto.words, lessonMap)
     }
 
-    @Throws(SQLException::class)
     private fun insertWordsData(wordsDto: List<WordDto>, lessonMap: Map<LanguageType, Lesson>) {
         for (wordDto in wordsDto) {
             val words = ArrayList<Word>()
@@ -77,7 +73,6 @@ class DbCreator(private val dbHelper: DbHelper, private val assetsHelper: Assets
         }
     }
 
-    @Throws(SQLException::class)
     private fun insertClusterData(): Cluster {
         val cluster = Cluster(OwnerType.SYSTEM)
         dbHelper.getClusterDao().create(cluster)

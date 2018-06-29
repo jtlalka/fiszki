@@ -5,7 +5,7 @@ import net.tlalka.fiszki.domain.services.CacheService
 import net.tlalka.fiszki.domain.services.LessonService
 import net.tlalka.fiszki.domain.services.StorageService
 import net.tlalka.fiszki.domain.services.WordService
-import net.tlalka.fiszki.model.dto.LessonDto
+import net.tlalka.fiszki.model.dto.parcel.LessonDto
 import net.tlalka.fiszki.model.entities.Lesson
 import net.tlalka.fiszki.model.entities.Word
 import net.tlalka.fiszki.model.types.LanguageType

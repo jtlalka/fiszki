@@ -77,6 +77,7 @@ class ValidUtilsTest {
         assertFalse(ValidUtils.isEmpty(getNullValue(Map::class.java)))
     }
 
+    @Suppress("UNUSED_PARAMETER")
     private fun <E> getNullValue(clazz: Class<E>): E? {
         return null
     }

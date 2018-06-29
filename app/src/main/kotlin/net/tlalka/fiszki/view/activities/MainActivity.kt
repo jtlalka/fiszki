@@ -7,12 +7,11 @@ import android.widget.ListView
 import butterknife.BindView
 import net.tlalka.fiszki.R
 import net.tlalka.fiszki.domain.services.StorageService
-import net.tlalka.fiszki.model.dto.WelcomeDto
+import net.tlalka.fiszki.model.dto.parcel.WelcomeDto
 import net.tlalka.fiszki.view.adapters.MenuAdapter
 import net.tlalka.fiszki.view.elements.PageElement
 import net.tlalka.fiszki.view.elements.SetupElement
 import net.tlalka.fiszki.view.navigations.Navigator
-import net.tlalka.fiszki.view.activities.AbstractActivity
 import javax.inject.Inject
 
 class MainActivity : AbstractActivity() {

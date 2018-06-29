@@ -46,13 +46,11 @@ dependencies {
     kapt 'com.google.dagger:dagger-compiler:' + daggerVersion
 
     // butter-knife
-    implementation 'com.jakewharton:butterknife:8.8.1'
-    kapt 'com.jakewharton:butterknife-compiler:8.8.1'
+    implementation 'com.jakewharton:butterknife:' + butterKnifeVersion
+    kapt 'com.jakewharton:butterknife-compiler:' + butterKnifeVersion
 
     // domain
     implementation 'com.annimon:stream:1.1.9'
-    implementation 'org.parceler:parceler-api:1.1.10'
-    kapt 'org.parceler:parceler:1.1.10'
 
     // model
     implementation 'com.j256.ormlite:ormlite-core:5.0'

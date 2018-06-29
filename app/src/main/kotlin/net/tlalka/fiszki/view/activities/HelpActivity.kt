@@ -14,7 +14,7 @@ class HelpActivity : BasePageActivity() {
     }
 
     @OnClick(R.id.help_layout)
-    fun onViewClick(view: View) {
+    fun onViewClick(@Suppress("UNUSED_PARAMETER") view: View) {
         super.finish()
     }
 }

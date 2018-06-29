@@ -6,13 +6,10 @@ import android.app.Dialog
 import android.app.DialogFragment
 import android.content.DialogInterface
 import android.os.Bundle
-import android.os.Parcelable
-
 import net.tlalka.fiszki.R
-import net.tlalka.fiszki.model.dto.LanguagesDto
+import net.tlalka.fiszki.model.dto.parcel.LanguagesDto
 import net.tlalka.fiszki.model.types.LanguageType
 import net.tlalka.fiszki.view.adapters.LanguageAdapter
-import org.parceler.Parcels
 
 class LanguageDialogFragment : DialogFragment() {
 
@@ -35,7 +32,7 @@ class LanguageDialogFragment : DialogFragment() {
     }
 
     override fun onCreateDialog(bundle: Bundle): Dialog {
-        languagesDto = Parcels.unwrap<LanguagesDto>(arguments.getParcelable<Parcelable>(LanguagesDto::class.java.name))
+        languagesDto = arguments.getParcelable(LanguagesDto::class.java.name)
 
         return AlertDialog.Builder(activity)
                 .setIcon(R.drawable.language_icon)
@@ -47,7 +44,7 @@ class LanguageDialogFragment : DialogFragment() {
     companion object {
         fun getInstance(languageTypes: List<LanguageType>): LanguageDialogFragment {
             val bundle = Bundle()
-            bundle.putParcelable(LanguagesDto::class.java.name, Parcels.wrap(LanguagesDto(languageTypes)))
+            bundle.putParcelable(LanguagesDto::class.java.name, LanguagesDto(languageTypes))
 
             val fragment = LanguageDialogFragment()
             fragment.arguments = bundle

@@ -1,17 +1,14 @@
 package net.tlalka.fiszki.view.activities
 
-import javax.inject.Inject
-
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
-
 import butterknife.BindView
 import butterknife.OnClick
 import net.tlalka.fiszki.R
-import net.tlalka.fiszki.model.dto.WelcomeDto
+import net.tlalka.fiszki.model.dto.parcel.WelcomeDto
 import net.tlalka.fiszki.view.navigations.Navigator
-import net.tlalka.fiszki.view.activities.AbstractActivity
+import javax.inject.Inject
 
 class WelcomeActivity : AbstractActivity() {
 
@@ -33,7 +30,7 @@ class WelcomeActivity : AbstractActivity() {
     }
 
     @OnClick(R.id.welcome_layout)
-    fun onLayoutClick(view: View) {
+    fun onLayoutClick(@Suppress("UNUSED_PARAMETER") view: View) {
         navigator.finish(this)
     }
 }

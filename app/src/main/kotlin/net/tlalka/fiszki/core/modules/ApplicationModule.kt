@@ -3,14 +3,14 @@ package net.tlalka.fiszki.core.modules
 import android.app.Application
 import dagger.Module
 import dagger.Provides
+import net.tlalka.fiszki.core.annotations.ApplicationScope
 import net.tlalka.fiszki.view.navigations.Navigator
-import javax.inject.Singleton
 
 @Module
-class ApplicationModule(@get:Provides @get:Singleton val application: Application) {
+class ApplicationModule(@get:Provides @get:ApplicationScope val application: Application) {
 
     @Provides
-    @Singleton
+    @ApplicationScope
     fun getNavigator(): Navigator {
         return Navigator()
     }

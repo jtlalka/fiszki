@@ -6,7 +6,7 @@ import android.widget.TextView
 import butterknife.BindView
 import butterknife.OnClick
 import net.tlalka.fiszki.R
-import net.tlalka.fiszki.model.dto.LessonDto
+import net.tlalka.fiszki.model.dto.parcel.LessonDto
 import net.tlalka.fiszki.view.navigations.Navigator
 import javax.inject.Inject
 
@@ -42,13 +42,13 @@ class LessonScoreActivity : BasePageActivity() {
     }
 
     @OnClick(R.id.lesson_score_repeat)
-    fun onRepeatClick(view: View) {
+    fun onRepeatClick(@Suppress("UNUSED_PARAMETER") view: View) {
         this.navigator.openLessonActivity(this, lessonDto)
         this.navigator.finish(this)
     }
 
     @OnClick(R.id.lesson_score_lessons)
-    fun onLessonsClick(view: View) {
+    fun onLessonsClick(@Suppress("UNUSED_PARAMETER") view: View) {
         this.navigator.openLessonListActivity(this)
         this.navigator.finish(this)
     }

@@ -5,7 +5,6 @@ import com.annimon.stream.Collectors
 import com.annimon.stream.Stream
 import net.tlalka.fiszki.core.annotations.SessionScope
 import net.tlalka.fiszki.model.dao.WordDao
-import net.tlalka.fiszki.model.db.DbHelper
 import net.tlalka.fiszki.model.entities.Lesson
 import net.tlalka.fiszki.model.entities.Word
 import net.tlalka.fiszki.model.types.LanguageType
@@ -13,64 +12,54 @@ import java.sql.SQLException
 import javax.inject.Inject
 
 @SessionScope
-class WordService @Inject constructor(dbHelper: DbHelper) {
-
-    private var wordDao: WordDao? = null
-
-    init {
-        try {
-            this.wordDao = dbHelper.getWordDao()
-        } catch (ex: SQLException) {
-            throw RuntimeException("Cannot obtain word DAO", ex)
-        }
-    }
+class WordService @Inject constructor(private val wordDao: WordDao) {
 
     fun getWords(lesson: Lesson): List<Word> {
         return try {
-            this.wordDao!!.getWordsBy(lesson)
+            wordDao.getWordsBy(lesson)
         } catch (ex: SQLException) {
-            Log.e(this.javaClass.name, "Cannot obtain word list by lesson", ex)
+            Log.e(javaClass.name, "Cannot obtain word list by lesson", ex)
             emptyList()
         }
     }
 
     fun getWords(languageType: LanguageType): List<Word> {
         return try {
-            this.wordDao!!.getWordsBy(languageType)
+            wordDao.getWordsBy(languageType)
         } catch (ex: SQLException) {
-            Log.e(this.javaClass.name, "Cannot obtain word list by language", ex)
+            Log.e(javaClass.name, "Cannot obtain word list by language", ex)
             emptyList()
         }
     }
 
     fun getTranslation(word: Word, languageType: LanguageType): Word {
         return try {
-            this.wordDao!!.getWordBy(word.cluster, languageType)
+            wordDao.getWordBy(word.cluster, languageType)
         } catch (ex: SQLException) {
-            Log.e(this.javaClass.name, "Cannot obtain word translation", ex)
+            Log.e(javaClass.name, "Cannot obtain word translation", ex)
             Word()
         }
     }
 
     fun getLanguages(word: Word): List<LanguageType> {
         return try {
-            Stream.of(this.wordDao!!.getWordsBy(word.cluster))
+            Stream.of(wordDao.getWordsBy(word.cluster))
                     .map<LanguageType>{ it.languageType }
                     .collect(Collectors.toList())
 
         } catch (ex: SQLException) {
-            Log.e(this.javaClass.name, "Cannot obtain language list", ex)
+            Log.e(javaClass.name, "Cannot obtain language list", ex)
             emptyList()
         }
     }
 
     fun increaseProgress(word: Word) {
         word.progress = word.progress + 1
-        wordDao!!.update(word)
+        wordDao.update(word)
     }
 
     fun decreaseProgress(word: Word) {
         word.progress = word.progress - 1
-        wordDao!!.update(word)
+        wordDao.update(word)
     }
 }

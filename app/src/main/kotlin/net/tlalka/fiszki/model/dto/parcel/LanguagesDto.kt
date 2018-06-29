@@ -1,4 +1,4 @@
-package net.tlalka.fiszki.model.dto
+package net.tlalka.fiszki.model.dto.parcel
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

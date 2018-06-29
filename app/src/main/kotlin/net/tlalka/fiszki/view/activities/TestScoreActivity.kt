@@ -1,18 +1,15 @@
 package net.tlalka.fiszki.view.activities
 
-import javax.inject.Inject
-
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
-
 import butterknife.BindView
 import butterknife.OnClick
 import net.tlalka.fiszki.R
-import net.tlalka.fiszki.model.dto.LessonDto
+import net.tlalka.fiszki.model.dto.parcel.LessonDto
 import net.tlalka.fiszki.view.navigations.Navigator
-import net.tlalka.fiszki.view.activities.BasePageActivity
+import javax.inject.Inject
 
 class TestScoreActivity : BasePageActivity() {
 
@@ -50,13 +47,13 @@ class TestScoreActivity : BasePageActivity() {
     }
 
     @OnClick(R.id.test_score_repeat)
-    fun onRepeatClick(view: View) {
+    fun onRepeatClick(@Suppress("UNUSED_PARAMETER") view: View) {
         navigator.openTestActivity(this, this.lessonDto)
         navigator.finish(this)
     }
 
     @OnClick(R.id.test_score_tests)
-    fun onTestsClick(view: View) {
+    fun onTestsClick(@Suppress("UNUSED_PARAMETER") view: View) {
         navigator.openTestListActivity(this)
         navigator.finish(this)
     }

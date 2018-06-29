@@ -7,11 +7,10 @@ import android.widget.ListView
 import butterknife.BindView
 import net.tlalka.fiszki.R
 import net.tlalka.fiszki.domain.controllers.ListController
-import net.tlalka.fiszki.model.dto.LessonDto
+import net.tlalka.fiszki.model.dto.parcel.LessonDto
 import net.tlalka.fiszki.model.entities.Lesson
 import net.tlalka.fiszki.view.adapters.TestsAdapter
 import net.tlalka.fiszki.view.navigations.Navigator
-import net.tlalka.fiszki.view.activities.BasePageActivity
 import javax.inject.Inject
 
 class TestListActivity : BasePageActivity(), AdapterView.OnItemClickListener {

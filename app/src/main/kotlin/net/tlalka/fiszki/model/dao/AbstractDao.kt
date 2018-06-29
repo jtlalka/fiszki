@@ -6,40 +6,29 @@ import com.j256.ormlite.support.ConnectionSource
 import java.sql.SQLException
 
 abstract class AbstractDao<T, ID>(connectionSource: ConnectionSource, dataClass: Class<T>)
-        : BaseDaoImpl<T, ID>(connectionSource, dataClass) {
+    : BaseDaoImpl<T, ID>(connectionSource, dataClass) {
 
     override fun create(data: T): Int {
-        return try {
-            super.create(data)
-        } catch (ex: SQLException) {
-            Log.e(this.javaClass.name, "DB create exception", ex)
-            0
-        }
+        return optional { super.create(data) }
     }
 
     override fun create(data: Collection<T>): Int {
-        return try {
-            super.create(data)
-        } catch (ex: SQLException) {
-            Log.e(this.javaClass.name, "DB create exception", ex)
-            0
-        }
+        return optional { super.create(data) }
     }
 
     override fun update(data: T): Int {
-        return try {
-            super.update(data)
-        } catch (ex: SQLException) {
-            Log.e(this.javaClass.name, "DB update exception", ex)
-            0
-        }
+        return optional { super.update(data) }
     }
 
     override fun delete(data: T): Int {
+        return optional { super.delete(data) }
+    }
+
+    private inline fun optional(sqlQuery: () -> Int): Int {
         return try {
-            super.delete(data)
+            sqlQuery()
         } catch (ex: SQLException) {
-            Log.e(this.javaClass.name, "DB delete exception", ex)
+            Log.e(javaClass.name, "Cannot obtain data from repository.", ex)
             0
         }
     }
