@@ -14,11 +14,17 @@ android {
         minSdkVersion 17
         targetSdkVersion 27
 
-        applicationId "net.tlalka.android.fiszki"
+        applicationId "net.tlalka.fiszki"
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
+    }
+
+    sourceSets {
+        main.java.srcDirs = ['src/main/kotlin']
+        test.java.srcDirs = ['src/test/kotlin']
+        androidTest.java.srcDirs = ['src/androidTest/kotlin']
     }
 
     compileOptions {
